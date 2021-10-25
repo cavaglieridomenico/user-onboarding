@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "author": "Domenico Cavaglieri",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cavaglieridomenico/user-onboarding"
+  },
   "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
