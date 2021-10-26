@@ -1,0 +1,12 @@
+aside {
+  display: none;
+  background: var(--mainBlue);
+  width: 56%;
+  padding: var(--sidebarPadding);
+}
+
+@media all and (min-width: 800px) {
+  aside {
+    display: block;
+  }
+}

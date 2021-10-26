@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const Contact = () => {
   return (
-    <div className='container'>
+    <div className='page-container'>
       <Sidebar />
       <section>
         <Header number={1} />
