@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700;800&family=Montserrat:wght@500;600&display=swap');
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --mainWhite: #fff;
+  --offWhite: #f6fbff;
+  --mainWhite50: #ffffff80;
+  --mainBlue: #35a0ee;
+  --darkBlue: #2696e8;
+
+  --mainBlack: #07111b;
+  --mainGrey: #a4aeb4;
+  --lightGrey: #d5d9dc;
+
+  --mainBackground: #dce8ff;
+
+  --mainTransition: all 0.3s linear;
+
+  --mainSpacing: 0.02rem;
+
+  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+
+  --mainBorderRadius: 0.3rem;
+
+  --maxWidth: 1440px;
+
+  --monserrat: 'Montserrat', sans-serif;
+  --monserratAlt: 'Montserrat Alternates', sans-serif;
+}
+
+/* 
+====== 
+Global Styles 
+======
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +50,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--mainBackground);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--monserratAlt);
+
+  letter-spacing: var(--mainSpacing);
+}
+
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
+img {
+  width: 100%;
+  display: block;
 }
