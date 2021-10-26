@@ -8,7 +8,7 @@ const Contact = () => {
     <div className='container'>
       <Sidebar />
       <section>
-        <Header />
+        <Header number={1} />
         <h1>Contact</h1>
         <Footer page={'/plan'} />
       </section>

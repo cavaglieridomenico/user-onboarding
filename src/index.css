@@ -29,6 +29,8 @@ Variables
   --maxWidth: 1440px;
   --maxHeight: 1900px;
 
+  --mainPadding: 0 13%;
+
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
 
@@ -55,6 +57,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--mainBackground);
+  color: var(--mainGrey);
+  font-weight: 500;
+  letter-spacing: var(--mainSpacing);
+  line-height: 1.5rem;
 }
 
 code {
@@ -117,8 +123,44 @@ aside {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: var(--headerHeigth);
+  padding: var(--mainPadding);
   background-color: green;
+}
+
+header .text-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: honeydew;
+}
+
+.header__step {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.header__help-container {
+  background-color: rgb(230, 229, 173);
+  display: flex;
+  justify-content: space-between;
+  width: 272px;
+}
+
+.header__help {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  color: var(--mainBlue);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header__help svg {
+  padding-top: 5%;
+  font-size: 20px;
 }
 
 footer {
