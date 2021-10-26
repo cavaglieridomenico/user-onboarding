@@ -31,11 +31,12 @@ Variables
 
   --mobilePadding: 0 3%;
   --desktopPadding: 0 13%;
+  --sidebarPadding: 0 73px 0;
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
 
-  --headerHeigth: 18%;
+  --headerHeigth: 6rem;
   --footerHeight: 10%;
 }
 
@@ -133,6 +134,10 @@ section {
   padding: var(--mobilePadding);
 }
 
+.logo-desktop {
+  height: var(--headerHeigth);
+}
+
 @media all and (min-width: 800px) {
   .logo-mobile {
     display: none;
@@ -143,6 +148,7 @@ aside {
   display: none;
   background: var(--mainBlue);
   width: 56%;
+  padding: var(--sidebarPadding);
 }
 
 header {
@@ -198,8 +204,5 @@ footer {
 @media all and (min-width: 800px) {
   aside {
     display: block;
-  }
-  header {
-    height: 10%;
   }
 }
