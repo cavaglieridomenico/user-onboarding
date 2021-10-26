@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Sidebar from '../components/Sidebar';
 
 const Error = () => {
   return (
-    <section className='error-page section'>
-      <div className='error-container'>
+    <div className='container'>
+      <Sidebar />
+      <section className='error'>
         <h1>oops! it's a dead end</h1>
         <Link to='/'>back home</Link>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

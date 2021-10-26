@@ -27,9 +27,13 @@ Variables
   --mainBorderRadius: 0.3rem;
 
   --maxWidth: 1440px;
+  --maxHeight: 1900px;
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
+
+  --headerHeigth: 20%;
+  --footerHeight: 10%;
 }
 
 /* 
@@ -58,6 +62,18 @@ code {
     monospace;
 }
 
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
+img {
+  width: 100%;
+  display: block;
+}
+
 h1,
 h2,
 h3,
@@ -69,14 +85,56 @@ h6 {
   letter-spacing: var(--mainSpacing);
 }
 
-ul {
-  list-style-type: none;
+.container {
+  display: flex;
+  background-color: red;
+  height: 100vh;
+  max-width: var(--maxWidth);
+  max-height: var(--maxHeight);
+  margin: 0 auto;
 }
-a {
-  text-decoration: none;
-  color: var(--mainBlack);
+
+@media all and (min-width: 1600px) {
+  .container {
+    margin: 2% auto 0;
+    width: 1600px;
+    height: 900px;
+  }
 }
-img {
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: yellow;
   width: 100%;
-  display: block;
+}
+
+aside {
+  display: none;
+  background: var(--mainBlue);
+  width: 56%;
+}
+
+header {
+  height: var(--headerHeigth);
+  background-color: green;
+}
+
+footer {
+  height: var(--footerHeight);
+  background-color: red;
+}
+
+.error {
+  justify-content: center;
+}
+
+@media all and (min-width: 800px) {
+  aside {
+    display: block;
+  }
+  header {
+    height: 10%;
+  }
 }

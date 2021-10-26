@@ -1,9 +1,17 @@
 import React from 'react';
+import Sidebar from '../components/Sidebar';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Preferences = () => {
   return (
-    <div>
-      <h1>Preferences</h1>
+    <div className='container'>
+      <Sidebar />
+      <section>
+        <Header />
+        <h1>Preferences</h1>
+        <Footer page={'/'} />
+      </section>
     </div>
   );
 };
