@@ -29,12 +29,13 @@ Variables
   --maxWidth: 1440px;
   --maxHeight: 1900px;
 
-  --mainPadding: 0 13%;
+  --mobilePadding: 0 3%;
+  --desktopPadding: 0 13%;
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
 
-  --headerHeigth: 20%;
+  --headerHeigth: 18%;
   --footerHeight: 10%;
 }
 
@@ -116,6 +117,28 @@ section {
   width: 100%;
 }
 
+.logo {
+  display: flex;
+  align-content: center;
+  background-color: var(--mainBlue);
+  width: 100%;
+}
+
+.logo img {
+  width: 250px;
+}
+
+.logo-mobile {
+  height: 10vh;
+  padding: var(--mobilePadding);
+}
+
+@media all and (min-width: 800px) {
+  .logo-mobile {
+    display: none;
+  }
+}
+
 aside {
   display: none;
   background: var(--mainBlue);
@@ -127,7 +150,7 @@ header {
   flex-direction: column;
   justify-content: center;
   height: var(--headerHeigth);
-  padding: var(--mainPadding);
+  padding: var(--mobilePadding);
   background-color: green;
 }
 
@@ -146,7 +169,7 @@ header .text-container {
   background-color: rgb(230, 229, 173);
   display: flex;
   justify-content: space-between;
-  width: 272px;
+  width: 16.5rem;
 }
 
 .header__help {

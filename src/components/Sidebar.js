@@ -1,9 +1,10 @@
 import React from 'react';
+import Logo from './Logo';
 
 const Sidebar = () => {
   return (
     <aside>
-      <h2>Sidebar</h2>
+      <Logo view='logo-desktop' />
     </aside>
   );
 };

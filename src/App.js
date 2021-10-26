@@ -4,10 +4,12 @@ import Contact from './pages/Contact';
 import Plan from './pages/Plan';
 import Preferences from './pages/Preferences';
 import Error from './pages/Error';
+import Logo from './components/Logo';
 
 function App() {
   return (
     <Router>
+      <Logo view='logo-mobile' />
       <Switch>
         <Route exact path='/'>
           <Contact />
