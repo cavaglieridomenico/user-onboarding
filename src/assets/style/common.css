@@ -117,6 +117,28 @@ section {
   width: 100%;
 }
 
+/*Link*/
+.link {
+  display: flex;
+  width: auto;
+  color: var(--mainBlue);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link .arrow-container {
+  display: flex;
+  align-items: center;
+  margin: 0 0.2rem;
+}
+
+.link .arrow-container img {
+  width: 1rem;
+  height: 0.9rem;
+}
+
+/*Link end*/
+
 .logo {
   display: flex;
   align-content: center;
