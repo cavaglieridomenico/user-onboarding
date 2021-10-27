@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import LinkToPage from './LlnkToPage';
 
-const Footer = ({ page }) => {
+const Footer = ({ textLink, page }) => {
   return (
     <footer>
-      <h1>Footer</h1>
-      <div>
-        <Link to={page}>Skip for now</Link>
-      </div>
+      <LinkToPage textLink={textLink} page={page} />
     </footer>
   );
 };
