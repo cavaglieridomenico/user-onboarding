@@ -1,16 +1,10 @@
 header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: var(--headerHeigth);
   padding: var(--mobilePadding);
   background-color: green;
-}
-
-header .text-container {
-  display: flex;
-  justify-content: space-between;
-  background-color: honeydew;
 }
 
 .header__step {
@@ -19,22 +13,9 @@ header .text-container {
 }
 
 .header__help-container {
-  background-color: rgb(230, 229, 173);
   display: flex;
-  justify-content: space-between;
-  width: 16.5rem;
 }
 
-.header__help {
-  display: flex;
-  justify-content: space-between;
-  width: 90px;
-  color: var(--mainBlue);
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.header__help svg {
-  padding-top: 5%;
-  font-size: 20px;
+.header__help-container .link {
+  margin-left: 8px;
 }
