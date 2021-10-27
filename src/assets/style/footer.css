@@ -1,4 +1,7 @@
 footer {
+  display: flex;
+  align-items: center;
   height: var(--footerHeight);
-  background-color: red;
+  background-color: #ccc;
+  padding: var(--desktopPadding);
 }

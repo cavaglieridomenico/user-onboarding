@@ -10,15 +10,16 @@ Variables
   --mainBlue: #35a0ee;
   --darkBlue: #2696e8;
 
-  --mainBlack: #07111b;
+  --mainBlack: #0b1d2e;
   --mainGrey: #a4aeb4;
   --lightGrey: #d5d9dc;
 
-  --mainBackground: #dce8ff;
+  --mainBackground: #fff;
 
   --mainTransition: all 0.3s linear;
 
-  --mainSpacing: 0.02rem;
+  --textDesktopSpacing: 0.02rem;
+  --textDesktoplineHeigth: 1.5rem;
 
   --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
@@ -28,15 +29,21 @@ Variables
   --maxWidth: 1440px;
   --maxHeight: 1900px;
 
+  --sidebarWidth: 39vw;
+
   --mobilePadding: 0 3%;
-  --desktopPadding: 0 13%;
-  --sidebarPadding: 0 73px 0;
+  --desktopPadding: 0 7vw;
+  --sidebarPadding: 4vh 5vw 0;
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
 
-  --headerHeigth: 6rem;
-  --footerHeight: 10%;
+  --headerDesktopMarginTop: 4vh;
+  --titleDesktopMargin: 8vh 0 1vh;
+  --titleMobileMargin: 3vh 0 1vh;
+  --title2Margin: 5vh 0 1vh;
+
+  --footerHeight: 8vh;
 }
 
 /* 
@@ -52,16 +59,14 @@ Global Styles
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--monserrat);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--mainBackground);
   color: var(--mainGrey);
   font-weight: 500;
-  letter-spacing: var(--mainSpacing);
-  line-height: 1.5rem;
+  line-height: var(--textDesktoplineHeigth);
+  letter-spacing: var(--textDesktopSpacing);
 }
 
 code {
@@ -81,20 +86,9 @@ img {
   display: block;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--monserratAlt);
-
-  letter-spacing: var(--mainSpacing);
-}
-
-.page-container {
+.outer-container {
   display: flex;
-  background-color: red;
+  background-color: var(--mainBackground);
   height: 100vh;
   max-width: var(--maxWidth);
   max-height: var(--maxHeight);
@@ -102,7 +96,7 @@ h6 {
 }
 
 @media all and (min-width: 1600px) {
-  .page-container {
+  .outer-container {
     margin: 2% auto 0;
     width: 1600px;
     height: 900px;
@@ -110,12 +104,47 @@ h6 {
 }
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: yellow;
   width: 100%;
+  padding: var(--mobilePadding);
 }
+
+@media all and (min-width: 800px) {
+  section {
+    padding: var(--desktopPadding);
+  }
+}
+
+/*Text*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--monserratAlt);
+  color: var(--mainBlack);
+  letter-spacing: var(--desktopSpacing);
+}
+
+h1 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  margin: var(--titleMobileMargin);
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: var(--title2Margin);
+}
+
+@media all and (min-width: 992px) {
+  h1 {
+    margin: var(--titleDesktopMargin);
+  }
+}
+
+/*Text end*/
 
 /*Link*/
 .link {
@@ -167,7 +196,7 @@ section .link {
   height: var(--headerHeigth);
 }
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 992px) {
   .logo-mobile {
     display: none;
   }
