@@ -14,8 +14,8 @@ Variables
   --mainGrey: #a4aeb4;
   --lightGrey: #d5d9dc;
   --mainBackground: #fff;
-  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
-  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --lightShadow: 0px 0px 20px #35a0ee40;
+  --darkShadow: 4px 10px 5px 0px #00000080;
 
   --mainTransition: all 0.3s linear;
 
@@ -29,13 +29,13 @@ Variables
   --maxWidth: 1440px;
   --maxHeight: 900px;
 
-  --sidebarPadding: 40px 5vw 0;
   --footerHeight: 130px;
 
   /*Responsive values*/
   --outerWit: 100vw;
   --innerWidth: auto;
-  --sidebarWidth: 35%;
+  --sidebarWidth: auto;
+  --sidebarPadding: 40px 4rem 50px 2rem;
   --innerPadding: 0 10%;
   --headerMarginTop: 0;
   --titleMargin: 4% 0 1%;
@@ -55,6 +55,7 @@ Variables
     --outerWith: 1440px;
     --innerWidth: 924px;
     --sidebarWidth: 516px;
+    --sidebarPadding: 40px 0 50px 73px;
     --innerPadding: 0 120px;
     --headerMarginTop: 40px;
     --titleMargin: 50px 0 1vh;
