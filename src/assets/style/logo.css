@@ -1,0 +1,35 @@
+/*Logo*/
+.logo {
+  display: flex;
+  align-content: center;
+  background-color: var(--mainBlue);
+  width: 100%;
+}
+
+.logo img {
+  width: 250px;
+}
+
+.logo-mobile {
+  justify-content: center;
+  height: 8vh;
+}
+
+.logo-desktop {
+  height: var(--headerHeigth);
+}
+
+@media all and (min-width: 800px) {
+  .logo-mobile {
+    justify-content: left;
+    height: 10vh;
+    padding: var(--innerPadding);
+  }
+}
+
+@media all and (min-width: 992px) {
+  .logo-mobile {
+    display: none;
+  }
+}
+/*Logo end*/
