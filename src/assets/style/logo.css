@@ -2,7 +2,7 @@
 .logo {
   display: flex;
   align-content: center;
-  background-color: var(--mainBlue);
+  background-color: var(--primaryColor);
   width: 100%;
 }
 

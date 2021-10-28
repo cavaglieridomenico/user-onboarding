@@ -2,7 +2,7 @@
 .link {
   display: flex;
   width: auto;
-  color: var(--mainBlue);
+  color: var(--primaryColor);
   font-weight: 600;
   cursor: pointer;
 }

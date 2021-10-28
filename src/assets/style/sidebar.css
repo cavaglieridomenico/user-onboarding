@@ -1,6 +1,6 @@
 aside {
   display: none;
-  background: var(--mainBlue);
+  background: var(--primaryColor);
   width: var(--sidebarWidth);
   padding: var(--sidebarPadding);
 }
