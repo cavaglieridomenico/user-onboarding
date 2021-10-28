@@ -55,35 +55,6 @@ label {
   color: var(--lightGrey);
 }
 
-/*Link*/
-.link {
-  display: flex;
-  width: auto;
-  color: var(--mainBlue);
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.link .arrow-container {
-  display: flex;
-  align-items: center;
-  margin: 0 0.3rem;
-}
-
-.link .arrow-container img {
-  width: 1rem;
-  height: 0.9rem;
-}
-
-section .link {
-  margin-top: 1vh;
-}
-
-.arrow-container.to-page {
-  margin: 0 0.4rem 0 0;
-}
-/*Link end*/
-
 /*Main containers*/
 .outer-container {
   position: relative;
