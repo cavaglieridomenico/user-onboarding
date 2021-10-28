@@ -13,9 +13,13 @@ Variables
   --mainGrey: #a4aeb4;
   --lightGrey: #d5d9dc;
   --mainBackground: #fff;
+  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 
   --mainTransition: all 0.3s linear;
 
+  --monserrat: 'Montserrat', sans-serif;
+  --monserratAlt: 'Montserrat Alternates', sans-serif;
   --mainSpacing: 0.02rem;
   --mainLineHeigth: 1.5rem;
 
@@ -26,9 +30,6 @@ Variables
 
   --sidebarPadding: 40px 5vw 0;
   --footerHeight: 130px;
-
-  --monserrat: 'Montserrat', sans-serif;
-  --monserratAlt: 'Montserrat Alternates', sans-serif;
 
   --headerDesktopMarginTop: 40px;
 
