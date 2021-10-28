@@ -55,79 +55,6 @@ label {
   color: var(--lightGrey);
 }
 
-/*Text*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--monserratAlt);
-  color: var(--mainBlack);
-  letter-spacing: var(--desktopSpacing);
-}
-
-h1 {
-  font-size: 1.4rem;
-  line-height: 2.1rem;
-  margin: var(--titleMargin);
-}
-
-h2 {
-  font-size: 1.1rem;
-  margin: var(--title2Margin);
-}
-
-.inner-container p {
-  font-size: 14px;
-}
-
-h1,
-h2 {
-  text-align: center;
-}
-
-article > p {
-  display: none;
-}
-
-@media all and (min-width: 800px) {
-  h1,
-  h2 {
-    text-align: left;
-  }
-
-  h1 {
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-    margin: var(--titleMobileMargin);
-  }
-
-  h2 {
-    font-size: 1.3rem;
-    margin: var(--titleMobileMargin);
-  }
-
-  article > p {
-    display: block;
-  }
-
-  .inner-container p {
-    font-size: 16px;
-  }
-}
-
-@media all and (min-width: 1440px) {
-  h1 {
-    margin: var(--titleDesktopMargin);
-    margin: var(--title2Margin);
-  }
-  article > p {
-    padding-right: 90px;
-  }
-}
-/*Text end*/
-
 /*Link*/
 .link {
   display: flex;
@@ -193,7 +120,7 @@ section .link {
 }
 /*Logo end*/
 
-/*Containers*/
+/*Main containers*/
 .outer-container {
   position: relative;
   background-color: var(--mainBackground);
@@ -221,5 +148,4 @@ section {
   background-color: yellow;
   padding: var(--innerPadding);
 }
-
 /*Container end*/
