@@ -24,8 +24,6 @@ Variables
   --maxWidth: 1440px;
   --maxHeight: 900px;
 
-  --mobilePadding: 0 3%;
-  --desktopPadding: 0 7vw;
   --sidebarPadding: 40px 5vw 0;
   --footerHeight: 130px;
 
@@ -34,6 +32,7 @@ Variables
 
   --headerDesktopMarginTop: 40px;
 
+  /*Responsive values*/
   --outerWit: 100vw;
   --innerWidth: auto;
   --sidebarWidth: 35%;
@@ -60,3 +59,4 @@ Variables
     --formMarginBottom: 40px;
   }
 }
+/*Responsive values end*/
