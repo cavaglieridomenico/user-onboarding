@@ -18,7 +18,24 @@ const Contact = () => {
               started by letting us know a little bit about you
             </p>
           </article>
-          <form></form>
+          <div className='form-container'>
+            <form>
+              <div className='name-number-container'>
+                <div className='name-container'>
+                  <label htmlFor='fullName'>Full name</label>
+                  <input type='text' id='fullname' />
+                </div>
+                <div className='phone-container'>
+                  <label htmlFor='phone-number'>Phone</label>
+                  <input type='text' id='phone-number' />
+                </div>
+              </div>
+              <label htmlFor='email'>E-mail address</label>
+              <input type='text' id='email' />
+              <label htmlFor='country'>Country</label>
+              <input type='text' id='country' />
+            </form>
+          </div>
           <article>
             <h2>Privacy policy</h2>
             <p>
