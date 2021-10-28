@@ -74,9 +74,54 @@ aside {
 
 .quote-container {
   position: relative;
-  width: 277px;
-  height: 180px;
-  background-color: rgb(195, 245, 179);
+  width: 368px;
+  height: 240px;
+  background-color: var(--mainWhite);
+  border-radius: var(--mainBorderRadius);
+  box-shadow: var(--darkShadow);
+  padding: 48px 40px 10px;
+  font-style: italic;
+}
+
+.quote-icon {
+  position: absolute;
+  z-index: 1;
+  background-color: var(--mainWhite);
+  width: 56px;
+  height: 56px;
+  box-shadow: 16px 12px 56px rgba(11, 29, 46, 0.15);
+  border-radius: 3px;
+  left: -17px;
+  top: -24px;
+  background-image: url(../images/quote-icon.svg);
+  background-size: 25px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo-icon {
+  position: absolute;
+  z-index: 1;
+  width: 41px;
+  height: 24px;
+  background-image: url(../images/logo-icon.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: 40px;
+  bottom: 30px;
+}
+
+p.author {
+  font-family: var(--monserratAlt);
+  color: var(--darkBlack);
+  font-weight: 600;
+  font-style: normal;
+  margin-top: 20px;
+}
+
+p.author + p {
+  font-style: normal;
 }
 
 @media all and (min-width: 992px) {

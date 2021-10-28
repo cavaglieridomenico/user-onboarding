@@ -35,7 +35,16 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <div className='quote-container'></div>
+      <div className='quote-container'>
+        <div className='quote-icon'></div>
+        <p>
+          We care about your time, that's why we created a 3-stage onboarding
+          that will not take more than 5 minutes to complete
+        </p>
+        <p className='author'>William Mac</p>
+        <p>CO-FOUNDER, INVESTOR</p>
+        <div className='logo-icon'></div>
+      </div>
     </aside>
   );
 };
