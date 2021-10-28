@@ -11,11 +11,12 @@ Variables
   --offWhite: #f6fbff;
   --mainWhite50: #ffffff80;
   --mainBlack: #0b1d2e;
+  --darkBlack: #07111b;
   --mainGrey: #a4aeb4;
   --lightGrey: #d5d9dc;
   --mainBackground: #fff;
   --lightShadow: 0px 0px 20px #35a0ee40;
-  --darkShadow: 4px 10px 5px 0px #00000080;
+  --darkShadow: 0px 8px 20px #03110608;
 
   --mainTransition: all 0.3s linear;
 
