@@ -31,4 +31,8 @@
     display: flex;
     margin-bottom: 0;
   }
+
+  .contact-link-conteiner {
+    margin-top: 10px;
+  }
 }
