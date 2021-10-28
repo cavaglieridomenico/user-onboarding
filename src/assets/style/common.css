@@ -17,8 +17,8 @@ body {
   background: var(--mainBackground);
   color: var(--mainGrey);
   font-weight: 500;
-  line-height: var(--textDesktoplineHeigth);
-  letter-spacing: var(--textDesktopSpacing);
+  line-height: var(--mainLineHeigth);
+  letter-spacing: var(--mainSpacing);
 }
 
 code {

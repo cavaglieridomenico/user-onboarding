@@ -16,11 +16,8 @@ Variables
 
   --mainTransition: all 0.3s linear;
 
-  --textDesktopSpacing: 0.02rem;
-  --textDesktoplineHeigth: 1.5rem;
-
-  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
-  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainSpacing: 0.02rem;
+  --mainLineHeigth: 1.5rem;
 
   --mainBorderRadius: 0.3rem;
 
