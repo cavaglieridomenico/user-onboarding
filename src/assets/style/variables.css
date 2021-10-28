@@ -1,0 +1,67 @@
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --mainWhite: #fff;
+  --offWhite: #f6fbff;
+  --mainWhite50: #ffffff80;
+  --mainBlue: #35a0ee;
+  --darkBlue: #2696e8;
+  --mainBlack: #0b1d2e;
+  --mainGrey: #a4aeb4;
+  --lightGrey: #d5d9dc;
+  --mainBackground: #fff;
+
+  --mainTransition: all 0.3s linear;
+
+  --textDesktopSpacing: 0.02rem;
+  --textDesktoplineHeigth: 1.5rem;
+
+  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+
+  --mainBorderRadius: 0.3rem;
+
+  --maxWidth: 1440px;
+  --maxHeight: 900px;
+
+  --mobilePadding: 0 3%;
+  --desktopPadding: 0 7vw;
+  --sidebarPadding: 40px 5vw 0;
+  --footerHeight: 130px;
+
+  --monserrat: 'Montserrat', sans-serif;
+  --monserratAlt: 'Montserrat Alternates', sans-serif;
+
+  --headerDesktopMarginTop: 40px;
+  --titleDesktopMargin: 50px 0 1vh;
+  --titleMobileMargin: 3vh 0 1vh;
+
+  --outerWit: 100vw;
+  --innerWidth: auto;
+  --sidebarWidth: 35%;
+  --innerPadding: 0 10%;
+  --titleMargin: 4% 0 1%;
+  --title2Margin: 1% 0 1%;
+  --formMarginBottom: 10%;
+}
+
+@media all and (min-width: 800px) {
+  :root {
+    --formMarginBottom: 6%;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  :root {
+    --outerWith: 1440px;
+    --innerWidth: 924px;
+    --sidebarWidth: 516px;
+    --innerPadding: 0 120px;
+    --titleMargin: 50px 0 1vh;
+    --title2Margin: 30px 0 1vh;
+    --formMarginBottom: 40px;
+  }
+}

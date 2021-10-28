@@ -1,53 +1,5 @@
 /* 
 ====== 
-Variables 
-======
-*/
-:root {
-  --mainWhite: #fff;
-  --offWhite: #f6fbff;
-  --mainWhite50: #ffffff80;
-  --mainBlue: #35a0ee;
-  --darkBlue: #2696e8;
-
-  --mainBlack: #0b1d2e;
-  --mainGrey: #a4aeb4;
-  --lightGrey: #d5d9dc;
-
-  --mainBackground: #fff;
-
-  --mainTransition: all 0.3s linear;
-
-  --textDesktopSpacing: 0.02rem;
-  --textDesktoplineHeigth: 1.5rem;
-
-  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.25);
-  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
-
-  --mainBorderRadius: 0.3rem;
-
-  --maxWidth: 1440px;
-  --maxHeight: 1900px;
-
-  --sidebarWidth: 39vw;
-
-  --mobilePadding: 0 3%;
-  --desktopPadding: 0 7vw;
-  --sidebarPadding: 4vh 5vw 0;
-
-  --monserrat: 'Montserrat', sans-serif;
-  --monserratAlt: 'Montserrat Alternates', sans-serif;
-
-  --headerDesktopMarginTop: 4vh;
-  --titleDesktopMargin: 8vh 0 1vh;
-  --titleMobileMargin: 3vh 0 1vh;
-  --title2Margin: 5vh 0 1vh;
-
-  --footerHeight: 8vh;
-}
-
-/* 
-====== 
 Global Styles 
 ======
 */
@@ -77,42 +29,30 @@ code {
 ul {
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
   color: var(--mainBlack);
 }
+
 img {
   width: 100%;
   display: block;
 }
 
-.outer-container {
-  display: flex;
-  background-color: var(--mainBackground);
-  height: 100vh;
-  max-width: var(--maxWidth);
-  max-height: var(--maxHeight);
-  margin: 0 auto;
+input {
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid var(--lightGrey);
+  border-left: 0;
+  height: 2.5rem;
+  margin-bottom: var(--formMarginBottom);
+  width: 14rem;
 }
 
-@media all and (min-width: 1600px) {
-  .outer-container {
-    margin: 2% auto 0;
-    width: 1600px;
-    height: 900px;
-  }
-}
-
-section {
-  background-color: yellow;
-  width: 100%;
-  padding: var(--mobilePadding);
-}
-
-@media all and (min-width: 800px) {
-  section {
-    padding: var(--desktopPadding);
-  }
+label {
+  display: block;
+  color: var(--lightGrey);
 }
 
 /*Text*/
@@ -128,22 +68,64 @@ h6 {
 }
 
 h1 {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
-  margin: var(--titleMobileMargin);
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  margin: var(--titleMargin);
 }
 
 h2 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin: var(--title2Margin);
 }
 
-@media all and (min-width: 992px) {
+.inner-container p {
+  font-size: 14px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+article > p {
+  display: none;
+}
+
+@media all and (min-width: 800px) {
+  h1,
+  h2 {
+    text-align: left;
+  }
+
   h1 {
-    margin: var(--titleDesktopMargin);
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    margin: var(--titleMobileMargin);
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: var(--titleMobileMargin);
+  }
+
+  article > p {
+    display: block;
+  }
+
+  .inner-container p {
+    font-size: 16px;
   }
 }
 
+@media all and (min-width: 1440px) {
+  h1 {
+    margin: var(--titleDesktopMargin);
+    margin: var(--title2Margin);
+  }
+  article > p {
+    padding-right: 90px;
+  }
+}
 /*Text end*/
 
 /*Link*/
@@ -173,9 +155,9 @@ section .link {
 .arrow-container.to-page {
   margin: 0 0.4rem 0 0;
 }
-
 /*Link end*/
 
+/*Logo*/
 .logo {
   display: flex;
   align-content: center;
@@ -188,12 +170,20 @@ section .link {
 }
 
 .logo-mobile {
-  height: 10vh;
-  padding: var(--mobilePadding);
+  justify-content: center;
+  height: 8vh;
 }
 
 .logo-desktop {
   height: var(--headerHeigth);
+}
+
+@media all and (min-width: 800px) {
+  .logo-mobile {
+    justify-content: left;
+    height: 10vh;
+    padding: var(--innerPadding);
+  }
 }
 
 @media all and (min-width: 992px) {
@@ -201,3 +191,35 @@ section .link {
     display: none;
   }
 }
+/*Logo end*/
+
+/*Containers*/
+.outer-container {
+  position: relative;
+  background-color: var(--mainBackground);
+  height: 100vh;
+  max-height: var(--maxHeight);
+  width: var(--outerWith);
+  margin: 0 auto;
+}
+
+.inner-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--innerWidth);
+}
+
+@media all and (min-width: 992px) {
+  .outer-container {
+    display: flex;
+  }
+}
+
+section {
+  background-color: yellow;
+  padding: var(--innerPadding);
+}
+
+/*Container end*/
