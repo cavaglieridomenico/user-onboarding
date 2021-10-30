@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+@media all and (max-width: 320px) {
+  .btn {
+    width: 120px;
+  }
+}
+
 .btn-primary {
   background-color: var(--primaryColor);
   color: var(--mainWhite);
