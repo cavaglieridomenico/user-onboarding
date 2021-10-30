@@ -55,6 +55,7 @@ Variables
   :root {
     --outerHeight: 100vh;
     --innerHeight: 100vh;
+    --sidebarHeight: 100vh;
     --outerColLeft: 43%;
     --innerPadding: 20px 50px;
     --sidebarPadding: 30px 0 20px 30px;
@@ -80,6 +81,7 @@ Variables
   :root {
     --outerHeight: 100%;
     --innerHeight: 100%;
+    --sidebarHeight: 100%;
   }
 }
 
@@ -87,6 +89,7 @@ Variables
   :root {
     --outerHeight: 900px;
     --innerHeight: 900px;
+    --sidebarHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 120px;
     --inputMargin: 0;
