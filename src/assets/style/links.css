@@ -21,4 +21,13 @@
 .arrow-container.to-page {
   margin: 0 0.4rem 0 0;
 }
+
+.arrow-container.to-page img {
+  margin: 6px 0rem 0 0;
+}
+
+.link:hover {
+  transform: scale(1.05);
+  transform: scaleY(1.1);
+}
 /*Links end*/
