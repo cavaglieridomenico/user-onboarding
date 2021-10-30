@@ -1,5 +1,14 @@
-/*Text*/
-h1,
+.onboarding-outerbox {
+  font-family: var(--monserrat);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--mainGrey);
+  font-weight: 500;
+  line-height: var(--mainLineHeigth);
+  letter-spacing: var(--mainSpacing);
+}
+
+.onboarding-outerbox h1,
 h2,
 h3,
 h4,
@@ -10,59 +19,56 @@ h6 {
   letter-spacing: var(--desktopSpacing);
 }
 
-h1 {
-  font-size: 1.4rem;
+.onboarding-outerbox h1 {
+  font-size: 1.6rem;
   line-height: 2.1rem;
   margin: var(--titleMargin);
 }
 
-h2 {
+.onboarding-outerbox h2 {
   font-size: 1.1rem;
   margin: var(--title2Margin);
 }
 
-.inner-container p {
+.onboarding-innerbox p {
   font-size: 14px;
 }
 
-h1,
+.onboarding-outerbox h1,
 h2 {
   text-align: center;
 }
 
-article > p {
-  display: none;
+.onboarding-outerbox footer p {
+  font-size: 14px;
 }
 
-@media all and (min-width: 800px) {
-  h1,
+@media all and (min-width: 768px) {
+  .onboarding-outerbox h1,
   h2 {
     text-align: left;
   }
 
-  h1 {
+  .onboarding-outerbox h1 {
     font-size: 1.75rem;
     line-height: 2.25rem;
     margin: var(--titleMargin);
   }
 
-  h2 {
+  .onboarding-outerbox h2 {
     font-size: 1.3rem;
     margin: var(--title2Margin);
   }
 
-  article > p {
+  .onboarding-outerbox article > p {
     display: block;
   }
 
-  .inner-container p {
+  .onboarding-innerbox p {
+    font-size: 16px;
+  }
+
+  footer p {
     font-size: 16px;
   }
 }
-
-@media all and (min-width: 1440px) {
-  article > p {
-    padding-right: 90px;
-  }
-}
-/*Text end*/
