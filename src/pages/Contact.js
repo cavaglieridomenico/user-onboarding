@@ -46,7 +46,7 @@ const Contact = () => {
               shared, so we take your privacy seriously
             </p>
           </article>
-          <div className='contact-link-conteiner'>
+          <div className='contact-link-container'>
             <LinkToModal text={'Expand privacy policy'} />
           </div>
         </section>
