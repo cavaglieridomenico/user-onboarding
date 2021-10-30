@@ -6,39 +6,42 @@ import LinkToModal from '../components/LinkToModal';
 
 const Contact = () => {
   return (
-    <div className='outer-container'>
+    <div className='onboarding-outerbox'>
       <Sidebar />
-      <div className='inner-container'>
+      <div className='onboarding-innerbox'>
         <Header number={1} />
-        <section>
+        <section className='contact'>
           <h1>Сontact details</h1>
           <article>
-            <p>
+            <p className='welcome'>
               Welcome to United Properties, we are glad to see you! Let’s get
               started by letting us know a little bit about you
             </p>
           </article>
-          <div className='form-container'>
-            <form>
-              <div className='name-phone-container'>
-                <div className='name-container'>
-                  <label htmlFor='fullName'>Full name</label>
-                  <input type='text' id='fullname' />
-                </div>
-                <div className='phone-container'>
-                  <label htmlFor='phone-number'>Phone</label>
-                  <input type='text' id='phone-number' />
-                </div>
+          <form id='form-contact'>
+            <div className='form-container'>
+              <div className='name-box'>
+                <label htmlFor='fullName'>Full name</label>
+                <input type='text' id='fullname' placeholder='John Doe' />
               </div>
-              <label htmlFor='email'>E-mail address</label>
-              <input type='text' id='email' />
-              <label htmlFor='country'>Country</label>
-              <input type='text' id='country' />
-            </form>
-          </div>
+              <div className='phone-box'>
+                <label htmlFor='phone'>Phone</label>
+                <input type='text' id='phone' />
+              </div>
+              <div className='email-box'>
+                <label htmlFor='email'>E-mail address</label>
+                <input type='text' id='email' />
+              </div>
+              <div className='country-box'>
+                <label htmlFor='country'>Country</label>
+                <input type='text' id='country' />
+              </div>
+            </div>
+          </form>
+
           <article>
-            <h2>Privacy policy</h2>
-            <p>
+            <h2 className='privacy'>Privacy policy</h2>
+            <p className='privacy'>
               We know you care about how your personal information is used and
               shared, so we take your privacy seriously
             </p>
