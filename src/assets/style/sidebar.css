@@ -1,19 +1,19 @@
 aside {
   display: none;
   background: var(--primaryColor);
-  width: var(--sidebarWidth);
   padding: var(--sidebarPadding);
+  height: var(--sidebarHeight);
 }
 
 .progress-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: rgb(236, 168, 42);
   font-family: var(--monserratAlt);
   color: var(--mainWhite50);
   font-size: 18px;
   font-weight: 700;
+  margin: var(--progressMargin);
 }
 
 .square-text-container {
@@ -124,7 +124,7 @@ p.author + p {
   font-style: normal;
 }
 
-@media all and (min-width: 992px) {
+@media all and (min-width: 992px) and (min-height: 650px) {
   aside {
     display: flex;
     flex-direction: column;
