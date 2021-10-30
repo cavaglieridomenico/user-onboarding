@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--mainBackground);
+}
+
+/*Main containers*/
+.onboarding-outerbox {
+  position: relative;
+  width: var(--outerWith);
+  height: var(--outerHeight);
+  max-width: var(--outerMaxWidth);
+  margin: 0 auto;
+}
+
+.onboarding-innerbox {
+  background-color: var(--mainWhite);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: var(--innerHeight);
+  padding: var(--innerPadding);
+}
+
+@media all and (min-width: 992px) and (min-height: 650px) {
+  .onboarding-outerbox {
+    display: grid;
+    grid-template-columns: var(--outerColLeft) auto;
+  }
+}
+/*Container end*/
+
+.onboarding-outerbox ul {
+  list-style-type: none;
+}
+
+.onboarding-outerbox a {
+  text-decoration: none;
+}
+
+.onboarding-outerbox img {
+  width: 100%;
+}
+
+.onboarding-outerbox input {
+  border: none;
+  width: 100%;
+  font-family: var(--monserrat);
+  font-size: 21px;
+  font-weight: 600;
+}
+.onboarding-outerbox input::placeholder {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
+
+.onboarding-outerbox label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+.onboarding-outerbox select {
+  background-color: var(--mainWhite);
+  border: none;
+}

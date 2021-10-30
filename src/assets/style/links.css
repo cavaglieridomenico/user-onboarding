@@ -1,0 +1,33 @@
+/*Links*/
+.link {
+  display: flex;
+  width: auto;
+  color: var(--primaryColor);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link .arrow-container {
+  display: flex;
+  align-items: center;
+  margin: 0 0.3rem;
+}
+
+.link .arrow-container img {
+  width: 1rem;
+  height: 0.9rem;
+}
+
+.arrow-container.to-page {
+  margin: 0 0.4rem 0 0;
+}
+
+.arrow-container.to-page img {
+  margin: 6px 0rem 0 0;
+}
+
+.link:hover {
+  transform: scale(1.05);
+  transform: scaleY(1.1);
+}
+/*Links end*/

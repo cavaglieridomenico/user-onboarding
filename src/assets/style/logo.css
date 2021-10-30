@@ -1,0 +1,28 @@
+/*Logo*/
+.logo {
+  display: flex;
+  align-content: center;
+  background-color: var(--primaryColor);
+}
+
+.logo img {
+  width: 250px;
+}
+
+.logo-mobile {
+  justify-content: center;
+  height: var(--logoMobileHeight);
+}
+
+@media all and (max-width: 320px) and (max-height: 480px) {
+  .logo-mobile {
+    height: 40px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .logo-mobile {
+    display: none;
+  }
+}
+/*Logo end*/

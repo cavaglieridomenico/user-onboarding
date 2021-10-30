@@ -1,0 +1,103 @@
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --primaryColor: #35a0ee;
+  --primaryColor50: #35a0ee1a;
+  --primarydarkcolor: #2696e8;
+  --mainWhite: #fff;
+  --offWhite: #f6fbff;
+  --mainWhite50: #ffffff80;
+  --mainBlack: #0b1d2e;
+  --darkBlack: #07111b;
+  --mainGrey: #a4aeb4;
+  --lightGrey: #d5d9dc;
+  --mainBackground: #dce8ff;
+  --lightShadow: 0px 0px 20px #35a0ee40;
+  --darkShadow: 0px 8px 20px #03110608;
+
+  --mainTransition: all 0.3s linear;
+
+  --monserrat: 'Montserrat', sans-serif;
+  --monserratAlt: 'Montserrat Alternates', sans-serif;
+  --mainSpacing: 0.02rem;
+  --mainLineHeigth: 1.5rem;
+
+  --mainBorderRadius: 0.25rem;
+
+  --outerWith: 100vw;
+  --outerMaxWidth: 1440px;
+
+  /*Responsive values*/
+  --outerHeight: calc(100vh - var(--logoMobileHeight));
+  --innerHeight: calc(100vh - var(--logoMobileHeight));
+  --innerPadding: 0;
+  --logoMobileHeight: 70px;
+  --sectionContactMargin: 0 0 0px;
+  --sectionContactPadding: 0 10px;
+  --sidebarPadding: 40px 0 50px 73px;
+  --titleMargin: 20px 0 10px;
+  --formContactMargin: 10px 0 0;
+  --title2Margin: 20px 0 0 0;
+}
+
+@media all and (min-width: 768px) {
+  :root {
+    --innerPadding: 40px 100px 50px;
+    --sectionContactMargin: 0 0 60px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  :root {
+    --outerHeight: 100vh;
+    --innerHeight: 100vh;
+    --sidebarHeight: 100vh;
+    --outerColLeft: 43%;
+    --innerPadding: 20px 50px;
+    --sidebarPadding: 30px 0 20px 30px;
+    --sectionContactMargin: 0 0 20px;
+  }
+}
+
+@media all and (min-width: 992px) and (min-height: 1300px) {
+  :root {
+    --innerPadding: 200px 50px;
+    --sidebarPadding: 30px 0 200px 30px;
+  }
+}
+
+@media all and (width: 1114px) and (height: 720px) {
+  :root {
+    --outerColLeft: 50%;
+    --sidebarPadding: 30px 0 130px 30px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-height: 600px) {
+  :root {
+    --outerHeight: 100%;
+    --innerHeight: 100%;
+    --sidebarHeight: 100%;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  :root {
+    --outerHeight: 900px;
+    --innerHeight: 900px;
+    --sidebarHeight: 100%;
+    --outerColLeft: 516px;
+    --innerPadding: 40px 150px 43px 120px;
+    --sectionContactMargin: 10px 0 0px;
+    --sectionContactPadding: 0 90px 0 0;
+    --sidebarPadding: 40px 0 50px 73px;
+    --titleMargin: 0 0 10px;
+    --formContactMargin: 45px 0 0;
+    --title2Margin: 60px 0 20px 0;
+    --progressMargin: 100px 0 0;
+  }
+}
+/*Responsive values end*/
