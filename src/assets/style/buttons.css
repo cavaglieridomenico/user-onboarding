@@ -29,7 +29,7 @@
   background-color: var(--primaryColor50);
   color: var(--primaryColor);
   border: solid 1px var(--primaryColor);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .btn-primary:hover > img {
@@ -44,5 +44,5 @@
 
 .btn-primary50:hover {
   border: solid 1.5px var(--primaryColor);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
