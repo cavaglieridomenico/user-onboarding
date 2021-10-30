@@ -48,21 +48,29 @@ body {
 }
 
 .onboarding-outerbox input {
-  border-top: 0;
-  border-right: 0;
-  border-bottom: 2px solid var(--lightGrey);
-  border-left: 0;
-  height: 2.5rem;
-  margin: var(--inputMargin);
+  border: none;
   width: 100%;
+  font-family: var(--monserrat);
   font-size: 21px;
   font-weight: 600;
 }
 .onboarding-outerbox input::placeholder {
+  text-decoration: none;
   color: var(--mainBlack);
 }
 
 .onboarding-outerbox label {
   display: block;
-  color: var(--lightGrey);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+}
+
+.onboarding-outerbox select {
+  background-color: var(--mainWhite);
+  border: none;
 }

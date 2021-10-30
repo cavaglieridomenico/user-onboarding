@@ -22,10 +22,24 @@ const Contact = () => {
             <div className='form-container'>
               <div className='name-box'>
                 <label htmlFor='fullName'>Full name</label>
-                <input type='text' id='fullname' placeholder='John Doe' />
+                <input type='text' id='fullname' />
               </div>
               <div className='phone-box'>
                 <label htmlFor='phone'>Phone</label>
+                <select name='country-flag' id='country-flag'>
+                  <option id='italy-flag' value='italy'>
+                    🇮🇹
+                  </option>
+                  <option id='spain-flag' value='spain'>
+                    🇪🇸
+                  </option>
+                  <option id='france-flag' value='france'>
+                    🇫🇷
+                  </option>
+                  <option id='germany-flag' value='germany'>
+                    🇩🇪
+                  </option>
+                </select>
                 <input type='text' id='phone' />
               </div>
               <div className='email-box'>
@@ -34,7 +48,20 @@ const Contact = () => {
               </div>
               <div className='country-box'>
                 <label htmlFor='country'>Country</label>
-                <input type='text' id='country' />
+                <select type='text' id='country'>
+                  <option id='italy' value='italy'>
+                    ukraine
+                  </option>
+                  <option id='spain' value='spain'>
+                    spain
+                  </option>
+                  <option id='france' value='france'>
+                    france
+                  </option>
+                  <option id='germany' value='germany'>
+                    germany
+                  </option>
+                </select>
               </div>
             </div>
           </form>

@@ -35,7 +35,6 @@ Variables
   --innerHeight: calc(100vh - var(--logoMobileHeight));
   --innerPadding: 0;
   --logoMobileHeight: 70px;
-  --inputMargin: 0;
   --sectionContactMargin: 0 0 0px;
   --sectionContactPadding: 0 10px;
   --sidebarPadding: 40px 0 50px 73px;
@@ -92,7 +91,6 @@ Variables
     --sidebarHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 120px;
-    --inputMargin: 0;
     --sectionContactMargin: 10px 0 0px;
     --sectionContactPadding: 0 90px 0 0;
     --sidebarPadding: 40px 0 50px 73px;
