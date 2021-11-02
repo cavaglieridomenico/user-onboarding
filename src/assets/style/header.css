@@ -14,8 +14,8 @@ header {
   display: flex;
 }
 
-.header__help-container .link {
-  margin-left: 8px;
+.header__help-container > p {
+  margin-right: 8px;
 }
 
 /*Galaxy Fold portrait*/
