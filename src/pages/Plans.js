@@ -29,16 +29,22 @@ const Plans = () => {
                   <label htmlFor='plans-to'>To</label>
                   <input type='text' id='plans-to' />
                 </div>
+                <div className='slider'></div>
               </div>
-              <div className='slider'></div>
             </form>
             <article>
               <h2>Are you an accredited investor?</h2>
               <form action='' id='plans-investor'>
-                <input type='radio' name='accredited' value='yes' />
-                Yes
-                <input type='radio' name='accredited' value='no' />
-                No
+                <div className='form-container'>
+                  <div className='radio-investor'>
+                    <input type='radio' name='accredited' value='yes' />
+                    <label htmlFor=''>Yes</label>
+                  </div>
+                  <div className='radio-investor'>
+                    <input type='radio' name='accredited' value='no' />
+                    <label htmlFor=''>No</label>
+                  </div>
+                </div>
               </form>
             </article>
           </article>
