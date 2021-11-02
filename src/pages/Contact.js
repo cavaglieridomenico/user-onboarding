@@ -50,7 +50,7 @@ const Contact = () => {
                 <label htmlFor='country'>Country</label>
                 <select type='text' id='country'>
                   <option id='italy' value='italy'>
-                    ukraine
+                    italy
                   </option>
                   <option id='spain' value='spain'>
                     spain
