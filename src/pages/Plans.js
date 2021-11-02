@@ -25,7 +25,7 @@ const Plans = () => {
           </article>
           <article>
             <h2>How much are you planning to invest in this year?</h2>
-            <form id='plans'>
+            <form id='form-plans'>
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
@@ -40,7 +40,7 @@ const Plans = () => {
             </form>
             <article>
               <h2>Are you an accredited investor?</h2>
-              <form action='' id='plans-investor'>
+              <form action='' id='form-investor'>
                 <div className='form-container'>
                   <div className='radio-investor-box selected'>
                     <input type='radio' name='accredited' value='yes' />
