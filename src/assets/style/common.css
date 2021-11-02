@@ -64,19 +64,18 @@ a:visited {
 h2 {
   font-family: var(--monserratAlt);
   color: var(--mainBlack);
-  letter-spacing: var(--desktopSpacing);
   text-align: center;
 }
 
 .onboarding-innerbox h1 {
   font-size: var(--mainTitleSize);
   line-height: var(--mainTitleLineHeight);
-  font-weight: 800;
+  font-weight: var(--mainTitleWeight);
   margin: 0 0 10px;
 }
 
 .onboarding-innerbox h2 {
-  font-size: 1.1rem;
+  font-size: var(--title2Size);
   margin: 20px 0 0 0;
 }
 
@@ -93,8 +92,8 @@ h2 {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
-  font-size: var(--mainTextInput);
-  font-weight: 600;
+  font-size: var(--mainTextInputSize);
+  font-weight: var(--mainTextInputWeight);
 }
 .onboarding-outerbox input::placeholder {
   text-decoration: none;

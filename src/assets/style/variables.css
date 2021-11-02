@@ -24,12 +24,20 @@ Variables
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
-  --mainSpacing: 0.02rem;
-  --mainLineHeight: 1.5rem;
-  --mainTitleSize: 1.75rem;
-  --mainTitleLineHeight: 2.25rem;
-  --mainText: 1.5rem;
-  --mainTextInput: 1.3rem;
+  --mainSpacing: 0.02em;
+  --mainLineHeight: 24px;
+  --mainTitleSize: 28px;
+  --mainTitleLineHeight: 36px;
+  --mainTitleWeight: 800;
+  --title2Size: 21px;
+  --title2LineHeight: 28px;
+  --mainTitleWeight: 700;
+  --mainText: 16px;
+  --mainTextLineHeight: 22.5px;
+  --mainTextWeight: 500;
+  --mainTextInputSize: 21px;
+  --mainTextInputLineHeight: 28px;
+  --mainTextInputWeight: 600;
 
   --mainBorderRadius: 0.25rem;
   /*Mockup values end*/
