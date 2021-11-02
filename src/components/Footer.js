@@ -12,9 +12,10 @@ const Footer = ({ homePage, nextPage }) => {
         <p>Back to the homepage</p>
       </Link>
       <div className='btn-container'>
-        <button className='btn btn-primary50'>
-          <Link to={nextPage}>Skip for now</Link>
-        </button>
+        <Link to={nextPage}>
+          <button className='btn btn-primary50'>Skip for now</button>
+        </Link>
+
         <button className='btn btn-primary'>
           Next step
           <img src={arrow_right_W} alt='arrow-icon' />
