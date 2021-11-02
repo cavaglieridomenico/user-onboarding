@@ -4,6 +4,23 @@ footer {
   grid-template-columns: auto;
 }
 
+.link-to-page {
+  display: flex;
+  width: auto;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link-to-page .arrow-container {
+  display: flex;
+  align-items: center;
+  margin: 0 0.3rem;
+}
+
+.link-to-page > p {
+  color: var(--primaryColor);
+}
+
 .btn-container {
   display: flex;
   grid-row: 1/2;

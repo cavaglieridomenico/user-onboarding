@@ -5,8 +5,8 @@ import arrow_right_W from '../assets/images/arrow_right_w.svg';
 const Footer = ({ homePage, nextPage }) => {
   return (
     <footer>
-      <Link className='link to-page' to={homePage}>
-        <div className='arrow-container to-page'>
+      <Link className='link-to-page' to={homePage}>
+        <div className='arrow-container'>
           <img src={arrow_left} alt='arrow-icon' />
         </div>
         <p>Back to the homepage</p>
