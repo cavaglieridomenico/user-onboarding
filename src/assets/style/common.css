@@ -15,6 +15,13 @@ body {
   height: var(--outerHeight);
   max-width: var(--outerMaxWidth);
   margin: 0 auto;
+  font-family: var(--monserrat);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--mainGrey);
+  font-weight: 500;
+  line-height: var(--mainLineHeight);
+  letter-spacing: var(--mainSpacing);
 }
 
 .onboarding-innerbox {
@@ -27,6 +34,7 @@ body {
   padding: var(--innerPadding);
 }
 
+/*Sidebar, but NOT for smartphone landscape:*/
 @media all and (min-width: 992px) and (min-height: 650px) {
   .onboarding-outerbox {
     display: grid;
@@ -35,6 +43,7 @@ body {
 }
 /*Container end*/
 
+/*Tag default style*/
 .onboarding-outerbox ul {
   list-style-type: none;
 }
@@ -51,7 +60,7 @@ body {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
-  font-size: 21px;
+  font-size: var(--mainTextInput);
   font-weight: 600;
 }
 .onboarding-outerbox input::placeholder {
@@ -74,3 +83,4 @@ body {
   background-color: var(--mainWhite);
   border: none;
 }
+/*Tag default style end*/
