@@ -86,7 +86,7 @@ h2 {
 /*Text - common style - end*/
 
 /*Form - common style*/
-.onboarding-outerbox input {
+.onboarding-outerbox input[type='text'] {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
@@ -116,14 +116,16 @@ h2 {
 
 .onboarding-outerbox .form-container div {
   border-bottom: solid 1px var(--lightGrey);
+  margin: 0 0 1%;
 }
 
 @media all and (min-width: 768px) {
   .onboarding-outerbox .form-container {
     display: grid;
     grid-template-rows: 60px 60px 60px;
+    grid-template-columns: 270px 270px;
     grid-row-gap: 30px;
-    margin: 0 0 1%;
+    grid-column-gap: 20px;
   }
   .form-container div {
     margin: 0;

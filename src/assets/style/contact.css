@@ -4,11 +4,11 @@
 }
 
 /*Form*/
-.phone-box select {
+.contact .phone-box select {
   width: 40px;
 }
 
-.phone-box input {
+.contact .phone-box input {
   width: calc(100% - 45px);
 }
 
