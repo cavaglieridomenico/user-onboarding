@@ -6,7 +6,13 @@ import Footer from '../components/Footer';
 const Plans = () => {
   return (
     <div className='onboarding-outerbox'>
-      <Sidebar />
+      <Sidebar
+        text={
+          'Save from thousands to millions on your deal. Secure the best possible. And get independent, unbiased advice for free'
+        }
+        author={'Jodie Sears'}
+        role={'UNITEDPROPERTIES’ AGENT'}
+      />
       <div className='onboarding-innerbox'>
         <Header number={2} />
         <section className='plans'>
