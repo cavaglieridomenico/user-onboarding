@@ -1,10 +1,16 @@
 import React from 'react';
-import LinkToPage from './LlnkToPage';
+import { Link } from 'react-router-dom';
+import arrow_left from '../assets/images/arrow_left.svg';
 import arrow_right_W from '../assets/images/arrow_right_w.svg';
 const Footer = ({ textLink, page }) => {
   return (
     <footer>
-      <LinkToPage textLink={textLink} page={page} />
+      <Link className='link to-page' to={page}>
+        <div className='arrow-container to-page'>
+          <img src={arrow_left} alt='arrow-icon' />
+        </div>
+        <p>{textLink}</p>
+      </Link>
       <div className='btn-container'>
         <button className='btn btn-primary50'>Skip for now</button>
         <button className='btn btn-primary'>
