@@ -19,6 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--mainGrey);
+  font-size: var(--mainTextSize);
   font-weight: 500;
   line-height: var(--mainLineHeight);
   letter-spacing: var(--mainSpacing);
@@ -76,6 +77,8 @@ h2 {
 
 .onboarding-innerbox h2 {
   font-size: var(--title2Size);
+  line-height: var(--title2LineHeight);
+  font-weight: var(--title2Weight);
   margin: 20px 0 0 0;
 }
 
@@ -98,6 +101,10 @@ h2 {
 .onboarding-outerbox input::placeholder {
   text-decoration: none;
   color: var(--mainBlack);
+}
+
+.onboarding-outerbox input[type='radio'] {
+  color: var(--lightGrey);
 }
 
 .onboarding-outerbox label {

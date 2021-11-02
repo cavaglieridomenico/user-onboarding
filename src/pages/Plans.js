@@ -42,13 +42,15 @@ const Plans = () => {
               <h2>Are you an accredited investor?</h2>
               <form action='' id='plans-investor'>
                 <div className='form-container'>
-                  <div className='radio-investor'>
+                  <div className='radio-investor-box selected'>
                     <input type='radio' name='accredited' value='yes' />
-                    <label htmlFor=''>Yes</label>
+                    <label htmlFor='yes' className='selected'>
+                      Yes
+                    </label>
                   </div>
-                  <div className='radio-investor'>
+                  <div className='radio-investor-box'>
                     <input type='radio' name='accredited' value='no' />
-                    <label htmlFor=''>No</label>
+                    <label htmlFor='no'>No</label>
                   </div>
                 </div>
               </form>

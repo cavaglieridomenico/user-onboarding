@@ -12,19 +12,35 @@
   width: 295px;
   margin: 0 auto;
 }
-.plans .radio-investor {
-  background-color: blue;
+.plans .radio-investor-box {
   display: flex;
   align-items: center;
   width: 136px;
   height: 48px;
+  border: 2px solid var(--lightGrey);
+  border-radius: var(--mainBorderRadius);
   padding-left: 1.2rem;
 }
 
-.plans .radio-investor input {
+.plans .radio-investor-box input {
   width: 20px;
   height: 20px;
   margin-right: 1.2rem;
+}
+
+.plans .radio-investor-box label {
+  color: var(--mainBlack);
+  font-weight: 600;
+}
+
+#plans-investor .radio-investor-box.selected {
+  background-color: var(--offWhite);
+  border: 2px solid var(--primaryColor);
+  font-weight: 700;
+}
+
+#plans-investor .radio-investor-box label.selected {
+  color: var(--primaryColor);
 }
 
 /*SM*/

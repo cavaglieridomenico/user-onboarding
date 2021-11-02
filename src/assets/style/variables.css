@@ -10,7 +10,7 @@ Variables
   --primaryColor50: #35a0ee1a;
   --primarydarkcolor: #2696e8;
   --mainWhite: #fff;
-  --offWhite: #f6fbff;
+  --offWhite: #f7fbff;
   --mainWhite50: #ffffff80;
   --mainBlack: #0b1d2e;
   --darkBlack: #07111b;
@@ -31,15 +31,15 @@ Variables
   --mainTitleWeight: 800;
   --title2Size: 21px;
   --title2LineHeight: 28px;
-  --mainTitleWeight: 700;
-  --mainText: 16px;
+  --title2Weight: 700;
+  --mainTextSize: 16px;
   --mainTextLineHeight: 22.5px;
   --mainTextWeight: 500;
   --mainTextInputSize: 21px;
   --mainTextInputLineHeight: 28px;
   --mainTextInputWeight: 600;
 
-  --mainBorderRadius: 0.25rem;
+  --mainBorderRadius: 4px;
   /*Mockup values end*/
 
   /*Responsive main dimensions*/
