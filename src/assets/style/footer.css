@@ -22,7 +22,6 @@ footer {
 }
 
 .btn-container {
-  display: flex;
   grid-row: 1/2;
   grid-column: 1;
   justify-self: center;
@@ -143,7 +142,6 @@ footer a {
 @media all and (min-width: 1200px) {
   footer {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
