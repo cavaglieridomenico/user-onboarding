@@ -131,6 +131,7 @@
   .contact p.welcome,
   .contact p.privacy {
     margin: 20px 0 50px;
+    letter-spacing: 0.1px;
   }
   .contact h2 {
     margin: 60px 0 0;
