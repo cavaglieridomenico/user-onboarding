@@ -56,7 +56,37 @@ body {
   width: 100%;
 }
 
-.onboarding-outerbox input {
+/*Text - common style*/
+.onboarding-innerbox h1,
+h2 {
+  font-family: var(--monserratAlt);
+  color: var(--mainBlack);
+  letter-spacing: var(--desktopSpacing);
+  text-align: center;
+}
+
+.onboarding-innerbox h1 {
+  font-size: var(--mainTitleSize);
+  line-height: var(--mainTitleLineHeight);
+  font-weight: 800;
+  margin: 0 0 10px;
+}
+
+.onboarding-innerbox h2 {
+  font-size: 1.1rem;
+  margin: 20px 0 0 0;
+}
+
+@media all and (min-width: 768px) {
+  .onboarding-innerbox h1,
+  .onboarding-innerbox h2 {
+    text-align: left;
+  }
+}
+/*Text - common style - end*/
+
+/*Form - common style*/
+.onboarding-outerbox input[type='text'] {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
@@ -83,4 +113,23 @@ body {
   background-color: var(--mainWhite);
   border: none;
 }
+
+.onboarding-outerbox .form-container div {
+  border-bottom: solid 1px var(--lightGrey);
+  margin: 0 0 1%;
+}
+
+@media all and (min-width: 768px) {
+  .onboarding-outerbox .form-container {
+    display: grid;
+    grid-template-rows: 60px 60px 60px;
+    grid-template-columns: 270px 270px;
+    grid-row-gap: 30px;
+    grid-column-gap: 20px;
+  }
+  .form-container div {
+    margin: 0;
+  }
+}
+/*Form - common style - end*/
 /*Tag default style end*/
