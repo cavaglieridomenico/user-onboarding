@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Contact from './pages/Contact';
-import Plan from './pages/Plan';
+import Plans from './pages/Plans';
 import Preferences from './pages/Preferences';
 import Error from './pages/Error';
 import Logo from './components/Logo';
@@ -15,7 +15,7 @@ function App() {
           <Contact />
         </Route>
         <Route path='/plan'>
-          <Plan />
+          <Plans />
         </Route>
         <Route path='/preferences'>
           <Preferences />

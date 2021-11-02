@@ -77,7 +77,7 @@ const Contact = () => {
             <LinkToModal text={'Expand privacy policy'} />
           </div>
         </section>
-        <Footer page={'/plan'} textLink='Back to the homepage' />
+        <Footer page={'/plans'} textLink='Back to the homepage' />
       </div>
     </div>
   );
