@@ -124,6 +124,7 @@ p.author + p {
   font-style: normal;
 }
 
+/*Sidebar, but NOT for smartphone in landscape:*/
 @media all and (min-width: 992px) and (min-height: 650px) {
   aside {
     display: flex;
