@@ -1,4 +1,3 @@
-/*Logo*/
 .logo {
   display: flex;
   align-content: center;
@@ -14,9 +13,9 @@
   height: var(--logoMobileHeight);
 }
 
-@media all and (min-width: 992px) {
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .logo-mobile {
     display: none;
   }
 }
-/*Logo end*/

@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 
-const Sidebar = () => {
+const Sidebar = ({ text, author, role }) => {
   return (
     <aside>
       <Logo view='logo-desktop' />
@@ -37,12 +37,9 @@ const Sidebar = () => {
       </div>
       <div className='quote-container'>
         <div className='quote-icon'></div>
-        <p>
-          We care about your time, that's why we created a 3-stage onboarding
-          that will not take more than 5 minutes to complete
-        </p>
-        <p className='author'>William Mac</p>
-        <p>CO-FOUNDER, INVESTOR</p>
+        <p>{text}</p>
+        <p className='author'>{author}</p>
+        <p className='role'>{role}</p>
         <div className='logo-icon'></div>
       </div>
     </aside>

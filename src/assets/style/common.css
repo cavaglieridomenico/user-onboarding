@@ -6,6 +6,7 @@
 
 body {
   background-color: var(--mainBackground);
+  min-width: max-content;
 }
 
 /*Main containers*/
@@ -14,11 +15,13 @@ body {
   width: var(--outerWith);
   height: var(--outerHeight);
   max-width: var(--outerMaxWidth);
+  min-width: var(--outerMinWith);
   margin: 0 auto;
   font-family: var(--monserrat);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--mainGrey);
+  font-size: var(--mainTextSize);
   font-weight: 500;
   line-height: var(--mainLineHeight);
   letter-spacing: var(--mainSpacing);
@@ -34,10 +37,15 @@ body {
   padding: var(--innerPadding);
 }
 
-/*Sidebar, but NOT for smartphone landscape:*/
-@media all and (min-width: 992px) and (min-height: 650px) {
+.onboarding-innerbox section {
+  margin: 3% 0;
+}
+
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .onboarding-outerbox {
     display: grid;
+    grid-template-rows: auto;
     grid-template-columns: var(--outerColLeft) auto;
   }
 }
@@ -48,54 +56,63 @@ body {
   list-style-type: none;
 }
 
-.onboarding-outerbox a {
+.onboarding-outerbox a:link,
+a:visited {
   text-decoration: none;
+  color: inherit;
+  outline: 0;
 }
 
 .onboarding-outerbox img {
   width: 100%;
 }
 
-/*Text - common style*/
+/*Text - default style*/
 .onboarding-innerbox h1,
 h2 {
   font-family: var(--monserratAlt);
   color: var(--mainBlack);
-  letter-spacing: var(--desktopSpacing);
   text-align: center;
 }
 
 .onboarding-innerbox h1 {
   font-size: var(--mainTitleSize);
   line-height: var(--mainTitleLineHeight);
-  font-weight: 800;
+  font-weight: var(--mainTitleWeight);
   margin: 0 0 10px;
 }
 
 .onboarding-innerbox h2 {
-  font-size: 1.1rem;
+  font-size: var(--title2Size);
+  line-height: var(--title2LineHeight);
+  font-weight: var(--title2Weight);
   margin: 20px 0 0 0;
 }
 
-@media all and (min-width: 768px) {
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .onboarding-innerbox h1,
   .onboarding-innerbox h2 {
     text-align: left;
   }
 }
-/*Text - common style - end*/
+/*Text - default style - end*/
 
-/*Form - common style*/
+/*Form - default style*/
 .onboarding-outerbox input[type='text'] {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
-  font-size: var(--mainTextInput);
-  font-weight: 600;
+  font-size: var(--mainTextInputSize);
+  font-weight: var(--mainTextInputWeight);
 }
 .onboarding-outerbox input::placeholder {
   text-decoration: none;
   color: var(--mainBlack);
+}
+
+.onboarding-outerbox input[type='radio'] {
+  color: var(--lightGrey);
 }
 
 .onboarding-outerbox label {
@@ -113,23 +130,5 @@ h2 {
   background-color: var(--mainWhite);
   border: none;
 }
-
-.onboarding-outerbox .form-container div {
-  border-bottom: solid 1px var(--lightGrey);
-  margin: 0 0 1%;
-}
-
-@media all and (min-width: 768px) {
-  .onboarding-outerbox .form-container {
-    display: grid;
-    grid-template-rows: 60px 60px 60px;
-    grid-template-columns: 270px 270px;
-    grid-row-gap: 30px;
-    grid-column-gap: 20px;
-  }
-  .form-container div {
-    margin: 0;
-  }
-}
-/*Form - common style - end*/
+/*Form - default style - end*/
 /*Tag default style end*/
