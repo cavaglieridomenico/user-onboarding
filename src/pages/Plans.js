@@ -16,7 +16,7 @@ const Plans = () => {
       <div className='onboarding-innerbox'>
         <Header number={2} />
         <section className='plans'>
-          <h1>Investiment Plans</h1>
+          <h1>Investiment plans</h1>
           <article>
             <p>
               Let us know about your investment plans. This will help us get you
@@ -38,23 +38,23 @@ const Plans = () => {
                 <div className='slider'></div>
               </div>
             </form>
-            <article>
-              <h2>Are you an accredited investor?</h2>
-              <form action='' id='form-investor'>
-                <div className='form-container'>
-                  <div className='radio-investor-box selected'>
-                    <input type='radio' name='accredited' value='yes' />
-                    <label htmlFor='yes' className='selected'>
-                      Yes
-                    </label>
-                  </div>
-                  <div className='radio-investor-box'>
-                    <input type='radio' name='accredited' value='no' />
-                    <label htmlFor='no'>No</label>
-                  </div>
+          </article>
+          <article>
+            <h2>Are you an accredited investor?</h2>
+            <form action='' id='form-investor'>
+              <div className='form-container'>
+                <div className='radio-investor-box selected'>
+                  <input type='radio' name='accredited' value='yes' />
+                  <label htmlFor='yes' className='selected'>
+                    Yes
+                  </label>
                 </div>
-              </form>
-            </article>
+                <div className='radio-investor-box'>
+                  <input type='radio' name='accredited' value='no' />
+                  <label htmlFor='no'>No</label>
+                </div>
+              </div>
+            </form>
           </article>
         </section>
         <Footer nextPage={'/preferences'} homePage={'/'} />
