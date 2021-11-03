@@ -3,12 +3,12 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: max-content;
 }
 
 .header__step {
   text-transform: uppercase;
   font-weight: 600;
+  opacity: 0.8;
 }
 
 .header__help-container {
@@ -17,13 +17,6 @@ header {
 
 .header__help-container > p {
   margin-right: 8px;
-}
-
-/*START*/
-@media all and (min-width: 360px) {
-  header {
-    width: auto;
-  }
 }
 
 /*MD*/

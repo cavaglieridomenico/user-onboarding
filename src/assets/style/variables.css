@@ -24,7 +24,7 @@ Variables
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
-  --mainSpacing: 1px;
+  --mainSpacing: 0.7px;
   --mainLineHeight: 24px;
   --mainTitleSize: 28px;
   --mainTitleLineHeight: 36px;
@@ -43,20 +43,13 @@ Variables
   /*Mockup values end*/
 
   /*Responsive main dimensions*/
-  --outerWith: max-content;
+  --outerWith: 100vw;
+  --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
-  --logoMobileHeight: 80px;
-
   --outerHeight: calc(100vh - var(--logoMobileHeight));
   --innerHeight: calc(100vh - var(--logoMobileHeight));
+  --logoMobileHeight: 80px;
   --innerPadding: 7%;
-}
-
-/*START*/
-@media all and (min-width: 360px) {
-  :root {
-    --outerWith: 100vw;
-  }
 }
 
 /*XS - Smartphones landscape (height:100%)*/
@@ -75,7 +68,7 @@ Variables
     --outerHeight: 100vh;
     --innerHeight: 100vh;
     --sidebarHeight: 100vh;
-    --innerPadding: 4% 3% 8% 3%;
+    --innerPadding: 4% 3% 5% 3%;
     --sidebarPadding: 7% 0 12% 7%;
   }
 }
@@ -96,9 +89,9 @@ Variables
     --innerHeight: 100%;
     --sidebarHeight: 100%;
     --outerColLeft: 516px;
-    --innerPadding: 40px 150px 43px 120px;
+    --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
     --progressMargin: 100px 0 0;
   }
 }
-/*Responsive main dimensions*/
+/*Responsive main dimensions end*/

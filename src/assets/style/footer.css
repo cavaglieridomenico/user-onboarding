@@ -2,7 +2,7 @@ footer {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
-  width: max-content;
+  margin-bottom: 1%;
 }
 
 .link-to-page {
@@ -74,15 +74,8 @@ footer {
 footer a {
   grid-row: 2/3;
   grid-column: 1;
-  margin: 7% 0;
+  margin: 3% 0;
   justify-self: center;
-}
-
-/*START*/
-@media all and (min-width: 360px) {
-  footer {
-    width: auto;
-  }
 }
 
 /*XS - Smartphones landscape (height:100%)*/
