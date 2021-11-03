@@ -35,10 +35,15 @@ body {
   padding: var(--innerPadding);
 }
 
-/*Sidebar, but NOT for smartphone landscape:*/
-@media all and (min-width: 992px) and (min-height: 650px) {
+.onboarding-innerbox section {
+  margin: 3% 0;
+}
+
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .onboarding-outerbox {
     display: grid;
+    grid-template-rows: auto;
     grid-template-columns: var(--outerColLeft) auto;
   }
 }
@@ -60,7 +65,7 @@ a:visited {
   width: 100%;
 }
 
-/*Text - common style*/
+/*Text - default style*/
 .onboarding-innerbox h1,
 h2 {
   font-family: var(--monserratAlt);
@@ -82,15 +87,16 @@ h2 {
   margin: 20px 0 0 0;
 }
 
-@media all and (min-width: 768px) {
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .onboarding-innerbox h1,
   .onboarding-innerbox h2 {
     text-align: left;
   }
 }
-/*Text - common style - end*/
+/*Text - default style - end*/
 
-/*Form - common style*/
+/*Form - default style*/
 .onboarding-outerbox input[type='text'] {
   border: none;
   width: 100%;
@@ -127,18 +133,5 @@ h2 {
   border-bottom: solid 1px var(--lightGrey);
   margin: 0 0 1%;
 }
-
-@media all and (min-width: 768px) {
-  .onboarding-outerbox .form-container {
-    display: grid;
-    grid-template-rows: 60px 60px 60px;
-    grid-template-columns: 270px 270px;
-    grid-row-gap: 30px;
-    grid-column-gap: 20px;
-  }
-  .form-container div {
-    margin: 0;
-  }
-}
-/*Form - common style - end*/
+/*Form - default style - end*/
 /*Tag default style end*/

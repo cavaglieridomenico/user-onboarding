@@ -2,6 +2,7 @@ footer {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: auto;
+  width: max-content;
 }
 
 .link-to-page {
@@ -77,31 +78,10 @@ footer a {
   justify-self: center;
 }
 
-/*Galaxy Fold portrait*/
-@media all and (min-width: 280px) and (max-width: 320px) {
-  .btn {
-    width: 6rem;
-    height: 2.15rem;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0rem;
-  }
-}
-
-/*Iphone 4 portrait*/
-@media all and (min-width: 320px) and (max-height: 480px) {
-  .btn {
-    width: 6.25rem;
-    height: 2.15rem;
-    font-size: 0.7rem;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-  }
-  footer a {
-    margin: 5px 0;
-  }
-  footer p {
-    font-size: 0.7rem;
+/*START*/
+@media all and (min-width: 360px) {
+  footer {
+    width: auto;
   }
 }
 
@@ -112,8 +92,8 @@ footer a {
   }
 }
 
-/*SM*/
-@media all and (min-width: 768px) {
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   .btn {
     width: 155px;
     height: 48px;
@@ -122,19 +102,8 @@ footer a {
   footer p {
     font-size: 16px;
   }
-}
-
-/*MD*/
-@media all and (min-width: 992px) {
   footer a {
     margin: 5% 0 0;
-  }
-}
-
-/*Small tablets landscape*/
-@media all and (min-width: 768px) and (max-height: 1024px) {
-  footer > a {
-    margin: 3% 0 0;
   }
 }
 

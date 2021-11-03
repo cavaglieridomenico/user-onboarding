@@ -128,8 +128,8 @@ p.role {
   font-size: 14px;
 }
 
-/*Sidebar, but NOT for smartphone in landscape:*/
-@media all and (min-width: 992px) and (min-height: 650px) {
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
   aside {
     display: flex;
     flex-direction: column;
