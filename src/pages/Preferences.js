@@ -63,7 +63,7 @@ const Preferences = () => {
             </div>
           </article>
         </section>
-        <Footer nextPage={'/'} homePage={'/'} />
+        <Footer homePage={'/'} nextPage={'/'} textRightButton={'Finish'} />
       </div>
     </div>
   );

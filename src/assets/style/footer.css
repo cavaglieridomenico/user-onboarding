@@ -44,9 +44,16 @@ footer {
   box-shadow: var(--lightShadow);
 }
 
-.btn-primary > img {
+.btn-primary .arrow-button {
+  position: relative;
+  display: inline-block;
   width: 16px;
-  margin-left: 0.5rem;
+  height: 10px;
+  background-image: url('../images/arrow_right_w.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
 }
 
 .btn-primary:hover {
@@ -63,7 +70,7 @@ footer {
 .btn-primary50 {
   background-color: var(--primaryColor50);
   color: var(--primaryColor);
-  margin-right: 1.2rem;
+  margin-right: 15px;
 }
 
 .btn-primary50:hover {

@@ -57,7 +57,11 @@ const Plans = () => {
             </form>
           </article>
         </section>
-        <Footer nextPage={'/preferences'} homePage={'/'} />
+        <Footer
+          homePage={'/'}
+          nextPage={'/preferences'}
+          textRightButton={'Next step'}
+        />
       </div>
     </div>
   );

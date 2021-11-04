@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
-import arrow_right_W from '../assets/images/arrow_right_w.svg';
-const Footer = ({ homePage, nextPage }) => {
+const Footer = ({ homePage, nextPage, textRightButton }) => {
   return (
     <footer>
       <Link className='link-to-page' to={homePage}>
@@ -15,11 +14,16 @@ const Footer = ({ homePage, nextPage }) => {
         <Link to={nextPage}>
           <button className='btn btn-primary50'>Skip for now</button>
         </Link>
-
-        <button className='btn btn-primary'>
-          Next step
-          <img src={arrow_right_W} alt='arrow-icon' />
-        </button>
+        <Link to={nextPage}>
+          <button className='btn btn-primary'>
+            <span>{textRightButton}</span>
+            <div
+              className={
+                textRightButton === 'Next step' ? 'arrow-button' : 'none'
+              }
+            ></div>
+          </button>
+        </Link>
       </div>
     </footer>
   );
