@@ -35,3 +35,28 @@
   color: var(--primaryColor);
 }
 /*Form end*/
+
+/*XS - Smartphones landscape (height:100%)*/
+@media all and (min-width: 480px) and (max-height: 600px) {
+}
+
+/*MD*/
+@media all and (min-width: 992px) and (min-height: 800px) {
+  section.pref {
+    margin: 0 0 40px;
+  }
+  .pref h1 {
+    margin: 0 0 15px;
+  }
+  .pref h2 {
+    margin: 50px 0 20px;
+  }
+}
+
+/*LG*/
+@media all and (min-width: 1200px) {
+}
+
+/*XL*/
+@media all and (min-width: 1440px) {
+}
