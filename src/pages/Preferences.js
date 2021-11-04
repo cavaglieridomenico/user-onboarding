@@ -6,7 +6,13 @@ import Footer from '../components/Footer';
 const Preferences = () => {
   return (
     <div className='onboarding-outerbox'>
-      <Sidebar />
+      <Sidebar
+        text={
+          'United Properties is about fast & easy searching, buying, selling and investing ever — online, with an expert by our side'
+        }
+        author={'Ollie Mcmahon'}
+        role={'MANAGING DIRECTOR'}
+      />
       <div className='onboarding-innerbox'>
         <Header />
         <section className='pref'>
