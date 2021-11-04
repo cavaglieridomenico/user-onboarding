@@ -8,22 +8,26 @@ Variables
 :root {
   --primaryColor: #35a0ee;
   --primaryColor50: #35a0ee1a;
-  --primarydarkcolor: #2696e8;
+  --primaryDarkcolor: #2696e8;
+  --primaryLightColor: #f6fbff;
   --mainWhite: #fff;
   --offWhite: #f7fbff;
   --mainWhite50: #ffffff80;
   --mainBlack: #0b1d2e;
   --darkBlack: #07111b;
+  --naturalBlack: #031106;
   --mainGrey: #a4aeb4;
   --lightGrey: #d5d9dc;
+  --naturalGrey: #dddddd;
   --mainBackground: #dce8ff;
   --lightShadow: 0px 0px 20px #35a0ee40;
-  --darkShadow: 0px 8px 20px #03110608;
+  --darkShadow: 0px 8px 20px #d5d9dc0d;
 
   --mainTransition: all 0.3s linear;
 
   --monserrat: 'Montserrat', sans-serif;
   --monserratAlt: 'Montserrat Alternates', sans-serif;
+  --poppin: 'Poppins', sans-serif;
   --mainSpacing: 0.7px;
   --mainLineHeight: 24px;
   --mainTitleSize: 28px;
@@ -64,6 +68,7 @@ Variables
 /*MD*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   :root {
+    --outerMinWith: initial;
     --outerColLeft: 42%;
     --outerHeight: 100vh;
     --innerHeight: 100vh;

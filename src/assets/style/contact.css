@@ -9,11 +9,11 @@
   margin: 0 0 1%;
   height: 55px;
 }
-.contact .phone-box select {
+#form-contact .phone-box select {
   width: 40px;
 }
 
-.contact .phone-box input {
+#form-contact .phone-box input {
   width: calc(100% - 45px);
 }
 
@@ -54,20 +54,20 @@
     grid-column-gap: 20px;
   }
 
-  .contact .name-box {
+  #form-contact .name-box {
     grid-row: 1 / 2;
     grid-column: 1 / 2;
     margin-right: 20px;
   }
-  .contact .phone-box {
+  #form-contact .phone-box {
     grid-row: 1 / 2;
     grid-column: 2 / 3;
   }
-  .contact .email-box {
+  #form-contact .email-box {
     grid-row: 2 / 3;
     grid-column: 1 / 3;
   }
-  .contact .country-box {
+  #form-contact .country-box {
     grid-row: 3 / 4;
     grid-column: 1 / 3;
   }
