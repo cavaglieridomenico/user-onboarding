@@ -56,6 +56,13 @@ Variables
   --innerPadding: 7%;
 }
 
+/*XS*/
+@media all and (min-width: 360px) and (min-height: 640px) {
+  :root {
+    --outerMinWith: initial;
+  }
+}
+
 /*XS - Smartphones landscape (height:100%)*/
 @media all and (min-width: 480px) and (max-height: 600px) {
   :root {
