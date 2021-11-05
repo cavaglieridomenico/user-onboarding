@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,7 +6,22 @@ import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Contact = () => {
-  const { handleName } = useGlobalContext();
+  const { getContact } = useGlobalContext();
+  const fullName = useRef('');
+  const phoneNumber = useRef('');
+  const phoneCode = useRef('');
+  const email = useRef('');
+  const country = useRef('');
+
+  const handleSubmitContact = event => {
+    getContact(
+      fullName.current.value,
+      phoneNumber.current.value,
+      phoneCode.current.value,
+      email.current.value,
+      country.current.value
+    );
+  };
 
   return (
     <div className='onboarding-outerbox'>
@@ -27,38 +42,34 @@ const Contact = () => {
             <form id='form-contact'>
               <div className='form-container'>
                 <div className='name-box'>
-                  <label htmlFor='fullName'>Full name</label>
-                  <input
-                    type='text'
-                    id='fullname'
-                    onChange={event => handleName(event.target.value)}
-                  />
+                  <label htmlFor='full-name'>Full name</label>
+                  <input type='text' id='full-name' ref={fullName} />
                 </div>
                 <div className='phone-box'>
                   <label htmlFor='phone'>Phone</label>
-                  <select name='country-flag' id='country-flag'>
-                    <option id='italy-flag' value='italy'>
+                  <select name='country-flag' id='country-flag' ref={phoneCode}>
+                    <option id='italy-flag' value='+39'>
                       🇮🇹
                     </option>
-                    <option id='spain-flag' value='spain'>
+                    <option id='spain-flag' value='+34'>
                       🇪🇸
                     </option>
-                    <option id='france-flag' value='france'>
+                    <option id='france-flag' value='+33'>
                       🇫🇷
                     </option>
-                    <option id='germany-flag' value='germany'>
+                    <option id='germany-flag' value='+49'>
                       🇩🇪
                     </option>
                   </select>
-                  <input type='text' id='phone' />
+                  <input type='text' id='phone' ref={phoneNumber} />
                 </div>
                 <div className='email-box'>
                   <label htmlFor='email'>E-mail address</label>
-                  <input type='text' id='email' />
+                  <input type='text' id='email' ref={email} />
                 </div>
                 <div className='country-box'>
                   <label htmlFor='country'>Country</label>
-                  <select type='text' id='country'>
+                  <select type='text' id='country' ref={country}>
                     <option id='italy' value='italy'>
                       italy
                     </option>
@@ -91,6 +102,7 @@ const Contact = () => {
           homePage={'/'}
           nextPage={'/plans'}
           textRightButton={'Next step'}
+          handleSubmit={handleSubmitContact}
         />
       </div>
     </div>

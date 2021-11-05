@@ -4,20 +4,30 @@ import reducer from './reducer';
 const AppContext = React.createContext();
 
 const defaultState = {
-  name: 'Max',
+  fullName: '',
+  phoneCode: '',
+  phoneNumber: '',
+  email: '',
+  country: '',
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  const handleName = inputName => {
-    console.log(inputName);
-    console.log(state);
-    dispatch({ type: 'NAME_VALUE', payload: { name: inputName } });
+  const getContact = (fullName, phoneNumber, phoneCode, email, country) => {
+    dispatch({
+      type: 'NAME_VALUE',
+      payload: {
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        phoneCode: phoneCode,
+        email: email,
+        country: country,
+      },
+    });
   };
-
   return (
-    <AppContext.Provider value={{ ...state, handleName }}>
+    <AppContext.Provider value={{ ...state, getContact }}>
       {children}
     </AppContext.Provider>
   );

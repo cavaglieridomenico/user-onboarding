@@ -4,6 +4,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Plans = () => {
+  const handleSubmitPlans = event => {
+    console.log('Submit Plans');
+  };
+
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
@@ -63,6 +67,7 @@ const Plans = () => {
           homePage={'/'}
           nextPage={'/preferences'}
           textRightButton={'Next step'}
+          handleSubmit={handleSubmitPlans}
         />
       </div>
     </div>

@@ -4,6 +4,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Preferences = () => {
+  const handleSubmitPreferences = event => {
+    console.log('Submit Preferences');
+  };
+
   return (
     <div className='onboarding-outerbox pref'>
       <Sidebar
@@ -63,7 +67,12 @@ const Preferences = () => {
             </div>
           </article>
         </section>
-        <Footer homePage={'/'} nextPage={'/'} textRightButton={'Finish'} />
+        <Footer
+          homePage={'/'}
+          nextPage={'/'}
+          textRightButton={'Finish'}
+          handleSubmit={handleSubmitPreferences}
+        />
       </div>
     </div>
   );
