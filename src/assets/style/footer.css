@@ -3,6 +3,7 @@ footer {
   grid-template-rows: auto auto;
   grid-template-columns: auto;
   margin-bottom: 1%;
+  min-width: max-content;
 }
 
 .link-to-page {
@@ -45,6 +46,11 @@ footer {
   box-shadow: var(--lightShadow);
 }
 
+.btn-primary.finish-button {
+  width: 100px;
+  height: 48px;
+}
+
 .btn-primary .arrow-button {
   position: relative;
   display: inline-block;
@@ -62,10 +68,6 @@ footer {
   color: var(--primaryColor);
   border: solid 1px var(--primaryColor);
   transform: scale(1.05);
-}
-
-.btn-primary:hover > img {
-  opacity: 0;
 }
 
 .btn-primary50 {

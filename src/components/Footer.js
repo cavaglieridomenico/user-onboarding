@@ -15,7 +15,11 @@ const Footer = ({ homePage, nextPage, textRightButton }) => {
           <button className='btn btn-primary50'>Skip for now</button>
         </Link>
         <Link to={nextPage}>
-          <button className='btn btn-primary'>
+          <button
+            className={`btn btn-primary ${
+              textRightButton === 'Finish' && 'finish-button'
+            }`}
+          >
             <span>{textRightButton}</span>
             <div
               className={
