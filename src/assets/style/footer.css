@@ -3,6 +3,7 @@ footer {
   grid-template-rows: auto auto;
   grid-template-columns: auto;
   margin-bottom: 1%;
+  min-width: max-content;
 }
 
 .link-to-page {
@@ -34,6 +35,7 @@ footer {
   font-weight: 600;
   border: 0;
   border-radius: var(--mainBorderRadius);
+  letter-spacing: var(--mainSpacing);
   transition: var(--mainTransition);
   cursor: pointer;
 }
@@ -44,9 +46,21 @@ footer {
   box-shadow: var(--lightShadow);
 }
 
-.btn-primary > img {
+.btn-primary.finish-button {
+  width: 100px;
+  height: 48px;
+}
+
+.btn-primary .arrow-button {
+  position: relative;
+  display: inline-block;
   width: 16px;
-  margin-left: 0.5rem;
+  height: 9px;
+  background-image: url('../images/arrow_right_w.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 5px;
 }
 
 .btn-primary:hover {
@@ -56,14 +70,10 @@ footer {
   transform: scale(1.05);
 }
 
-.btn-primary:hover > img {
-  opacity: 0;
-}
-
 .btn-primary50 {
   background-color: var(--primaryColor50);
   color: var(--primaryColor);
-  margin-right: 1.2rem;
+  margin-right: 15px;
 }
 
 .btn-primary50:hover {

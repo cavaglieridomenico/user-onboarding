@@ -5,10 +5,16 @@ import Footer from '../components/Footer';
 
 const Preferences = () => {
   return (
-    <div className='onboarding-outerbox'>
-      <Sidebar />
-      <div className='onboarding-innerbox'>
-        <Header />
+    <div className='onboarding-outerbox pref'>
+      <Sidebar
+        text={
+          'United Properties is about fast & easy searching, buying, selling and investing ever — online, with an expert by our side'
+        }
+        author={'Ollie Mcmahon'}
+        role={'MANAGING DIRECTOR'}
+      />
+      <div className='onboarding-innerbox pref'>
+        <Header number={3} />
         <section className='pref'>
           <h1>Investment preferences</h1>
           <article>
@@ -57,7 +63,7 @@ const Preferences = () => {
             </div>
           </article>
         </section>
-        <Footer nextPage={'/'} homePage={'/'} />
+        <Footer homePage={'/'} nextPage={'/'} textRightButton={'Finish'} />
       </div>
     </div>
   );

@@ -18,13 +18,15 @@ const Plans = () => {
         <section className='plans'>
           <h1>Investiment plans</h1>
           <article>
-            <p>
+            <p className='planning-text'>
               Let us know about your investment plans. This will help us get you
               to the right expert who will help you further
             </p>
           </article>
           <article>
-            <h2>How much are you planning to invest in this year?</h2>
+            <h2 className='planning-text'>
+              How much are you planning to invest in this year?
+            </h2>
             <form id='form-plans'>
               <div className='form-container'>
                 <div className='from-box'>
@@ -57,7 +59,11 @@ const Plans = () => {
             </form>
           </article>
         </section>
-        <Footer nextPage={'/preferences'} homePage={'/'} />
+        <Footer
+          homePage={'/'}
+          nextPage={'/preferences'}
+          textRightButton={'Next step'}
+        />
       </div>
     </div>
   );

@@ -9,6 +9,13 @@ body {
   min-width: max-content;
 }
 
+/*XS*/
+@media all and (min-width: 360px) {
+  body {
+    min-width: initial;
+  }
+}
+
 /*Main containers*/
 .onboarding-outerbox {
   position: relative;
@@ -38,6 +45,7 @@ body {
 }
 
 .onboarding-innerbox section {
+  min-height: 330px;
   margin: 3% 0;
 }
 
@@ -47,6 +55,17 @@ body {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: var(--outerColLeft) auto;
+  }
+}
+/*LG*/
+@media all and (min-width: 1200px) {
+  .onboarding-outerbox {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: var(--outerColLeft) auto;
+  }
+  .onboarding-outerbox {
+    min-height: var(--outerMinHeight);
   }
 }
 /*Container end*/
@@ -79,7 +98,7 @@ h2 {
   font-size: var(--mainTitleSize);
   line-height: var(--mainTitleLineHeight);
   font-weight: var(--mainTitleWeight);
-  margin: 0 0 10px;
+  margin: 0 0 1.1rem;
 }
 
 .onboarding-innerbox h2 {

@@ -79,7 +79,7 @@ aside {
   background-color: var(--mainWhite);
   border-radius: var(--mainBorderRadius);
   box-shadow: var(--darkShadow);
-  padding: 48px 40px 10px;
+  padding: 48px 36px 30px;
   font-style: italic;
 }
 
@@ -128,8 +128,16 @@ p.role {
   font-size: 14px;
 }
 
-/*MD*/
+/*MD – Larger tablet in portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) {
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+/*LG - Large tablet in landscape*/
+@media all and (min-width: 1200px) {
   aside {
     display: flex;
     flex-direction: column;

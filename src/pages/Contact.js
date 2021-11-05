@@ -80,7 +80,11 @@ const Contact = () => {
             <LinkToModal text={'Expand privacy policy'} />
           </div>
         </section>
-        <Footer nextPage={'/plans'} homePage={'/'} />
+        <Footer
+          homePage={'/'}
+          nextPage={'/plans'}
+          textRightButton={'Next step'}
+        />
       </div>
     </div>
   );
