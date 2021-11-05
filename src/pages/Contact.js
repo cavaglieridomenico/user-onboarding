@@ -3,8 +3,10 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkToModal from '../components/LinkToModal';
+import { useGlobalContext } from '../context';
 
 const Contact = () => {
+  const { text } = useGlobalContext();
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
@@ -15,7 +17,7 @@ const Contact = () => {
       <div className='onboarding-innerbox'>
         <Header number={1} />
         <section className='contact'>
-          <h1>Сontact details</h1>
+          <h1>Сontact details {text}</h1>
           <article>
             <p className='welcome'>
               Welcome to United Properties, we are glad to see you! Let’s get
