@@ -13,8 +13,8 @@ const Preferences = () => {
         author={'Ollie Mcmahon'}
         role={'MANAGING DIRECTOR'}
       />
-      <div className='onboarding-innerbox'>
-        <Header />
+      <div className='onboarding-innerbox pref'>
+        <Header number={3} />
         <section className='pref'>
           <h1>Investment preferences</h1>
           <article>
