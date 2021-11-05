@@ -19,3 +19,9 @@
     display: none;
   }
 }
+/*LG*/
+@media all and (min-width: 1200px) {
+  .logo-mobile {
+    display: none;
+  }
+}

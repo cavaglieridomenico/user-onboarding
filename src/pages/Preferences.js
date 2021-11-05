@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const Preferences = () => {
   return (
-    <div className='onboarding-outerbox'>
+    <div className='onboarding-outerbox pref'>
       <Sidebar
         text={
           'United Properties is about fast & easy searching, buying, selling and investing ever — online, with an expert by our side'

@@ -50,6 +50,7 @@ Variables
   --outerWith: 100vw;
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
+  --outerMinHeight: max-content;
   --outerHeight: calc(100vh - var(--logoMobileHeight));
   --innerHeight: calc(100vh - var(--logoMobileHeight));
   --logoMobileHeight: 80px;
@@ -57,7 +58,7 @@ Variables
 }
 
 /*XS*/
-@media all and (min-width: 360px) and (min-height: 640px) {
+@media all and (min-width: 360px) {
   :root {
     --outerMinWith: initial;
   }
@@ -89,7 +90,7 @@ Variables
 @media all and (min-width: 1200px) {
   :root {
     --outerColLeft: 516px;
-    --innerPadding: 4% 3% 8% 3%;
+    --innerPadding: 4% 3% 8% 7%;
     --sidebarPadding: 7% 0 12% 7%;
   }
 }
