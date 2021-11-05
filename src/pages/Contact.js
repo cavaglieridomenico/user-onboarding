@@ -6,7 +6,8 @@ import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Contact = () => {
-  const { text } = useGlobalContext();
+  const { handleName } = useGlobalContext();
+
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
@@ -17,7 +18,7 @@ const Contact = () => {
       <div className='onboarding-innerbox'>
         <Header number={1} />
         <section className='contact'>
-          <h1>Сontact details {text}</h1>
+          <h1>Сontact details</h1>
           <article>
             <p className='welcome'>
               Welcome to United Properties, we are glad to see you! Let’s get
@@ -27,7 +28,11 @@ const Contact = () => {
               <div className='form-container'>
                 <div className='name-box'>
                   <label htmlFor='fullName'>Full name</label>
-                  <input type='text' id='fullname' />
+                  <input
+                    type='text'
+                    id='fullname'
+                    onChange={event => handleName(event.target.value)}
+                  />
                 </div>
                 <div className='phone-box'>
                   <label htmlFor='phone'>Phone</label>
