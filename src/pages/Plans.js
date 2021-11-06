@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useGlobalContext } from '../context';
 
 const Plans = () => {
+  const { getPlans } = useGlobalContext();
+  const planFrom = useRef('');
+  const planTo = useRef('');
+  const accredited = useRef('');
+
+  const handleSubmitPlans = () => {
+    getPlans(
+      planFrom.current.value,
+      planTo.current.value,
+      accredited.current.elements.accredited.value
+    );
+  };
+
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
@@ -31,11 +45,11 @@ const Plans = () => {
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
-                  <input type='text' id='plans-from' />
+                  <input type='text' id='plans-from' ref={planFrom} />
                 </div>
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
-                  <input type='text' id='plans-to' />
+                  <input type='text' id='plans-to' ref={planTo} />
                 </div>
                 <div className='slider'></div>
               </div>
@@ -43,17 +57,27 @@ const Plans = () => {
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>
-            <form action='' id='form-investor'>
+            <form id='form-investor' ref={accredited}>
               <div className='form-container'>
                 <div className='radio-investor-box selected'>
-                  <input type='radio' name='accredited' value='yes' />
-                  <label htmlFor='yes' className='selected'>
+                  <input
+                    type='radio'
+                    id='accedited-yes'
+                    name='accredited'
+                    value='yes'
+                  />
+                  <label htmlFor='accedited-yes' className='selected'>
                     Yes
                   </label>
                 </div>
                 <div className='radio-investor-box'>
-                  <input type='radio' name='accredited' value='no' />
-                  <label htmlFor='no'>No</label>
+                  <input
+                    type='radio'
+                    id='accedited-no'
+                    name='accredited'
+                    value='no'
+                  />
+                  <label htmlFor='accedited-no'>No</label>
                 </div>
               </div>
             </form>
@@ -63,6 +87,7 @@ const Plans = () => {
           homePage={'/'}
           nextPage={'/preferences'}
           textRightButton={'Next step'}
+          handleSubmit={handleSubmitPlans}
         />
       </div>
     </div>

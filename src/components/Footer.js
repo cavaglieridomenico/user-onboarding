@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
-const Footer = ({ homePage, nextPage, textRightButton }) => {
+const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
   return (
     <footer>
       <Link className='link-to-page' to={homePage}>
@@ -16,9 +16,11 @@ const Footer = ({ homePage, nextPage, textRightButton }) => {
         </Link>
         <Link to={nextPage}>
           <button
+            type='submit'
             className={`btn btn-primary ${
               textRightButton === 'Finish' && 'finish-button'
             }`}
+            onClick={handleSubmit}
           >
             <span>{textRightButton}</span>
             <div
