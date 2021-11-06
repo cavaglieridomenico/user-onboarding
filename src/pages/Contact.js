@@ -13,7 +13,7 @@ const Contact = () => {
   const email = useRef('');
   const country = useRef('');
 
-  const handleSubmitContact = event => {
+  const handleSubmitContact = () => {
     getContact(
       fullName.current.value,
       phoneNumber.current.value,

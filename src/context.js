@@ -9,6 +9,9 @@ const defaultState = {
   phoneNumber: '',
   email: '',
   country: '',
+  planFrom: '',
+  planTo: '',
+  accredited: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -16,7 +19,7 @@ export const AppProvider = ({ children }) => {
 
   const getContact = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
-      type: 'NAME_VALUE',
+      type: 'CONTACT_VALUES',
       payload: {
         fullName: fullName,
         phoneNumber: phoneNumber,
@@ -26,8 +29,20 @@ export const AppProvider = ({ children }) => {
       },
     });
   };
+
+  const getPlans = (planFrom, planTo, accredited) => {
+    dispatch({
+      type: 'PLAN_VALUES',
+      payload: {
+        planFrom: planFrom,
+        planTo: planTo,
+        accredited: accredited,
+      },
+    });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, getContact }}>
+    <AppContext.Provider value={{ ...state, getContact, getPlans }}>
       {children}
     </AppContext.Provider>
   );
