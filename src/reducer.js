@@ -20,6 +20,13 @@ const reducer = (state, action) => {
       accredited: accredited,
     };
   }
+  if (action.type === 'PREFERENCES_VALUES') {
+    const { preferences } = action.payload;
+    return {
+      ...state,
+      preferences: preferences,
+    };
+  }
 };
 
 export default reducer;

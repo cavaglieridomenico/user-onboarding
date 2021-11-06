@@ -12,6 +12,7 @@ const defaultState = {
   planFrom: '',
   planTo: '',
   accredited: '',
+  preferences: [],
 };
 
 export const AppProvider = ({ children }) => {
@@ -41,8 +42,17 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const getPreferences = preferences => {
+    dispatch({
+      type: 'PREFERENCES_VALUES',
+      payload: { preferences },
+    });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, getContact, getPlans }}>
+    <AppContext.Provider
+      value={{ ...state, getContact, getPlans, getPreferences }}
+    >
       {children}
     </AppContext.Provider>
   );
