@@ -1,22 +1,48 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 
 const AppContext = React.createContext();
 
 const defaultState = {
-  fullName: '',
-  phoneCode: '',
-  phoneNumber: '',
-  email: '',
-  country: '',
-  planFrom: '',
-  planTo: '',
-  accredited: '',
-  preferences: [],
+  fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
+  loading: false,
+  dataReady: false,
+  response: {},
+  newUser: {
+    fullName: '',
+    phoneCode: '',
+    phoneNumber: '',
+    email: '',
+    country: '',
+    planFrom: '',
+    planTo: '',
+    accredited: '',
+    preferences: [],
+  },
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  const fetchPost = useCallback(() => {
+    fetch(state.fetchPostUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(state.newUser),
+    })
+      .then(response => response.json())
+      .then(data => getResponse(data));
+  }, [state.fetchPostUrl, state.newUser]);
+
+  useEffect(() => {
+    if (state.dataReady) {
+      fetchPost();
+      setDataReady(false);
+    }
+  }, [state.dataReady, fetchPost]);
 
   const getContact = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
@@ -49,9 +75,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const setDataReady = value => {
+    dispatch({
+      type: 'DATA_READY',
+      payload: value,
+    });
+  };
+
+  const getResponse = data => {
+    dispatch({ type: 'GET_RESPONSE', payload: data });
+  };
+
   return (
     <AppContext.Provider
-      value={{ ...state, getContact, getPlans, getPreferences }}
+      value={{ ...state, getContact, getPlans, getPreferences, setDataReady }}
     >
       {children}
     </AppContext.Provider>

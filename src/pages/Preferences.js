@@ -5,8 +5,9 @@ import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 
 const Preferences = () => {
-  const { getPreferences } = useGlobalContext();
+  const { getPreferences, setDataReady } = useGlobalContext();
   const preferences = useRef('');
+
   const handleSubmitPreferences = () => {
     const allPrefs = preferences.current.elements.preferences;
     const checkedPrefs = [];
@@ -16,6 +17,7 @@ const Preferences = () => {
       }
     }
     getPreferences(checkedPrefs);
+    setDataReady(true);
   };
 
   return (
