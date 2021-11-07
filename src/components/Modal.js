@@ -2,22 +2,25 @@ import React from 'react';
 import { GrClose } from 'react-icons/gr';
 import { useGlobalContext } from '../context';
 
-const Modal = ({ title, text }) => {
-  const { response } = useGlobalContext();
-  return (
-    <div className='modal-outerbox'>
-      <div className='modal-innerbox'>
-        <button className='modal-close'>
-          <GrClose />
-        </button>
-        <h1>{title}</h1>
-        <section>
-          <p>{text}</p>
-          <div className='response-container'></div>
-        </section>
+const Modal = () => {
+  const { modalType, response, showModal, closeModal } = useGlobalContext();
+
+  if (modalType === 'registration') {
+    return (
+      <div className={`modal-outerbox ${showModal ? 'show-modal' : ''}`}>
+        <div className='modal-innerbox'>
+          <button className='modal-close' onClick={closeModal}>
+            <GrClose />
+          </button>
+          <h1>Registered user</h1>
+          <section>
+            <p></p>
+            <div className='response-container'></div>
+          </section>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Modal;

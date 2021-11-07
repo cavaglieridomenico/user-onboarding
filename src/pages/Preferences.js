@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Modal from '../components/Modal';
 import { useGlobalContext } from '../context';
 
 const Preferences = () => {
@@ -31,7 +30,6 @@ const Preferences = () => {
         role={'MANAGING DIRECTOR'}
       />
       <div className='onboarding-innerbox pref'>
-        <Modal />
         <Header number={3} />
         <section className='pref'>
           <h1>Investment preferences</h1>

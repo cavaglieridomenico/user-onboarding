@@ -5,10 +5,12 @@ import Plans from './pages/Plans';
 import Preferences from './pages/Preferences';
 import Error from './pages/Error';
 import Logo from './components/Logo';
+import Modal from './components/Modal';
 
 function App() {
   return (
     <Router>
+      <Modal />
       <Logo view='logo-mobile' />
       <Switch>
         <Route exact path='/'>
