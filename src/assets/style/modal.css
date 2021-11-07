@@ -24,8 +24,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 50%;
-  min-width: max-content;
+  width: 90vw;
   padding: 3% 4%;
   background-color: var(--mainWhite);
   border-radius: var(--mainBorderRadius);
@@ -33,6 +32,7 @@
 }
 
 h1.modal-title {
+  font-size: 26px;
   margin-top: 1%;
 }
 
@@ -47,6 +47,7 @@ h1.modal-title {
   border-radius: var(--mainBorderRadius);
   cursor: pointer;
 }
+
 .response-container {
   background-color: var(--primaryColor50);
   border-radius: var(--mainBorderRadius);
@@ -57,7 +58,7 @@ h1.modal-title {
 .response-container li:nth-child(odd) {
   background-color: var(--primaryColor);
   margin: 2.5% 0 0.5%;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: var(--mainWhite);
 }
 
@@ -71,6 +72,15 @@ h1.modal-title {
   text-transform: none;
 }
 
+.modal_text-container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primaryColor50);
+  border-radius: var(--mainBorderRadius);
+  padding: 5%;
+  color: var(--mainBlack);
+}
+
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
 @media all and (min-width: 360px) {
 }
@@ -81,6 +91,9 @@ h1.modal-title {
 
 /*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
+  .modal-innerbox {
+    width: 40vw;
+  }
 }
 
 /*LG - large tablet landscape*/

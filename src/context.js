@@ -8,8 +8,7 @@ const defaultState = {
   loading: false,
   dataReady: false,
   showModal: false,
-  modalType: 'registration',
-  modalTitle: '',
+  modalType: '',
   response: {},
   newUser: {
     fullName: '',
@@ -37,7 +36,7 @@ export const AppProvider = ({ children }) => {
       body: JSON.stringify(state.newUser),
     })
       .then(response => response.json())
-      .then(data => getResponse(data));
+      .then(data => showResponse(data));
   }, [state.fetchPostUrl, state.newUser]);
 
   useEffect(() => {
@@ -82,8 +81,12 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'DATA_READY', payload: value });
   };
 
-  const getResponse = data => {
-    dispatch({ type: 'GET_RESPONSE', payload: data });
+  const showResponse = data => {
+    dispatch({ type: 'SHOW_RESPONSE', payload: data });
+  };
+
+  const showHelp = () => {
+    dispatch({ type: 'SHOW_HELP' });
   };
 
   const closeModal = () => {
@@ -98,6 +101,7 @@ export const AppProvider = ({ children }) => {
         getPlans,
         getPreferences,
         setDataReady,
+        showHelp,
         closeModal,
       }}
     >

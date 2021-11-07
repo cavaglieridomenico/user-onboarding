@@ -5,7 +5,7 @@ import { useGlobalContext } from '../context';
 const Modal = () => {
   const { modalType, response, showModal, closeModal } = useGlobalContext();
 
-  if (modalType === 'registration') {
+  if (modalType === 'registration' && response.preferences) {
     return (
       <div className={`modal-outerbox ${showModal ? 'show-modal' : ''}`}>
         <div className='modal-innerbox'>
@@ -14,10 +14,9 @@ const Modal = () => {
           </button>
           <h1 className='modal-title'>Registered user</h1>
           <section>
-            <p></p>
             <div className='response-container'>
               <ul>
-                <li>Identification number: </li>
+                <li>user number: </li>
                 <li>{response.id}</li>
                 <li>Full name: </li>
                 <li>{response.fullName}</li>
@@ -42,6 +41,30 @@ const Modal = () => {
                   })}
                 </li>
               </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    );
+  }
+  if (modalType === 'help') {
+    return (
+      <div className={`modal-outerbox ${showModal ? 'show-modal' : ''}`}>
+        <div className='modal-innerbox'>
+          <button className='modal-close' onClick={closeModal}>
+            <GrClose />
+          </button>
+          <h1 className='modal-title'>Lost or have trouble?</h1>
+          <section>
+            <div className='modal_text-container'>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
+                iste voluptatum similique. Maiores, ratione ipsum fuga impedit
+                similique velit quos. Optio, perspiciatis? Tempora, sed.
+                Voluptates facere accusamus distinctio sequi ipsam. similique
+                velit quos. Optio, perspiciatis? Tempora, sed. Voluptates facere
+                accusamus distinctio sequi ipsam.
+              </p>
             </div>
           </section>
         </div>

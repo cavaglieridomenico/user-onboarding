@@ -41,11 +41,19 @@ const reducer = (state, action) => {
       dataReady: action.payload,
     };
   }
-  if (action.type === 'GET_RESPONSE') {
+  if (action.type === 'SHOW_RESPONSE') {
     return {
       ...state,
       response: action.payload,
       showModal: true,
+      modalType: 'registration',
+    };
+  }
+  if (action.type === 'SHOW_HELP') {
+    return {
+      ...state,
+      showModal: true,
+      modalType: 'help',
     };
   }
   if (action.type === 'CLOSE_MODAL') {
