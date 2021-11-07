@@ -1,0 +1,74 @@
+.modal-outerbox {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--outerWith);
+  height: var(--outerHeight);
+  background-color: var(--mainBgModal);
+}
+.modal-innerbox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 65%;
+  height: 60%;
+  background-color: var(--primaryLightColor);
+  border-radius: var(--mainBorderRadius);
+}
+.modal-innerbox h2 {
+  color: red;
+  font-size: 40px;
+}
+.modal-innerbox button {
+  align-self: flex-end;
+  border: none;
+  background-color: var(--primaryColor50);
+  font-size: 2.5rem;
+  width: 4rem;
+  height: 4rem;
+  padding: 0.8rem 0 0;
+  border-radius: var(--mainBorderRadius);
+  margin: 0.5rem;
+}
+.response-container {
+  background-color: violet;
+  height: 100px;
+}
+/*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
+@media all and (min-width: 360px) {
+  :root {
+    --outerMinWith: initial;
+  }
+  body {
+    min-width: initial;
+  }
+}
+
+/*XS - smartphones land. (height:100%)*/
+@media all and (min-width: 480px) and (max-height: 600px) {
+  :root {
+    --outerHeight: 100%;
+  }
+}
+
+/*MD – large tablet port. and medium tablet land.*/
+@media all and (min-width: 992px) and (min-height: 800px) {
+  :root {
+    --outerHeight: 100vh;
+  }
+  aside {
+    display: block;
+  }
+}
+
+/*LG - large tablet landscape*/
+@media all and (min-width: 1200px) {
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+}
