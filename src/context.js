@@ -7,6 +7,9 @@ const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
   loading: false,
   dataReady: false,
+  showModal: false,
+  modalType: 'registration',
+  modalTitle: '',
   response: {},
   newUser: {
     fullName: '',
@@ -76,19 +79,27 @@ export const AppProvider = ({ children }) => {
   };
 
   const setDataReady = value => {
-    dispatch({
-      type: 'DATA_READY',
-      payload: value,
-    });
+    dispatch({ type: 'DATA_READY', payload: value });
   };
 
   const getResponse = data => {
     dispatch({ type: 'GET_RESPONSE', payload: data });
   };
 
+  const closeModal = () => {
+    dispatch({ type: 'CLOSE_MODAL' });
+  };
+
   return (
     <AppContext.Provider
-      value={{ ...state, getContact, getPlans, getPreferences, setDataReady }}
+      value={{
+        ...state,
+        getContact,
+        getPlans,
+        getPreferences,
+        setDataReady,
+        closeModal,
+      }}
     >
       {children}
     </AppContext.Provider>

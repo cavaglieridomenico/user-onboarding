@@ -45,6 +45,13 @@ const reducer = (state, action) => {
     return {
       ...state,
       response: action.payload,
+      showModal: true,
+    };
+  }
+  if (action.type === 'CLOSE_MODAL') {
+    return {
+      ...state,
+      showModal: false,
     };
   }
 };
