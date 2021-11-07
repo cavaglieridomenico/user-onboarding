@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Modal from '../components/Modal';
 import { useGlobalContext } from '../context';
 
 const Preferences = () => {
@@ -30,17 +31,20 @@ const Preferences = () => {
         role={'MANAGING DIRECTOR'}
       />
       <div className='onboarding-innerbox pref'>
+        <Modal />
         <Header number={3} />
         <section className='pref'>
           <h1>Investment preferences</h1>
           <article>
-            <p>
+            <p className='pref-text'>
               This will help us figure out what your investment options are so
               that we can show you only possibly intresting for you deals
             </p>
           </article>
           <article>
-            <h2>What kind of real estate are you interested in?</h2>
+            <h2 className='pref-title2'>
+              What kind of real estate are you interested in?
+            </h2>
             <form id='form-pref' ref={preferences}>
               <div className='form-container'>
                 <div className='check-box selected'>
