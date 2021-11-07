@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
+import Modal from '../components/Modal';
 
 const Preferences = () => {
   const { getPreferences, setDataReady } = useGlobalContext();
@@ -29,6 +30,7 @@ const Preferences = () => {
         author={'Ollie Mcmahon'}
         role={'MANAGING DIRECTOR'}
       />
+      <Modal />
       <div className='onboarding-innerbox pref'>
         <Header number={3} />
         <section className='pref'>

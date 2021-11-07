@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
+import Modal from '../components/Modal';
 
 const Contact = () => {
   const { getContact } = useGlobalContext();
@@ -25,6 +26,7 @@ const Contact = () => {
 
   return (
     <div className='onboarding-outerbox'>
+      <Modal />
       <Sidebar
         text={`We care about your time, that's why we created a 3-stage onboarding that will not take more than 5 minutes to complete`}
         author={'William Mac'}

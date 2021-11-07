@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
+import Modal from '../components/Modal';
 
 const Plans = () => {
   const { getPlans } = useGlobalContext();
@@ -27,10 +28,11 @@ const Plans = () => {
         author={'Jodie Sears'}
         role={'UNITEDPROPERTIES’ AGENT'}
       />
+      <Modal />
       <div className='onboarding-innerbox'>
         <Header number={2} />
         <section className='plans'>
-          <h1>Investiment plans</h1>
+          <h1>Investment plans</h1>
           <article>
             <p className='planning-text'>
               Let us know about your investment plans. This will help us get you
