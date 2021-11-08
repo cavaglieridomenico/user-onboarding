@@ -29,6 +29,7 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   const fetchPost = useCallback(() => {
+    setLoader(true);
     fetch(state.fetchPostUrl, {
       method: 'POST',
       headers: {
@@ -38,7 +39,10 @@ export const AppProvider = ({ children }) => {
       body: JSON.stringify(state.newUser),
     })
       .then(response => response.json())
-      .then(data => showResponse(data));
+      .then(data => {
+        setLoader(false);
+        showResponse(data);
+      });
   }, [state.fetchPostUrl, state.newUser]);
 
   useEffect(() => {
@@ -93,6 +97,10 @@ export const AppProvider = ({ children }) => {
 
   const closeModal = () => {
     dispatch({ type: 'CLOSE_MODAL' });
+  };
+
+  const setLoader = value => {
+    dispatch({ type: 'SET_LOADER', payload: value });
   };
 
   return (

@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
+import Loader from '../components/Loader';
 
 const Preferences = () => {
   const { getPreferences, setDataReady } = useGlobalContext();

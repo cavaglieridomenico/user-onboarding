@@ -79,6 +79,12 @@ const reducer = (state, action) => {
       modalResponse: false,
     };
   }
+  if (action.type === 'SET_LOADER') {
+    return {
+      ...state,
+      loading: action.payload,
+    };
+  }
 };
 
 export default reducer;

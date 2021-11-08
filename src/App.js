@@ -6,10 +6,12 @@ import Preferences from './pages/Preferences';
 import Error from './pages/Error';
 import Logo from './components/Logo';
 import Modal from './components/Modal';
+import Loader from './components/Loader';
 
 function App() {
   return (
     <Router>
+      <Loader />
       <Modal />
       <Logo view='logo-mobile' />
       <Switch>
