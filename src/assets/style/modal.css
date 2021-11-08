@@ -96,6 +96,17 @@ h1.modal-title {
 @media all and (min-width: 480px) and (max-height: 600px) {
 }
 
+/*SM – large tablet port. and medium tablet land.*/
+@media all and (min-height: 800px) {
+  .modal-container {
+    height: fit-content;
+  }
+
+  .modal_text-container {
+    height: fit-content;
+    overflow: unset;
+  }
+}
 /*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   .modal-container {
@@ -106,7 +117,7 @@ h1.modal-title {
   }
 
   .modal_text-container {
-    height: auto;
+    height: fit-content;
     overflow: unset;
   }
 }
