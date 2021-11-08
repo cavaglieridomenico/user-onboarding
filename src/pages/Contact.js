@@ -6,7 +6,7 @@ import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Contact = () => {
-  const { getContact } = useGlobalContext();
+  const { getContact, setShowModal } = useGlobalContext();
   const fullName = useRef('');
   const phoneNumber = useRef('');
   const phoneCode = useRef('');
@@ -95,7 +95,11 @@ const Contact = () => {
             </p>
           </article>
           <div className='contact-link-container'>
-            <LinkToModal text={'Expand privacy policy'} />
+            <LinkToModal
+              text={'Expand privacy policy'}
+              showModal={setShowModal}
+              modalTopic={'privacy'}
+            />
           </div>
         </section>
         <Footer

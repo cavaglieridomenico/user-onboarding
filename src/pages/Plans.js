@@ -30,7 +30,7 @@ const Plans = () => {
       <div className='onboarding-innerbox'>
         <Header number={2} />
         <section className='plans'>
-          <h1>Investiment plans</h1>
+          <h1>Investment plans</h1>
           <article>
             <p className='planning-text'>
               Let us know about your investment plans. This will help us get you

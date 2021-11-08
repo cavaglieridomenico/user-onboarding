@@ -1,3 +1,4 @@
+import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
   if (action.type === 'CONTACT_VALUES') {
     const { fullName, phoneCode, phoneNumber, email, country } = action.payload;
@@ -41,10 +42,53 @@ const reducer = (state, action) => {
       dataReady: action.payload,
     };
   }
-  if (action.type === 'GET_RESPONSE') {
+  if (action.type === 'SHOW_RESPONSE') {
     return {
       ...state,
       response: action.payload,
+      modalResponse: true,
+      showModal: true,
+      modalText: '',
+      modalTitle: 'Registration',
+    };
+  }
+  if (action.type === 'SHOW_MODAL') {
+    if (action.payload === 'help') {
+      return {
+        ...state,
+        showModal: true,
+        modalTitle: modalHelp.title,
+        modalText: modalHelp.text,
+      };
+    }
+    if (action.payload === 'privacy') {
+      return {
+        ...state,
+        showModal: true,
+        modalTitle: modalPrivacy.title,
+        modalText: modalPrivacy.text,
+      };
+    }
+  }
+  if (action.type === 'CLOSE_MODAL') {
+    return {
+      ...state,
+      showModal: false,
+      modalTitle: '',
+      modalText: '',
+      modalResponse: false,
+    };
+  }
+  if (action.type === 'SET_LOADER') {
+    return {
+      ...state,
+      loading: action.payload,
+    };
+  }
+  if (action.type === 'SET_DEBOUNCER') {
+    return {
+      ...state,
+      debouncing: action.payload,
     };
   }
 };

@@ -5,7 +5,6 @@ const AppContext = React.createContext();
 
 const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
-  loading: false,
   dataReady: false,
   response: {},
   newUser: {
@@ -19,12 +18,19 @@ const defaultState = {
     accredited: '',
     preferences: [],
   },
+  showModal: false,
+  modalTitle: '',
+  modalText: '',
+  modalResponse: false,
+  loading: false,
+  debouncing: false,
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   const fetchPost = useCallback(() => {
+    setLoader(true);
     fetch(state.fetchPostUrl, {
       method: 'POST',
       headers: {
@@ -34,7 +40,10 @@ export const AppProvider = ({ children }) => {
       body: JSON.stringify(state.newUser),
     })
       .then(response => response.json())
-      .then(data => getResponse(data));
+      .then(data => {
+        setLoader(false);
+        showResponse(data);
+      });
   }, [state.fetchPostUrl, state.newUser]);
 
   useEffect(() => {
@@ -76,19 +85,42 @@ export const AppProvider = ({ children }) => {
   };
 
   const setDataReady = value => {
-    dispatch({
-      type: 'DATA_READY',
-      payload: value,
-    });
+    dispatch({ type: 'DATA_READY', payload: value });
   };
 
-  const getResponse = data => {
-    dispatch({ type: 'GET_RESPONSE', payload: data });
+  const showResponse = data => {
+    dispatch({ type: 'SHOW_RESPONSE', payload: data });
+  };
+
+  const setShowModal = topic => {
+    dispatch({ type: 'SHOW_MODAL', payload: topic });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: 'CLOSE_MODAL' });
+  };
+
+  const setLoader = value => {
+    dispatch({ type: 'SET_LOADER', payload: value });
+  };
+
+  const setDebouncer = value => {
+    dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
   return (
     <AppContext.Provider
-      value={{ ...state, getContact, getPlans, getPreferences, setDataReady }}
+      value={{
+        ...state,
+        getContact,
+        getPlans,
+        getPreferences,
+        setDataReady,
+        setShowModal,
+        closeModal,
+        setLoader,
+        setDebouncer,
+      }}
     >
       {children}
     </AppContext.Provider>

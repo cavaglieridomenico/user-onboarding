@@ -1,8 +1,8 @@
-.pref article > p {
+.pref-text {
   display: none;
 }
 
-.pref h2 {
+.pref-title2 {
   display: none;
 }
 
@@ -62,11 +62,11 @@
     margin: 0 0 15px;
   }
 
-  .pref article > p {
+  .pref-text {
     display: block;
   }
 
-  .pref h2 {
+  .pref-title2 {
     display: block;
     margin: 50px 0 20px;
   }
@@ -86,11 +86,6 @@
 @media all and (min-width: 1200px) {
   section.pref {
     margin: 0 0 40px;
-  }
-
-  .pref h2 {
-    display: block;
-    margin: 50px 0 20px;
   }
 
   #form-pref .form-container {

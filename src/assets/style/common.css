@@ -87,25 +87,24 @@ a:visited {
 }
 
 /*Text - default style*/
-.onboarding-innerbox h1,
+.onboarding-outerbox h1,
 h2 {
   font-family: var(--monserratAlt);
   color: var(--mainBlack);
   text-align: center;
 }
 
-.onboarding-innerbox h1 {
+.onboarding-outerbox h1 {
   font-size: var(--mainTitleSize);
   line-height: var(--mainTitleLineHeight);
   font-weight: var(--mainTitleWeight);
   margin: 0 0 1.1rem;
 }
 
-.onboarding-innerbox h2 {
+.onboarding-outerbox h2 {
   font-size: var(--title2Size);
   line-height: var(--title2LineHeight);
   font-weight: var(--title2Weight);
-  margin: 20px 0 0 0;
 }
 
 /*MD*/
@@ -150,4 +149,25 @@ h2 {
   border: none;
 }
 /*Form - default style - end*/
-/*Tag default style end*/
+/*Tag default style - end*/
+
+/*Debouncer*/
+.debouncer {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show-debouncer {
+  visibility: visible;
+  opacity: 1;
+  z-index: 3;
+}
+/*Debouncer - end*/

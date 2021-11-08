@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
+import { useGlobalContext } from '../context';
+
 const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
+  const { setDebouncer, debouncing } = useGlobalContext();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDebouncer(false);
+    }, 3500);
+  }, [debouncing, setDebouncer]);
+
   return (
     <footer>
       <Link className='link-to-page' to={homePage}>
@@ -12,7 +22,12 @@ const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
       </Link>
       <div className='btn-container'>
         <Link to={nextPage}>
-          <button className='btn btn-primary50'>Skip for now</button>
+          <button
+            className='btn btn-primary50'
+            onClick={() => setDebouncer(true)}
+          >
+            Skip for now
+          </button>
         </Link>
         <Link to={nextPage}>
           <button
@@ -20,7 +35,10 @@ const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
             className={`btn btn-primary ${
               textRightButton === 'Finish' && 'finish-button'
             }`}
-            onClick={handleSubmit}
+            onClick={() => {
+              handleSubmit();
+              setDebouncer(true);
+            }}
           >
             <span>{textRightButton}</span>
             <div

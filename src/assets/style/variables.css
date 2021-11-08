@@ -20,8 +20,9 @@ Variables
   --lightGrey: #d5d9dc;
   --naturalGrey: #dddddd;
   --mainBackground: #dce8ff;
-  --lightShadow: 0px 0px 20px #35a0ee40;
-  --darkShadow: 0px 8px 20px #d5d9dc0d;
+  --mainBgModal: #dce8ffb4;
+  --lightShadow: 0px 0px 20px rgba(53, 160, 238, 0.251);
+  --darkShadow: 0px 8px 20px rgba(3, 17, 6, 0.03);
 
   --mainTransition: all 0.3s linear;
 
