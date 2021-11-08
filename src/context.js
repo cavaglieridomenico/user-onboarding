@@ -5,7 +5,6 @@ const AppContext = React.createContext();
 
 const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
-  loading: false,
   dataReady: false,
   response: {},
   newUser: {
@@ -23,6 +22,8 @@ const defaultState = {
   modalTitle: '',
   modalText: '',
   modalResponse: false,
+  loading: false,
+  debouncing: false,
 };
 
 export const AppProvider = ({ children }) => {
@@ -103,6 +104,10 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_LOADER', payload: value });
   };
 
+  const setDebouncer = value => {
+    dispatch({ type: 'SET_DEBOUNCER', payload: value });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -113,6 +118,8 @@ export const AppProvider = ({ children }) => {
         setDataReady,
         setShowModal,
         closeModal,
+        setLoader,
+        setDebouncer,
       }}
     >
       {children}

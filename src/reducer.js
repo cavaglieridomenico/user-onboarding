@@ -85,6 +85,12 @@ const reducer = (state, action) => {
       loading: action.payload,
     };
   }
+  if (action.type === 'SET_DEBOUNCER') {
+    return {
+      ...state,
+      debouncing: action.payload,
+    };
+  }
 };
 
 export default reducer;

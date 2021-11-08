@@ -7,11 +7,13 @@ import Error from './pages/Error';
 import Logo from './components/Logo';
 import Modal from './components/Modal';
 import Loader from './components/Loader';
+import Debouncer from './components/Debouncer';
 
 function App() {
   return (
     <Router>
       <Loader />
+      <Debouncer />
       <Modal />
       <Logo view='logo-mobile' />
       <Switch>
