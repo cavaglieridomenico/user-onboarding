@@ -4,10 +4,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
-import Modal from '../components/Modal';
 
 const Contact = () => {
-  const { getContact } = useGlobalContext();
+  const { getContact, setShowModal } = useGlobalContext();
   const fullName = useRef('');
   const phoneNumber = useRef('');
   const phoneCode = useRef('');
@@ -26,7 +25,6 @@ const Contact = () => {
 
   return (
     <div className='onboarding-outerbox'>
-      <Modal />
       <Sidebar
         text={`We care about your time, that's why we created a 3-stage onboarding that will not take more than 5 minutes to complete`}
         author={'William Mac'}
@@ -97,7 +95,11 @@ const Contact = () => {
             </p>
           </article>
           <div className='contact-link-container'>
-            <LinkToModal text={'Expand privacy policy'} />
+            <LinkToModal
+              text={'Expand privacy policy'}
+              showModal={setShowModal}
+              modalTopic={'privacy'}
+            />
           </div>
         </section>
         <Footer

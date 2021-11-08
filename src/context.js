@@ -7,8 +7,6 @@ const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
   loading: false,
   dataReady: false,
-  showModal: false,
-  modalType: '',
   response: {},
   newUser: {
     fullName: '',
@@ -21,6 +19,10 @@ const defaultState = {
     accredited: '',
     preferences: [],
   },
+  showModal: false,
+  modalTitle: '',
+  modalText: '',
+  modalResponse: false,
 };
 
 export const AppProvider = ({ children }) => {
@@ -85,8 +87,8 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SHOW_RESPONSE', payload: data });
   };
 
-  const showHelp = () => {
-    dispatch({ type: 'SHOW_HELP' });
+  const setShowModal = topic => {
+    dispatch({ type: 'SHOW_MODAL', payload: topic });
   };
 
   const closeModal = () => {
@@ -101,7 +103,7 @@ export const AppProvider = ({ children }) => {
         getPlans,
         getPreferences,
         setDataReady,
-        showHelp,
+        setShowModal,
         closeModal,
       }}
     >

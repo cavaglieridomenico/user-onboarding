@@ -3,17 +3,26 @@ import { GrClose } from 'react-icons/gr';
 import { useGlobalContext } from '../context';
 
 const Modal = () => {
-  const { modalType, response, showModal, closeModal } = useGlobalContext();
+  const {
+    showModal,
+    modalTitle,
+    modalText,
+    modalResponse,
+    response,
+    closeModal,
+  } = useGlobalContext();
 
-  if (modalType === 'registration' && response.preferences) {
-    return (
-      <div className={`modal-outerbox ${showModal ? 'show-modal' : ''}`}>
-        <div className='modal-innerbox'>
-          <button className='modal-close' onClick={closeModal}>
-            <GrClose />
-          </button>
-          <h1 className='modal-title'>Registered user</h1>
-          <section>
+  return (
+    <div className={`modal-overlay ${showModal && 'show-modal'}`}>
+      <div className='modal-container '>
+        <button className='modal-close' onClick={closeModal}>
+          <GrClose />
+        </button>
+
+        <h1 className='modal-title'>{modalTitle}</h1>
+        <div className='modal_text-container'>
+          {modalText}
+          {modalResponse && (
             <div className='response-container'>
               <ul>
                 <li>user number: </li>
@@ -42,36 +51,11 @@ const Modal = () => {
                 </li>
               </ul>
             </div>
-          </section>
+          )}
         </div>
       </div>
-    );
-  }
-  if (modalType === 'help') {
-    return (
-      <div className={`modal-outerbox ${showModal ? 'show-modal' : ''}`}>
-        <div className='modal-innerbox'>
-          <button className='modal-close' onClick={closeModal}>
-            <GrClose />
-          </button>
-          <h1 className='modal-title'>Lost or have trouble?</h1>
-          <section>
-            <div className='modal_text-container'>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
-                iste voluptatum similique. Maiores, ratione ipsum fuga impedit
-                similique velit quos. Optio, perspiciatis? Tempora, sed.
-                Voluptates facere accusamus distinctio sequi ipsam. similique
-                velit quos. Optio, perspiciatis? Tempora, sed. Voluptates facere
-                accusamus distinctio sequi ipsam.
-              </p>
-            </div>
-          </section>
-        </div>
-      </div>
-    );
-  }
-  return <div></div>;
+    </div>
+  );
 };
 
 export default Modal;
