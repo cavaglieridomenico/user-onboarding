@@ -112,6 +112,13 @@ const reducer = (state, action) => {
       errorMessageText: 'Sorry, the format of the email is not valid.',
     };
   }
+  if (action.type === 'ERROR_NO_CHECKBOX_SELECTED') {
+    return {
+      ...state,
+      showErrorMessage: true,
+      errorMessageText: 'Sorry, at least one option must be selected.',
+    };
+  }
   if (action.type === 'CLOSE_ERROR_MESSAGE') {
     return {
       ...state,

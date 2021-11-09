@@ -8,6 +8,15 @@ const areThereAnyEmptyString = (...rest) => {
 };
 
 /**
+ * *Check for empty array (useful for checkbox)
+ * @param {array}
+ * @returns {boolean}
+ */
+const isAnEmptyArray = array => {
+  return array.length === 0;
+};
+
+/**
  *Check minimum length full name
  * @param {string}
  * @returns {boolean}
@@ -28,4 +37,9 @@ const isItAnInvalidEmail = inputValue => {
   return inputValue.match(emailFormat) === null;
 };
 
-export { areThereAnyEmptyString, isTheNameTooShort, isItAnInvalidEmail };
+export {
+  areThereAnyEmptyString,
+  isAnEmptyArray,
+  isTheNameTooShort,
+  isItAnInvalidEmail,
+};

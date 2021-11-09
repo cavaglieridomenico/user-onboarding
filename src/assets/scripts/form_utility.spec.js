@@ -1,5 +1,6 @@
 import {
   areThereAnyEmptyString,
+  isAnEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
 } from './form_utility';
@@ -22,8 +23,17 @@ test('It should return true if even one of the inputs is an empty string', () =>
   expect(areThereAnyEmptyString('', 'word', '')).toEqual(true);
 });
 
+/*Empty array*/
 test('It should return false if even one of the inputs is an empty string', () => {
   expect(areThereAnyEmptyString('word', 'word', 'word')).toEqual(false);
+});
+
+test('It should return true if an array is empty', () => {
+  expect(isAnEmptyArray([])).toEqual(true);
+});
+
+test('It should return false if an array is not empty', () => {
+  expect(isAnEmptyArray(['item', 'item'])).toEqual(false);
 });
 
 /*Name too short*/

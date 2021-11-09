@@ -4,6 +4,7 @@ import {
   areThereAnyEmptyString,
   isItAnInvalidEmail,
   isTheNameTooShort,
+  isAnEmptyArray,
 } from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
@@ -84,7 +85,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const getPreferences = preferences => {
+  const getPreferencesData = preferences => {
     dispatch({
       type: 'PREFERENCES_VALUES',
       payload: { preferences },
@@ -139,6 +140,14 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
+  const arePreferencesDataValidated = checkedPref => {
+    if (isAnEmptyArray(checkedPref)) {
+      dispatch({ type: 'ERROR_NO_CHECKBOX_SELECTED' });
+      return false;
+    }
+    return true;
+  };
+
   const closeErrorMessage = () => {
     dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
   };
@@ -149,7 +158,7 @@ export const AppProvider = ({ children }) => {
         ...state,
         getContactData,
         getPlansData,
-        getPreferences,
+        getPreferencesData,
         setDataReady,
         setShowModal,
         closeModal,
@@ -157,6 +166,7 @@ export const AppProvider = ({ children }) => {
         setDebouncer,
         areContactDataValidated,
         arePlansDataValidated,
+        arePreferencesDataValidated,
         closeErrorMessage,
       }}
     >
