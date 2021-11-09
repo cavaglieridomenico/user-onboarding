@@ -73,7 +73,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const getPlans = (planFrom, planTo, accredited) => {
+  const getPlansData = (planFrom, planTo, accredited) => {
     dispatch({
       type: 'PLAN_VALUES',
       payload: {
@@ -131,6 +131,14 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
+  const arePlansDataValidated = (planFrom, planTo, accredited) => {
+    if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
+      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      return false;
+    }
+    return true;
+  };
+
   const closeErrorMessage = () => {
     dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
   };
@@ -140,7 +148,7 @@ export const AppProvider = ({ children }) => {
       value={{
         ...state,
         getContact,
-        getPlans,
+        getPlansData,
         getPreferences,
         setDataReady,
         setShowModal,
@@ -148,6 +156,7 @@ export const AppProvider = ({ children }) => {
         setLoader,
         setDebouncer,
         contactValidation,
+        arePlansDataValidated,
         closeErrorMessage,
       }}
     >

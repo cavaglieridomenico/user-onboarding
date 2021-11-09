@@ -1,22 +1,33 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
-  const { getPlans } = useGlobalContext();
+  const history = useHistory();
+  const { getPlansData, arePlansDataValidated } = useGlobalContext();
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
 
-  const handleSubmitPlans = () => {
-    getPlans(
-      planFrom.current.value,
-      planTo.current.value,
-      accredited.current.elements.accredited.value
-    );
-  };
+  const handleSubmitPlans = useCallback(() => {
+    if (
+      arePlansDataValidated(
+        planFrom.current.value,
+        planTo.current.value,
+        accredited.current.elements.accredited.value
+      )
+    ) {
+      getPlansData(
+        planFrom.current.value,
+        planTo.current.value,
+        accredited.current.elements.accredited.value
+      );
+      history.push('./preferences');
+    }
+  }, [history, arePlansDataValidated, getPlansData]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -87,7 +98,6 @@ const Plans = () => {
         <Footer
           homePage={'/'}
           skipStep={'/preferences'}
-          nextPage={'/preferences'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitPlans}
         />
