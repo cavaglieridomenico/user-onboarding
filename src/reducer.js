@@ -105,6 +105,13 @@ const reducer = (state, action) => {
       errorMessageText: 'Sorry, the name requires at least 3 characters.',
     };
   }
+  if (action.type === 'ERROR_INVALID_MAIL_FORMAT') {
+    return {
+      ...state,
+      showErrorMessage: true,
+      errorMessageText: 'Sorry, the format of the email is not valid.',
+    };
+  }
   if (action.type === 'CLOSE_ERROR_MESSAGE') {
     return {
       ...state,

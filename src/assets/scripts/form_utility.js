@@ -1,20 +1,31 @@
 /**
- *Check for empty field
- * @param {string} inputValue
+ *Check for empty fields
+ * @param {string}
  * @returns {boolean}
  */
-function areThereAnyEmptyString(...rest) {
+const areThereAnyEmptyString = (...rest) => {
   return rest.some(item => item === '');
-}
+};
 
 /**
- *Check Regular Expression username
- * @param {string} inputValue
+ *Check minimum length full name
+ * @param {string}
  * @returns {boolean}
  */
-function isTheNameTooShort(inputValue) {
+const isTheNameTooShort = inputValue => {
   let usernameFormat = /^.{3,}$/;
   return inputValue.match(usernameFormat) === null;
-}
+};
 
-export { areThereAnyEmptyString, isTheNameTooShort };
+/**
+ *Check valid email format
+ * @param {string}
+ * @returns {boolean} true if match is correct
+ */
+const isItAnInvalidEmail = inputValue => {
+  let emailFormat =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  return inputValue.match(emailFormat) === null;
+};
+
+export { areThereAnyEmptyString, isTheNameTooShort, isItAnInvalidEmail };

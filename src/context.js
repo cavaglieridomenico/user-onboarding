@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 import {
   areThereAnyEmptyString,
+  isItAnInvalidEmail,
   isTheNameTooShort,
 } from './assets/scripts/form_utility';
 
@@ -114,13 +115,17 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
-  const contactValidation = (name, password, email) => {
-    if (areThereAnyEmptyString(name, password, email)) {
+  const contactValidation = (fullName, phoneNumber, email) => {
+    if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
       dispatch({ type: 'ERROR_EMPTY_FIELDS' });
       return false;
     }
-    if (isTheNameTooShort(name)) {
+    if (isTheNameTooShort(fullName)) {
       dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
+      return false;
+    }
+    if (isItAnInvalidEmail(email)) {
+      dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
       return false;
     }
     return true;
