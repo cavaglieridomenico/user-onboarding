@@ -26,6 +26,7 @@ const Contact = () => {
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
+        page={'contact'}
         text={`We care about your time, that's why we created a 3-stage onboarding that will not take more than 5 minutes to complete`}
         author={'William Mac'}
         role={'CO-FOUNDER, INVESTOR'}
