@@ -25,8 +25,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 350px;
-  padding: 2.5% 3%;
+  width: 340px;
+  padding: 1rem 2rem;
   background-color: var(--mainWhite);
   border-radius: var(--mainBorderRadius);
   box-shadow: 0px 10px 40px #41434450;
