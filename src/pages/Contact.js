@@ -74,7 +74,7 @@ const Contact = () => {
                       🇩🇪
                     </option>
                   </select>
-                  <input type='text' id='phone' ref={phoneNumber} />
+                  <input type='number' id='phone' ref={phoneNumber} />
                 </div>
                 <div className='email-box'>
                   <label htmlFor='email'>E-mail address</label>

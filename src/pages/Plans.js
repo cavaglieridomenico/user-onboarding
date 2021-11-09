@@ -46,11 +46,11 @@ const Plans = () => {
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
-                  <input type='text' id='plans-from' ref={planFrom} />
+                  <input type='number' id='plans-from' ref={planFrom} />
                 </div>
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
-                  <input type='text' id='plans-to' ref={planTo} />
+                  <input type='number' id='plans-to' ref={planTo} />
                 </div>
                 <div className='slider'></div>
               </div>
