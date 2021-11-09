@@ -1,37 +1,65 @@
 import React from 'react';
 import Logo from './Logo';
 
-const Sidebar = ({ text, author, role }) => {
+const Sidebar = ({ page, text, author, role }) => {
   return (
     <aside>
       <Logo view='logo-desktop' />
       <div className='progress-container '>
         <div className='progress'>
           <div className='square-text-container'>
-            <div className='outer-square'>
-              <div className='inner-square'></div>
+            <div className='outer-square outer-active'>
+              <div className='inner-square inner-active'></div>
             </div>
-            <p>Contact details</p>
+            <p className='text-active'>Contact details</p>
           </div>
-          <div className='rectangle'></div>
-          <div className='rectangle'></div>
+          <div className='rectangle outer-active'></div>
+          <div className='rectangle outer-active'></div>
         </div>
         <div className='progress'>
           <div className='square-text-container'>
-            <div className='outer-square'>
-              <div className='inner-square'></div>
+            <div
+              className={`outer-square ${
+                page !== 'contact' ? 'outer-active' : undefined
+              }`}
+            >
+              <div
+                className={`inner-square ${
+                  page !== 'contact' ? 'inner-active' : undefined
+                }`}
+              ></div>
             </div>
-            <p>Investment plans</p>
+            <p className={page !== 'contact' ? 'text-active' : undefined}>
+              Investment plans
+            </p>
           </div>
-          <div className='rectangle'></div>
-          <div className='rectangle'></div>
+          <div
+            className={`rectangle ${
+              page !== 'contact' ? 'outer-active' : undefined
+            }`}
+          ></div>
+          <div
+            className={`rectangle ${
+              page !== 'contact' ? 'outer-active' : undefined
+            }`}
+          ></div>
         </div>
         <div className='progress'>
           <div className='square-text-container'>
-            <div className='outer-square'>
-              <div className='inner-square'></div>
+            <div
+              className={`outer-square ${
+                page === 'preferences' ? 'outer-active' : undefined
+              }`}
+            >
+              <div
+                className={`inner-square ${
+                  page === 'preferences' ? 'inner-active' : undefined
+                }`}
+              ></div>
             </div>
-            <p>Investment preferences</p>
+            <p className={page === 'preferences' ? 'text-active' : undefined}>
+              Investment preferences
+            </p>
           </div>
         </div>
       </div>

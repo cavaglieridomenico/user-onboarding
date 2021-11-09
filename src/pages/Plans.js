@@ -21,6 +21,7 @@ const Plans = () => {
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
+        page={'plans'}
         text={
           'Save from thousands to millions on your deal. Secure the best possible. And get independent, unbiased advice for free'
         }

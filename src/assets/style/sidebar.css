@@ -32,10 +32,11 @@ aside {
 
 .inner-square {
   position: relative;
-  display: none;
   background-color: var(--mainWhite);
   width: 11.2px;
   height: 11.2px;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .square-text-container > p {
@@ -65,7 +66,8 @@ aside {
 }
 
 .inner-active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 .text-active {
