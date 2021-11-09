@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
 import { useGlobalContext } from '../context';
 
-const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
+const Footer = ({ homePage, skipStep, textRightButton, handleSubmit }) => {
   const { setDebouncer, debouncing } = useGlobalContext();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
         <p>Back to the homepage</p>
       </Link>
       <div className='btn-container'>
-        <Link to={nextPage}>
+        <Link to={skipStep}>
           <button
             className='btn btn-primary50'
             onClick={() => setDebouncer(true)}
@@ -29,25 +29,23 @@ const Footer = ({ homePage, nextPage, textRightButton, handleSubmit }) => {
             Skip for now
           </button>
         </Link>
-        <Link to={nextPage}>
-          <button
-            type='submit'
-            className={`btn btn-primary ${
-              textRightButton === 'Finish' && 'finish-button'
-            }`}
-            onClick={() => {
-              handleSubmit();
-              setDebouncer(true);
-            }}
-          >
-            <span>{textRightButton}</span>
-            <div
-              className={
-                textRightButton === 'Next step' ? 'arrow-button' : 'none'
-              }
-            ></div>
-          </button>
-        </Link>
+        <button
+          type='submit'
+          className={`btn btn-primary ${
+            textRightButton === 'Finish' && 'finish-button'
+          }`}
+          onClick={() => {
+            handleSubmit();
+            setDebouncer(true);
+          }}
+        >
+          <span>{textRightButton}</span>
+          <div
+            className={
+              textRightButton === 'Next step' ? 'arrow-button' : 'none'
+            }
+          ></div>
+        </button>
       </div>
     </footer>
   );

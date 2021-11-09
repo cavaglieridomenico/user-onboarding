@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
+import { isOneFieldEmpty } from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
 
@@ -24,6 +25,8 @@ const defaultState = {
   modalResponse: false,
   loading: false,
   debouncing: false,
+  showErrorMessage: false,
+  errorText: 'Errore!',
 };
 
 export const AppProvider = ({ children }) => {
@@ -108,6 +111,18 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
+  const contactValidation = (name, password, email) => {
+    if (isOneFieldEmpty(name)) {
+      dispatch({ type: 'ERROR_NAME_EMPTY' });
+      return false;
+    }
+    return true;
+  };
+
+  const closeErrorMessage = () => {
+    dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -120,6 +135,8 @@ export const AppProvider = ({ children }) => {
         closeModal,
         setLoader,
         setDebouncer,
+        contactValidation,
+        closeErrorMessage,
       }}
     >
       {children}

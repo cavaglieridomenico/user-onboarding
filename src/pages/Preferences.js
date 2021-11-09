@@ -124,7 +124,7 @@ const Preferences = () => {
         </section>
         <Footer
           homePage={'/'}
-          nextPage={'/'}
+          skipStep={'/'}
           textRightButton={'Finish'}
           handleSubmit={handleSubmitPreferences}
         />

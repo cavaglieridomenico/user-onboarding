@@ -86,6 +86,7 @@ const Plans = () => {
         </section>
         <Footer
           homePage={'/'}
+          skipStep={'/preferences'}
           nextPage={'/preferences'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitPlans}

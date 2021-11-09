@@ -105,7 +105,7 @@ const Contact = () => {
         </section>
         <Footer
           homePage={'/'}
-          nextPage={'/plans'}
+          skipStep={'/plans'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitContact}
         />
