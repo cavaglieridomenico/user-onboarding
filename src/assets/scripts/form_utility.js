@@ -1,10 +1,20 @@
 /**
  *Check for empty field
  * @param {string} inputValue
- * @returns {boolean} true if match is correct
+ * @returns {boolean}
  */
-function isOneFieldEmpty(inputValue) {
-  return inputValue === '';
+function areThereAnyEmptyString(...rest) {
+  return rest.some(item => item === '');
 }
 
-export { isOneFieldEmpty };
+/**
+ *Check Regular Expression username
+ * @param {string} inputValue
+ * @returns {boolean}
+ */
+function isTheNameTooShort(inputValue) {
+  let usernameFormat = /^.{3,}$/;
+  return inputValue.match(usernameFormat) === null;
+}
+
+export { areThereAnyEmptyString, isTheNameTooShort };

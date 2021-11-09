@@ -1,8 +1,49 @@
-import { isOneFieldEmpty } from './form_utility';
+import { areThereAnyEmptyString, isTheNameTooShort } from './form_utility';
 //Test of filling in the form fields
 
-//Empty field
-test('It should return true if the input is an empty string', () => {
-  const inputString = '';
-  expect(isOneFieldEmpty(inputString)).toEqual(true);
+/*Empty fields*/
+test('It should return true if a single input is an empty string', () => {
+  expect(areThereAnyEmptyString('')).toEqual(true);
+});
+
+test('It should return false if a single input is an string', () => {
+  expect(areThereAnyEmptyString('word')).toEqual(false);
+});
+
+test('It should return true if multiple inputs are an empty string', () => {
+  expect(areThereAnyEmptyString('', '', '')).toEqual(true);
+});
+
+test('It should return true if even one of the inputs is an empty string', () => {
+  expect(areThereAnyEmptyString('', 'word', '')).toEqual(true);
+});
+
+test('It should return false if even one of the inputs is an empty string', () => {
+  expect(areThereAnyEmptyString('word', 'word', 'word')).toEqual(false);
+});
+
+/*Name too short*/
+test(`It should return true if the input is a string 
+withless than of 3 characters`, () => {
+  expect(isTheNameTooShort('Hu')).toEqual(true);
+});
+
+test(`It should return false if the input is a string
+with 3 characters`, () => {
+  expect(isTheNameTooShort('Hua')).toEqual(false);
+});
+
+test(`It should return false if the input is a string 
+with a minimum of 3 characters`, () => {
+  expect(isTheNameTooShort('Domenico')).toEqual(false);
+});
+
+test(`It should return false if the input is a string 
+with blank space`, () => {
+  expect(isTheNameTooShort('Domenico Cavaglieri')).toEqual(false);
+});
+
+test(`It should return false if the input is a string 
+with two or more blank space`, () => {
+  expect(isTheNameTooShort('Domenico Massimo Cavaglieri')).toEqual(false);
 });

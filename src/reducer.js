@@ -91,10 +91,18 @@ const reducer = (state, action) => {
       debouncing: action.payload,
     };
   }
-  if (action.type === 'ERROR_NAME_EMPTY') {
+  if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,
       showErrorMessage: true,
+      errorMessageText: 'Sorry, all fields must be filled in.',
+    };
+  }
+  if (action.type === 'ERROR_MINIMUM_3_CHARACTERS') {
+    return {
+      ...state,
+      showErrorMessage: true,
+      errorMessageText: 'Sorry, the name requires at least 3 characters.',
     };
   }
   if (action.type === 'CLOSE_ERROR_MESSAGE') {

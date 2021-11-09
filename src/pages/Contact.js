@@ -17,8 +17,13 @@ const Contact = () => {
   const country = useRef('');
 
   const handleSubmitContact = useCallback(() => {
-    if (contactValidation(fullName.current.value)) {
-      console.log(fullName.current.value);
+    if (
+      contactValidation(
+        fullName.current.value,
+        phoneNumber.current.value,
+        email.current.value
+      )
+    ) {
       getContact(
         fullName.current.value,
         phoneNumber.current.value,

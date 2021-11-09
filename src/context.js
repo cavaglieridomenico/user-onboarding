@@ -1,6 +1,9 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
-import { isOneFieldEmpty } from './assets/scripts/form_utility';
+import {
+  areThereAnyEmptyString,
+  isTheNameTooShort,
+} from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
 
@@ -26,7 +29,7 @@ const defaultState = {
   loading: false,
   debouncing: false,
   showErrorMessage: false,
-  errorText: 'Errore!',
+  errorMessageText: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -112,8 +115,12 @@ export const AppProvider = ({ children }) => {
   };
 
   const contactValidation = (name, password, email) => {
-    if (isOneFieldEmpty(name)) {
-      dispatch({ type: 'ERROR_NAME_EMPTY' });
+    if (areThereAnyEmptyString(name, password, email)) {
+      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      return false;
+    }
+    if (isTheNameTooShort(name)) {
+      dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
       return false;
     }
     return true;
