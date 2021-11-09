@@ -26,13 +26,14 @@
   display: flex;
   flex-direction: column;
   width: 350px;
-  padding: 1.5% 2% 2.5%;
+  padding: 2.5% 3%;
   background-color: var(--mainWhite);
   border-radius: var(--mainBorderRadius);
   box-shadow: 0px 10px 40px #41434450;
   transition: var(--mainTransition);
   color: red;
   font-family: var(--monserrat);
+  text-align: justify;
   margin: 0 1% 22% 0;
   transform: translateX(105%);
 }
@@ -48,16 +49,21 @@
   width: 2.2rem;
   height: 2.2rem;
   padding: 0.4rem 0 0;
+  background-color: var(--primaryColor50);
   border-radius: var(--mainBorderRadius);
   cursor: pointer;
+}
+
+.error-message-container button svg {
+  color: #f00;
 }
 
 .error-message_text-container {
   position: relative;
   align-self: center;
-  width: max-content;
   background-color: var(--primaryColor50);
   border-radius: var(--mainBorderRadius);
+  width: 100%;
   padding: 3%;
   margin: 4% 0 0;
 }

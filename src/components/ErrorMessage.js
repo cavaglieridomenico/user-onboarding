@@ -1,11 +1,10 @@
 import React from 'react';
-import { GrClose } from 'react-icons/gr';
-
+import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
 const ErrorMessage = () => {
-  const { showErrorMessage, errorText, closeErrorMessage } = useGlobalContext();
-
+  const { showErrorMessage, errorMessageText, closeErrorMessage } =
+    useGlobalContext();
   return (
     <div
       className={`error-message-overlay ${
@@ -18,9 +17,9 @@ const ErrorMessage = () => {
         }`}
       >
         <button onClick={closeErrorMessage}>
-          <GrClose />
+          <AiOutlineClose />
         </button>
-        <div className='error-message_text-container'>{errorText}</div>
+        <div className='error-message_text-container'>{errorMessageText}</div>
       </div>
     </div>
   );
