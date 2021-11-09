@@ -8,7 +8,8 @@ import { useGlobalContext } from '../context';
 
 const Contact = () => {
   const history = useHistory();
-  const { getContact, setShowModal, contactValidation } = useGlobalContext();
+  const { getContactData, setShowModal, areContactDataValidated } =
+    useGlobalContext();
 
   const fullName = useRef('');
   const phoneNumber = useRef('');
@@ -18,13 +19,13 @@ const Contact = () => {
 
   const handleSubmitContact = useCallback(() => {
     if (
-      contactValidation(
+      areContactDataValidated(
         fullName.current.value,
         phoneNumber.current.value,
         email.current.value
       )
     ) {
-      getContact(
+      getContactData(
         fullName.current.value,
         phoneNumber.current.value,
         phoneCode.current.value,
@@ -33,7 +34,7 @@ const Contact = () => {
       );
       history.push('./plans');
     }
-  }, [history, contactValidation, getContact]);
+  }, [history, areContactDataValidated, getContactData]);
 
   return (
     <div className='onboarding-outerbox'>

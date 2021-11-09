@@ -60,7 +60,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [state.dataReady, fetchPost]);
 
-  const getContact = (fullName, phoneNumber, phoneCode, email, country) => {
+  const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
       type: 'CONTACT_VALUES',
       payload: {
@@ -115,7 +115,7 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
-  const contactValidation = (fullName, phoneNumber, email) => {
+  const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
       dispatch({ type: 'ERROR_EMPTY_FIELDS' });
       return false;
@@ -147,7 +147,7 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        getContact,
+        getContactData,
         getPlansData,
         getPreferences,
         setDataReady,
@@ -155,7 +155,7 @@ export const AppProvider = ({ children }) => {
         closeModal,
         setLoader,
         setDebouncer,
-        contactValidation,
+        areContactDataValidated,
         arePlansDataValidated,
         closeErrorMessage,
       }}
