@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,22 +7,28 @@ import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Contact = () => {
-  const { getContact, setShowModal } = useGlobalContext();
+  const history = useHistory();
+  const { getContact, setShowModal, contactValidation } = useGlobalContext();
+
   const fullName = useRef('');
   const phoneNumber = useRef('');
   const phoneCode = useRef('');
   const email = useRef('');
   const country = useRef('');
 
-  const handleSubmitContact = () => {
-    getContact(
-      fullName.current.value,
-      phoneNumber.current.value,
-      phoneCode.current.value,
-      email.current.value,
-      country.current.value
-    );
-  };
+  const handleSubmitContact = useCallback(() => {
+    if (contactValidation(fullName.current.value)) {
+      console.log(fullName.current.value);
+      getContact(
+        fullName.current.value,
+        phoneNumber.current.value,
+        phoneCode.current.value,
+        email.current.value,
+        country.current.value
+      );
+      history.push('./plans');
+    }
+  }, [history, contactValidation, getContact]);
 
   return (
     <div className='onboarding-outerbox'>

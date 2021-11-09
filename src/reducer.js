@@ -91,6 +91,18 @@ const reducer = (state, action) => {
       debouncing: action.payload,
     };
   }
+  if (action.type === 'ERROR_NAME_EMPTY') {
+    return {
+      ...state,
+      showErrorMessage: true,
+    };
+  }
+  if (action.type === 'CLOSE_ERROR_MESSAGE') {
+    return {
+      ...state,
+      showErrorMessage: false,
+    };
+  }
 };
 
 export default reducer;
