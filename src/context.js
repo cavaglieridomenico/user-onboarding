@@ -33,8 +33,8 @@ const defaultState = {
   loading: false,
   debouncing: false,
   showNarrowModal: false,
-  narrowModalText: '',
   narrowModalType: '',
+  narrowModalText: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -135,15 +135,25 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_MODAL_CLOSE' });
   };
 
-  /**Set Narrow Modal */
-  const setNarrowModalClose = () => {
+  /*Set Narrow Modal*/
+  const setNarrowModalOpen = (type, text) => {
+    dispatch({
+      type: 'SET_NARROW_MODAL_OPEN',
+      payload: {
+        type,
+        text,
+      },
+    });
+  };
+
+  const setNarrowModalClosed = () => {
     dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
   };
 
-  /**Check Validation */
+  /*Check Validation*/
   const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
-      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
     if (isTheNameTooShort(fullName)) {
@@ -185,12 +195,13 @@ export const AppProvider = ({ children }) => {
         setDataReady,
         setModalOpen,
         setModalClose,
+        setNarrowModalOpen,
+        setNarrowModalClosed,
         setLoader,
         setDebouncer,
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
-        setNarrowModalClose,
       }}
     >
       {children}

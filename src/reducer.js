@@ -126,15 +126,27 @@ const reducer = (state, action) => {
     };
   }
 
-  /**Set Narrow Modal */
+  /*Set Narrow Modal*/
+  if (action.type === 'SET_NARROW_MODAL_OPEN') {
+    const { text, type } = action.payload;
+    return {
+      ...state,
+      showNarrowModal: true,
+      narrowModalType: type,
+      narrowModalText: text,
+    };
+  }
+
   if (action.type === 'SET_NARROW_MODAL_CLOSED') {
     return {
       ...state,
       showNarrowModal: false,
+      narrowModalType: '',
+      narrowModalText: '',
     };
   }
 
-  /**Check Validation */
+  /*Check Validation*/
   if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,

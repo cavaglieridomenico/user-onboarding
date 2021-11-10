@@ -13,6 +13,7 @@ const Contact = () => {
     areContactDataValidated,
     getContactData,
     setStepStatus1,
+    setNarrowModalOpen,
   } = useGlobalContext();
 
   const fullName = useRef('');
@@ -29,6 +30,7 @@ const Contact = () => {
         email.current.value
       )
     ) {
+      setNarrowModalOpen('success', 'Personal data entered.');
       getContactData(
         fullName.current.value,
         phoneNumber.current.value,
@@ -39,7 +41,13 @@ const Contact = () => {
       setStepStatus1(true);
       history.push('./plans');
     }
-  }, [history, areContactDataValidated, getContactData, setStepStatus1]);
+  }, [
+    history,
+    areContactDataValidated,
+    getContactData,
+    setStepStatus1,
+    setNarrowModalOpen,
+  ]);
 
   return (
     <div className='onboarding-outerbox'>
