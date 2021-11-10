@@ -1,6 +1,36 @@
 import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
-  if (action.type === 'CONTACT_VALUES') {
+  /**Fetch */
+  if (action.type === 'GET_RESPONSE') {
+    return {
+      ...state,
+      response: action.payload,
+    };
+  }
+  /**Set the validation progress */
+  if (action.type === 'SET_STEP_STATUS_1') {
+    return {
+      ...state,
+      stepStatus1: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_STEP_STATUS_2') {
+    return {
+      ...state,
+      stepStatus2: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_DATA_READY') {
+    return {
+      ...state,
+      dataReady: action.payload,
+    };
+  }
+
+  /**Get data from forms on each page */
+  if (action.type === 'GET_CONTACT_VALUES') {
     const { fullName, phoneCode, phoneNumber, email, country } = action.payload;
     return {
       ...state,
@@ -14,7 +44,8 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'PLAN_VALUES') {
+
+  if (action.type === 'GET_PLAN_VALUES') {
     const { planFrom, planTo, accredited } = action.payload;
     return {
       ...state,
@@ -26,7 +57,8 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'PREFERENCES_VALUES') {
+
+  if (action.type === 'GET_PREFERENCES_VALUES') {
     const { preferences } = action.payload;
     return {
       ...state,
@@ -36,22 +68,24 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'DATA_READY') {
+
+  /**Set Loader and Debouncer */
+  if (action.type === 'SET_LOADER') {
     return {
       ...state,
-      dataReady: action.payload,
+      loading: action.payload,
     };
   }
-  if (action.type === 'SHOW_RESPONSE') {
+
+  if (action.type === 'SET_DEBOUNCER') {
     return {
       ...state,
-      response: action.payload,
-      modalResponse: true,
-      showModal: true,
-      modalText: '',
-      modalTitle: 'Registration',
+      debouncing: action.payload,
     };
   }
+
+  /**Set Modal */
+
   if (action.type === 'SHOW_MODAL') {
     if (action.payload === 'help') {
       return {
@@ -59,6 +93,7 @@ const reducer = (state, action) => {
         showModal: true,
         modalTitle: modalHelp.title,
         modalText: modalHelp.text,
+        modalResponse: false,
       };
     }
     if (action.payload === 'privacy') {
@@ -67,10 +102,21 @@ const reducer = (state, action) => {
         showModal: true,
         modalTitle: modalPrivacy.title,
         modalText: modalPrivacy.text,
+        modalResponse: false,
+      };
+    }
+    if (action.payload === 'registration') {
+      return {
+        ...state,
+        showModal: true,
+        modalTitle: 'successful registration',
+        modalText: '',
+        modalResponse: true,
       };
     }
   }
-  if (action.type === 'CLOSE_MODAL') {
+
+  if (action.type === 'SET_MODAL_CLOSE') {
     return {
       ...state,
       showModal: false,
@@ -79,50 +125,42 @@ const reducer = (state, action) => {
       modalResponse: false,
     };
   }
-  if (action.type === 'SET_LOADER') {
+
+  /**Set Narrow Modal */
+  if (action.type === 'SET_NARROW_MODAL_CLOSED') {
     return {
       ...state,
-      loading: action.payload,
+      showNarrowModal: false,
     };
   }
-  if (action.type === 'SET_DEBOUNCER') {
-    return {
-      ...state,
-      debouncing: action.payload,
-    };
-  }
+
+  /**Check Validation */
   if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, all fields must be filled in.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, all fields must be filled in.',
     };
   }
   if (action.type === 'ERROR_MINIMUM_3_CHARACTERS') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, the name requires at least 3 characters.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, the name requires at least 3 characters.',
     };
   }
   if (action.type === 'ERROR_INVALID_MAIL_FORMAT') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, the format of the email is not valid.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, the format of the email is not valid.',
     };
   }
   if (action.type === 'ERROR_NO_CHECKBOX_SELECTED') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, at least one option must be selected.',
-    };
-  }
-  if (action.type === 'CLOSE_ERROR_MESSAGE') {
-    return {
-      ...state,
-      showErrorMessage: false,
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, at least one option must be selected.',
     };
   }
 };

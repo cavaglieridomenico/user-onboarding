@@ -11,6 +11,8 @@ const AppContext = React.createContext();
 
 const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
+  stepStatus1: false,
+  stepStatus2: false,
   dataReady: false,
   response: {},
   newUser: {
@@ -30,13 +32,15 @@ const defaultState = {
   modalResponse: false,
   loading: false,
   debouncing: false,
-  showErrorMessage: false,
-  errorMessageText: '',
+  showNarrowModal: false,
+  narrowModalText: '',
+  narrowModalType: '',
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
+  /**Fetch */
   const fetchPost = useCallback(() => {
     setLoader(true);
     fetch(state.fetchPostUrl, {
@@ -49,8 +53,9 @@ export const AppProvider = ({ children }) => {
     })
       .then(response => response.json())
       .then(data => {
+        getResponse(data);
         setLoader(false);
-        showResponse(data);
+        setModalOpen('registration');
       });
   }, [state.fetchPostUrl, state.newUser]);
 
@@ -58,12 +63,32 @@ export const AppProvider = ({ children }) => {
     if (state.dataReady) {
       fetchPost();
       setDataReady(false);
+      setStepStatus1(false);
+      setStepStatus2(false);
     }
   }, [state.dataReady, fetchPost]);
 
+  const getResponse = data => {
+    dispatch({ type: 'GET_RESPONSE', payload: data });
+  };
+
+  /**Set the validation progress */
+  const setStepStatus1 = value => {
+    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
+  };
+
+  const setStepStatus2 = value => {
+    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
+  };
+
+  const setDataReady = value => {
+    dispatch({ type: 'SET_DATA_READY', payload: value });
+  };
+
+  /**Get data from forms on each page */
   const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
-      type: 'CONTACT_VALUES',
+      type: 'GET_CONTACT_VALUES',
       payload: {
         fullName: fullName,
         phoneNumber: phoneNumber,
@@ -76,7 +101,7 @@ export const AppProvider = ({ children }) => {
 
   const getPlansData = (planFrom, planTo, accredited) => {
     dispatch({
-      type: 'PLAN_VALUES',
+      type: 'GET_PLAN_VALUES',
       payload: {
         planFrom: planFrom,
         planTo: planTo,
@@ -87,27 +112,12 @@ export const AppProvider = ({ children }) => {
 
   const getPreferencesData = preferences => {
     dispatch({
-      type: 'PREFERENCES_VALUES',
+      type: 'GET_PREFERENCES_VALUES',
       payload: { preferences },
     });
   };
 
-  const setDataReady = value => {
-    dispatch({ type: 'DATA_READY', payload: value });
-  };
-
-  const showResponse = data => {
-    dispatch({ type: 'SHOW_RESPONSE', payload: data });
-  };
-
-  const setShowModal = topic => {
-    dispatch({ type: 'SHOW_MODAL', payload: topic });
-  };
-
-  const closeModal = () => {
-    dispatch({ type: 'CLOSE_MODAL' });
-  };
-
+  /**Set Loader and Debouncer */
   const setLoader = value => {
     dispatch({ type: 'SET_LOADER', payload: value });
   };
@@ -116,6 +126,21 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
+  /**Set Modal */
+  const setModalOpen = topic => {
+    dispatch({ type: 'SHOW_MODAL', payload: topic });
+  };
+
+  const setModalClose = () => {
+    dispatch({ type: 'SET_MODAL_CLOSE' });
+  };
+
+  /**Set Narrow Modal */
+  const setNarrowModalClose = () => {
+    dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
+  };
+
+  /**Check Validation */
   const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
       dispatch({ type: 'ERROR_EMPTY_FIELDS' });
@@ -148,10 +173,6 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
-  const closeErrorMessage = () => {
-    dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
-  };
-
   return (
     <AppContext.Provider
       value={{
@@ -159,15 +180,17 @@ export const AppProvider = ({ children }) => {
         getContactData,
         getPlansData,
         getPreferencesData,
+        setStepStatus1,
+        setStepStatus2,
         setDataReady,
-        setShowModal,
-        closeModal,
+        setModalOpen,
+        setModalClose,
         setLoader,
         setDebouncer,
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
-        closeErrorMessage,
+        setNarrowModalClose,
       }}
     >
       {children}

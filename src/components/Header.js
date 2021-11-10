@@ -3,7 +3,7 @@ import LinkToModal from './LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Header = ({ number }) => {
-  const { setShowModal } = useGlobalContext();
+  const { setModalOpen } = useGlobalContext();
   return (
     <header>
       <p className='header__step'>step {number} of 3</p>
@@ -11,7 +11,7 @@ const Header = ({ number }) => {
         <p>Lost or have trouble?</p>
         <LinkToModal
           text={'Get help'}
-          showModal={setShowModal}
+          showModal={setModalOpen}
           modalTopic={'help'}
         />
       </div>
