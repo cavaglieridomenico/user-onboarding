@@ -120,35 +120,35 @@ const reducer = (state, action) => {
   if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, all fields must be filled in.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, all fields must be filled in.',
     };
   }
   if (action.type === 'ERROR_MINIMUM_3_CHARACTERS') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, the name requires at least 3 characters.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, the name requires at least 3 characters.',
     };
   }
   if (action.type === 'ERROR_INVALID_MAIL_FORMAT') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, the format of the email is not valid.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, the format of the email is not valid.',
     };
   }
   if (action.type === 'ERROR_NO_CHECKBOX_SELECTED') {
     return {
       ...state,
-      showErrorMessage: true,
-      errorMessageText: 'Sorry, at least one option must be selected.',
+      showNarrowModal: true,
+      narrowModalText: 'Sorry, at least one option must be selected.',
     };
   }
   if (action.type === 'CLOSE_ERROR_MESSAGE') {
     return {
       ...state,
-      showErrorMessage: false,
+      showNarrowModal: false,
     };
   }
 };

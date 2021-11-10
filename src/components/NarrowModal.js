@@ -2,27 +2,27 @@ import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
-const ErrorMessage = () => {
-  const { showErrorMessage, errorMessageText, closeErrorMessage } =
+const NarrowModal = () => {
+  const { showNarrowModal, narrowModalText, closeNarrowModal } =
     useGlobalContext();
   return (
     <div
       className={`error-message-overlay ${
-        showErrorMessage ? 'show-error-message' : undefined
+        showNarrowModal ? 'show-error-message' : undefined
       }`}
     >
       <div
         className={`error-message-container ${
-          showErrorMessage ? 'show-error-message-container' : undefined
+          showNarrowModal ? 'show-error-message-container' : undefined
         }`}
       >
-        <button onClick={closeErrorMessage}>
+        <button onClick={closeNarrowModal}>
           <AiOutlineClose />
         </button>
-        <div className='error-message_text-container'>{errorMessageText}</div>
+        <div className='error-message_text-container'>{narrowModalText}</div>
       </div>
     </div>
   );
 };
 
-export default ErrorMessage;
+export default NarrowModal;

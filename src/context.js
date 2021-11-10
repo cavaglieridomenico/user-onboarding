@@ -32,8 +32,8 @@ const defaultState = {
   modalResponse: false,
   loading: false,
   debouncing: false,
-  showErrorMessage: false,
-  errorMessageText: '',
+  showNarrowModal: false,
+  narrowModalText: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -166,7 +166,7 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
-  const closeErrorMessage = () => {
+  const closeNarrowModal = () => {
     dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
   };
 
@@ -187,7 +187,7 @@ export const AppProvider = ({ children }) => {
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
-        closeErrorMessage,
+        closeNarrowModal,
       }}
     >
       {children}
