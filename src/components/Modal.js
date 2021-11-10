@@ -9,20 +9,20 @@ const Modal = () => {
     modalText,
     modalResponse,
     response,
-    closeModal,
+    setModalClose,
   } = useGlobalContext();
 
   return (
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>
       <div className='modal-container '>
-        <button className='modal-close' onClick={closeModal}>
+        <button className='modal-close' onClick={setModalClose}>
           <AiOutlineClose />
         </button>
 
         <h1 className='modal-title'>{modalTitle}</h1>
         <div className='modal_text-container'>
           {modalText}
-          {modalResponse && (
+          {modalResponse ? (
             <div className='response-container'>
               <ul>
                 <li>user number: </li>
@@ -51,7 +51,7 @@ const Modal = () => {
                 </li>
               </ul>
             </div>
-          )}
+          ) : undefined}
         </div>
       </div>
     </div>

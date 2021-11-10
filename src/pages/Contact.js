@@ -9,7 +9,7 @@ import { useGlobalContext } from '../context';
 const Contact = () => {
   const history = useHistory();
   const {
-    setShowModal,
+    setModalOpen,
     areContactDataValidated,
     getContactData,
     setStepStatus1,
@@ -116,7 +116,7 @@ const Contact = () => {
           <div className='contact-link-container'>
             <LinkToModal
               text={'Expand privacy policy'}
-              showModal={setShowModal}
+              showModal={setModalOpen}
               modalTopic={'privacy'}
             />
           </div>

@@ -1,5 +1,12 @@
 import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
+  /**Fetch */
+  if (action.type === 'GET_RESPONSE') {
+    return {
+      ...state,
+      response: action.payload,
+    };
+  }
   /**Set the validation progress */
   if (action.type === 'SET_STEP_STATUS_1') {
     return {
@@ -77,16 +84,7 @@ const reducer = (state, action) => {
     };
   }
 
-  if (action.type === 'SHOW_RESPONSE') {
-    return {
-      ...state,
-      response: action.payload,
-      modalResponse: true,
-      showModal: true,
-      modalText: '',
-      modalTitle: 'Successful registration',
-    };
-  }
+  /**Set Modal */
 
   if (action.type === 'SHOW_MODAL') {
     if (action.payload === 'help') {
@@ -95,6 +93,7 @@ const reducer = (state, action) => {
         showModal: true,
         modalTitle: modalHelp.title,
         modalText: modalHelp.text,
+        modalResponse: false,
       };
     }
     if (action.payload === 'privacy') {
@@ -103,11 +102,21 @@ const reducer = (state, action) => {
         showModal: true,
         modalTitle: modalPrivacy.title,
         modalText: modalPrivacy.text,
+        modalResponse: false,
+      };
+    }
+    if (action.payload === 'registration') {
+      return {
+        ...state,
+        showModal: true,
+        modalTitle: 'successful registration',
+        modalText: '',
+        modalResponse: true,
       };
     }
   }
 
-  if (action.type === 'CLOSE_MODAL') {
+  if (action.type === 'SET_MODAL_CLOSE') {
     return {
       ...state,
       showModal: false,

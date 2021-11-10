@@ -53,8 +53,9 @@ export const AppProvider = ({ children }) => {
     })
       .then(response => response.json())
       .then(data => {
+        getResponse(data);
         setLoader(false);
-        showResponse(data);
+        setModalOpen('registration');
       });
   }, [state.fetchPostUrl, state.newUser]);
 
@@ -66,6 +67,10 @@ export const AppProvider = ({ children }) => {
       setStepStatus2(false);
     }
   }, [state.dataReady, fetchPost]);
+
+  const getResponse = data => {
+    dispatch({ type: 'GET_RESPONSE', payload: data });
+  };
 
   /**Set the validation progress */
   const setStepStatus1 = value => {
@@ -121,17 +126,13 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
-  /**Set Large Modal */
-  const showResponse = data => {
-    dispatch({ type: 'SHOW_RESPONSE', payload: data });
-  };
-
-  const setShowModal = topic => {
+  /**Set Modal */
+  const setModalOpen = topic => {
     dispatch({ type: 'SHOW_MODAL', payload: topic });
   };
 
-  const closeModal = () => {
-    dispatch({ type: 'CLOSE_MODAL' });
+  const setModalClose = () => {
+    dispatch({ type: 'SET_MODAL_CLOSE' });
   };
 
   /**Set Narrow Modal */
@@ -182,8 +183,8 @@ export const AppProvider = ({ children }) => {
         setStepStatus1,
         setStepStatus2,
         setDataReady,
-        setShowModal,
-        closeModal,
+        setModalOpen,
+        setModalClose,
         setLoader,
         setDebouncer,
         areContactDataValidated,
