@@ -16,8 +16,7 @@ const Plans = () => {
   const handleSubmitPlans = useCallback(() => {
     if (!stepStatus1) {
       history.push('./');
-    }
-    if (
+    } else if (
       arePlansDataValidated(
         planFrom.current.value,
         planTo.current.value,

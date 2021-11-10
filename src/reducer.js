@@ -1,6 +1,29 @@
 import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
-  if (action.type === 'CONTACT_VALUES') {
+  /**Set the validation progress */
+  if (action.type === 'SET_STEP_STATUS_1') {
+    return {
+      ...state,
+      stepStatus1: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_STEP_STATUS_2') {
+    return {
+      ...state,
+      stepStatus2: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_DATA_READY') {
+    return {
+      ...state,
+      dataReady: action.payload,
+    };
+  }
+
+  /**Get data from forms on each page */
+  if (action.type === 'GET_CONTACT_VALUES') {
     const { fullName, phoneCode, phoneNumber, email, country } = action.payload;
     return {
       ...state,
@@ -14,7 +37,8 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'PLAN_VALUES') {
+
+  if (action.type === 'GET_PLAN_VALUES') {
     const { planFrom, planTo, accredited } = action.payload;
     return {
       ...state,
@@ -26,7 +50,8 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'PREFERENCES_VALUES') {
+
+  if (action.type === 'GET_PREFERENCES_VALUES') {
     const { preferences } = action.payload;
     return {
       ...state,
@@ -36,24 +61,22 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'SET_STEP_STATUS_1') {
+
+  /**Set Loader and Debouncer */
+  if (action.type === 'SET_LOADER') {
     return {
       ...state,
-      stepStatus1: action.payload,
+      loading: action.payload,
     };
   }
-  if (action.type === 'SET_STEP_STATUS_2') {
+
+  if (action.type === 'SET_DEBOUNCER') {
     return {
       ...state,
-      stepStatus2: action.payload,
+      debouncing: action.payload,
     };
   }
-  if (action.type === 'SET_DATA_READY') {
-    return {
-      ...state,
-      dataReady: action.payload,
-    };
-  }
+
   if (action.type === 'SHOW_RESPONSE') {
     return {
       ...state,
@@ -64,6 +87,7 @@ const reducer = (state, action) => {
       modalTitle: 'Successful registration',
     };
   }
+
   if (action.type === 'SHOW_MODAL') {
     if (action.payload === 'help') {
       return {
@@ -82,6 +106,7 @@ const reducer = (state, action) => {
       };
     }
   }
+
   if (action.type === 'CLOSE_MODAL') {
     return {
       ...state,
@@ -91,18 +116,7 @@ const reducer = (state, action) => {
       modalResponse: false,
     };
   }
-  if (action.type === 'SET_LOADER') {
-    return {
-      ...state,
-      loading: action.payload,
-    };
-  }
-  if (action.type === 'SET_DEBOUNCER') {
-    return {
-      ...state,
-      debouncing: action.payload,
-    };
-  }
+
   if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,

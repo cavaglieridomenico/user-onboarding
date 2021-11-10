@@ -39,6 +39,7 @@ const defaultState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
+  /**Fetch */
   const fetchPost = useCallback(() => {
     setLoader(true);
     fetch(state.fetchPostUrl, {
@@ -65,37 +66,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [state.dataReady, fetchPost]);
 
-  const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
-    dispatch({
-      type: 'CONTACT_VALUES',
-      payload: {
-        fullName: fullName,
-        phoneNumber: phoneNumber,
-        phoneCode: phoneCode,
-        email: email,
-        country: country,
-      },
-    });
-  };
-
-  const getPlansData = (planFrom, planTo, accredited) => {
-    dispatch({
-      type: 'PLAN_VALUES',
-      payload: {
-        planFrom: planFrom,
-        planTo: planTo,
-        accredited: accredited,
-      },
-    });
-  };
-
-  const getPreferencesData = preferences => {
-    dispatch({
-      type: 'PREFERENCES_VALUES',
-      payload: { preferences },
-    });
-  };
-
+  /**Set the validation progress */
   const setStepStatus1 = value => {
     dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
   };
@@ -108,6 +79,48 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DATA_READY', payload: value });
   };
 
+  /**Get data from forms on each page */
+  const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
+    dispatch({
+      type: 'GET_CONTACT_VALUES',
+      payload: {
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        phoneCode: phoneCode,
+        email: email,
+        country: country,
+      },
+    });
+  };
+
+  const getPlansData = (planFrom, planTo, accredited) => {
+    dispatch({
+      type: 'GET_PLAN_VALUES',
+      payload: {
+        planFrom: planFrom,
+        planTo: planTo,
+        accredited: accredited,
+      },
+    });
+  };
+
+  const getPreferencesData = preferences => {
+    dispatch({
+      type: 'GET_PREFERENCES_VALUES',
+      payload: { preferences },
+    });
+  };
+
+  /**Set Loader and Debouncer */
+  const setLoader = value => {
+    dispatch({ type: 'SET_LOADER', payload: value });
+  };
+
+  const setDebouncer = value => {
+    dispatch({ type: 'SET_DEBOUNCER', payload: value });
+  };
+
+  /**Set Large Modal */
   const showResponse = data => {
     dispatch({ type: 'SHOW_RESPONSE', payload: data });
   };
@@ -120,14 +133,7 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'CLOSE_MODAL' });
   };
 
-  const setLoader = value => {
-    dispatch({ type: 'SET_LOADER', payload: value });
-  };
-
-  const setDebouncer = value => {
-    dispatch({ type: 'SET_DEBOUNCER', payload: value });
-  };
-
+  /**Check Validation */
   const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
       dispatch({ type: 'ERROR_EMPTY_FIELDS' });
