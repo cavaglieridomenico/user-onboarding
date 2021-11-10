@@ -34,6 +34,7 @@ const defaultState = {
   debouncing: false,
   showNarrowModal: false,
   narrowModalText: '',
+  narrowModalType: '',
 };
 
 export const AppProvider = ({ children }) => {

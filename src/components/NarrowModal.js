@@ -3,23 +3,31 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
 const NarrowModal = () => {
-  const { showNarrowModal, narrowModalText, closeNarrowModal } =
-    useGlobalContext();
+  const {
+    showNarrowModal,
+    narrowModalText,
+    narrowModalType,
+    closeNarrowModal,
+  } = useGlobalContext();
   return (
     <div
-      className={`error-message-overlay ${
-        showNarrowModal ? 'show-error-message' : undefined
+      className={`narrow-modal-overlay ${
+        showNarrowModal ? 'show-narrow-modal' : undefined
       }`}
     >
       <div
-        className={`error-message-container ${
-          showNarrowModal ? 'show-error-message-container' : undefined
-        }`}
+        className={`narrow-modal-container 
+        ${showNarrowModal ? 'show-narrow-modal-container' : undefined}
+        narrow-modal-${narrowModalType}
+        `}
       >
         <button onClick={closeNarrowModal}>
-          <AiOutlineClose />
+          <AiOutlineClose
+            className={`narrow-modal-${narrowModalType}
+        `}
+          />
         </button>
-        <div className='error-message_text-container'>{narrowModalText}</div>
+        <div className='narrow-modal_text-container'>{narrowModalText}</div>
       </div>
     </div>
   );
