@@ -117,6 +117,15 @@ const reducer = (state, action) => {
     };
   }
 
+  /**Set Narrow Modal */
+  if (action.type === 'SET_NARROW_MODAL_CLOSED') {
+    return {
+      ...state,
+      showNarrowModal: false,
+    };
+  }
+
+  /**Check Validation */
   if (action.type === 'ERROR_EMPTY_FIELDS') {
     return {
       ...state,
@@ -143,12 +152,6 @@ const reducer = (state, action) => {
       ...state,
       showNarrowModal: true,
       narrowModalText: 'Sorry, at least one option must be selected.',
-    };
-  }
-  if (action.type === 'CLOSE_ERROR_MESSAGE') {
-    return {
-      ...state,
-      showNarrowModal: false,
     };
   }
 };

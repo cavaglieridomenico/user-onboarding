@@ -7,7 +7,7 @@ const NarrowModal = () => {
     showNarrowModal,
     narrowModalText,
     narrowModalType,
-    closeNarrowModal,
+    setNarrowModalClose,
   } = useGlobalContext();
   return (
     <div
@@ -21,7 +21,7 @@ const NarrowModal = () => {
         narrow-modal-${narrowModalType}
         `}
       >
-        <button onClick={closeNarrowModal}>
+        <button onClick={setNarrowModalClose}>
           <AiOutlineClose
             className={`narrow-modal-${narrowModalType}
         `}

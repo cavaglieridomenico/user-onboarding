@@ -134,6 +134,11 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'CLOSE_MODAL' });
   };
 
+  /**Set Narrow Modal */
+  const setNarrowModalClose = () => {
+    dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
+  };
+
   /**Check Validation */
   const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
@@ -167,10 +172,6 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
-  const closeNarrowModal = () => {
-    dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
-  };
-
   return (
     <AppContext.Provider
       value={{
@@ -188,7 +189,7 @@ export const AppProvider = ({ children }) => {
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
-        closeNarrowModal,
+        setNarrowModalClose,
       }}
     >
       {children}
