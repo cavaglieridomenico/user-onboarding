@@ -8,11 +8,13 @@ import Logo from './components/Logo';
 import Modal from './components/Modal';
 import Loader from './components/Loader';
 import Debouncer from './components/Debouncer';
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
   return (
     <Router>
       <Loader />
+      <ErrorMessage />
       <Debouncer />
       <Modal />
       <Logo view='logo-mobile' />

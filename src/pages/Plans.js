@@ -1,22 +1,33 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
-  const { getPlans } = useGlobalContext();
+  const history = useHistory();
+  const { getPlansData, arePlansDataValidated } = useGlobalContext();
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
 
-  const handleSubmitPlans = () => {
-    getPlans(
-      planFrom.current.value,
-      planTo.current.value,
-      accredited.current.elements.accredited.value
-    );
-  };
+  const handleSubmitPlans = useCallback(() => {
+    if (
+      arePlansDataValidated(
+        planFrom.current.value,
+        planTo.current.value,
+        accredited.current.elements.accredited.value
+      )
+    ) {
+      getPlansData(
+        planFrom.current.value,
+        planTo.current.value,
+        accredited.current.elements.accredited.value
+      );
+      history.push('./preferences');
+    }
+  }, [history, arePlansDataValidated, getPlansData]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -46,11 +57,11 @@ const Plans = () => {
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
-                  <input type='text' id='plans-from' ref={planFrom} />
+                  <input type='number' id='plans-from' ref={planFrom} />
                 </div>
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
-                  <input type='text' id='plans-to' ref={planTo} />
+                  <input type='number' id='plans-to' ref={planTo} />
                 </div>
                 <div className='slider'></div>
               </div>
@@ -86,7 +97,7 @@ const Plans = () => {
         </section>
         <Footer
           homePage={'/'}
-          nextPage={'/preferences'}
+          skipStep={'/preferences'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitPlans}
         />

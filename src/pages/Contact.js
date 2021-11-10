@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,22 +7,34 @@ import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 
 const Contact = () => {
-  const { getContact, setShowModal } = useGlobalContext();
+  const history = useHistory();
+  const { getContactData, setShowModal, areContactDataValidated } =
+    useGlobalContext();
+
   const fullName = useRef('');
   const phoneNumber = useRef('');
   const phoneCode = useRef('');
   const email = useRef('');
   const country = useRef('');
 
-  const handleSubmitContact = () => {
-    getContact(
-      fullName.current.value,
-      phoneNumber.current.value,
-      phoneCode.current.value,
-      email.current.value,
-      country.current.value
-    );
-  };
+  const handleSubmitContact = useCallback(() => {
+    if (
+      areContactDataValidated(
+        fullName.current.value,
+        phoneNumber.current.value,
+        email.current.value
+      )
+    ) {
+      getContactData(
+        fullName.current.value,
+        phoneNumber.current.value,
+        phoneCode.current.value,
+        email.current.value,
+        country.current.value
+      );
+      history.push('./plans');
+    }
+  }, [history, areContactDataValidated, getContactData]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -62,7 +75,7 @@ const Contact = () => {
                       🇩🇪
                     </option>
                   </select>
-                  <input type='text' id='phone' ref={phoneNumber} />
+                  <input type='number' id='phone' ref={phoneNumber} />
                 </div>
                 <div className='email-box'>
                   <label htmlFor='email'>E-mail address</label>
@@ -105,7 +118,7 @@ const Contact = () => {
         </section>
         <Footer
           homePage={'/'}
-          nextPage={'/plans'}
+          skipStep={'/plans'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitContact}
         />

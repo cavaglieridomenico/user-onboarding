@@ -1,5 +1,5 @@
 import React from 'react';
-import { GrClose } from 'react-icons/gr';
+import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
 const Modal = () => {
@@ -16,7 +16,7 @@ const Modal = () => {
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>
       <div className='modal-container '>
         <button className='modal-close' onClick={closeModal}>
-          <GrClose />
+          <AiOutlineClose />
         </button>
 
         <h1 className='modal-title'>{modalTitle}</h1>

@@ -1,5 +1,11 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
+import {
+  areThereAnyEmptyString,
+  isItAnInvalidEmail,
+  isTheNameTooShort,
+  isAnEmptyArray,
+} from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
 
@@ -24,6 +30,8 @@ const defaultState = {
   modalResponse: false,
   loading: false,
   debouncing: false,
+  showErrorMessage: false,
+  errorMessageText: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -53,7 +61,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [state.dataReady, fetchPost]);
 
-  const getContact = (fullName, phoneNumber, phoneCode, email, country) => {
+  const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
       type: 'CONTACT_VALUES',
       payload: {
@@ -66,7 +74,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const getPlans = (planFrom, planTo, accredited) => {
+  const getPlansData = (planFrom, planTo, accredited) => {
     dispatch({
       type: 'PLAN_VALUES',
       payload: {
@@ -77,7 +85,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const getPreferences = preferences => {
+  const getPreferencesData = preferences => {
     dispatch({
       type: 'PREFERENCES_VALUES',
       payload: { preferences },
@@ -108,18 +116,58 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
+  const areContactDataValidated = (fullName, phoneNumber, email) => {
+    if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
+      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      return false;
+    }
+    if (isTheNameTooShort(fullName)) {
+      dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
+      return false;
+    }
+    if (isItAnInvalidEmail(email)) {
+      dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
+      return false;
+    }
+    return true;
+  };
+
+  const arePlansDataValidated = (planFrom, planTo, accredited) => {
+    if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
+      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      return false;
+    }
+    return true;
+  };
+
+  const arePreferencesDataValidated = checkedPref => {
+    if (isAnEmptyArray(checkedPref)) {
+      dispatch({ type: 'ERROR_NO_CHECKBOX_SELECTED' });
+      return false;
+    }
+    return true;
+  };
+
+  const closeErrorMessage = () => {
+    dispatch({ type: 'CLOSE_ERROR_MESSAGE' });
+  };
+
   return (
     <AppContext.Provider
       value={{
         ...state,
-        getContact,
-        getPlans,
-        getPreferences,
+        getContactData,
+        getPlansData,
+        getPreferencesData,
         setDataReady,
         setShowModal,
         closeModal,
         setLoader,
         setDebouncer,
+        areContactDataValidated,
+        arePlansDataValidated,
+        arePreferencesDataValidated,
+        closeErrorMessage,
       }}
     >
       {children}

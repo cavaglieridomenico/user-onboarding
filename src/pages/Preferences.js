@@ -1,14 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 
 const Preferences = () => {
-  const { getPreferences, setDataReady } = useGlobalContext();
+  const history = useHistory();
+  const { getPreferencesData, setDataReady, arePreferencesDataValidated } =
+    useGlobalContext();
   const preferences = useRef('');
 
-  const handleSubmitPreferences = () => {
+  const handleSubmitPreferences = useCallback(() => {
     const allPrefs = preferences.current.elements.preferences;
     const checkedPrefs = [];
     for (let pref of allPrefs) {
@@ -16,9 +19,12 @@ const Preferences = () => {
         checkedPrefs.push(pref.value);
       }
     }
-    getPreferences(checkedPrefs);
-    setDataReady(true);
-  };
+    if (arePreferencesDataValidated(checkedPrefs)) {
+      getPreferencesData(checkedPrefs);
+      setDataReady(true);
+      history.push('./');
+    }
+  }, [arePreferencesDataValidated, getPreferencesData, history, setDataReady]);
 
   return (
     <div className='onboarding-outerbox pref'>
@@ -124,7 +130,7 @@ const Preferences = () => {
         </section>
         <Footer
           homePage={'/'}
-          nextPage={'/'}
+          skipStep={'/'}
           textRightButton={'Finish'}
           handleSubmit={handleSubmitPreferences}
         />
