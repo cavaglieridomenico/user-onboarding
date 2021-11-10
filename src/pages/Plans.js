@@ -7,16 +7,14 @@ import { useGlobalContext } from '../context';
 
 const Plans = () => {
   const history = useHistory();
-  const { arePlansDataValidated, getPlansData, stepStatus1, setStepStatus2 } =
+  const { arePlansDataValidated, getPlansData, setStepStatus2 } =
     useGlobalContext();
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
 
   const handleSubmitPlans = useCallback(() => {
-    if (!stepStatus1) {
-      history.push('./');
-    } else if (
+    if (
       arePlansDataValidated(
         planFrom.current.value,
         planTo.current.value,
@@ -31,13 +29,7 @@ const Plans = () => {
       setStepStatus2(true);
       history.push('./preferences');
     }
-  }, [
-    history,
-    arePlansDataValidated,
-    getPlansData,
-    stepStatus1,
-    setStepStatus2,
-  ]);
+  }, [history, arePlansDataValidated, getPlansData, setStepStatus2]);
 
   return (
     <div className='onboarding-outerbox'>

@@ -1,13 +1,13 @@
 import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
-  /**Fetch */
+  /*Fetch*/
   if (action.type === 'GET_RESPONSE') {
     return {
       ...state,
       response: action.payload,
     };
   }
-  /**Set the validation progress */
+  /*Set the validation progress*/
   if (action.type === 'SET_STEP_STATUS_1') {
     return {
       ...state,
@@ -22,6 +22,13 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === 'SET_STEP_STATUS_3') {
+    return {
+      ...state,
+      stepStatus3: action.payload,
+    };
+  }
+
   if (action.type === 'SET_DATA_READY') {
     return {
       ...state,
@@ -29,7 +36,7 @@ const reducer = (state, action) => {
     };
   }
 
-  /**Get data from forms on each page */
+  /*Get data from forms on each page*/
   if (action.type === 'GET_CONTACT_VALUES') {
     const { fullName, phoneCode, phoneNumber, email, country } = action.payload;
     return {
@@ -69,7 +76,7 @@ const reducer = (state, action) => {
     };
   }
 
-  /**Set Loader and Debouncer */
+  /*Set Loader and Debouncer*/
   if (action.type === 'SET_LOADER') {
     return {
       ...state,
@@ -84,9 +91,8 @@ const reducer = (state, action) => {
     };
   }
 
-  /**Set Modal */
-
-  if (action.type === 'SHOW_MODAL') {
+  /*Set Modal*/
+  if (action.type === 'SET_MODAL_OPEN') {
     if (action.payload === 'help') {
       return {
         ...state,
@@ -128,7 +134,7 @@ const reducer = (state, action) => {
 
   /*Set Narrow Modal*/
   if (action.type === 'SET_NARROW_MODAL_OPEN') {
-    const { text, type } = action.payload;
+    const { type, text } = action.payload;
     return {
       ...state,
       showNarrowModal: true,

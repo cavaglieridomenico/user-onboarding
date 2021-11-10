@@ -12,8 +12,8 @@ const Contact = () => {
     setModalOpen,
     areContactDataValidated,
     getContactData,
-    setStepStatus1,
     setNarrowModalOpen,
+    setStepStatus1,
   } = useGlobalContext();
 
   const fullName = useRef('');
@@ -30,7 +30,6 @@ const Contact = () => {
         email.current.value
       )
     ) {
-      setNarrowModalOpen('success', 'Personal data entered.');
       getContactData(
         fullName.current.value,
         phoneNumber.current.value,
@@ -39,14 +38,15 @@ const Contact = () => {
         country.current.value
       );
       setStepStatus1(true);
+      setNarrowModalOpen('success', 'Personal data entered.');
       history.push('./plans');
     }
   }, [
     history,
     areContactDataValidated,
     getContactData,
-    setStepStatus1,
     setNarrowModalOpen,
+    setStepStatus1,
   ]);
 
   return (

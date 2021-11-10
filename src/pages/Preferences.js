@@ -7,44 +7,24 @@ import { useGlobalContext } from '../context';
 
 const Preferences = () => {
   const history = useHistory();
-  const {
-    getPreferencesData,
-    setDataReady,
-    arePreferencesDataValidated,
-    stepStatus1,
-    stepStatus2,
-  } = useGlobalContext();
+  const { getPreferencesData, setDataReady, arePreferencesDataValidated } =
+    useGlobalContext();
   const preferences = useRef('');
 
   const handleSubmitPreferences = useCallback(() => {
-    if (!stepStatus1) {
+    const allPrefs = preferences.current.elements.preferences;
+    const checkedPrefs = [];
+    for (let pref of allPrefs) {
+      if (pref.checked) {
+        checkedPrefs.push(pref.value);
+      }
+    }
+    if (arePreferencesDataValidated(checkedPrefs)) {
+      getPreferencesData(checkedPrefs);
+      setDataReady(true);
       history.push('./');
     }
-    if (stepStatus1 && !stepStatus2) {
-      history.push('./plans');
-    }
-    if (stepStatus1 && stepStatus2) {
-      const allPrefs = preferences.current.elements.preferences;
-      const checkedPrefs = [];
-      for (let pref of allPrefs) {
-        if (pref.checked) {
-          checkedPrefs.push(pref.value);
-        }
-      }
-      if (arePreferencesDataValidated(checkedPrefs)) {
-        getPreferencesData(checkedPrefs);
-        setDataReady(true);
-        history.push('./');
-      }
-    }
-  }, [
-    arePreferencesDataValidated,
-    getPreferencesData,
-    history,
-    setDataReady,
-    stepStatus1,
-    stepStatus2,
-  ]);
+  }, [arePreferencesDataValidated, getPreferencesData, history, setDataReady]);
 
   return (
     <div className='onboarding-outerbox pref'>
@@ -72,7 +52,7 @@ const Preferences = () => {
             </h2>
             <form id='form-pref' ref={preferences}>
               <div className='form-container'>
-                <div className='check-box selected'>
+                <div className='check-box'>
                   <input
                     type='checkbox'
                     id='single-family'

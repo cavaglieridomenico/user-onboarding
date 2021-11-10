@@ -9,7 +9,7 @@ const Footer = ({ homePage, skipStep, textRightButton, handleSubmit }) => {
   useEffect(() => {
     setTimeout(() => {
       setDebouncer(false);
-    }, 3500);
+    }, 3000);
   }, [debouncing, setDebouncer]);
 
   return (

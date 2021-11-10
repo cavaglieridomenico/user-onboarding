@@ -11,10 +11,6 @@ test('It should return true if a single input is an empty string', () => {
   expect(areThereAnyEmptyString('')).toEqual(true);
 });
 
-test('It should return false if a single input is an string', () => {
-  expect(areThereAnyEmptyString('word')).toEqual(false);
-});
-
 test('It should return true if multiple inputs are an empty string', () => {
   expect(areThereAnyEmptyString('', '', '')).toEqual(true);
 });
@@ -23,13 +19,21 @@ test('It should return true if even one of the inputs is an empty string', () =>
   expect(areThereAnyEmptyString('', 'word', '')).toEqual(true);
 });
 
-/*Empty array*/
-test('It should return false if even one of the inputs is an empty string', () => {
+test('It should return false if a single input is an string', () => {
+  expect(areThereAnyEmptyString('word')).toEqual(false);
+});
+
+test('It should return false if an array is not empty', () => {
   expect(areThereAnyEmptyString('word', 'word', 'word')).toEqual(false);
 });
 
+/*Empty array*/
 test('It should return true if an array is empty', () => {
   expect(isAnEmptyArray([])).toEqual(true);
+});
+
+test('It should return false if an array is not empty', () => {
+  expect(isAnEmptyArray(['word'])).toEqual(false);
 });
 
 test('It should return false if an array is not empty', () => {
