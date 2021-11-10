@@ -157,7 +157,6 @@ export const AppProvider = ({ children }) => {
       return false;
     }
     if (isTheNameTooShort(fullName)) {
-      //dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
       setNarrowModalOpen(
         'danger',
         'Sorry, the name requires at least 3 characters.'
@@ -165,7 +164,6 @@ export const AppProvider = ({ children }) => {
       return false;
     }
     if (isItAnInvalidEmail(email)) {
-      //dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
       setNarrowModalOpen(
         'danger',
         'Sorry, the format of the email is not valid.'
@@ -177,7 +175,9 @@ export const AppProvider = ({ children }) => {
 
   const arePlansDataValidated = (planFrom, planTo, accredited) => {
     if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
-      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      //dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
+
       return false;
     }
     return true;
@@ -185,7 +185,12 @@ export const AppProvider = ({ children }) => {
 
   const arePreferencesDataValidated = checkedPref => {
     if (isAnEmptyArray(checkedPref)) {
-      dispatch({ type: 'ERROR_NO_CHECKBOX_SELECTED' });
+      //dispatch({ type: 'ERROR_NO_CHECKBOX_SELECTED' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, at least one option must be selected.'
+      );
+
       return false;
     }
     return true;

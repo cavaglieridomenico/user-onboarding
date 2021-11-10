@@ -145,36 +145,6 @@ const reducer = (state, action) => {
       narrowModalText: '',
     };
   }
-
-  /*Check Validation*/
-  if (action.type === 'ERROR_EMPTY_FIELDS') {
-    return {
-      ...state,
-      showNarrowModal: true,
-      narrowModalText: 'Sorry, all fields must be filled in.',
-    };
-  }
-  if (action.type === 'ERROR_MINIMUM_3_CHARACTERS') {
-    return {
-      ...state,
-      showNarrowModal: true,
-      narrowModalText: 'Sorry, the name requires at least 3 characters.',
-    };
-  }
-  if (action.type === 'ERROR_INVALID_MAIL_FORMAT') {
-    return {
-      ...state,
-      showNarrowModal: true,
-      narrowModalText: 'Sorry, the format of the email is not valid.',
-    };
-  }
-  if (action.type === 'ERROR_NO_CHECKBOX_SELECTED') {
-    return {
-      ...state,
-      showNarrowModal: true,
-      narrowModalText: 'Sorry, at least one option must be selected.',
-    };
-  }
 };
 
 export default reducer;
