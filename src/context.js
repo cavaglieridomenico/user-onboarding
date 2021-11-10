@@ -157,11 +157,19 @@ export const AppProvider = ({ children }) => {
       return false;
     }
     if (isTheNameTooShort(fullName)) {
-      dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
+      //dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, the name requires at least 3 characters.'
+      );
       return false;
     }
     if (isItAnInvalidEmail(email)) {
-      dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
+      //dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, the format of the email is not valid.'
+      );
       return false;
     }
     return true;
