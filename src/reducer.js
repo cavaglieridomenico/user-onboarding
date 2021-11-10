@@ -36,7 +36,19 @@ const reducer = (state, action) => {
       },
     };
   }
-  if (action.type === 'DATA_READY') {
+  if (action.type === 'SET_STEP_STATUS_1') {
+    return {
+      ...state,
+      stepStatus1: action.payload,
+    };
+  }
+  if (action.type === 'SET_STEP_STATUS_2') {
+    return {
+      ...state,
+      stepStatus2: action.payload,
+    };
+  }
+  if (action.type === 'SET_DATA_READY') {
     return {
       ...state,
       dataReady: action.payload,
@@ -49,7 +61,7 @@ const reducer = (state, action) => {
       modalResponse: true,
       showModal: true,
       modalText: '',
-      modalTitle: 'Registration',
+      modalTitle: 'Successful registration',
     };
   }
   if (action.type === 'SHOW_MODAL') {

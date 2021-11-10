@@ -8,8 +8,12 @@ import { useGlobalContext } from '../context';
 
 const Contact = () => {
   const history = useHistory();
-  const { getContactData, setShowModal, areContactDataValidated } =
-    useGlobalContext();
+  const {
+    setShowModal,
+    areContactDataValidated,
+    getContactData,
+    setStepStatus1,
+  } = useGlobalContext();
 
   const fullName = useRef('');
   const phoneNumber = useRef('');
@@ -32,9 +36,10 @@ const Contact = () => {
         email.current.value,
         country.current.value
       );
+      setStepStatus1(true);
       history.push('./plans');
     }
-  }, [history, areContactDataValidated, getContactData]);
+  }, [history, areContactDataValidated, getContactData, setStepStatus1]);
 
   return (
     <div className='onboarding-outerbox'>

@@ -11,6 +11,8 @@ const AppContext = React.createContext();
 
 const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
+  stepStatus1: false,
+  stepStatus2: false,
   dataReady: false,
   response: {},
   newUser: {
@@ -58,6 +60,8 @@ export const AppProvider = ({ children }) => {
     if (state.dataReady) {
       fetchPost();
       setDataReady(false);
+      setStepStatus1(false);
+      setStepStatus2(false);
     }
   }, [state.dataReady, fetchPost]);
 
@@ -92,8 +96,16 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const setStepStatus1 = value => {
+    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
+  };
+
+  const setStepStatus2 = value => {
+    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
+  };
+
   const setDataReady = value => {
-    dispatch({ type: 'DATA_READY', payload: value });
+    dispatch({ type: 'SET_DATA_READY', payload: value });
   };
 
   const showResponse = data => {
@@ -159,6 +171,8 @@ export const AppProvider = ({ children }) => {
         getContactData,
         getPlansData,
         getPreferencesData,
+        setStepStatus1,
+        setStepStatus2,
         setDataReady,
         setShowModal,
         closeModal,
