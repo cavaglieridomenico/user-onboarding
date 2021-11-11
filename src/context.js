@@ -43,22 +43,29 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   /**Fetch*/
-  const fetchPost = useCallback(() => {
+  const fetchPost = useCallback(async () => {
     setLoader(true);
-    fetch(state.fetchPostUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(state.newUser),
-    })
-      .then(response => response.json())
-      .then(data => {
+    try {
+      const fetchResponse = await fetch(state.fetchPostUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(state.newUser),
+      });
+      if (fetchResponse.ok) {
+        const data = await fetchResponse.json();
         dispatch({ type: 'GET_RESPONSE', payload: data });
         setLoader(false);
         setModalOpen('registration');
-      });
+      } else {
+        throw new Error('Sorry, network error... please try again later.');
+      }
+    } catch (error) {
+      setLoader(false);
+      setNarrowModalOpen('danger', error.message);
+    }
   }, [state.fetchPostUrl, state.newUser]);
 
   useEffect(() => {

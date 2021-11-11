@@ -48,7 +48,7 @@ const Contact = () => {
       setNarrowModalOpen(
         'success',
         'Personal data acquired.',
-        'Please enter an investment plan'
+        'Please enter an investment plan.'
       );
       history.push('./plans');
     }
