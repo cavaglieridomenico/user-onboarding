@@ -64,7 +64,7 @@ const Plans = () => {
         setNarrowModalOpen(
           'success',
           'Investment plan data acquired.',
-          'Please enter your preferences'
+          'Please enter your preferences.'
         );
         history.push('./preferences');
       }

@@ -98,7 +98,7 @@ h1.modal-title {
 }
 
 /*SM – large tablet port. and medium tablet land.*/
-@media all and (min-height: 800px) {
+@media all and (min-width: 480px) and(min-height: 800px) {
   .modal-container {
     height: fit-content;
   }

@@ -7,7 +7,7 @@ const Debouncer = () => {
   useEffect(() => {
     setTimeout(() => {
       setDebouncer(false);
-    }, 2500);
+    }, 1000);
   }, [debouncing, setDebouncer]);
 
   return <div className={`debouncer ${debouncing && 'show-debouncer'}`}></div>;
