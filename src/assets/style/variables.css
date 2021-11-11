@@ -52,9 +52,14 @@ Variables
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
   --outerMinHeight: max-content;
-  --outerHeight: calc(100vh - var(--logoMobileHeight));
-  --innerHeight: calc(100vh - var(--logoMobileHeight));
+  --outerHeight: calc(
+    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
+  );
+  --innerHeight: calc(
+    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
+  );
   --logoMobileHeight: 80px;
+  --progressMobileHeight: 40px;
   --innerPadding: 7%;
 }
 

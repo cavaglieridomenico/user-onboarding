@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 import Loader from './components/Loader';
 import Debouncer from './components/Debouncer';
 import NarrowModal from './components/NarrowModal';
+import Progress from './components/Progress';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Debouncer />
       <Modal />
       <Logo view='logo-mobile' />
+      <Progress view='progress-mobile' />
       <Switch>
         <Route exact path='/'>
           <Contact />
