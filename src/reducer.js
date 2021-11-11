@@ -134,12 +134,13 @@ const reducer = (state, action) => {
 
   /*Set Narrow Modal*/
   if (action.type === 'SET_NARROW_MODAL_OPEN') {
-    const { type, text } = action.payload;
+    const { type, text, text2 } = action.payload;
     return {
       ...state,
       showNarrowModal: true,
       narrowModalType: type,
       narrowModalText: text,
+      narrowModalText2: text2,
     };
   }
 
@@ -149,6 +150,7 @@ const reducer = (state, action) => {
       showNarrowModal: false,
       narrowModalType: '',
       narrowModalText: '',
+      narrowModalText2: '',
     };
   }
 };

@@ -7,24 +7,75 @@ import { useGlobalContext } from '../context';
 
 const Preferences = () => {
   const history = useHistory();
-  const { getPreferencesData, setDataReady, arePreferencesDataValidated } =
-    useGlobalContext();
+
+  const {
+    arePreferencesDataValidated,
+    getPreferencesData,
+    setNarrowModalOpen,
+    setDataReady,
+    setStepStatus3,
+    stepStatus1,
+    stepStatus2,
+  } = useGlobalContext();
+
   const preferences = useRef('');
 
-  const handleSubmitPreferences = useCallback(() => {
-    const allPrefs = preferences.current.elements.preferences;
-    const checkedPrefs = [];
-    for (let pref of allPrefs) {
-      if (pref.checked) {
-        checkedPrefs.push(pref.value);
+  /**
+   * Check the status of the previous steps and, if someone has not yet been updated,
+   * directly opens the corresponding page in progressive order,
+   * with an alert for the user.
+   */
+  const goToTheRightPageFromPreferences = useCallback(() => {
+    if (!stepStatus1) {
+      history.push('./');
+      setNarrowModalOpen('danger', 'Please enter personal data first.');
+    }
+    if (stepStatus1 && !stepStatus2) {
+      history.push('./plans');
+      setNarrowModalOpen('danger', 'Please enter an investment plan first.');
+    }
+  }, [history, stepStatus1, stepStatus2, setNarrowModalOpen]);
+
+  /**
+   * Handle click on form
+   */
+  const handleClickPreferencesForm = () => {
+    goToTheRightPageFromPreferences();
+  };
+
+  /**
+   * Update the properties of the newUser object, if the form data is validated.
+   * Updates the progress of data acquisition across the entire application.
+   * Declares that the newUser object is ready for submission.
+   * directly opens the Contact page
+   */
+  const handleSubmitPreferencesForm = useCallback(() => {
+    goToTheRightPageFromPreferences();
+    if (stepStatus1 && stepStatus2) {
+      const allPrefs = preferences.current.elements.preferences;
+      const checkedPrefs = [];
+      for (let pref of allPrefs) {
+        if (pref.checked) {
+          checkedPrefs.push(pref.value);
+        }
+      }
+      if (arePreferencesDataValidated(checkedPrefs)) {
+        getPreferencesData(checkedPrefs);
+        setStepStatus3(true);
+        setDataReady(true);
+        history.push('./');
       }
     }
-    if (arePreferencesDataValidated(checkedPrefs)) {
-      getPreferencesData(checkedPrefs);
-      setDataReady(true);
-      history.push('./');
-    }
-  }, [arePreferencesDataValidated, getPreferencesData, history, setDataReady]);
+  }, [
+    goToTheRightPageFromPreferences,
+    stepStatus1,
+    stepStatus2,
+    arePreferencesDataValidated,
+    getPreferencesData,
+    setStepStatus3,
+    setDataReady,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox pref'>
@@ -50,7 +101,11 @@ const Preferences = () => {
             <h2 className='pref-title2'>
               What kind of real estate are you interested in?
             </h2>
-            <form id='form-pref' ref={preferences}>
+            <form
+              id='form-pref'
+              ref={preferences}
+              onClick={handleClickPreferencesForm}
+            >
               <div className='form-container'>
                 <div className='check-box'>
                   <input
@@ -132,7 +187,7 @@ const Preferences = () => {
           homePage={'/'}
           skipStep={'/'}
           textRightButton={'Finish'}
-          handleSubmit={handleSubmitPreferences}
+          handleSubmit={handleSubmitPreferencesForm}
         />
       </div>
     </div>

@@ -36,6 +36,7 @@ const defaultState = {
   showNarrowModal: false,
   narrowModalType: '',
   narrowModalText: '',
+  narrowModalText2: '',
 };
 
 export const AppProvider = ({ children }) => {
@@ -66,6 +67,7 @@ export const AppProvider = ({ children }) => {
       setDataReady(false);
       setStepStatus1(false);
       setStepStatus2(false);
+      setStepStatus3(false);
     }
   }, [state.dataReady, fetchPost]);
 
@@ -137,10 +139,10 @@ export const AppProvider = ({ children }) => {
   };
 
   /*Set Narrow Modal*/
-  const setNarrowModalOpen = (type, text) => {
+  const setNarrowModalOpen = (type, text, text2) => {
     dispatch({
       type: 'SET_NARROW_MODAL_OPEN',
-      payload: { type, text },
+      payload: { type, text, text2 },
     });
   };
 

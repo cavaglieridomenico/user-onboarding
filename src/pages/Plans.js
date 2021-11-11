@@ -7,29 +7,77 @@ import { useGlobalContext } from '../context';
 
 const Plans = () => {
   const history = useHistory();
-  const { arePlansDataValidated, getPlansData, setStepStatus2 } =
-    useGlobalContext();
+
+  const {
+    arePlansDataValidated,
+    getPlansData,
+    setNarrowModalOpen,
+    setStepStatus2,
+    stepStatus1,
+  } = useGlobalContext();
+
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
 
-  const handleSubmitPlans = useCallback(() => {
-    if (
-      arePlansDataValidated(
-        planFrom.current.value,
-        planTo.current.value,
-        accredited.current.elements.accredited.value
-      )
-    ) {
-      getPlansData(
-        planFrom.current.value,
-        planTo.current.value,
-        accredited.current.elements.accredited.value
-      );
-      setStepStatus2(true);
-      history.push('./preferences');
+  /**
+   * Check the status of the previous step and, if it has not yet been updated,
+   * directly open the corresponding page,
+   * with an alert for the user.
+   */
+  const goToTheRightPageFromPlans = useCallback(() => {
+    if (!stepStatus1) {
+      history.push('./');
+      setNarrowModalOpen('danger', 'Please enter personal data first.');
     }
-  }, [history, arePlansDataValidated, getPlansData, setStepStatus2]);
+  }, [history, stepStatus1, setNarrowModalOpen]);
+
+  /**
+   * Handle click on form
+   */
+  const handleClickPlansForms = () => {
+    goToTheRightPageFromPlans();
+  };
+
+  /**
+   * Update the properties of the newUser object, if the form data is validated.
+   * Update the progress of data acquisition across the entire application.
+   * Notify the user of the correct data acquisition.
+   * Directly opens the next page.
+   */
+  const handleSubmitPlansForms = useCallback(() => {
+    goToTheRightPageFromPlans();
+    if (stepStatus1) {
+      if (
+        arePlansDataValidated(
+          planFrom.current.value,
+          planTo.current.value,
+          accredited.current.elements.accredited.value
+        )
+      ) {
+        getPlansData(
+          planFrom.current.value,
+          planTo.current.value,
+          accredited.current.elements.accredited.value
+        );
+        setStepStatus2(true);
+        setNarrowModalOpen(
+          'success',
+          'Investment plan data acquired.',
+          'Please enter your preferences'
+        );
+        history.push('./preferences');
+      }
+    }
+  }, [
+    goToTheRightPageFromPlans,
+    stepStatus1,
+    arePlansDataValidated,
+    getPlansData,
+    setStepStatus2,
+    setNarrowModalOpen,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -55,7 +103,7 @@ const Plans = () => {
             <h2 className='planning-text'>
               How much are you planning to invest in this year?
             </h2>
-            <form id='form-plans'>
+            <form id='form-plans' onClick={handleClickPlansForms}>
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
@@ -71,18 +119,20 @@ const Plans = () => {
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>
-            <form id='form-investor' ref={accredited}>
+            <form
+              id='form-investor'
+              ref={accredited}
+              onClick={handleClickPlansForms}
+            >
               <div className='form-container'>
-                <div className='radio-investor-box selected'>
+                <div className='radio-investor-box'>
                   <input
                     type='radio'
                     id='accedited-yes'
                     name='accredited'
                     value='yes'
                   />
-                  <label htmlFor='accedited-yes' className='selected'>
-                    Yes
-                  </label>
+                  <label htmlFor='accedited-yes'>Yes</label>
                 </div>
                 <div className='radio-investor-box'>
                   <input
@@ -101,7 +151,7 @@ const Plans = () => {
           homePage={'/'}
           skipStep={'/preferences'}
           textRightButton={'Next step'}
-          handleSubmit={handleSubmitPlans}
+          handleSubmit={handleSubmitPlansForms}
         />
       </div>
     </div>
