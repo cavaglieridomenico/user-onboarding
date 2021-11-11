@@ -7,6 +7,7 @@ const NarrowModal = () => {
     showNarrowModal,
     narrowModalType,
     narrowModalText,
+    narrowModalText2,
     setNarrowModalClosed,
   } = useGlobalContext();
   return (
@@ -27,7 +28,11 @@ const NarrowModal = () => {
         `}
           />
         </button>
-        <div className='narrow-modal_text-container'>{narrowModalText}</div>
+        <div className='narrow-modal_text-container'>
+          <p>{narrowModalText}</p>
+          <br />
+          <p>{narrowModalText2}</p>
+        </div>
       </div>
     </div>
   );
