@@ -72,11 +72,16 @@ export const AppProvider = ({ children }) => {
     if (state.dataReady) {
       fetchPost();
       setDataReady(false);
+    }
+  }, [state.dataReady, fetchPost]);
+
+  useEffect(() => {
+    setTimeout(() => {
       setStepStatus1(false);
       setStepStatus2(false);
       setStepStatus3(false);
-    }
-  }, [state.dataReady, fetchPost]);
+    }, 5000);
+  }, [state.dataReady]);
 
   /*Set the validation progress*/
   const setStepStatus1 = value => {

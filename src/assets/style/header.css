@@ -7,6 +7,7 @@ header {
 }
 
 .header__step {
+  display: none;
   text-transform: uppercase;
   font-weight: 600;
   opacity: 0.8;
@@ -24,5 +25,8 @@ header {
 @media all and (min-width: 992px) and (min-height: 800px) {
   header {
     flex-direction: row;
+  }
+  .header__step {
+    display: block;
   }
 }
