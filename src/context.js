@@ -13,6 +13,7 @@ const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
   stepStatus1: false,
   stepStatus2: false,
+  stepStatus3: false,
   dataReady: false,
   response: {},
   newUser: {
@@ -33,14 +34,15 @@ const defaultState = {
   loading: false,
   debouncing: false,
   showNarrowModal: false,
-  narrowModalText: '',
   narrowModalType: '',
+  narrowModalText: '',
+  narrowModalText2: '',
 };
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  /**Fetch */
+  /**Fetch*/
   const fetchPost = useCallback(() => {
     setLoader(true);
     fetch(state.fetchPostUrl, {
@@ -53,7 +55,7 @@ export const AppProvider = ({ children }) => {
     })
       .then(response => response.json())
       .then(data => {
-        getResponse(data);
+        dispatch({ type: 'GET_RESPONSE', payload: data });
         setLoader(false);
         setModalOpen('registration');
       });
@@ -65,14 +67,11 @@ export const AppProvider = ({ children }) => {
       setDataReady(false);
       setStepStatus1(false);
       setStepStatus2(false);
+      setStepStatus3(false);
     }
   }, [state.dataReady, fetchPost]);
 
-  const getResponse = data => {
-    dispatch({ type: 'GET_RESPONSE', payload: data });
-  };
-
-  /**Set the validation progress */
+  /*Set the validation progress*/
   const setStepStatus1 = value => {
     dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
   };
@@ -81,11 +80,15 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
   };
 
+  const setStepStatus3 = value => {
+    dispatch({ type: 'SET_STEP_STATUS_3', payload: value });
+  };
+
   const setDataReady = value => {
     dispatch({ type: 'SET_DATA_READY', payload: value });
   };
 
-  /**Get data from forms on each page */
+  /*Get data from forms on each page*/
   const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
     dispatch({
       type: 'GET_CONTACT_VALUES',
@@ -117,7 +120,7 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  /**Set Loader and Debouncer */
+  /*Set Loader and Debouncer*/
   const setLoader = value => {
     dispatch({ type: 'SET_LOADER', payload: value });
   };
@@ -126,32 +129,45 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_DEBOUNCER', payload: value });
   };
 
-  /**Set Modal */
+  /*Set Modal*/
   const setModalOpen = topic => {
-    dispatch({ type: 'SHOW_MODAL', payload: topic });
+    dispatch({ type: 'SET_MODAL_OPEN', payload: topic });
   };
 
   const setModalClose = () => {
     dispatch({ type: 'SET_MODAL_CLOSE' });
   };
 
-  /**Set Narrow Modal */
-  const setNarrowModalClose = () => {
+  /*Set Narrow Modal*/
+  const setNarrowModalOpen = (type, text, text2) => {
+    dispatch({
+      type: 'SET_NARROW_MODAL_OPEN',
+      payload: { type, text, text2 },
+    });
+  };
+
+  const setNarrowModalClosed = () => {
     dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
   };
 
-  /**Check Validation */
+  /*Check form validation*/
   const areContactDataValidated = (fullName, phoneNumber, email) => {
     if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
-      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
     if (isTheNameTooShort(fullName)) {
-      dispatch({ type: 'ERROR_MINIMUM_3_CHARACTERS' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, the name requires at least 3 characters.'
+      );
       return false;
     }
     if (isItAnInvalidEmail(email)) {
-      dispatch({ type: 'ERROR_INVALID_MAIL_FORMAT' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, the format of the email is not valid.'
+      );
       return false;
     }
     return true;
@@ -159,7 +175,8 @@ export const AppProvider = ({ children }) => {
 
   const arePlansDataValidated = (planFrom, planTo, accredited) => {
     if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
-      dispatch({ type: 'ERROR_EMPTY_FIELDS' });
+      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
+
       return false;
     }
     return true;
@@ -167,7 +184,11 @@ export const AppProvider = ({ children }) => {
 
   const arePreferencesDataValidated = checkedPref => {
     if (isAnEmptyArray(checkedPref)) {
-      dispatch({ type: 'ERROR_NO_CHECKBOX_SELECTED' });
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, at least one option must be selected.'
+      );
+
       return false;
     }
     return true;
@@ -182,15 +203,17 @@ export const AppProvider = ({ children }) => {
         getPreferencesData,
         setStepStatus1,
         setStepStatus2,
+        setStepStatus3,
         setDataReady,
         setModalOpen,
         setModalClose,
+        setNarrowModalOpen,
+        setNarrowModalClosed,
         setLoader,
         setDebouncer,
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
-        setNarrowModalClose,
       }}
     >
       {children}

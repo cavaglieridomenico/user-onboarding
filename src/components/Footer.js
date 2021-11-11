@@ -1,16 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
 import { useGlobalContext } from '../context';
 
 const Footer = ({ homePage, skipStep, textRightButton, handleSubmit }) => {
-  const { setDebouncer, debouncing } = useGlobalContext();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDebouncer(false);
-    }, 3500);
-  }, [debouncing, setDebouncer]);
+  const { setDebouncer } = useGlobalContext();
 
   return (
     <footer>

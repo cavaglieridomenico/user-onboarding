@@ -8,10 +8,12 @@ import { useGlobalContext } from '../context';
 
 const Contact = () => {
   const history = useHistory();
+
   const {
     setModalOpen,
     areContactDataValidated,
     getContactData,
+    setNarrowModalOpen,
     setStepStatus1,
   } = useGlobalContext();
 
@@ -21,6 +23,12 @@ const Contact = () => {
   const email = useRef('');
   const country = useRef('');
 
+  /**
+   * Update the properties of the newUser object, if the form data is validated.
+   * Update the progress of data acquisition across the entire application.
+   * Notify the user of the correct data acquisition.
+   * Directly opens the next page.
+   */
   const handleSubmitContact = useCallback(() => {
     if (
       areContactDataValidated(
@@ -37,9 +45,20 @@ const Contact = () => {
         country.current.value
       );
       setStepStatus1(true);
+      setNarrowModalOpen(
+        'success',
+        'Personal data acquired.',
+        'Please enter an investment plan'
+      );
       history.push('./plans');
     }
-  }, [history, areContactDataValidated, getContactData, setStepStatus1]);
+  }, [
+    areContactDataValidated,
+    getContactData,
+    setStepStatus1,
+    setNarrowModalOpen,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox'>

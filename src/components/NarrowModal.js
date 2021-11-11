@@ -5,9 +5,10 @@ import { useGlobalContext } from '../context';
 const NarrowModal = () => {
   const {
     showNarrowModal,
-    narrowModalText,
     narrowModalType,
-    setNarrowModalClose,
+    narrowModalText,
+    narrowModalText2,
+    setNarrowModalClosed,
   } = useGlobalContext();
   return (
     <div
@@ -21,13 +22,17 @@ const NarrowModal = () => {
         narrow-modal-${narrowModalType}
         `}
       >
-        <button onClick={setNarrowModalClose}>
+        <button onClick={setNarrowModalClosed}>
           <AiOutlineClose
             className={`narrow-modal-${narrowModalType}
         `}
           />
         </button>
-        <div className='narrow-modal_text-container'>{narrowModalText}</div>
+        <div className='narrow-modal_text-container'>
+          <p>{narrowModalText}</p>
+          <br />
+          <p>{narrowModalText2}</p>
+        </div>
       </div>
     </div>
   );
