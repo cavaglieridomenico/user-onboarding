@@ -113,7 +113,20 @@ const Plans = () => {
                   <label htmlFor='plans-to'>To</label>
                   <input type='number' id='plans-to' ref={planTo} />
                 </div>
-                <div className='slider'></div>
+                <div className='slider-container'>
+                  <div className='notch-container'>
+                    <div className='notch'></div>
+                    <div className='notch'></div>
+                    <div className='notch'></div>
+                    <div className='notch'></div>
+                    <div className='notch'></div>
+                    <div className='notch'></div>
+                  </div>
+                  <div className='slider'>
+                    <div className='cursor' id='cursor-1'></div>
+                    <div className='cursor' id='cursor-2'></div>
+                  </div>
+                </div>
               </div>
             </form>
           </article>
