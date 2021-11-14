@@ -23,7 +23,7 @@
   height: 14px;
   background: #a1afb8;
   border-radius: 0.5px;
-  transform: translateY(-40%);
+  top: -6px;
 }
 
 .slider {
@@ -32,9 +32,23 @@
   top: 0;
   left: 0;
   background: #35a0ee;
-  width: 480px;
+  width: 92%;
   height: 4px;
   border-radius: 1px;
+}
+
+.cursor {
+  position: relative;
+  display: inline-block;
+  background: #35a0ee;
+  width: 16px;
+  height: 16px;
+  border-radius: 1px;
+  top: -6px;
+}
+
+#cursor-2 {
+  left: 2px;
 }
 
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
