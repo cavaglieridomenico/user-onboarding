@@ -79,7 +79,16 @@ Variables
   }
 }
 
-/*MD*/
+/*MD - common properties for larger screens*/
+@media all and (min-width: 992px) {
+  :root {
+    --outerHeight: 100%;
+    --innerHeight: 100%;
+    --sidebarHeight: 100%;
+  }
+}
+
+/*MD - large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   :root {
     --outerMinWith: initial;

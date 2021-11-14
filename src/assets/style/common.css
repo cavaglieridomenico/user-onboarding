@@ -20,7 +20,7 @@ body {
 @media all and (min-width: 1200px) {
   body {
     background-color: var(--mainBackground);
-    min-width: max-content;
+    /* min-width: max-content; */
   }
 }
 
@@ -123,6 +123,15 @@ h2 {
     text-align: left;
   }
 }
+
+/*LG - Text - default style*/
+@media all and (min-width: 1200px) {
+  .onboarding-innerbox h1,
+  .onboarding-innerbox h2 {
+    text-align: left;
+  }
+}
+
 /*Text - default style - end*/
 
 /*Form - default style*/
