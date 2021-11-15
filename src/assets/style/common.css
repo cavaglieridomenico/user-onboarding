@@ -72,9 +72,6 @@ body {
     grid-template-rows: auto;
     grid-template-columns: var(--outerColLeft) auto;
   }
-  .onboarding-outerbox {
-    min-height: var(--outerMinHeight);
-  }
 }
 /*Main containers end*/
 
