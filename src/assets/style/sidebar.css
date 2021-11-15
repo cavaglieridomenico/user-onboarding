@@ -3,6 +3,7 @@ aside {
   background: var(--primaryColor);
   padding: var(--sidebarPadding);
   height: var(--sidebarHeight);
+  min-height: var(--sidebarMinHeight);
 }
 
 .quote-container {

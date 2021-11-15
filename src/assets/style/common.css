@@ -31,6 +31,7 @@ body {
   height: var(--outerHeight);
   max-width: var(--outerMaxWidth);
   min-width: var(--outerMinWith);
+  min-height: var(--outerMinHeight);
   margin: 0 auto;
   font-family: var(--monserrat);
   -webkit-font-smoothing: antialiased;
@@ -49,6 +50,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: var(--innerHeight);
+  min-height: var(--innerMinHeight);
   padding: var(--innerPadding);
 }
 

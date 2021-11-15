@@ -107,6 +107,9 @@ Variables
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
+    --outerMinHeight: 100vh;
+    --innerMinHeight: 100vh;
+    --sidebarMinHeight: 100vh;
     --outerColLeft: 516px;
     --innerPadding: 4% 3% 8% 7%;
     --sidebarPadding: 7% 0 12% 7%;
