@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Slider from '../components/Slider';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
@@ -113,22 +114,9 @@ const Plans = () => {
                   <label htmlFor='plans-to'>To</label>
                   <input type='number' id='plans-to' ref={planTo} />
                 </div>
-                <div className='slider-container'>
-                  <div className='notch-container'>
-                    <div className='notch'></div>
-                    <div className='notch'></div>
-                    <div className='notch'></div>
-                    <div className='notch'></div>
-                    <div className='notch'></div>
-                    <div className='notch'></div>
-                  </div>
-                  <div className='slider'>
-                    <div className='cursor' id='cursor-1'></div>
-                    <div className='cursor' id='cursor-2'></div>
-                  </div>
-                </div>
               </div>
             </form>
+            <Slider />
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>

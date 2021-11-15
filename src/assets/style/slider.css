@@ -45,6 +45,7 @@
   height: 16px;
   border-radius: 1px;
   top: -6px;
+  cursor: pointer;
 }
 
 #cursor-2 {
