@@ -51,7 +51,6 @@ Variables
   --outerWith: 100vw;
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
-  --outerMinHeight: max-content;
   --outerHeight: calc(
     100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
   );
@@ -60,13 +59,14 @@ Variables
   );
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
-  --innerPadding: 7%;
+  --innerPadding: 2% 1%;
 }
 
 /*XS*/
 @media all and (min-width: 360px) {
   :root {
     --outerMinWith: initial;
+    --innerPadding: 7%;
   }
 }
 
