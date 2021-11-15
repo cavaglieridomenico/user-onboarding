@@ -75,6 +75,7 @@
 /*MD – Larger tablet in portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   .progress-container {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     font-family: var(--monserratAlt);
@@ -137,6 +138,10 @@
   }
   .square-text-container > p {
     margin-left: 14px;
+  }
+
+  .rectangle {
+    display: flex;
   }
 
   .outer-active {
