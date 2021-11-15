@@ -104,9 +104,9 @@ Variables
 /*LG*/
 @media all and (min-width: 1200px) {
   :root {
-    --outerHeight: 100vh;
-    --innerHeight: 100vh;
-    --sidebarHeight: 100vh;
+    --outerHeight: 100%;
+    --innerHeight: 100%;
+    --sidebarHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 4% 3% 8% 7%;
     --sidebarPadding: 7% 0 12% 7%;
