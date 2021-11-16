@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -8,6 +8,8 @@ import { useGlobalContext } from '../context';
 
 const Plans = () => {
   const history = useHistory();
+  const [toValue, setToValue] = useState(0);
+  const [fromValue, setFromValue] = useState(0);
 
   const {
     arePlansDataValidated,
@@ -108,15 +110,32 @@ const Plans = () => {
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
-                  <input type='number' id='plans-from' ref={planFrom} />
+                  <input
+                    type='number'
+                    id='plans-from'
+                    ref={planFrom}
+                    value={fromValue}
+                    onChange={event => setFromValue(event.target.value)}
+                  />
                 </div>
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
-                  <input type='number' id='plans-to' ref={planTo} />
+                  <input
+                    type='number'
+                    id='plans-to'
+                    ref={planTo}
+                    value={toValue}
+                    onChange={event => setToValue(event.target.value)}
+                  />
                 </div>
               </div>
             </form>
-            <Slider />
+            <Slider
+              fromValue={fromValue}
+              toValue={toValue}
+              handleFromValue={setFromValue}
+              handleToValue={setToValue}
+            />
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>

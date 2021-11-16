@@ -1,18 +1,32 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
-const Slider = () => {
-  const [cursor2x, setCursor2x] = useState(0);
+const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
+  const [cursorOn, setCursorOn] = useState(false);
+
+  const slider = useRef(null);
   const cursor2 = useRef(null);
 
   useEffect(() => {
-    setCursor2x(cursor2.current.getBoundingClientRect().left);
-  });
+    cursor2.current.style.left = toValue + 'px';
+    const handleMouseMove = event => {
+      const sliderLeft = slider.current.getBoundingClientRect().left;
+      const newLeft = event.clientX - 16 - sliderLeft;
+      handleToValue(newLeft);
+      cursor2.current.style.left = newLeft + 'px';
+      console.log(newLeft);
+    };
+    if (cursorOn) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', () => {
+        setCursorOn(false);
+        window.removeEventListener('mousemove', handleMouseMove);
+      });
+    }
+  }, [cursorOn, toValue, handleToValue]);
 
-  const handleMouseDown2 = event => {
+  const handleMousedown = event => {
     event.preventDefault();
-    console.log(cursor2);
-    console.log(cursor2.current);
-    console.log(cursor2x);
+    setCursorOn(true);
   };
 
   return (
@@ -25,13 +39,13 @@ const Slider = () => {
         <div className='notch'></div>
         <div className='notch'></div>
       </div>
-      <div className='slider'>
+      <div className='slider' ref={slider}>
         <div className='cursor' id='cursor-1'></div>
         <div
           className='cursor'
           id='cursor-2'
           ref={cursor2}
-          onMouseDown={handleMouseDown2}
+          onMouseDown={handleMousedown}
         ></div>
       </div>
     </div>
