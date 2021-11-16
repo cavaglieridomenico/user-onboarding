@@ -4,9 +4,11 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
   const [cursorOn, setCursorOn] = useState(false);
 
   const slider = useRef(null);
+  const cursor1 = useRef(null);
   const cursor2 = useRef(null);
 
   useEffect(() => {
+    cursor1.current.style.left = fromValue + 'px';
     cursor2.current.style.left = toValue + 'px';
     const handleMouseMove = event => {
       const sliderLeft = slider.current.getBoundingClientRect().left;
@@ -22,7 +24,7 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
         window.removeEventListener('mousemove', handleMouseMove);
       });
     }
-  }, [cursorOn, toValue, handleToValue]);
+  }, [cursorOn, fromValue, toValue, handleToValue]);
 
   const handleMousedown = event => {
     event.preventDefault();
@@ -40,7 +42,7 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
         <div className='notch'></div>
       </div>
       <div className='slider' ref={slider}>
-        <div className='cursor' id='cursor-1'></div>
+        <div className='cursor' id='cursor-1' ref={cursor1}></div>
         <div
           className='cursor'
           id='cursor-2'
