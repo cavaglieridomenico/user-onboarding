@@ -10,6 +10,9 @@ const Plans = () => {
   const history = useHistory();
   const [toValue, setToValue] = useState(0);
   const [fromValue, setFromValue] = useState(0);
+  const [toValue, setToValue] = useState(0);
+  const [fromValueSlider, setFromValueSlider] = useState(0);
+  const [toValueSlider, setToValueSlider] = useState(0);
 
   const {
     arePlansDataValidated,
@@ -22,6 +25,24 @@ const Plans = () => {
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
+
+  const handleChangeFromValue = userValue => {
+    setFromValue(() => {
+      return 'Ciao' + userValue;
+    });
+    setFromValueSlider(() => {
+      return 0;
+    });
+  };
+
+  const handleChangeToValue = userValue => {
+    setToValue(() => {
+      return userValue;
+    });
+    setToValueSlider(() => {
+      return 0;
+    });
+  };
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -121,20 +142,20 @@ const Plans = () => {
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
                   <input
-                    type='number'
+                    type='text'
                     id='plans-to'
                     ref={planTo}
                     value={toValue}
-                    onChange={event => setToValue(event.target.value)}
+                    onChange={event => handleChangeToValue(event.target.value)}
                   />
                 </div>
               </div>
             </form>
             <Slider
-              fromValue={fromValue}
-              toValue={toValue}
-              handleFromValue={setFromValue}
-              handleToValue={setToValue}
+              fromValue={fromValueSlider}
+              toValue={toValueSlider}
+              handleFromValue={handleChangeFromValue}
+              handleToValue={handleChangeToValue}
             />
           </article>
           <article>
