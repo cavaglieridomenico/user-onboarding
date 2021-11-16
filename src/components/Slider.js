@@ -67,6 +67,8 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
     handleFromValue,
     cursorOn2,
     handleToValue,
+    shiftX1,
+    shiftX2,
   ]);
 
   const handleMousedown1 = event => {
