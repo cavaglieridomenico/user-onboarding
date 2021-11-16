@@ -51,6 +51,34 @@
   margin-right: 2px;
 }
 
+.slider-text-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  width: 660px;
+  color: #a1afb8;
+}
+
+.slider-text-container p:nth-child(3) {
+  margin-left: 30px;
+}
+
+.slider-text-container p:nth-child(4) {
+  margin-left: 15px;
+}
+
+.slider-text-container p:nth-child(5) {
+  margin-left: 25px;
+}
+
+.slider-text-container p:last-child {
+  margin-left: 15px;
+}
+
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
 @media all and (min-width: 360px) {
 }

@@ -108,6 +108,14 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
           onMouseDown={handleMousedown2}
         ></div>
       </div>
+      <div className='slider-text-container'>
+        <p className='slider-number'>$10,000</p>
+        <p className='slider-number'>$50,000</p>
+        <p className='slider-number'>$100,000</p>
+        <p className='slider-number'>$200,000</p>
+        <p className='slider-number'>$500,000</p>
+        <p className='slider-number'>$1,000,000 +</p>
+      </div>
     </div>
   );
 };
