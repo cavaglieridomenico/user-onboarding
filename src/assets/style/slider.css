@@ -3,7 +3,6 @@
   position: relative;
   flex-direction: column;
   justify-content: center;
-  width: 92%;
   margin-top: 25px;
 }
 
@@ -12,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   background: #e9f0f5;
+  width: 610px;
   border-radius: 1px;
   height: 4px;
 }
@@ -30,7 +30,7 @@
   z-index: 4;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 610px;
   height: 4px;
   border-radius: 1px;
 }
@@ -42,13 +42,13 @@
   width: 16px;
   height: 16px;
   border-radius: 1px;
-  top: -6px;
+  top: -7.5px;
   transform: translateX(-50%);
   cursor: pointer;
 }
 
-#cursor-2 {
-  left: 2px;
+#cursor-1 {
+  margin-right: 2px;
 }
 
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
