@@ -25,6 +25,10 @@
   top: -6px;
 }
 
+.notch-active {
+  background: var(--primaryColor);
+}
+
 .slider {
   position: absolute;
   z-index: 4;
@@ -72,6 +76,10 @@
 
 .slider-text-container p:last-child {
   margin-left: 15px;
+}
+
+.slider-number-active {
+  color: var(--primaryColor);
 }
 
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/

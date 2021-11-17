@@ -10,8 +10,8 @@ const Plans = () => {
   const history = useHistory();
   const [fromValue, setFromValue] = useState('10000');
   const [toValue, setToValue] = useState('200000');
-  const [fromValueSlider, setFromValueSlider] = useState(0);
-  const [toValueSlider, setToValueSlider] = useState(366);
+  const [fromValueSlider, setFromValueSlider] = useState(-16);
+  const [toValueSlider, setToValueSlider] = useState(351);
 
   const {
     arePlansDataValidated,
@@ -233,10 +233,12 @@ const Plans = () => {
               </div>
             </form>
             <Slider
-              fromValue={fromValueSlider}
-              toValue={toValueSlider}
+              fromValueSlider={fromValueSlider}
+              toValueSlider={toValueSlider}
               handleFromValue={setFromValue}
               handleToValue={setToValue}
+              fromValue={fromValue}
+              toValue={toValue}
             />
           </article>
           <article>
