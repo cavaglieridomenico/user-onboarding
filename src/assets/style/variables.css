@@ -122,6 +122,9 @@ Variables
     --outerHeight: 900px;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
+    --outerMinHeight: 100%;
+    --innerMinHeight: 100%;
+    --sidebarMinHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
