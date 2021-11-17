@@ -17,21 +17,23 @@ const Slider = ({
   const [slideStart, setSlideStart] = useState(0);
   const [slideEnd, setSlideEnd] = useState(0);
 
+  /*Calculation of the dimensions of the Slider container*/
   useEffect(() => {
     setSlideStart(slider.current.getBoundingClientRect().left);
     setSlideEnd(slider.current.offsetWidth);
   }, []);
 
+  /*Positioning of the Slider cursors based on the inputs selected by the user
+  and setting of its active classes*/
+
   useEffect(() => {
-    const setCursorsValue = setTimeout(() => {
-      cursor1.current.style.left = fromValueSlider + 'px';
-      cursor2.current.style.left = toValueSlider + 'px';
-      setActive(fromValue, toValue);
-      setDeActive(fromValue, toValue);
-    }, 0);
-    return () => clearTimeout(setCursorsValue);
+    cursor1.current.style.left = fromValueSlider + 'px';
+    cursor2.current.style.left = toValueSlider + 'px';
+    setToActive(toValue);
+    setFromActive(fromValue);
   }, [fromValueSlider, toValueSlider, fromValue, toValue]);
 
+  /*Prevents Slider cursors from exiting their container*/
   const getLimitsLeftRight = left => {
     if (left < 0) {
       left = 0;
@@ -41,7 +43,8 @@ const Slider = ({
     }
   };
 
-  const setActive = (fromValue, toValue) => {
+  /*Insertion and deactivation of active classes based on the variation of the input To*/
+  const setToActive = toValue => {
     for (let element of sliderNumberContainer.current.childNodes) {
       element.classList.remove('slider-number-active');
       if (parseInt(element.getAttribute('number')) <= parseInt(toValue)) {
@@ -55,8 +58,8 @@ const Slider = ({
       }
     }
   };
-
-  const setDeActive = (fromValue, toValue) => {
+  /*Insertion and deactivation of active classes based on the variation of the input From*/
+  const setFromActive = fromValue => {
     for (let element of sliderNumberContainer.current.childNodes) {
       if (parseInt(element.getAttribute('number')) < parseInt(fromValue)) {
         element.classList.remove('slider-number-active');
@@ -75,6 +78,7 @@ const Slider = ({
     }
   };
 
+  /*Cursor 1 logic when operated by the user*/
   const handleMousedown1 = event => {
     event.preventDefault();
     const shiftX1 =
@@ -90,32 +94,26 @@ const Slider = ({
       if (newLeft < 60) {
         handleFromValue('10000');
         cursor1.current.style.left = -16 + 'px';
-        //setDeActive('10000');
       }
       if (newLeft > 60 && newLeft < 180) {
         handleFromValue('50000');
-        cursor1.current.style.left = 105 + 'px';
-        //setDeActive('50000');
+        cursor1.current.style.left = 103 + 'px';
       }
       if (newLeft > 180 && newLeft < 300) {
         handleFromValue('100000');
-        cursor1.current.style.left = 227 + 'px';
-        //setDeActive('100000');
+        cursor1.current.style.left = 224 + 'px';
       }
       if (newLeft > 300 && newLeft < 420) {
         handleFromValue('200000');
         cursor1.current.style.left = 348 + 'px';
-        //setDeActive('200000');
       }
       if (newLeft > 420 && newLeft < 540) {
         handleFromValue('500000');
         cursor1.current.style.left = 470 + 'px';
-        //setDeActive('500000');
       }
       if (newLeft > 540) {
         handleFromValue('1000000');
         cursor1.current.style.left = 591 + 'px';
-        //setDeActive('1000000');
       }
     };
 
@@ -128,8 +126,10 @@ const Slider = ({
     window.addEventListener('mouseup', handleMouseUp1);
   };
 
+  /*Cursor 2 logic when operated by the user*/
   const handleMousedown2 = event => {
     event.preventDefault();
+
     const shiftX2 =
       event.clientX - cursor2.current.getBoundingClientRect().left;
 
@@ -142,32 +142,26 @@ const Slider = ({
       if (newLeft < 60) {
         handleToValue('10000');
         cursor2.current.style.left = -13 + 'px';
-        //setActive('10000');
       }
       if (newLeft > 60 && newLeft < 180) {
         handleToValue('50000');
-        cursor2.current.style.left = 108 + 'px';
-        //setActive('50000');
+        cursor2.current.style.left = 111 + 'px';
       }
       if (newLeft > 180 && newLeft < 300) {
         handleToValue('100000');
-        cursor2.current.style.left = 230 + 'px';
-        //setActive('100000');
+        cursor2.current.style.left = 233 + 'px';
       }
       if (newLeft > 300 && newLeft < 420) {
         handleToValue('200000');
-        cursor2.current.style.left = 351 + 'px';
-        //setActive('200000');
+        cursor2.current.style.left = 354 + 'px';
       }
       if (newLeft > 420 && newLeft < 540) {
         handleToValue('500000');
-        cursor2.current.style.left = 473 + 'px';
-        //setActive('500000');
+        cursor2.current.style.left = 475 + 'px';
       }
       if (newLeft > 540) {
         handleToValue('1000000');
-        cursor2.current.style.left = 594 + 'px';
-        //setActive('1000000');
+        cursor2.current.style.left = 597 + 'px';
       }
     };
 
