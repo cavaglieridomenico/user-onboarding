@@ -8,79 +8,111 @@ const Slider = ({ fromValue, toValue, handleFromValue, handleToValue }) => {
   const [shiftX1, setShiftX1] = useState(0);
   const [shiftX2, setShiftX2] = useState(0);
 
-  const [cursorOn1, setCursorOn1] = useState(false);
-  const [cursorOn2, setCursorOn2] = useState(false);
-
   useEffect(() => {
-    cursor1.current.style.left = fromValue + 'px';
-    cursor2.current.style.left = toValue + 'px';
+    const setCursorsValue = setTimeout(() => {
+      cursor1.current.style.left = fromValue + 'px';
+      cursor2.current.style.left = toValue + 'px';
+    }, 0);
+    return () => clearTimeout(setCursorsValue);
+  }, [fromValue, toValue]);
 
+  const handleMousedown1 = event => {
+    event.preventDefault();
+    setShiftX1(event.clientX - cursor1.current.getBoundingClientRect().left);
     const slideStart = slider.current.getBoundingClientRect().left;
-    const slideEnd = slider.current.offsetWidth - cursor1.current.offsetWidth;
+    const slideEnd = slider.current.offsetWidth;
+    console.log(cursor1.current.getBoundingClientRect().left - slideStart);
 
     const handleMouseMove1 = event => {
       let newLeft = event.clientX - shiftX1 - slideStart;
       if (newLeft < 0) {
         newLeft = 0;
       }
-
       if (newLeft > slideEnd) {
         newLeft = slideEnd;
       }
-
-      handleFromValue(newLeft);
       cursor1.current.style.left = newLeft + 'px';
+      if (newLeft < 60) {
+        handleFromValue('10000');
+        cursor1.current.style.left = -16 + 'px';
+      }
+      if (newLeft > 60 && newLeft < 180) {
+        handleFromValue('50000');
+        cursor1.current.style.left = 105 + 'px';
+      }
+      if (newLeft > 180 && newLeft < 300) {
+        handleFromValue('100000');
+        cursor1.current.style.left = 227 + 'px';
+      }
+      if (newLeft > 300 && newLeft < 420) {
+        handleFromValue('200000');
+        cursor1.current.style.left = 348 + 'px';
+      }
+      if (newLeft > 420 && newLeft < 540) {
+        handleFromValue('500000');
+        cursor1.current.style.left = 470 + 'px';
+      }
+      if (newLeft > 590) {
+        handleFromValue('1000000');
+        cursor1.current.style.left = 591 + 'px';
+      }
     };
 
-    const handleMouseMove2 = event => {
-      let newLeft = event.clientX - shiftX2 - slideStart;
-      if (newLeft < 0) {
-        newLeft = 0;
-      }
-
-      if (newLeft > slideEnd) {
-        newLeft = slideEnd;
-      }
-      handleToValue(newLeft);
-      cursor2.current.style.left = newLeft + 'px';
+    const handleMouseUp1 = () => {
+      window.removeEventListener('mousemove', handleMouseMove1);
+      window.removeEventListener('mouseup', handleMouseUp1);
     };
-
-    if (cursorOn1) {
-      window.addEventListener('mousemove', handleMouseMove1);
-      window.addEventListener('mouseup', () => {
-        setCursorOn1(false);
-        window.removeEventListener('mousemove', handleMouseMove1);
-      });
-    }
-
-    if (cursorOn2) {
-      window.addEventListener('mousemove', handleMouseMove2);
-      window.addEventListener('mouseup', () => {
-        setCursorOn2(false);
-        window.removeEventListener('mousemove', handleMouseMove2);
-      });
-    }
-  }, [
-    fromValue,
-    toValue,
-    cursorOn1,
-    handleFromValue,
-    cursorOn2,
-    handleToValue,
-    shiftX1,
-    shiftX2,
-  ]);
-
-  const handleMousedown1 = event => {
-    event.preventDefault();
-    setShiftX1(event.clientX - cursor1.current.getBoundingClientRect().left);
-    setCursorOn1(true);
+    window.addEventListener('mousemove', handleMouseMove1);
+    window.addEventListener('mouseup', handleMouseUp1);
   };
 
   const handleMousedown2 = event => {
     event.preventDefault();
     setShiftX2(event.clientX - cursor2.current.getBoundingClientRect().left);
-    setCursorOn2(true);
+    const slideStart = slider.current.getBoundingClientRect().left;
+    const slideEnd = slider.current.offsetWidth;
+    console.log(cursor2.current.getBoundingClientRect().left - slideStart);
+    const handleMouseMove2 = event => {
+      let newLeft = event.clientX - shiftX2 - slideStart;
+      if (newLeft < 0) {
+        newLeft = 0;
+      }
+      if (newLeft > slideEnd) {
+        newLeft = slideEnd;
+      }
+      cursor2.current.style.left = newLeft + 'px';
+      if (newLeft < 60) {
+        handleToValue('10000');
+        cursor2.current.style.left = -13 + 'px';
+      }
+      if (newLeft > 60 && newLeft < 180) {
+        handleToValue('50000');
+        cursor2.current.style.left = 108 + 'px';
+      }
+      if (newLeft > 180 && newLeft < 300) {
+        handleToValue('100000');
+        cursor2.current.style.left = 230 + 'px';
+      }
+      if (newLeft > 300 && newLeft < 420) {
+        handleToValue('200000');
+        cursor2.current.style.left = 351 + 'px';
+      }
+      if (newLeft > 420 && newLeft < 540) {
+        handleToValue('500000');
+        cursor2.current.style.left = 473 + 'px';
+      }
+      if (newLeft > 590) {
+        handleToValue('1000000');
+        cursor2.current.style.left = 594 + 'px';
+      }
+    };
+
+    const handleMouseUp2 = () => {
+      window.removeEventListener('mousemove', handleMouseMove2);
+      window.removeEventListener('mouseup', handleMouseUp2);
+    };
+    window.addEventListener('mousemove', handleMouseMove2);
+    window.addEventListener('mouseup', handleMouseUp2);
   };
 
   return (

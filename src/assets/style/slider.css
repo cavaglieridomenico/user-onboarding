@@ -43,12 +43,7 @@
   height: 16px;
   border-radius: 1px;
   top: -7.5px;
-  transform: translateX(-50%);
   cursor: pointer;
-}
-
-#cursor-1 {
-  margin-right: 2px;
 }
 
 .slider-text-container {

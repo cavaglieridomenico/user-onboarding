@@ -17,11 +17,16 @@
   grid-template-columns: 100%;
 }
 
-#form-plans .from-box,
-#form-plans .to-box {
+#form-plans .from-box select,
+#form-plans .to-box select {
   border-bottom: solid 2px var(--lightGrey);
   margin: 0 auto 1%;
-  height: 55px;
+  width: 100%;
+  font-family: var(--monserrat);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: var(--mainSpacing);
 }
 
 #form-plans .from-box {

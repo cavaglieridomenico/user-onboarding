@@ -8,11 +8,10 @@ import { useGlobalContext } from '../context';
 
 const Plans = () => {
   const history = useHistory();
-  const [toValue, setToValue] = useState(0);
-  const [fromValue, setFromValue] = useState(0);
-  const [toValue, setToValue] = useState(0);
+  const [fromValue, setFromValue] = useState('10000');
+  const [toValue, setToValue] = useState('200000');
   const [fromValueSlider, setFromValueSlider] = useState(0);
-  const [toValueSlider, setToValueSlider] = useState(0);
+  const [toValueSlider, setToValueSlider] = useState(366);
 
   const {
     arePlansDataValidated,
@@ -26,22 +25,56 @@ const Plans = () => {
   const planTo = useRef('');
   const accredited = useRef('');
 
-  const handleChangeFromValue = userValue => {
-    setFromValue(() => {
-      return 'Ciao' + userValue;
-    });
-    setFromValueSlider(() => {
-      return 0;
-    });
+  const handleClickFromValue = () => {
+    switch (fromValue) {
+      case '10000':
+        setFromValueSlider(-16);
+        break;
+      case '50000':
+        setFromValueSlider(105);
+        break;
+      case '100000':
+        setFromValueSlider(227);
+        break;
+      case '200000':
+        setFromValueSlider(348);
+        break;
+      case '500000':
+        setFromValueSlider(470);
+        break;
+      case '1000000':
+        setFromValueSlider(591);
+        break;
+      default:
+        setFromValueSlider(0);
+        break;
+    }
   };
 
-  const handleChangeToValue = userValue => {
-    setToValue(() => {
-      return userValue;
-    });
-    setToValueSlider(() => {
-      return 0;
-    });
+  const handleClickToValue = () => {
+    switch (toValue) {
+      case '10000':
+        setToValueSlider(-13);
+        break;
+      case '50000':
+        setToValueSlider(108);
+        break;
+      case '100000':
+        setToValueSlider(230);
+        break;
+      case '200000':
+        setToValueSlider(351);
+        break;
+      case '500000':
+        setToValueSlider(473);
+        break;
+      case '1000000':
+        setToValueSlider(594);
+        break;
+      default:
+        setToValueSlider(0);
+        break;
+    }
   };
 
   /**
@@ -70,6 +103,7 @@ const Plans = () => {
    * Directly opens the next page.
    */
   const handleSubmitPlansForms = useCallback(() => {
+    console.log(planFrom.current.value);
     goToTheRightPageFromPlans();
     if (stepStatus1) {
       if (
@@ -131,31 +165,78 @@ const Plans = () => {
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
-                  <input
-                    type='number'
+                  <select
+                    type='text'
                     id='plans-from'
                     ref={planFrom}
                     value={fromValue}
                     onChange={event => setFromValue(event.target.value)}
-                  />
+                    onClick={handleClickFromValue}
+                  >
+                    <option id='10000' value='10000'>
+                      $10,000
+                    </option>
+                    <option id='50000' value='50000'>
+                      $50,000
+                    </option>
+                    <option id='100000' value='100000'>
+                      $100,000
+                    </option>
+                    <option id='200000' value='200000'>
+                      $200,000
+                    </option>
+                    <option id='500000' value='500000'>
+                      $500,000
+                    </option>
+                    <option id='1000000' value='1000000'>
+                      $1,000,000 +
+                    </option>
+                  </select>
                 </div>
                 <div className='to-box'>
                   <label htmlFor='plans-to'>To</label>
-                  <input
+                  <select
+                    type='text'
+                    id='plans-to'
+                    ref={planTo}
+                    value={toValue}
+                    onChange={event => setToValue(event.target.value)}
+                    onClick={handleClickToValue}
+                  >
+                    <option id='10000' value='10000'>
+                      $10,000
+                    </option>
+                    <option id='50000' value='50000'>
+                      $50,000
+                    </option>
+                    <option id='100000' value='100000'>
+                      $100,000
+                    </option>
+                    <option id='200000' value='200000'>
+                      $200,000
+                    </option>
+                    <option id='500000' value='500000'>
+                      $500,000
+                    </option>
+                    <option id='1000000' value='1000000'>
+                      $1,000,000 +
+                    </option>
+                  </select>
+                  {/* <input
                     type='text'
                     id='plans-to'
                     ref={planTo}
                     value={toValue}
                     onChange={event => handleChangeToValue(event.target.value)}
-                  />
+                  /> */}
                 </div>
               </div>
             </form>
             <Slider
               fromValue={fromValueSlider}
               toValue={toValueSlider}
-              handleFromValue={handleChangeFromValue}
-              handleToValue={handleChangeToValue}
+              handleFromValue={setFromValue}
+              handleToValue={setToValue}
             />
           </article>
           <article>
