@@ -11,6 +11,8 @@ const Plans = () => {
   const history = useHistory();
   const [fromValue, setFromValue] = useState('10000');
   const [toValue, setToValue] = useState('200000');
+  const [accreditedYes, setAccreditedYes] = useState(false);
+  const [accreditedNo, setAccreditedNo] = useState(false);
 
   const {
     arePlansDataValidated,
@@ -197,23 +199,50 @@ const Plans = () => {
               onClick={handleClickPlansForms}
             >
               <div className='form-container'>
-                <div className='radio-investor-box'>
+                <div
+                  className={`radio-investor-box  ${
+                    accreditedYes && 'selected'
+                  }`}
+                >
                   <input
                     type='radio'
                     id='accedited-yes'
                     name='accredited'
                     value='yes'
+                    onChange={() => {
+                      console.log('Ciao!');
+                      setAccreditedYes(true);
+                      setAccreditedNo(false);
+                    }}
                   />
-                  <label htmlFor='accedited-yes'>Yes</label>
+                  <label
+                    htmlFor='accedited-yes'
+                    className={`${accreditedYes ? 'selected' : undefined}`}
+                  >
+                    Yes
+                  </label>
                 </div>
-                <div className='radio-investor-box'>
+                <div
+                  className={`radio-investor-box  ${
+                    accreditedNo && 'selected'
+                  }`}
+                >
                   <input
                     type='radio'
                     id='accedited-no'
                     name='accredited'
                     value='no'
+                    onChange={() => {
+                      setAccreditedYes(false);
+                      setAccreditedNo(true);
+                    }}
                   />
-                  <label htmlFor='accedited-no'>No</label>
+                  <label
+                    htmlFor='accedited-no'
+                    className={`${accreditedNo ? 'selected' : undefined}`}
+                  >
+                    No
+                  </label>
                 </div>
               </div>
             </form>
