@@ -166,22 +166,15 @@ const Plans = () => {
                       $1,000,000 +
                     </option>
                   </select>
-                  {/* <input
-                    type='text'
-                    id='plans-to'
-                    ref={planTo}
-                    value={toValue}
-                    onChange={event => handleChangeToValue(event.target.value)}
-                  /> */}
                 </div>
               </div>
+              <Slider
+                handleFromValue={setFromValue}
+                handleToValue={setToValue}
+                fromValue={fromValue}
+                toValue={toValue}
+              />
             </form>
-            <Slider
-              handleFromValue={setFromValue}
-              handleToValue={setToValue}
-              fromValue={fromValue}
-              toValue={toValue}
-            />
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>
