@@ -36,6 +36,11 @@
 #form-plans .to-box {
   grid-row: 2 / 3;
 }
+
+.form-plans-error {
+  color: red;
+}
+
 /*Form-plans end*/
 
 /*Form-investor*/
