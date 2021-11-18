@@ -37,9 +37,24 @@ const isItAnInvalidEmail = inputValue => {
   return inputValue.match(emailFormat) === null;
 };
 
+/**
+ * A value cannot be less than or greater than the range
+ * @param {number} left
+ */
+const onlyInTheRange = (position, start, stop) => {
+  if (position <= start) {
+    return (position = start);
+  }
+  if (position >= stop) {
+    return (position = stop);
+  }
+  return position;
+};
+
 export {
   areThereAnyEmptyString,
   isAnEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
+  onlyInTheRange,
 };
