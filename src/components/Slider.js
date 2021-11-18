@@ -1,45 +1,89 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { onlyInTheRange } from '../assets/scripts/form_utility';
 
-const Slider = ({
-  fromValueSlider,
-  toValueSlider,
-  handleFromValue,
-  handleToValue,
-  fromValue,
-  toValue,
-}) => {
+const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
   const slider = useRef(null);
   const cursor1 = useRef(null);
   const cursor2 = useRef(null);
   const notchContainer = useRef(null);
   const sliderNumberContainer = useRef(null);
 
-  const [slideStart, setSlideStart] = useState(0);
-  const [slideEnd, setSlideEnd] = useState(0);
+  const [sliderStart, setSliderStart] = useState(0);
+  const [sliderEnd, setSliderEnd] = useState(0);
+  const [cursor1Width, setCursor1Width] = useState(0);
+  const [cursor2Width, setCursor2Width] = useState(0);
+  /*Positioning of the Slider cursors based on the inputs selected by the user
+  and setting of its active classes*/
+  useEffect(() => {
+    handleFromValueChange(fromValue);
+    handleToValueChange(toValue);
+    setToActive(toValue);
+    setFromActive(fromValue);
+  }, [fromValue, toValue]);
 
   /*Calculation of the dimensions of the Slider container*/
   useEffect(() => {
-    setSlideStart(slider.current.getBoundingClientRect().left);
-    setSlideEnd(slider.current.offsetWidth);
+    setSliderStart(slider.current.getBoundingClientRect().left);
+    setSliderEnd(slider.current.offsetWidth);
+    setCursor1Width(cursor1.current.getBoundingClientRect().width);
+    setCursor2Width(cursor2.current.getBoundingClientRect().width);
   }, []);
 
-  /*Positioning of the Slider cursors based on the inputs selected by the user
-  and setting of its active classes*/
-
-  useEffect(() => {
-    cursor1.current.style.left = fromValueSlider + 'px';
-    cursor2.current.style.left = toValueSlider + 'px';
-    setToActive(toValue);
-    setFromActive(fromValue);
-  }, [fromValueSlider, toValueSlider, fromValue, toValue]);
-
-  /*Prevents Slider cursors from exiting their container*/
-  const getLimitsLeftRight = left => {
-    if (left < 0) {
-      left = 0;
+  /**
+   *
+   * @param {*} userFromValue
+   */
+  const handleFromValueChange = userFromValue => {
+    switch (userFromValue) {
+      case '10000':
+        cursor1.current.style.left = 0 + 'px';
+        break;
+      case '50000':
+        cursor1.current.style.left = 108 + 'px';
+        break;
+      case '100000':
+        cursor1.current.style.left = 228 + 'px';
+        break;
+      case '200000':
+        cursor1.current.style.left = 350 + 'px';
+        break;
+      case '500000':
+        cursor1.current.style.left = 472 + 'px';
+        break;
+      case '1000000':
+        cursor1.current.style.left = 593 + 'px';
+        break;
+      default:
+        cursor1.current.style.left = 0 + 'px';
     }
-    if (left > slideEnd) {
-      left = slideEnd;
+  };
+
+  /**
+   *
+   * @param {*} userToValue
+   */
+  const handleToValueChange = userToValue => {
+    switch (userToValue) {
+      case '10000':
+        cursor2.current.style.left = 0 + 'px';
+        break;
+      case '50000':
+        cursor2.current.style.left = 108 + 'px';
+        break;
+      case '100000':
+        cursor2.current.style.left = 229 + 'px';
+        break;
+      case '200000':
+        cursor2.current.style.left = 350 + 'px';
+        break;
+      case '500000':
+        cursor2.current.style.left = 471 + 'px';
+        break;
+      case '1000000':
+        cursor2.current.style.left = 593 + 'px';
+        break;
+      default:
+        cursor2.current.style.left = 0 + 'px';
     }
   };
 
@@ -81,39 +125,39 @@ const Slider = ({
   /*Cursor 1 logic when operated by the user*/
   const handleMousedownFrom = event => {
     event.preventDefault();
+
     const shiftX1 =
       event.clientX - cursor1.current.getBoundingClientRect().left;
 
     const handleMouseMoveFrom = event => {
-      let newLeft = event.clientX - shiftX1 - slideStart;
+      let cursor1Position = event.clientX - shiftX1 - sliderStart;
 
-      getLimitsLeftRight(newLeft);
+      cursor1.current.style.left =
+        onlyInTheRange(cursor1Position, 0, sliderEnd - cursor1Width) + 'px';
 
-      cursor1.current.style.left = newLeft + 'px';
-
-      if (newLeft < 60) {
+      if (cursor1Position < 60) {
+        cursor1.current.style.left = 0 + 'px';
         handleFromValue('10000');
-        cursor1.current.style.left = -16 + 'px';
       }
-      if (newLeft > 60 && newLeft < 180) {
+      if (cursor1Position > 60 && cursor1Position < 180) {
+        cursor1.current.style.left = 108 + 'px';
         handleFromValue('50000');
-        cursor1.current.style.left = 103 + 'px';
       }
-      if (newLeft > 180 && newLeft < 300) {
+      if (cursor1Position > 180 && cursor1Position < 300) {
+        cursor1.current.style.left = 228 + 'px';
         handleFromValue('100000');
-        cursor1.current.style.left = 224 + 'px';
       }
-      if (newLeft > 300 && newLeft < 420) {
+      if (cursor1Position > 300 && cursor1Position < 420) {
+        cursor1.current.style.left = 350 + 'px';
         handleFromValue('200000');
-        cursor1.current.style.left = 348 + 'px';
       }
-      if (newLeft > 420 && newLeft < 540) {
+      if (cursor1Position > 420 && cursor1Position < 540) {
+        cursor1.current.style.left = 472 + 'px';
         handleFromValue('500000');
-        cursor1.current.style.left = 470 + 'px';
       }
-      if (newLeft > 540) {
+      if (cursor1Position > 540) {
+        cursor1.current.style.left = 593 + 'px';
         handleFromValue('1000000');
-        cursor1.current.style.left = 591 + 'px';
       }
     };
 
@@ -134,34 +178,43 @@ const Slider = ({
       event.clientX - cursor2.current.getBoundingClientRect().left;
 
     const handleMouseMoveTo = event => {
-      let newLeft = event.clientX - shiftX2 - slideStart;
-      getLimitsLeftRight(newLeft);
+      let cursor2Position = event.clientX - shiftX2 - sliderStart;
 
-      cursor2.current.style.left = newLeft + 'px';
+      cursor2.current.style.left =
+        onlyInTheRange(
+          cursor2Position,
+          0,
+          sliderEnd - cursor2Width - cursor1Width
+        ) + 'px';
 
-      if (newLeft < 60) {
+      if (cursor2Position < 60) {
+        cursor2.current.style.left = 0 + 'px';
+
         handleToValue('10000');
-        cursor2.current.style.left = -13 + 'px';
       }
-      if (newLeft > 60 && newLeft < 180) {
+      if (cursor2Position > 60 && cursor2Position < 180) {
+        cursor2.current.style.left = 108 + 'px';
+
         handleToValue('50000');
-        cursor2.current.style.left = 111 + 'px';
       }
-      if (newLeft > 180 && newLeft < 300) {
+      if (cursor2Position > 180 && cursor2Position < 300) {
+        cursor2.current.style.left = 229 + 'px';
+
         handleToValue('100000');
-        cursor2.current.style.left = 233 + 'px';
       }
-      if (newLeft > 300 && newLeft < 420) {
+      if (cursor2Position > 300 && cursor2Position < 420) {
+        cursor2.current.style.left = 350 + 'px';
+
         handleToValue('200000');
-        cursor2.current.style.left = 354 + 'px';
       }
-      if (newLeft > 420 && newLeft < 540) {
+      if (cursor2Position > 420 && cursor2Position < 540) {
+        cursor2.current.style.left = 471 + 'px';
+
         handleToValue('500000');
-        cursor2.current.style.left = 475 + 'px';
       }
-      if (newLeft > 540) {
+      if (cursor2Position > 540) {
+        cursor2.current.style.left = 593 + 'px';
         handleToValue('1000000');
-        cursor2.current.style.left = 597 + 'px';
       }
     };
 
