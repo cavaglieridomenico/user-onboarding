@@ -10,8 +10,6 @@ const Plans = () => {
   const history = useHistory();
   const [fromValue, setFromValue] = useState('10000');
   const [toValue, setToValue] = useState('200000');
-  const [fromValueSlider, setFromValueSlider] = useState(-17);
-  const [toValueSlider, setToValueSlider] = useState(354);
 
   const {
     arePlansDataValidated,
@@ -24,68 +22,6 @@ const Plans = () => {
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
-
-  /**
-   * The value chosen by the user of the select input is used to modify its useState and to send the      corresponding measure of the left position to the Slider cursors.
-   * @param {*} userFromValue
-   */
-  const handleFromValueChange = userFromValue => {
-    setFromValue(userFromValue);
-    switch (userFromValue) {
-      case '10000':
-        setFromValueSlider(-16);
-        break;
-      case '50000':
-        setFromValueSlider(103);
-        break;
-      case '100000':
-        setFromValueSlider(224);
-        break;
-      case '200000':
-        setFromValueSlider(348);
-        break;
-      case '500000':
-        setFromValueSlider(470);
-        break;
-      case '1000000':
-        setFromValueSlider(591);
-        break;
-      default:
-        setFromValueSlider(0);
-        break;
-    }
-  };
-
-  /**
-   * The value chosen by the user of the select input is used to modify its useState and to send the corresponding measure of the left position to the Slider cursors.
-   * @param {*} userToValue
-   */
-  const handleToValueChange = userToValue => {
-    setToValue(userToValue);
-    switch (userToValue) {
-      case '10000':
-        setToValueSlider(-13);
-        break;
-      case '50000':
-        setToValueSlider(111);
-        break;
-      case '100000':
-        setToValueSlider(233);
-        break;
-      case '200000':
-        setToValueSlider(354);
-        break;
-      case '500000':
-        setToValueSlider(475);
-        break;
-      case '1000000':
-        setToValueSlider(597);
-        break;
-      default:
-        setToValueSlider(0);
-        break;
-    }
-  };
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -180,10 +116,7 @@ const Plans = () => {
                     id='plans-from'
                     ref={planFrom}
                     value={fromValue}
-                    onChange={event =>
-                      handleFromValueChange(event.target.value)
-                    }
-                    //onClick={handleClickFromValue}
+                    onChange={event => setFromValue(event.target.value)}
                   >
                     <option id='10000' value='10000'>
                       $10,000
@@ -212,8 +145,7 @@ const Plans = () => {
                     id='plans-to'
                     ref={planTo}
                     value={toValue}
-                    onChange={event => handleToValueChange(event.target.value)}
-                    //onClick={handleClickToValue}
+                    onChange={event => setToValue(event.target.value)}
                   >
                     <option id='10000' value='10000'>
                       $10,000
@@ -245,8 +177,6 @@ const Plans = () => {
               </div>
             </form>
             <Slider
-              fromValueSlider={fromValueSlider}
-              toValueSlider={toValueSlider}
               handleFromValue={setFromValue}
               handleToValue={setToValue}
               fromValue={fromValue}
