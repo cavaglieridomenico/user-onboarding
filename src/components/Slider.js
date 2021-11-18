@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { onlyInTheRange } from '../assets/scripts/form_utility';
+import {
+  isItAnInvalidRange,
+  onlyInTheRange,
+} from '../assets/scripts/form_utility';
 
 const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
   const slider = useRef(null);
@@ -19,6 +22,23 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
     handleToValueChange(toValue);
     setToActive(toValue);
     setFromActive(fromValue);
+    if (isItAnInvalidRange(parseInt(fromValue), parseInt(toValue))) {
+      slider.current.classList.add('slider-error');
+      notchContainer.current.childNodes.forEach(element =>
+        element.classList.add('slider-notch-error')
+      );
+      sliderNumberContainer.current.childNodes.forEach(element =>
+        element.classList.add('slider-amount-error')
+      );
+    } else {
+      slider.current.classList.remove('slider-error');
+      notchContainer.current.childNodes.forEach(element =>
+        element.classList.remove('slider-notch-error')
+      );
+      sliderNumberContainer.current.childNodes.forEach(element =>
+        element.classList.remove('slider-amount-error')
+      );
+    }
   }, [fromValue, toValue]);
 
   /*Calculation of the dimensions of the Slider container*/
@@ -89,37 +109,38 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
 
   /*Insertion and deactivation of active classes based on the variation of the input To*/
   const setToActive = toValue => {
-    for (let element of sliderNumberContainer.current.childNodes) {
+    sliderNumberContainer.current.childNodes.forEach(element => {
       element.classList.remove('slider-number-active');
       if (parseInt(element.getAttribute('number')) <= parseInt(toValue)) {
         element.classList.add('slider-number-active');
       }
-    }
-    for (let element of notchContainer.current.childNodes) {
+    });
+    notchContainer.current.childNodes.forEach(element => {
       element.classList.remove('notch-active');
       if (parseInt(element.getAttribute('number')) <= parseInt(toValue)) {
         element.classList.add('notch-active');
       }
-    }
+    });
   };
   /*Insertion and deactivation of active classes based on the variation of the input From*/
   const setFromActive = fromValue => {
-    for (let element of sliderNumberContainer.current.childNodes) {
+    sliderNumberContainer.current.childNodes.forEach(element => {
       if (parseInt(element.getAttribute('number')) < parseInt(fromValue)) {
         element.classList.remove('slider-number-active');
       }
       if (parseInt(element.getAttribute('number')) === parseInt(fromValue)) {
         element.classList.add('slider-number-active');
       }
-    }
-    for (let element of notchContainer.current.childNodes) {
+    });
+
+    notchContainer.current.childNodes.forEach(element => {
       if (parseInt(element.getAttribute('number')) < parseInt(fromValue)) {
         element.classList.remove('notch-active');
       }
       if (parseInt(element.getAttribute('number')) === parseInt(fromValue)) {
         element.classList.add('notch-active');
       }
-    }
+    });
   };
 
   /*Cursor 1 logic when operated by the user*/
@@ -252,23 +273,23 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
           onMouseDown={handleMousedownTo}
         ></div>
       </div>
-      <div className='slider-text-container' ref={sliderNumberContainer}>
-        <p className='slider-number' number={'10000'}>
+      <div className='slider-amount-container' ref={sliderNumberContainer}>
+        <p className='slider-amount' number={'10000'}>
           $10,000
         </p>
-        <p className='slider-number' number={'50000'}>
+        <p className='slider-amount' number={'50000'}>
           $50,000
         </p>
-        <p className='slider-number' number={'100000'}>
+        <p className='slider-amount' number={'100000'}>
           $100,000
         </p>
-        <p className='slider-number' number={'200000'}>
+        <p className='slider-amount' number={'200000'}>
           $200,000
         </p>
-        <p className='slider-number' number={'500000'}>
+        <p className='slider-amount' number={'500000'}>
           $500,000
         </p>
-        <p className='slider-number' number={'1000000'}>
+        <p className='slider-amount' number={'1000000'}>
           $1,000,000 +
         </p>
       </div>

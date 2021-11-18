@@ -1,9 +1,10 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
+import { isItAnInvalidRange } from '../assets/scripts/form_utility';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
@@ -22,6 +23,19 @@ const Plans = () => {
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
+
+  /**
+   * Validation in the input of the range in real time
+   */
+  useEffect(() => {
+    if (isItAnInvalidRange(parseInt(fromValue), parseInt(toValue))) {
+      planFrom.current.classList.add('form-plans-error');
+      planTo.current.classList.add('form-plans-error');
+    } else {
+      planFrom.current.classList.remove('form-plans-error');
+      planTo.current.classList.remove('form-plans-error');
+    }
+  }, [fromValue, toValue]);
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -49,7 +63,6 @@ const Plans = () => {
    * Directly opens the next page.
    */
   const handleSubmitPlansForms = useCallback(() => {
-    console.log(planFrom.current.value);
     goToTheRightPageFromPlans();
     if (stepStatus1) {
       if (

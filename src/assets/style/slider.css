@@ -29,6 +29,10 @@
   background: var(--primaryColor);
 }
 
+.notch-error {
+  background-color: red;
+}
+
 .slider {
   position: absolute;
   z-index: 4;
@@ -37,6 +41,10 @@
   width: 610px;
   height: 4px;
   border-radius: 1px;
+}
+
+.slider-error {
+  border: solid 1px red;
 }
 
 .cursor {
@@ -50,7 +58,7 @@
   cursor: pointer;
 }
 
-.slider-text-container {
+.slider-amount-container {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -62,24 +70,28 @@
   color: #a1afb8;
 }
 
-.slider-text-container p:nth-child(3) {
+.slider-amount-container p:nth-child(3) {
   margin-left: 30px;
 }
 
-.slider-text-container p:nth-child(4) {
+.slider-amount-container p:nth-child(4) {
   margin-left: 15px;
 }
 
-.slider-text-container p:nth-child(5) {
+.slider-amount-container p:nth-child(5) {
   margin-left: 25px;
 }
 
-.slider-text-container p:last-child {
+.slider-amount-container p:last-child {
   margin-left: 15px;
 }
 
 .slider-number-active {
   color: var(--primaryColor);
+}
+
+.slider-amount-error {
+  color: red;
 }
 
 /*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/

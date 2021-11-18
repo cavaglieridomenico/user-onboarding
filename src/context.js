@@ -5,6 +5,7 @@ import {
   isItAnInvalidEmail,
   isTheNameTooShort,
   isAnEmptyArray,
+  isItAnInvalidRange,
 } from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
@@ -188,7 +189,10 @@ export const AppProvider = ({ children }) => {
   const arePlansDataValidated = (planFrom, planTo, accredited) => {
     if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-
+      return false;
+    }
+    if (isItAnInvalidRange(parseInt(planFrom), parseInt(planTo))) {
+      setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
       return false;
     }
     return true;
