@@ -27,7 +27,7 @@ const isTheNameTooShort = inputValue => {
 };
 
 /**
- *Check valid email format
+ *Check invalid email format
  * @param {string}
  * @returns {boolean} true if match is correct
  */
@@ -35,6 +35,16 @@ const isItAnInvalidEmail = inputValue => {
   let emailFormat =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   return inputValue.match(emailFormat) === null;
+};
+
+/**
+ *Check invalid range format
+ * @param {number} startRange
+ * @param {number} endRange
+ * @returns {boolean}
+ */
+const isItAnInvalidRange = (startRange, endRange) => {
+  return startRange >= endRange;
 };
 
 /**
@@ -57,4 +67,5 @@ export {
   isTheNameTooShort,
   isItAnInvalidEmail,
   onlyInTheRange,
+  isItAnInvalidRange,
 };
