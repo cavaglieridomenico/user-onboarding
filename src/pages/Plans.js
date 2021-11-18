@@ -120,7 +120,7 @@ const Plans = () => {
             <h2 className='planning-text'>
               How much are you planning to invest in this year?
             </h2>
-            <form id='form-plans' onClick={handleClickPlansForms}>
+            <form id='form-plans' onClickCapture={handleClickPlansForms}>
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
