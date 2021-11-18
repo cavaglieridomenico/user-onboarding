@@ -79,12 +79,12 @@ const Slider = ({
   };
 
   /*Cursor 1 logic when operated by the user*/
-  const handleMousedown1 = event => {
+  const handleMousedownFrom = event => {
     event.preventDefault();
     const shiftX1 =
       event.clientX - cursor1.current.getBoundingClientRect().left;
 
-    const handleMouseMove1 = event => {
+    const handleMouseMoveFrom = event => {
       let newLeft = event.clientX - shiftX1 - slideStart;
 
       getLimitsLeftRight(newLeft);
@@ -117,23 +117,23 @@ const Slider = ({
       }
     };
 
-    const handleMouseUp1 = () => {
-      window.removeEventListener('mousemove', handleMouseMove1);
-      window.removeEventListener('mouseup', handleMouseUp1);
+    const handleMouseUpFrom = () => {
+      window.removeEventListener('mousemove', handleMouseMoveFrom);
+      window.removeEventListener('mouseup', handleMouseUpFrom);
     };
 
-    window.addEventListener('mousemove', handleMouseMove1);
-    window.addEventListener('mouseup', handleMouseUp1);
+    window.addEventListener('mousemove', handleMouseMoveFrom);
+    window.addEventListener('mouseup', handleMouseUpFrom);
   };
 
   /*Cursor 2 logic when operated by the user*/
-  const handleMousedown2 = event => {
+  const handleMousedownTo = event => {
     event.preventDefault();
 
     const shiftX2 =
       event.clientX - cursor2.current.getBoundingClientRect().left;
 
-    const handleMouseMove2 = event => {
+    const handleMouseMoveTo = event => {
       let newLeft = event.clientX - shiftX2 - slideStart;
       getLimitsLeftRight(newLeft);
 
@@ -165,13 +165,13 @@ const Slider = ({
       }
     };
 
-    const handleMouseUp2 = () => {
-      window.removeEventListener('mousemove', handleMouseMove2);
-      window.removeEventListener('mouseup', handleMouseUp2);
+    const handleMouseUpTo = () => {
+      window.removeEventListener('mousemove', handleMouseMoveTo);
+      window.removeEventListener('mouseup', handleMouseUpTo);
     };
 
-    window.addEventListener('mousemove', handleMouseMove2);
-    window.addEventListener('mouseup', handleMouseUp2);
+    window.addEventListener('mousemove', handleMouseMoveTo);
+    window.addEventListener('mouseup', handleMouseUpTo);
   };
 
   return (
@@ -189,14 +189,14 @@ const Slider = ({
           className='cursor'
           id='cursor-1'
           ref={cursor1}
-          onMouseDown={handleMousedown1}
+          onMouseDown={handleMousedownFrom}
           onDragStart={() => false}
         ></div>
         <div
           className='cursor'
           id='cursor-2'
           ref={cursor2}
-          onMouseDown={handleMousedown2}
+          onMouseDown={handleMousedownTo}
         ></div>
       </div>
       <div className='slider-text-container' ref={sliderNumberContainer}>
