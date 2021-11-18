@@ -3,6 +3,7 @@ import {
   isAnEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
+  onlyInTheRange,
 } from './form_utility';
 //Test of filling in the form fields
 
@@ -83,4 +84,25 @@ test(`It should return false if the format of the mail is valid`, () => {
 
 test(`It should return false if the format of the mail is valid`, () => {
   expect(isItAnInvalidEmail('dom@dom.it')).toEqual(false);
+});
+
+/*A value in a range*/
+test('It should return 0 if the first parameter is less than 0', () => {
+  expect(onlyInTheRange(-10, 0, 600)).toEqual(0);
+});
+
+test('It should return 600 if the first parameter is greater than 600', () => {
+  expect(onlyInTheRange(650, 0, 600)).toEqual(600);
+});
+
+test('It should return 0 if the first parameter is equal to 0', () => {
+  expect(onlyInTheRange(0, 0, 600)).toEqual(0);
+});
+
+test('It should return 0 if the first parameter is equal to 600', () => {
+  expect(onlyInTheRange(600, 0, 600)).toEqual(600);
+});
+
+test('It should return the first parameter if the first parameter is in the range', () => {
+  expect(onlyInTheRange(300, 0, 600)).toEqual(300);
 });

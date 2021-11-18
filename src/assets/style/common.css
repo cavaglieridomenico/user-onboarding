@@ -20,7 +20,7 @@ body {
 @media all and (min-width: 1200px) {
   body {
     background-color: var(--mainBackground);
-    min-width: max-content;
+    /* min-width: max-content; */
   }
 }
 
@@ -49,6 +49,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: var(--innerHeight);
+  min-height: var(--innerMinHeight);
   padding: var(--innerPadding);
 }
 
@@ -71,9 +72,6 @@ body {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: var(--outerColLeft) auto;
-  }
-  .onboarding-outerbox {
-    min-height: var(--outerMinHeight);
   }
 }
 /*Main containers end*/
@@ -123,6 +121,15 @@ h2 {
     text-align: left;
   }
 }
+
+/*LG - Text - default style*/
+@media all and (min-width: 1200px) {
+  .onboarding-innerbox h1,
+  .onboarding-innerbox h2 {
+    text-align: left;
+  }
+}
+
 /*Text - default style - end*/
 
 /*Form - default style*/

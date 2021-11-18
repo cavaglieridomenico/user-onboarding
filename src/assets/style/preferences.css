@@ -58,7 +58,6 @@
 /*MD*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   .pref h1 {
-    text-align: left;
     margin: 0 0 15px;
   }
 
@@ -87,7 +86,13 @@
   section.pref {
     margin: 0 0 40px;
   }
-
+  .pref-text {
+    display: block;
+  }
+  .pref-title2 {
+    display: block;
+    margin: 50px 0 20px;
+  }
   #form-pref .form-container {
     grid-template-rows: auto auto;
     grid-template-columns: repeat(4, auto);

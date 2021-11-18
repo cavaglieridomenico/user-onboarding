@@ -3,6 +3,7 @@ aside {
   background: var(--primaryColor);
   padding: var(--sidebarPadding);
   height: var(--sidebarHeight);
+  min-height: var(--sidebarMinHeight);
 }
 
 .quote-container {
@@ -61,7 +62,7 @@ p.role {
   font-size: 14px;
 }
 
-/*MD – Larger tablet in portrait*/
+/*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   aside {
     display: flex;
@@ -69,7 +70,7 @@ p.role {
     justify-content: space-between;
   }
 }
-/*LG - Large tablet in landscape*/
+/*LG - large tablet in landscape*/
 @media all and (min-width: 1200px) {
   aside {
     display: flex;

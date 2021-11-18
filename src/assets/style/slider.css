@@ -1,0 +1,112 @@
+.slider-container {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.notch-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: #e9f0f5;
+  width: 610px;
+  border-radius: 1px;
+  height: 4px;
+}
+
+.notch {
+  position: relative;
+  width: 3px;
+  height: 14px;
+  background: #a1afb8;
+  border-radius: 0.5px;
+  top: -6px;
+}
+
+.notch-active {
+  background: var(--primaryColor);
+}
+
+.slider {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 610px;
+  height: 4px;
+  border-radius: 1px;
+}
+
+.cursor {
+  position: relative;
+  display: inline-block;
+  background: #35a0ee;
+  width: 16px;
+  height: 16px;
+  border-radius: 1px;
+  top: -7.5px;
+  cursor: pointer;
+}
+
+.slider-text-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  width: 660px;
+  color: #a1afb8;
+}
+
+.slider-text-container p:nth-child(3) {
+  margin-left: 30px;
+}
+
+.slider-text-container p:nth-child(4) {
+  margin-left: 15px;
+}
+
+.slider-text-container p:nth-child(5) {
+  margin-left: 25px;
+}
+
+.slider-text-container p:last-child {
+  margin-left: 15px;
+}
+
+.slider-number-active {
+  color: var(--primaryColor);
+}
+
+/*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
+@media all and (min-width: 360px) {
+}
+
+/*XS - smartphones land. (height:100%)*/
+@media all and (min-width: 480px) and (max-height: 600px) {
+}
+
+/*MD - common properties for larger screens*/
+@media all and (min-width: 992px) {
+}
+
+/*MD – large tablet port. and medium tablet land.*/
+@media all and (min-width: 992px) and (min-height: 800px) {
+}
+
+/*LG - large tablet landscape*/
+@media all and (min-width: 1200px) {
+  .slider-container {
+    display: flex;
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+}

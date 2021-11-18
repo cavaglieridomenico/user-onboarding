@@ -51,7 +51,6 @@ Variables
   --outerWith: 100vw;
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
-  --outerMinHeight: max-content;
   --outerHeight: calc(
     100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
   );
@@ -60,13 +59,14 @@ Variables
   );
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
-  --innerPadding: 7%;
+  --innerPadding: 2% 1%;
 }
 
 /*XS*/
 @media all and (min-width: 360px) {
   :root {
     --outerMinWith: initial;
+    --innerPadding: 7%;
   }
 }
 
@@ -79,7 +79,16 @@ Variables
   }
 }
 
-/*MD*/
+/*MD - common properties for larger screens*/
+@media all and (min-width: 992px) {
+  :root {
+    --outerHeight: 100%;
+    --innerHeight: 100%;
+    --sidebarHeight: 100%;
+  }
+}
+
+/*MD - large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   :root {
     --outerMinWith: initial;
@@ -95,6 +104,12 @@ Variables
 /*LG*/
 @media all and (min-width: 1200px) {
   :root {
+    --outerHeight: 100%;
+    --innerHeight: 100%;
+    --sidebarHeight: 100%;
+    --outerMinHeight: 100vh;
+    --innerMinHeight: 100vh;
+    --sidebarMinHeight: 100vh;
     --outerColLeft: 516px;
     --innerPadding: 4% 3% 8% 7%;
     --sidebarPadding: 7% 0 12% 7%;
@@ -107,6 +122,9 @@ Variables
     --outerHeight: 900px;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
+    --outerMinHeight: 100%;
+    --innerMinHeight: 100%;
+    --sidebarMinHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
