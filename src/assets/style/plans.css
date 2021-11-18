@@ -19,6 +19,7 @@
 
 #form-plans .from-box select,
 #form-plans .to-box select {
+  appearance: none;
   border-bottom: solid 2px var(--lightGrey);
   margin: 0 auto 1%;
   width: 100%;
@@ -27,6 +28,7 @@
   font-weight: 600;
   line-height: 28px;
   letter-spacing: var(--mainSpacing);
+  transition: var(--mainTransition);
 }
 
 #form-plans .from-box {
