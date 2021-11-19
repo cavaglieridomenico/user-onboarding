@@ -8,7 +8,6 @@
 
 .plans h2 {
   font-size: 18px;
-  margin: 8px 0 10px;
 }
 
 /*Form-plans*/
@@ -88,10 +87,10 @@
 }
 /*Form-investor end*/
 
-/*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-  .plans h1 {
-    margin: 0 0 15px;
+/*XS - smartphones landscape*/
+@media all and (min-width: 480px) {
+  section.plans {
+    margin: 3rem 0 6rem;
   }
   .planning-text {
     display: block;
@@ -103,7 +102,9 @@
   .plans h2 {
     font-size: var(--title2Size);
     font-weight: var(--title2Weight);
-    margin: 40px 0 25px;
+  }
+  #form-plans {
+    margin-bottom: 2.7rem;
   }
   #form-plans .form-container {
     grid-template-columns: 260px 260px;
@@ -124,41 +125,9 @@
   }
 }
 
-/*LG*/
-@media all and (min-width: 1200px) {
-  .planning-text {
-    display: block;
-  }
-  .plans article > p {
-    letter-spacing: var(--mainSpacing);
-    width: 550px;
-  }
-  .plans h2 {
-    font-size: var(--title2Size);
-    font-weight: var(--title2Weight);
-    margin: 40px 0 25px;
-  }
-  .plans article > p {
-    margin-top: 20px;
-  }
-  .plans h2 {
-    margin: 70px 0 40px;
-  }
-  #form-plans .form-container {
-    grid-template-rows: auto auto;
-    grid-template-columns: 260px 260px;
-    grid-row-gap: 20px;
-    grid-column-gap: 30px;
-  }
-  #form-plans .from-box {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-  }
-  #form-plans .to-box {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-  }
-  #form-investor .form-container {
-    margin: 0;
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+  section.plans {
+    margin: 0 0 6rem;
   }
 }

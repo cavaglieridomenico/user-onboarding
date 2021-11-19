@@ -66,25 +66,17 @@ Variables
 @media all and (min-width: 360px) {
   :root {
     --outerMinWith: initial;
-    --innerPadding: 7%;
+    --innerPadding: 3% 7% 5%;
   }
 }
 
-/*XS - Smartphones landscape (height:100%)*/
-@media all and (min-width: 480px) and (max-height: 600px) {
+/*XS - Smartphones landscape*/
+@media all and (min-width: 480px) {
   :root {
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-  }
-}
-
-/*MD - common properties for larger screens*/
-@media all and (min-width: 992px) {
-  :root {
-    --outerHeight: 100%;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
+    --innerPadding: 1% 8% 7%;
   }
 }
 

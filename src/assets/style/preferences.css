@@ -55,43 +55,16 @@
 }
 /*Form end*/
 
-/*MD*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-  .pref h1 {
-    margin: 0 0 15px;
-  }
-
-  .pref-text {
-    display: block;
-  }
-
-  .pref-title2 {
-    display: block;
-    margin: 50px 0 20px;
-  }
-
-  #form-pref .form-container {
-    grid-gap: 20px 20px;
-    margin: initial;
-  }
-
-  #form-pref .check-box {
-    width: 180px;
-    height: 70px;
-  }
-}
-
-/*LG*/
-@media all and (min-width: 1200px) {
+/*XS - smartphones landscape*/
+@media all and (min-width: 480px) {
   section.pref {
-    margin: 0 0 40px;
+    margin: 3rem 0 3.5rem;
   }
   .pref-text {
     display: block;
   }
   .pref-title2 {
     display: block;
-    margin: 50px 0 20px;
   }
   #form-pref .form-container {
     grid-template-rows: auto auto;
@@ -108,5 +81,31 @@
     align-items: flex-start;
     width: 136px;
     height: 148px;
+  }
+}
+
+/*MD – large tablet port. and medium tablet land.*/
+@media all and (min-width: 992px) and (min-height: 800px) {
+  #form-pref .form-container {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px 20px;
+  }
+}
+
+/*LG*/
+@media all and (min-width: 1200px) {
+  #form-pref .form-container {
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 20px 20px;
+    margin: initial;
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+  section.pref {
+    margin-bottom: 3.5rem;
   }
 }
