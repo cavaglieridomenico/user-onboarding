@@ -1,13 +1,13 @@
 .planning-text {
   display: none;
 }
+
 .plans article > p {
   letter-spacing: 1.5px;
 }
 
 .plans h2 {
   font-size: 18px;
-  margin: 8px 0 10px;
 }
 
 /*Form-plans*/
@@ -15,10 +15,13 @@
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 100%;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
 #form-plans .from-box select,
 #form-plans .to-box select {
+  appearance: none;
   border-bottom: solid 2px var(--lightGrey);
   margin: 0 auto 1%;
   width: 100%;
@@ -27,6 +30,7 @@
   font-weight: 600;
   line-height: 28px;
   letter-spacing: var(--mainSpacing);
+  transition: var(--mainTransition);
 }
 
 #form-plans .from-box {
@@ -40,7 +44,6 @@
 .form-plans-error {
   color: red;
 }
-
 /*Form-plans end*/
 
 /*Form-investor*/
@@ -84,10 +87,10 @@
 }
 /*Form-investor end*/
 
-/*MD*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-  .plans h1 {
-    margin: 0 0 15px;
+/*XS - smartphones landscape*/
+@media all and (min-width: 480px) {
+  section.plans {
+    margin: 3rem 0 6rem;
   }
   .planning-text {
     display: block;
@@ -99,13 +102,15 @@
   .plans h2 {
     font-size: var(--title2Size);
     font-weight: var(--title2Weight);
-    margin: 40px 0 25px;
+  }
+  #form-plans {
+    margin-bottom: 2.7rem;
   }
   #form-plans .form-container {
-    grid-template-rows: auto auto;
-    grid-template-columns: 260px 260px 1fr;
+    grid-template-columns: 260px 260px;
     grid-row-gap: 20px;
     grid-column-gap: 30px;
+    margin: 0;
   }
   #form-plans .from-box {
     grid-row: 1 / 2;
@@ -120,41 +125,9 @@
   }
 }
 
-/*LG*/
-@media all and (min-width: 1200px) {
-  .planning-text {
-    display: block;
-  }
-  .plans article > p {
-    letter-spacing: var(--mainSpacing);
-    width: 550px;
-  }
-  .plans h2 {
-    font-size: var(--title2Size);
-    font-weight: var(--title2Weight);
-    margin: 40px 0 25px;
-  }
-  .plans article > p {
-    margin-top: 20px;
-  }
-  .plans h2 {
-    margin: 70px 0 40px;
-  }
-  #form-plans .form-container {
-    grid-template-rows: auto auto;
-    grid-template-columns: 260px 260px;
-    grid-row-gap: 20px;
-    grid-column-gap: 30px;
-  }
-  #form-plans .from-box {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-  }
-  #form-plans .to-box {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-  }
-  #form-investor .form-container {
-    margin: 0;
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+  section.plans {
+    margin: 0 0 6rem;
   }
 }

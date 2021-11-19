@@ -21,6 +21,31 @@ const Preferences = () => {
   const preferences = useRef('');
 
   /**
+   * Returns an array with the value of the selected checkboxes
+   * @returns array
+   */
+  const getPreferences = () => {
+    const allPrefs = preferences.current.elements.preferences;
+    const checkedPrefs = [];
+    allPrefs.forEach(pref => {
+      if (pref.checked) {
+        checkedPrefs.push(pref.value);
+      }
+    });
+    return checkedPrefs;
+  };
+
+  /**
+   * Assign and remove a specific class to the check box
+   * that is checked or unchecked
+   * @param {html element} element
+   */
+  const handleCheckboxSelection = element => {
+    element.checked && element.parentNode.classList.add('selected');
+    !element.checked && element.parentNode.classList.remove('selected');
+  };
+
+  /**
    * Check the status of the previous steps and, if someone has not yet been updated,
    * directly opens the corresponding page in progressive order,
    * with an alert for the user.
@@ -52,15 +77,8 @@ const Preferences = () => {
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      const allPrefs = preferences.current.elements.preferences;
-      const checkedPrefs = [];
-      for (let pref of allPrefs) {
-        if (pref.checked) {
-          checkedPrefs.push(pref.value);
-        }
-      }
-      if (arePreferencesDataValidated(checkedPrefs)) {
-        getPreferencesData(checkedPrefs);
+      if (arePreferencesDataValidated(getPreferences())) {
+        getPreferencesData(getPreferences());
         setStepStatus3(true);
         setDataReady(true);
         history.push('./');
@@ -105,6 +123,7 @@ const Preferences = () => {
               id='form-pref'
               ref={preferences}
               onClick={handleClickPreferencesForm}
+              onChange={event => handleCheckboxSelection(event.target)}
             >
               <div className='form-container'>
                 <div className='check-box'>

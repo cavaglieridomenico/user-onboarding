@@ -21,18 +21,8 @@ header {
   margin-right: 8px;
 }
 
-/*MD arge tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-  header {
-    flex-direction: row;
-  }
-  .header__step {
-    display: block;
-  }
-}
-
-/*LG - large tablet landscape*/
-@media all and (min-width: 1200px) {
+/*XS - smartphones landscape (height:100%)*/
+@media all and (min-width: 480px) {
   header {
     flex-direction: row;
   }

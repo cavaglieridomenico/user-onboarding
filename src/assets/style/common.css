@@ -55,7 +55,6 @@ body {
 
 .onboarding-innerbox section {
   min-height: 330px;
-  margin: 3% 0;
 }
 
 /*MD - Main containers*/
@@ -66,6 +65,7 @@ body {
     grid-template-columns: var(--outerColLeft) auto;
   }
 }
+
 /*LG - Main containers*/
 @media all and (min-width: 1200px) {
   .onboarding-outerbox {
@@ -75,6 +75,40 @@ body {
   }
 }
 /*Main containers end*/
+
+/*Text - default style*/
+.onboarding-outerbox h1,
+h2 {
+  font-family: var(--monserratAlt);
+  color: var(--mainBlack);
+  text-align: center;
+}
+
+.onboarding-outerbox h1 {
+  font-size: var(--mainTitleSize);
+  line-height: var(--mainTitleLineHeight);
+  font-weight: var(--mainTitleWeight);
+  margin: 0 0 1.5rem;
+}
+
+.onboarding-outerbox h2 {
+  font-size: var(--title2Size);
+  line-height: var(--title2LineHeight);
+  font-weight: var(--title2Weight);
+  margin: 2.5rem 0 1.5rem;
+}
+/*XS - smartphones landscape*/
+@media all and (min-width: 480px) {
+  .onboarding-innerbox h1 {
+    text-align: left;
+    margin: 0 0 1rem;
+  }
+  .onboarding-innerbox h2 {
+    text-align: left;
+    margin: 2.5rem 0 1.7rem;
+  }
+}
+/*Text - default style - end*/
 
 /*Tag default style*/
 .onboarding-outerbox ul {
@@ -92,45 +126,6 @@ a:visited {
   width: 100%;
 }
 /*Tag default style end*/
-
-/*Text - default style*/
-.onboarding-outerbox h1,
-h2 {
-  font-family: var(--monserratAlt);
-  color: var(--mainBlack);
-  text-align: center;
-}
-
-.onboarding-outerbox h1 {
-  font-size: var(--mainTitleSize);
-  line-height: var(--mainTitleLineHeight);
-  font-weight: var(--mainTitleWeight);
-  margin: 0 0 1.1rem;
-}
-
-.onboarding-outerbox h2 {
-  font-size: var(--title2Size);
-  line-height: var(--title2LineHeight);
-  font-weight: var(--title2Weight);
-}
-
-/*MD - Text - default style*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-  .onboarding-innerbox h1,
-  .onboarding-innerbox h2 {
-    text-align: left;
-  }
-}
-
-/*LG - Text - default style*/
-@media all and (min-width: 1200px) {
-  .onboarding-innerbox h1,
-  .onboarding-innerbox h2 {
-    text-align: left;
-  }
-}
-
-/*Text - default style - end*/
 
 /*Form - default style*/
 .onboarding-outerbox input[type='text'],

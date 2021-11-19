@@ -88,15 +88,27 @@ footer a {
   justify-self: center;
 }
 
-/*XS - Smartphones landscape (height:100%)*/
-@media all and (min-width: 480px) and (max-height: 600px) {
+/*XS - Smartphones landscape*/
+@media all and (min-width: 480px) {
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   footer a {
     margin: 3% 0;
   }
 }
 
-/*MD*/
+/*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
+  footer {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+    margin: 0 auto 1%;
+    min-width: max-content;
+  }
   .btn {
     width: 155px;
     height: 48px;
@@ -116,6 +128,7 @@ footer a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: unset;
   }
   footer > a {
     order: 0;
