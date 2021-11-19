@@ -1,6 +1,7 @@
 .planning-text {
   display: none;
 }
+
 .plans article > p {
   letter-spacing: 1.5px;
 }
@@ -15,6 +16,8 @@
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 100%;
+  max-width: 340px;
+  margin: 0 auto;
 }
 
 #form-plans .from-box select,
@@ -42,7 +45,6 @@
 .form-plans-error {
   color: red;
 }
-
 /*Form-plans end*/
 
 /*Form-investor*/
@@ -86,7 +88,7 @@
 }
 /*Form-investor end*/
 
-/*MD*/
+/*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   .plans h1 {
     margin: 0 0 15px;
@@ -104,10 +106,10 @@
     margin: 40px 0 25px;
   }
   #form-plans .form-container {
-    grid-template-rows: auto auto;
-    grid-template-columns: 260px 260px 1fr;
+    grid-template-columns: 260px 260px;
     grid-row-gap: 20px;
     grid-column-gap: 30px;
+    margin: 0;
   }
   #form-plans .from-box {
     grid-row: 1 / 2;
