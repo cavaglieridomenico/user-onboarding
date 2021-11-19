@@ -94,31 +94,9 @@
   color: red;
 }
 
-/*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
-@media all and (min-width: 360px) {
-}
-
-/*XS - smartphones land. (height:100%)*/
-@media all and (min-width: 480px) and (max-height: 600px) {
-}
-
-/*MD - common properties for larger screens*/
-@media all and (min-width: 992px) {
-}
-
-/*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
-}
-
 /*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
   .slider-container {
     display: flex;
-    grid-row: 2 / 3;
-    grid-column: 1 / 4;
   }
-}
-
-/*XL larger screens*/
-@media all and (min-width: 1440px) {
 }
