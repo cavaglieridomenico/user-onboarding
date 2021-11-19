@@ -10,14 +10,14 @@
 
 #form-contact .form-container div {
   border-bottom: solid 2px var(--lightGrey);
-  height: 55px;
+  height: 60px;
   padding: 3px 0 0 0;
   max-width: 340px;
   margin: 0 auto;
 }
 
 #form-contact .phone-box select {
-  width: 40px;
+  width: 45px;
 }
 
 #form-contact .phone-box input {
@@ -41,7 +41,7 @@
   margin: 3% 0 0;
 }
 
-/*MD*/
+/*MD - large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) {
   .contact .welcome,
   .contact .privacy {
