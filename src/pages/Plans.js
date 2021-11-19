@@ -210,7 +210,6 @@ const Plans = () => {
                     name='accredited'
                     value='yes'
                     onChange={() => {
-                      console.log('Ciao!');
                       setAccreditedYes(true);
                       setAccreditedNo(false);
                     }}
