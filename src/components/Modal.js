@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
@@ -11,6 +11,19 @@ const Modal = () => {
     response,
     setModalClose,
   } = useGlobalContext();
+
+  /**
+   * Prevent body scrolling under the modal
+   */
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+    }
+  }, [showModal]);
 
   return (
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>

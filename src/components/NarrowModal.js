@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
@@ -10,6 +10,20 @@ const NarrowModal = () => {
     narrowModalText2,
     setNarrowModalClosed,
   } = useGlobalContext();
+
+  /**
+   * Prevent body scrolling under the modal
+   */
+  useEffect(() => {
+    if (showNarrowModal) {
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+    }
+  }, [showNarrowModal]);
+
   return (
     <div
       className={`narrow-modal-overlay ${
