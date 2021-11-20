@@ -101,12 +101,13 @@ const Plans = () => {
   return (
     <div className='onboarding-outerbox'>
       <Sidebar
-        page={'plans'}
-        text={
+        progressDisplay={'progress-desktop'}
+        quoteDisplay={'quote-visible'}
+        quoteText={
           'Save from thousands to millions on your deal. Secure the best possible. And get independent, unbiased advice for free'
         }
-        author={'Jodie Sears'}
-        role={'UNITEDPROPERTIES’ AGENT'}
+        quoteAuthor={'Jodie Sears'}
+        quoteAuthorRole={'UNITEDPROPERTIES’ AGENT'}
       />
       <div className='onboarding-innerbox'>
         <Header number={2} />

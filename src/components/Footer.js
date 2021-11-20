@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import arrow_left from '../assets/images/arrow_left.svg';
 import { useGlobalContext } from '../context';
 
-const Footer = ({ homePage, skipStep, textRightButton, handleSubmit }) => {
+const Footer = ({
+  homePage,
+  skipStep,
+  textRightButton,
+  handleSubmit,
+  buttonContainerDisplay,
+}) => {
   const { setDebouncer } = useGlobalContext();
 
   return (
@@ -14,7 +20,7 @@ const Footer = ({ homePage, skipStep, textRightButton, handleSubmit }) => {
         </div>
         <p>Back to the homepage</p>
       </Link>
-      <div className='btn-container'>
+      <div className={buttonContainerDisplay}>
         <Link to={skipStep}>
           <button
             className='btn btn-primary50'

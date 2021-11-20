@@ -1,15 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import Footer from '../components/Footer';
 
 const Error = () => {
   return (
-    <div className='container'>
-      <Sidebar />
-      <section className='error'>
-        <h1>oops! it's a dead end</h1>
-        <Link to='/'>back home</Link>
-      </section>
+    <div className='onboarding-outerbox'>
+      <Sidebar progressDisplay={'hidden'} quoteDisplay={'hidden'} />
+      <div className='onboarding-innerbox error'>
+        <h1>Page not found.</h1>
+        <Footer
+          homePage={'/'}
+          skipStep={'/'}
+          textRightButton={'Next Step'}
+          buttonContainerDisplay={'btn-container-none'}
+        />
+      </div>
     </div>
   );
 };

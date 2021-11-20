@@ -1,12 +1,12 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
 
-const Progress = ({ view }) => {
+const Progress = ({ progressDisplay }) => {
   const { stepStatus1, stepStatus2, stepStatus3 } = useGlobalContext();
 
   return (
-    <div className={`progress-container ${view}`}>
-      <div className='progress '>
+    <div className={`progress-container ${progressDisplay}`}>
+      <div className='progress'>
         <div className='square-text-container'>
           <div
             className={`outer-square ${

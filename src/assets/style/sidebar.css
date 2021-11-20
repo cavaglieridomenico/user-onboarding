@@ -8,6 +8,7 @@ aside {
 
 .quote-container {
   position: relative;
+  display: none;
   width: 368px;
   height: 240px;
   background-color: var(--mainWhite);
@@ -31,6 +32,10 @@ aside {
   background-size: 25px 18px;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.quote-visible {
+  display: block;
 }
 
 .logo-icon {
@@ -60,6 +65,10 @@ p.author + p {
 
 p.role {
   font-size: 14px;
+}
+
+.no-quote {
+  display: none;
 }
 
 /*MD – large tablet port. and medium tablet land.*/

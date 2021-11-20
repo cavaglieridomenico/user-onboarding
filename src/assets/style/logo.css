@@ -1,16 +1,22 @@
-.logo {
-  display: flex;
-  align-content: center;
+.logo-container {
+  position: relative;
+  display: none;
   background-color: var(--primaryColor);
 }
 
-.logo img {
+.logo-mobile {
+  display: flex;
+  justify-content: center;
+  height: var(--logoMobileHeight);
+}
+
+.logo-container .logo-img {
   width: 250px;
 }
 
-.logo-mobile {
-  justify-content: center;
-  height: var(--logoMobileHeight);
+.logo-desktop {
+  display: flex;
+  align-content: center;
 }
 
 /*MD*/
@@ -19,6 +25,7 @@
     display: none;
   }
 }
+
 /*LG*/
 @media all and (min-width: 1200px) {
   .logo-mobile {

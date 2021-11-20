@@ -18,8 +18,8 @@ function App() {
       <NarrowModal />
       <Debouncer />
       <Modal />
-      <Logo view='logo-mobile' />
-      <Progress view='progress-mobile' />
+      <Logo logoDisplay='logo-mobile' />
+      <Progress progressDisplay='progress-mobile' />
       <Switch>
         <Route exact path='/'>
           <Contact />

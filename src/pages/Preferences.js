@@ -98,12 +98,13 @@ const Preferences = () => {
   return (
     <div className='onboarding-outerbox pref'>
       <Sidebar
-        page={'preferences'}
-        text={
+        progressDisplay={'progress-desktop'}
+        quoteDisplay={'quote-visible'}
+        quoteText={
           'United Properties is about fast & easy searching, buying, selling and investing ever — online, with an expert by our side'
         }
-        author={'Ollie Mcmahon'}
-        role={'MANAGING DIRECTOR'}
+        quoteAuthor={'Ollie Mcmahon'}
+        quoteAuthorRole={'MANAGING DIRECTOR'}
       />
       <div className='onboarding-innerbox pref'>
         <Header number={3} />
