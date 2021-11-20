@@ -6,6 +6,7 @@ const Sidebar = ({ text, author, role }) => {
   return (
     <aside>
       <Logo logoDisplay='logo-desktop' />
+      <Progress progressDisplay={progressDisplay} />
         <div className='quote-icon'></div>
         <p>{text}</p>
         <p className='author'>{author}</p>

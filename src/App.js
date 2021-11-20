@@ -19,6 +19,7 @@ function App() {
       <Debouncer />
       <Modal />
       <Logo logoDisplay='logo-mobile' />
+      <Progress progressDisplay='progress-mobile' />
       <Switch>
         <Route exact path='/'>
           <Contact />

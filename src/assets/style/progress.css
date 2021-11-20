@@ -1,6 +1,7 @@
+/*Mobile and desktop*/
 .progress-container {
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   height: var(--progressMobileHeight);
   background: var(--primaryColor);
@@ -8,12 +9,6 @@
   color: var(--mainWhite50);
   font-size: 12px;
   font-weight: 300;
-}
-
-.square-text-container {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 30px 80px;
 }
 
 .outer-square {
@@ -36,12 +31,7 @@
   opacity: 0;
 }
 
-.square-text-container > p {
-  margin-left: 4px;
-}
-
 .rectangle {
-  display: none;
   position: relative;
   width: 4px;
   height: 9px;
@@ -71,89 +61,74 @@
 .progress-text-active {
   color: var(--offWhite);
 }
+/*Mobile and desktop end*/
+
+/*Mobile*/
+.progress-mobile {
+  display: flex;
+}
+
+.progress-mobile .square-text-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 30px 80px;
+}
+
+.progress-mobile .inner-square {
+  width: 8px;
+  height: 8px;
+}
+
+.progress-mobile .square-text-container > p {
+  margin-left: 4px;
+}
+
+.progress-mobile .rectangle {
+  display: none;
+}
+/*Mobile end*/
+
+/*Desktop*/
+.progress-desktop {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 18px;
+  font-weight: 700;
+  margin: var(--progressMargin);
+}
+
+.progress-desktop .square-text-container {
+  display: flex;
+}
+.progress-desktop .inner-square {
+  width: 11.2px;
+  height: 11.2px;
+}
+.progress-desktop .square-text-container > p {
+  margin-left: 14px;
+}
+.progress-desktop .rectangle {
+  display: block;
+}
+/*Desktop end*)
 
 /*MD – Larger tablet in portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) {
-  .progress-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: var(--monserratAlt);
-    color: var(--mainWhite50);
-    font-size: 18px;
-    font-weight: 700;
-    margin: var(--progressMargin);
-  }
-  .progress-container.progress-mobile {
+  .progress-mobile {
     display: none;
   }
-  .square-text-container {
+  .progress-desktop {
     display: flex;
-  }
-  .inner-square {
-    width: 11.2px;
-    height: 11.2px;
-  }
-  .square-text-container > p {
-    margin-left: 14px;
-  }
-  .rectangle {
-    display: block;
-  }
-  .outer-active {
-    border: 3px solid var(--mainWhite);
-  }
-
-  .inner-active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .progress-text-active {
-    color: var(--offWhite);
   }
 }
 
 /*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
-  .progress-container {
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: var(--monserratAlt);
-    color: var(--mainWhite50);
-    font-size: 18px;
-    font-weight: 700;
-    margin: var(--progressMargin);
-  }
-  .progress-container.progress-mobile {
+  .progress-mobile {
     display: none;
   }
-
-  .square-text-container {
+  .progress-desktop {
     display: flex;
-  }
-  .inner-square {
-    width: 11.2px;
-    height: 11.2px;
-  }
-  .square-text-container > p {
-    margin-left: 14px;
-  }
-
-  .rectangle {
-    display: flex;
-  }
-
-  .outer-active {
-    border: 3px solid var(--mainWhite);
-  }
-
-  .inner-active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .progress-text-active {
-    color: var(--offWhite);
   }
 }

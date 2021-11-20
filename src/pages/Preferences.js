@@ -98,8 +98,7 @@ const Preferences = () => {
   return (
     <div className='onboarding-outerbox pref'>
       <Sidebar
-        page={'preferences'}
-        text={
+        progressDisplay={'progress-desktop'}
           'United Properties is about fast & easy searching, buying, selling and investing ever — online, with an expert by our side'
         }
         author={'Ollie Mcmahon'}
