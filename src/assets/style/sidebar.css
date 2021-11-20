@@ -1,5 +1,7 @@
 aside {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
   background: var(--primaryColor);
   padding: var(--sidebarPadding);
   height: var(--sidebarHeight);
@@ -75,15 +77,11 @@ p.role {
 @media all and (min-width: 992px) and (min-height: 800px) {
   aside {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }
 /*LG - large tablet in landscape*/
 @media all and (min-width: 1200px) {
   aside {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }

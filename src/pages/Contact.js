@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -15,6 +15,7 @@ const Contact = () => {
     getContactData,
     setNarrowModalOpen,
     setStepStatus1,
+    setErrorPage,
   } = useGlobalContext();
 
   const fullName = useRef('');
@@ -22,6 +23,13 @@ const Contact = () => {
   const phoneCode = useRef('');
   const email = useRef('');
   const country = useRef('');
+
+  /**
+   * The current page is not an error page
+   */
+  useEffect(() => {
+    setErrorPage(false);
+  }, [setErrorPage]);
 
   /**
    * Update the properties of the newUser object, if the form data is validated.

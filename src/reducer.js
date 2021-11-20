@@ -153,6 +153,14 @@ const reducer = (state, action) => {
       narrowModalText2: '',
     };
   }
+
+  /*Set Error Page*/
+  if (action.type === 'SET_ERROR_PAGE') {
+    return {
+      ...state,
+      errorPage: action.payload,
+    };
+  }
 };
 
 export default reducer;

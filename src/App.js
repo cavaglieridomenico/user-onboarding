@@ -10,8 +10,10 @@ import Loader from './components/Loader';
 import Debouncer from './components/Debouncer';
 import NarrowModal from './components/NarrowModal';
 import Progress from './components/Progress';
+import { useGlobalContext } from './context';
 
 function App() {
+  const { errorPage } = useGlobalContext();
   return (
     <Router>
       <Loader />
@@ -19,7 +21,7 @@ function App() {
       <Debouncer />
       <Modal />
       <Logo logoDisplay='logo-mobile' />
-      <Progress progressDisplay='progress-mobile' />
+      <Progress progressDisplay={!errorPage && 'progress-mobile'} />
       <Switch>
         <Route exact path='/'>
           <Contact />

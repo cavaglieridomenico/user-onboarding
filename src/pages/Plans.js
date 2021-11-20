@@ -20,11 +20,19 @@ const Plans = () => {
     setNarrowModalOpen,
     setStepStatus2,
     stepStatus1,
+    setErrorPage,
   } = useGlobalContext();
 
   const planFrom = useRef('');
   const planTo = useRef('');
   const accredited = useRef('');
+
+  /**
+   * The current page is not an error page
+   */
+  useEffect(() => {
+    setErrorPage(false);
+  }, [setErrorPage]);
 
   /**
    * Validation in the input of the range in real time
