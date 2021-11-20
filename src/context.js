@@ -38,6 +38,7 @@ const defaultState = {
   narrowModalType: '',
   narrowModalText: '',
   narrowModalText2: '',
+  errorPage: false,
 };
 
 export const AppProvider = ({ children }) => {
@@ -210,6 +211,11 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
+  /*Set Error Page*/
+  const setErrorPage = useCallback(value => {
+    dispatch({ type: 'SET_ERROR_PAGE', payload: value });
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -230,6 +236,7 @@ export const AppProvider = ({ children }) => {
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
+        setErrorPage,
       }}
     >
       {children}
