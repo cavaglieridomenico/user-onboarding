@@ -85,7 +85,7 @@
 }
 
 /*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) and (orientation: portrait) {
   #form-pref .form-container {
     grid-template-rows: auto auto auto;
     grid-template-columns: repeat(3, auto);

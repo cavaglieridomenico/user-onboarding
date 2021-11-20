@@ -114,7 +114,7 @@
 /*Desktop end*)
 
 /*MD – Larger tablet in portrait*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .progress-mobile {
     display: none;
   }

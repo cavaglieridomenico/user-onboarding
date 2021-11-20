@@ -99,7 +99,7 @@ footer a {
 }
 
 /*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   footer {
     display: grid;
     grid-template-rows: auto auto;

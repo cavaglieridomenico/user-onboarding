@@ -74,7 +74,7 @@ p.role {
 }
 
 /*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   aside {
     display: flex;
   }

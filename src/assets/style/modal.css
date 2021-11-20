@@ -109,7 +109,7 @@ h1.modal-title {
   }
 }
 /*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .modal-container {
     transform: translateY(15%);
     width: 50vw;

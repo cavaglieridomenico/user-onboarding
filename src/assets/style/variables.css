@@ -76,20 +76,20 @@ Variables
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-    --innerPadding: 1% 8% 7%;
+    --innerPadding: 1.5% 8% 7%;
   }
 }
 
 /*MD - large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   :root {
     --outerMinWith: initial;
     --outerColLeft: 42%;
     --outerHeight: 100vh;
     --innerHeight: 100vh;
     --sidebarHeight: 100vh;
-    --innerPadding: 4% 3% 5% 3%;
-    --sidebarPadding: 7% 0 12% 7%;
+    --innerPadding: 5% 4% 10%;
+    --sidebarPadding: 8% 0 14% 7%;
   }
 }
 
