@@ -58,7 +58,7 @@
 /*XS - smartphones landscape*/
 @media all and (min-width: 480px) {
   section.pref {
-    margin: 3rem 0 3.5rem;
+    margin: 3rem 0 5rem;
   }
   .pref-text {
     display: block;
@@ -85,7 +85,7 @@
 }
 
 /*MD – large tablet port. and medium tablet land.*/
-@media all and (min-width: 992px) and (min-height: 800px) {
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   #form-pref .form-container {
     grid-template-rows: auto auto auto;
     grid-template-columns: repeat(3, auto);
@@ -95,6 +95,9 @@
 
 /*LG*/
 @media all and (min-width: 1200px) {
+  section.pref {
+    margin: 3rem 0 3.5rem;
+  }
   #form-pref .form-container {
     grid-template-rows: auto auto;
     grid-template-columns: repeat(4, auto);
@@ -106,6 +109,6 @@
 /*XL larger screens*/
 @media all and (min-width: 1440px) {
   section.pref {
-    margin-bottom: 3.5rem;
+    margin: 0 0 3.5rem;
   }
 }
