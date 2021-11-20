@@ -5,9 +5,7 @@ import Progress from './Progress';
 const Sidebar = ({ text, author, role }) => {
   return (
     <aside>
-      <Logo view='logo-desktop' />
-      <Progress />
-      <div className='quote-container'>
+      <Logo logoDisplay='logo-desktop' />
         <div className='quote-icon'></div>
         <p>{text}</p>
         <p className='author'>{author}</p>
