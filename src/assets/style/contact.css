@@ -99,6 +99,13 @@
   }
 }
 
+/*LG - large tablet landscape*/
+@media all and (min-width: 1200px) {
+  section.contact {
+    margin: 2rem 0 1rem;
+  }
+}
+
 /*XL larger screens*/
 @media all and (min-width: 1440px) {
   section.contact {

@@ -125,9 +125,9 @@
   }
 }
 
-/*XL larger screens*/
-@media all and (min-width: 1440px) {
+/*LG - large tablet landscape*/
+@media all and (min-width: 1200px) {
   section.plans {
-    margin: 0 0 6rem;
+    margin: 3rem 0 5rem;
   }
 }
