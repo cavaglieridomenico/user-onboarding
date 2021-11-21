@@ -86,55 +86,32 @@ h1.modal-title {
   text-transform: none;
 }
 
-/*XS – smartphone port. and small tablet port.-land. and medium tablet land.*/
+/*XS – smartphone portrait*/
 @media all and (min-width: 360px) {
   .modal-container {
     min-width: initial;
   }
 }
 
-/*XS - smartphones land. (height:100%)*/
-@media all and (min-width: 480px) and (max-height: 600px) {
-}
-
-/*SM – large tablet port. and medium tablet land.*/
-@media all and (min-width: 480px) and(min-height: 800px) {
+/*MD - common properties for larger screens*/
+@media all and (min-width: 992px) {
   .modal-container {
     height: fit-content;
+    width: 70vw;
   }
-
   .modal_text-container {
     height: fit-content;
     overflow: unset;
+    padding: 3%;
+  }
+  .response-container li:nth-child(odd) {
+    margin: 1.2% 0 0.3%;
   }
 }
 /*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .modal-container {
     transform: translateY(15%);
-    width: 50vw;
-    height: fit-content;
-    padding: 1%;
-  }
-
-  .modal_text-container {
-    height: fit-content;
-    overflow: unset;
-  }
-}
-
-/*LG - large tablet landscape*/
-@media all and (min-width: 1200px) {
-  .modal-container {
-    height: fit-content;
-  }
-
-  .modal_text-container {
-    padding: 1% unset;
-  }
-
-  .response-container li:nth-child(odd) {
-    margin: 1.2% 0 0.3%;
   }
 }
 
