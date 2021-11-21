@@ -20,7 +20,7 @@ const Footer = ({
         </div>
         <p>Back to the homepage</p>
       </Link>
-      <div className={buttonContainerDisplay}>
+      <div className={`btn-container ${buttonContainerDisplay}`}>
         <Link to={skipStep}>
           <button
             className='btn btn-primary50'

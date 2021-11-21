@@ -23,6 +23,11 @@ footer {
   color: var(--primaryColor);
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   width: 145px;
   height: 48px;
@@ -38,6 +43,7 @@ footer {
   background-color: var(--primaryColor);
   color: var(--mainWhite);
   box-shadow: var(--lightShadow);
+  align-self: center;
 }
 
 .btn-primary.finish-button {
@@ -93,9 +99,6 @@ footer a {
     justify-content: space-between;
     align-items: center;
   }
-  footer a {
-    margin: 3% 0;
-  }
 }
 
 /*MD – large tablet port. and medium tablet land.*/
@@ -114,9 +117,6 @@ footer a {
   }
   footer p {
     font-size: 16px;
-  }
-  footer a {
-    margin: 5% 0 0;
   }
 }
 

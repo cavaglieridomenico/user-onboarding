@@ -105,10 +105,3 @@
     margin: initial;
   }
 }
-
-/*XL larger screens*/
-@media all and (min-width: 1440px) {
-  section.pref {
-    margin: 0 0 3.5rem;
-  }
-}
