@@ -99,9 +99,6 @@ footer a {
     justify-content: space-between;
     align-items: center;
   }
-  footer a {
-    margin: 3% 0;
-  }
 }
 
 /*MD – large tablet port. and medium tablet land.*/
@@ -120,9 +117,6 @@ footer a {
   }
   footer p {
     font-size: 16px;
-  }
-  footer a {
-    margin: 5% 0 0;
   }
 }
 
