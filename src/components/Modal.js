@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
@@ -12,16 +12,21 @@ const Modal = () => {
     setModalClose,
   } = useGlobalContext();
 
+  const [positionY, setPositionY] = useState(0);
+
   /**
    * Prevent body scrolling under the modal
    */
   useEffect(() => {
+    if (window.scrollY > 0) {
+      setPositionY(window.scrollY);
+    }
     if (showModal) {
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${window.scrollY}px`;
-    } else {
+      document.body.style.positionX = 'fixed';
+    }
+    if (!showModal) {
       document.body.style.position = '';
-      document.body.style.top = '';
+      window.scrollTo(0, positionY);
     }
   }, [showModal]);
 
