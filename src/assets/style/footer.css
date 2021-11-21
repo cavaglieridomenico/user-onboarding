@@ -23,6 +23,11 @@ footer {
   color: var(--primaryColor);
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   width: 145px;
   height: 48px;
@@ -38,6 +43,7 @@ footer {
   background-color: var(--primaryColor);
   color: var(--mainWhite);
   box-shadow: var(--lightShadow);
+  align-self: center;
 }
 
 .btn-primary.finish-button {
