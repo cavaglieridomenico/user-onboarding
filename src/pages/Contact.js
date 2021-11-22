@@ -16,6 +16,8 @@ const Contact = () => {
     setNarrowModalOpen,
     setStepStatus1,
     setErrorPage,
+    fromLocalUser,
+    setLocalUser,
   } = useGlobalContext();
 
   const fullName = useRef('');
@@ -90,11 +92,27 @@ const Contact = () => {
               <div className='form-container'>
                 <div className='name-box'>
                   <label htmlFor='full-name'>Full name</label>
-                  <input type='text' id='full-name' ref={fullName} />
+                  <input
+                    type='text'
+                    id='full-name'
+                    ref={fullName}
+                    value={fromLocalUser.fullName}
+                    onChange={event =>
+                      setLocalUser('fullName', event.target.value)
+                    }
+                  />
                 </div>
                 <div className='phone-box'>
                   <label htmlFor='phone'>Phone</label>
-                  <select name='country-flag' id='country-flag' ref={phoneCode}>
+                  <select
+                    name='country-flag'
+                    id='country-flag'
+                    ref={phoneCode}
+                    value={fromLocalUser.phoneCode}
+                    onChange={event => {
+                      setLocalUser('phoneCode', event.target.value);
+                    }}
+                  >
                     <option id='italy-flag' value='+39'>
                       🇮🇹
                     </option>
@@ -108,15 +126,39 @@ const Contact = () => {
                       🇩🇪
                     </option>
                   </select>
-                  <input type='number' id='phone' ref={phoneNumber} />
+                  <input
+                    type='number'
+                    id='phone'
+                    ref={phoneNumber}
+                    value={fromLocalUser.phoneNumber}
+                    onChange={event =>
+                      setLocalUser('phoneNumber', event.target.value)
+                    }
+                  />
                 </div>
                 <div className='email-box'>
                   <label htmlFor='email'>E-mail address</label>
-                  <input type='text' id='email' ref={email} />
+                  <input
+                    type='text'
+                    id='email'
+                    ref={email}
+                    value={fromLocalUser.email}
+                    onChange={event => {
+                      setLocalUser('email', event.target.value);
+                    }}
+                  />
                 </div>
                 <div className='country-box'>
                   <label htmlFor='country'>Country</label>
-                  <select type='text' id='country' ref={country}>
+                  <select
+                    type='text'
+                    id='country'
+                    ref={country}
+                    value={fromLocalUser.country}
+                    onChange={event => {
+                      setLocalUser('country', event.target.value);
+                    }}
+                  >
                     <option id='italy' value='italy'>
                       italy
                     </option>

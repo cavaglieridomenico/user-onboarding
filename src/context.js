@@ -10,6 +10,26 @@ import {
 
 const AppContext = React.createContext();
 
+/**Retrieve data from localStorage, if any.*/
+const getLocalStorage = () => {
+  const userData = localStorage.getItem('localUser');
+  if (userData) {
+    return JSON.parse(localStorage.getItem('localUser'));
+  } else {
+    return {
+      fullName: '',
+      phoneCode: '+39',
+      phoneNumber: '',
+      email: '',
+      country: 'italy',
+      planFrom: '10000',
+      planTo: '200000',
+      accredited: '',
+      preferences: [],
+    };
+  }
+};
+
 const defaultState = {
   fetchPostUrl: 'https://60b21f9562ab150017ae1b08.mockapi.io/maxServer/user',
   stepStatus1: false,
@@ -28,6 +48,7 @@ const defaultState = {
     accredited: '',
     preferences: [],
   },
+  fromLocalUser: getLocalStorage(),
   showModal: false,
   modalTitle: '',
   modalText: '',
@@ -43,6 +64,20 @@ const defaultState = {
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+
+  /**The localStorage data is updated with the value of
+   *the fromLocalStorage property*/
+  useEffect(() => {
+    window.localStorage.setItem(
+      'localUser',
+      JSON.stringify(state.fromLocalUser)
+    );
+  }, [state.fromLocalUser]);
+
+  /**Set the fromLocalUser property*/
+  const setLocalUser = (property, value) => {
+    dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
+  };
 
   /**Fetch*/
   const fetchPost = useCallback(async () => {
@@ -237,6 +272,7 @@ export const AppProvider = ({ children }) => {
         arePlansDataValidated,
         arePreferencesDataValidated,
         setErrorPage,
+        setLocalUser,
       }}
     >
       {children}

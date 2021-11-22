@@ -21,13 +21,13 @@ const NarrowModal = () => {
       setPositionY(window.scrollY);
     }
     if (showNarrowModal) {
-      document.body.style.positionX = 'fixed';
+      document.body.style.position = 'fixed';
     }
     if (!showNarrowModal) {
       document.body.style.position = '';
       window.scrollTo(0, positionY);
     }
-  }, [showNarrowModal]);
+  }, [showNarrowModal, positionY]);
 
   return (
     <div

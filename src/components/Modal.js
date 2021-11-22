@@ -22,13 +22,13 @@ const Modal = () => {
       setPositionY(window.scrollY);
     }
     if (showModal) {
-      document.body.style.positionX = 'fixed';
+      document.body.style.position = 'fixed';
     }
     if (!showModal) {
       document.body.style.position = '';
       window.scrollTo(0, positionY);
     }
-  }, [showModal]);
+  }, [showModal, positionY]);
 
   return (
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>
