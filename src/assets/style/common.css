@@ -9,6 +9,11 @@ body {
   min-width: max-content;
 }
 
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 /*XS*/
 @media all and (min-width: 360px) {
   body {
@@ -20,7 +25,13 @@ body {
 @media all and (min-width: 1200px) {
   body {
     background-color: var(--mainBackground);
-    /* min-width: max-content; */
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) {
+  body {
+    width: 100%;
   }
 }
 

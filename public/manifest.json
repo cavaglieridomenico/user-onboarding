@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "User Onboarding",
+  "name": "Interface for user acquisition with validation",
   "icons": [
     {
       "src": "favicon.ico",
