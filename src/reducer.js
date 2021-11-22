@@ -1,5 +1,17 @@
 import { modalHelp, modalPrivacy } from './assets/scripts/modal_content';
 const reducer = (state, action) => {
+  /*Local storage*/
+  if (action.type === 'SET_LOCAL_USER') {
+    const { property, value } = action.payload;
+    return {
+      ...state,
+      fromLocalUser: {
+        ...state.fromLocalUser,
+        [property]: value,
+      },
+    };
+  }
+
   /*Fetch*/
   if (action.type === 'GET_RESPONSE') {
     return {

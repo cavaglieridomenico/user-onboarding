@@ -21,6 +21,8 @@ const Plans = () => {
     setStepStatus2,
     stepStatus1,
     setErrorPage,
+    fromLocalUser,
+    setLocalUser,
   } = useGlobalContext();
 
   const planFrom = useRef('');
@@ -140,7 +142,10 @@ const Plans = () => {
                     id='plans-from'
                     ref={planFrom}
                     value={fromValue}
-                    onChange={event => setFromValue(event.target.value)}
+                    onChange={event => {
+                      setFromValue(event.target.value);
+                      setLocalUser('planFrom', event.target.value);
+                    }}
                   >
                     <option id='10000' value='10000'>
                       $10,000
@@ -169,7 +174,10 @@ const Plans = () => {
                     id='plans-to'
                     ref={planTo}
                     value={toValue}
-                    onChange={event => setToValue(event.target.value)}
+                    onChange={event => {
+                      setToValue(event.target.value);
+                      setLocalUser('planTo', event.target.value);
+                    }}
                   >
                     <option id='10000' value='10000'>
                       $10,000
@@ -206,6 +214,10 @@ const Plans = () => {
               id='form-investor'
               ref={accredited}
               onClick={handleClickPlansForms}
+              value={fromLocalUser.accredited}
+              onChange={event => {
+                setLocalUser('accredited', event.target.value);
+              }}
             >
               <div className='form-container'>
                 <div
