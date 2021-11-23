@@ -96,12 +96,19 @@
 /*LG*/
 @media all and (min-width: 1200px) {
   section.pref {
-    margin: 3rem 0 3.5rem;
+    margin: 1.5rem 0 1rem;
   }
   #form-pref .form-container {
     grid-template-rows: auto auto;
     grid-template-columns: repeat(4, auto);
     grid-gap: 20px 20px;
     margin: initial;
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) and (min-height: 900px) {
+  section.pref {
+    margin: 3rem 0 3.5rem;
   }
 }

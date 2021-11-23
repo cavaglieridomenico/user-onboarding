@@ -102,7 +102,10 @@
 /*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
   section.contact {
-    margin: 2rem 0 1rem;
+    margin: 1rem 0 0;
+  }
+  #form-contact {
+    margin: 1rem 0 0;
   }
 }
 
@@ -110,5 +113,8 @@
 @media all and (min-width: 1440px) {
   section.contact {
     margin: 0;
+  }
+  #form-contact {
+    margin: 2rem 0 0;
   }
 }

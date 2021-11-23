@@ -128,6 +128,13 @@
 /*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
   section.plans {
-    margin: 3rem 0 5rem;
+    margin: 2.5rem 0 2rem;
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) and (min-height: 900px) {
+  section.plans {
+    margin: 3rem 0 11.2rem;
   }
 }

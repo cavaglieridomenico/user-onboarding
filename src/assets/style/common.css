@@ -108,6 +108,7 @@ h2 {
   font-weight: var(--title2Weight);
   margin: 2.5rem 0 1.5rem;
 }
+
 /*XS - smartphones landscape*/
 @media all and (min-width: 480px) {
   .onboarding-innerbox h1 {
@@ -119,6 +120,26 @@ h2 {
     margin: 2.5rem 0 1.7rem;
   }
 }
+/*LG - large tablet landscape*/
+@media all and (min-width: 1200px) {
+  .onboarding-innerbox h1 {
+    margin: 0 0 0.6rem;
+  }
+  .onboarding-innerbox h2 {
+    margin: 1rem 0 0.6rem;
+  }
+}
+
+/*XL larger screens*/
+@media all and (min-width: 1440px) and (min-height: 900px) {
+  .onboarding-innerbox h1 {
+    margin: 0 0 1rem;
+  }
+  .onboarding-innerbox h2 {
+    margin: 2.5rem 0 1.7rem;
+  }
+}
+
 /*Text - default style - end*/
 
 /*Tag default style*/
