@@ -12,13 +12,13 @@
 </div>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/DomenicoCavaglieri/user-onboarding?color=56BEB8">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/cavaglieridomenico/user-onboarding?color=56BEB8">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/DomenicoCavaglieri/user-onboarding?color=56BEB8">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/cavaglieridomenico/user-onboarding?color=56BEB8">
 
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/DomenicoCavaglieri/user-onboarding">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/cavaglieridomenico/user-onboarding">
 
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/DomenicoCavaglieri/user-onboarding">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cavaglieridomenico/user-onboarding">
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@
   <a href="#pushpin-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#pushpin-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/DomenicoCavaglieri" target="_blank">Author</a>
+  <a href="https://github.com/cavaglieridomenico" target="_blank">Author</a>
 </p>
 
 <br>
@@ -42,7 +42,7 @@ Is a single page application built with React.<br>
 Main features implemented:<br>
 useReducer, useContext, useRef, useCallback, Router.
 <br>
-The development followed the <a href="https://github.com/DomenicoCavaglieri/user-onboard/projects/1" target="_blank">project tasks</a>.
+The development followed the <a href="https://github.com/cavaglieridomenico/user-onboard/projects/1" target="_blank">project tasks</a>.
 
 ## :pushpin: Technologies
 
@@ -61,36 +61,32 @@ The following tools were used in this project:
 
 Before starting, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
 ```bash
 # Clone this project
 $ git clone https://github.com/cavaglieridomenico/user-onboarding
 
-## :pushpin: Starting
+# Install dependencies
+$ npm install
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+# Runs the app in the development mode.\
+$ npm start
 
-### `npm start`
+#Launches the test runner in the interactive watch mode.\
+$ npm test
 
-Runs the app in the development mode.\
 
-### `npm test`
+#Builds the app for production to the `build` folder.\
+#It correctly bundles React in production mode and optimizes the build for the best performance.
+#The build is minified and the filenames include the hashes.\
+$ npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-
-## :memo: License ##
+## :memo: License
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
-
-
 
 &#xa0;
 
 <a href="#top">Back to top</a>
-```
