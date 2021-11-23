@@ -24,7 +24,6 @@
 <p align="center">
   <a href="#pushpin-about">About</a> &#xa0; | &#xa0; 
   <a href="#pushpin-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#pushpin-features">Features</a> &#xa0; | &#xa0;
   <a href="#pushpin-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#pushpin-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
@@ -42,7 +41,7 @@ Is a single page application built with React.<br>
 Main features implemented:<br>
 useReducer, useContext, useRef, useCallback, Router.
 <br>
-The development followed the <a href="https://github.com/cavaglieridomenico/user-onboard/projects/1" target="_blank">project tasks</a>.
+The development followed the <a href="https://github.com/cavaglieridomenico/user-onboarding/projects/1" target="_blank">project tasks</a>.
 
 ## :pushpin: Technologies
 
@@ -60,6 +59,8 @@ The following tools were used in this project:
 ## :pushpin: Requirements
 
 Before starting, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+
+## :pushpin: Starting
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
