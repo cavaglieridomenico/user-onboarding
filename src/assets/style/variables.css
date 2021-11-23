@@ -109,7 +109,7 @@ Variables
 }
 
 /*XL*/
-@media all and (min-width: 1440px) {
+@media all and (min-width: 1440px) and (min-height: 900px) {
   :root {
     --outerHeight: 900px;
     --innerHeight: 100%;
