@@ -41,7 +41,7 @@ Is a single page application built with React.<br>
 Main features implemented:<br>
 useReducer, useContext, useRef, useCallback, Router.
 <br>
-The development followed the <a href="https://github.com/cavaglieridomenico/user-onboard/projects/1" target="_blank">project tasks</a>.
+The development followed the <a href="https://github.com/cavaglieridomenico/user-onboarding/projects/1" target="_blank">project tasks</a>.
 
 ## :pushpin: Technologies
 
