@@ -6,7 +6,7 @@
 &#xa0;
 
   <p>Deploy:
-  <a href="https://unitedproperties-user-onboarding.netlify.app/">umitedproperties-user-onboarding.netlify.app</a>
+  <a href="https://unitedproperties-user-onboarding.netlify.app/">unitedproperties-user-onboarding.netlify.app</a>
   <p>Mockup:
   <a href="https://www.figma.com/file/SgUd2rqCYBwyNBi9UkRmgb/User_onboarding?node-id=0%3A1">Figma</a>
 </div>
