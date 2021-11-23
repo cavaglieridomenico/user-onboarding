@@ -103,8 +103,8 @@ Variables
     --innerMinHeight: 100vh;
     --sidebarMinHeight: 100vh;
     --outerColLeft: 516px;
-    --innerPadding: 4% 3% 3% 7%;
-    --sidebarPadding: 7% 0 7% 7%;
+    --innerPadding: 3% 3% 3% 7%;
+    --sidebarPadding: 6% 0 7% 7%;
   }
 }
 
