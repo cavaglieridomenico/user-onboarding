@@ -19,7 +19,7 @@ const containEmptyArray = array => array.length === 0;
  * @param {string}
  * @returns {boolean}
  */
-const isTheNameTooShort = inputValue => {
+const containNameTooShort = inputValue => {
   let usernameFormat = /^.{3,}$/;
   return inputValue.match(usernameFormat) === null;
 };
@@ -62,7 +62,7 @@ const onlyInTheRange = (position, start, stop) => {
 export {
   containEmptyString,
   containEmptyArray,
-  isTheNameTooShort,
+  containNameTooShort,
   isItAnInvalidEmail,
   onlyInTheRange,
   isItAnInvalidRange,

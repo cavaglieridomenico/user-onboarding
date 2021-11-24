@@ -3,7 +3,7 @@ import reducer from './reducer';
 import {
   containEmptyString,
   isItAnInvalidEmail,
-  isTheNameTooShort,
+  containNameTooShort,
   containEmptyArray,
   isItAnInvalidRange,
 } from './assets/scripts/form_utility';
@@ -205,7 +205,7 @@ export const AppProvider = ({ children }) => {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
-    if (isTheNameTooShort(fullName)) {
+    if (containNameTooShort(fullName)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, the name requires at least 3 characters.'

@@ -1,7 +1,7 @@
 import {
   containEmptyString,
   containEmptyArray,
-  isTheNameTooShort,
+  containNameTooShort,
   isItAnInvalidEmail,
   onlyInTheRange,
   isItAnInvalidRange,
@@ -45,27 +45,27 @@ test('It should return false if an array is not empty', () => {
 /*Name too short*/
 test(`It should return true if the input is a string 
 withless than of 3 characters`, () => {
-  expect(isTheNameTooShort('Hu')).toEqual(true);
+  expect(containNameTooShort('Hu')).toEqual(true);
 });
 
 test(`It should return false if the input is a string
 with 3 characters`, () => {
-  expect(isTheNameTooShort('Hua')).toEqual(false);
+  expect(containNameTooShort('Hua')).toEqual(false);
 });
 
 test(`It should return false if the input is a string 
 with a minimum of 3 characters`, () => {
-  expect(isTheNameTooShort('Domenico')).toEqual(false);
+  expect(containNameTooShort('Domenico')).toEqual(false);
 });
 
 test(`It should return false if the input is a string 
 with blank space`, () => {
-  expect(isTheNameTooShort('Domenico Cavaglieri')).toEqual(false);
+  expect(containNameTooShort('Domenico Cavaglieri')).toEqual(false);
 });
 
 test(`It should return false if the input is a string 
 with two or more blank space`, () => {
-  expect(isTheNameTooShort('Domenico Massimo Cavaglieri')).toEqual(false);
+  expect(containNameTooShort('Domenico Massimo Cavaglieri')).toEqual(false);
 });
 
 /*Invalid email format*/
