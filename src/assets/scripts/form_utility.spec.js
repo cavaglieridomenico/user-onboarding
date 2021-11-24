@@ -1,5 +1,5 @@
 import {
-  areThereAnyEmptyString,
+  containEmptyString,
   isAnEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
@@ -10,23 +10,23 @@ import {
 
 /*Empty fields*/
 test('It should return true if a single input is an empty string', () => {
-  expect(areThereAnyEmptyString('')).toEqual(true);
+  expect(containEmptyString('')).toEqual(true);
 });
 
 test('It should return true if multiple inputs are an empty string', () => {
-  expect(areThereAnyEmptyString('', '', '')).toEqual(true);
+  expect(containEmptyString('', '', '')).toEqual(true);
 });
 
 test('It should return true if even one of the inputs is an empty string', () => {
-  expect(areThereAnyEmptyString('', 'word', '')).toEqual(true);
+  expect(containEmptyString('', 'word', '')).toEqual(true);
 });
 
 test('It should return false if a single input is an string', () => {
-  expect(areThereAnyEmptyString('word')).toEqual(false);
+  expect(containEmptyString('word')).toEqual(false);
 });
 
 test('It should return false if an array is not empty', () => {
-  expect(areThereAnyEmptyString('word', 'word', 'word')).toEqual(false);
+  expect(containEmptyString('word', 'word', 'word')).toEqual(false);
 });
 
 /*Empty array*/

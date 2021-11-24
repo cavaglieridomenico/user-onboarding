@@ -3,7 +3,7 @@
  * @param {string}
  * @returns {boolean}
  */
-const areThereAnyEmptyString = (...rest) => {
+const containEmptyString = (...rest) => {
   return rest.some(item => item === '');
 };
 
@@ -62,7 +62,7 @@ const onlyInTheRange = (position, start, stop) => {
 };
 
 export {
-  areThereAnyEmptyString,
+  containEmptyString,
   isAnEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,

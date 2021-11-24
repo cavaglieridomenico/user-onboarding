@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 import {
-  areThereAnyEmptyString,
+  containEmptyString,
   isItAnInvalidEmail,
   isTheNameTooShort,
   isAnEmptyArray,
@@ -201,7 +201,7 @@ export const AppProvider = ({ children }) => {
 
   /*Check form validation*/
   const areContactDataValidated = (fullName, phoneNumber, email) => {
-    if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
+    if (containEmptyString(fullName, phoneNumber, email)) {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
@@ -223,7 +223,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const arePlansDataValidated = (planFrom, planTo, accredited) => {
-    if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
+    if (containEmptyString(planFrom, planTo, accredited)) {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
