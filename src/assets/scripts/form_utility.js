@@ -29,7 +29,7 @@ const containNameTooShort = inputValue => {
  * @param {string}
  * @returns {boolean} true if match is correct
  */
-const isItAnInvalidEmail = inputValue => {
+const containInvalidEmail = inputValue => {
   let emailFormat =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   return inputValue.match(emailFormat) === null;
@@ -63,7 +63,7 @@ export {
   containEmptyString,
   containEmptyArray,
   containNameTooShort,
-  isItAnInvalidEmail,
+  containInvalidEmail,
   onlyInTheRange,
   isItAnInvalidRange,
 };

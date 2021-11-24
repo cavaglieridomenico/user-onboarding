@@ -2,7 +2,7 @@ import {
   containEmptyString,
   containEmptyArray,
   containNameTooShort,
-  isItAnInvalidEmail,
+  containInvalidEmail,
   onlyInTheRange,
   isItAnInvalidRange,
 } from './form_utility';
@@ -70,21 +70,21 @@ with two or more blank space`, () => {
 
 /*Invalid email format*/
 test(`It should return true if the format of the mail is invalid`, () => {
-  expect(isItAnInvalidEmail('domenico.cavaglieri')).toEqual(true);
+  expect(containInvalidEmail('domenico.cavaglieri')).toEqual(true);
 });
 
 test(`It should return false if the format of the mail is valid`, () => {
-  expect(isItAnInvalidEmail('cavaglieridomenico@gmail.com')).toEqual(false);
+  expect(containInvalidEmail('cavaglieridomenico@gmail.com')).toEqual(false);
 });
 
 test(`It should return false if the format of the mail is valid`, () => {
-  expect(isItAnInvalidEmail('domenicomassimo.cavaglieri@gmail.com')).toEqual(
+  expect(containInvalidEmail('domenicomassimo.cavaglieri@gmail.com')).toEqual(
     false
   );
 });
 
 test(`It should return false if the format of the mail is valid`, () => {
-  expect(isItAnInvalidEmail('dom@dom.it')).toEqual(false);
+  expect(containInvalidEmail('dom@dom.it')).toEqual(false);
 });
 
 /*Invalid range*/

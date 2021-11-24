@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 import {
   containEmptyString,
-  isItAnInvalidEmail,
+  containInvalidEmail,
   containNameTooShort,
   containEmptyArray,
   isItAnInvalidRange,
@@ -212,7 +212,7 @@ export const AppProvider = ({ children }) => {
       );
       return false;
     }
-    if (isItAnInvalidEmail(email)) {
+    if (containInvalidEmail(email)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, the format of the email is not valid.'
