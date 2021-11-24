@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -39,7 +39,7 @@ const Contact = () => {
    * Notify the user of the correct data acquisition.
    * Directly opens the next page.
    */
-  const handleSubmitContact = () => {
+  const handleSubmitContact = useCallback(() => {
     if (
       areContactDataValidated(
         fullName.current.value,
@@ -62,7 +62,13 @@ const Contact = () => {
       );
       history.push('./plans');
     }
-  };
+  }, [
+    areContactDataValidated,
+    getContactData,
+    setStepStatus1,
+    setNarrowModalOpen,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox'>

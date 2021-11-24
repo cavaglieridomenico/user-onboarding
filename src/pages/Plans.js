@@ -74,7 +74,7 @@ const Plans = () => {
    * Notify the user of the correct data acquisition.
    * Directly opens the next page.
    */
-  const handleSubmitPlansForms = () => {
+  const handleSubmitPlansForms = useCallback(() => {
     goToTheRightPageFromPlans();
     if (stepStatus1) {
       if (
@@ -98,7 +98,15 @@ const Plans = () => {
         history.push('./preferences');
       }
     }
-  };
+  }, [
+    goToTheRightPageFromPlans,
+    stepStatus1,
+    arePlansDataValidated,
+    getPlansData,
+    setStepStatus2,
+    setNarrowModalOpen,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox'>

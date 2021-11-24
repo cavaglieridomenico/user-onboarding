@@ -84,7 +84,7 @@ const Preferences = () => {
    * Declares that the newUser object is ready for submission.
    * directly opens the Contact page
    */
-  const handleSubmitPreferencesForm = () => {
+  const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
       if (arePreferencesDataValidated(getPreferences())) {
@@ -94,7 +94,16 @@ const Preferences = () => {
         history.push('./');
       }
     }
-  };
+  }, [
+    goToTheRightPageFromPreferences,
+    stepStatus1,
+    stepStatus2,
+    arePreferencesDataValidated,
+    getPreferencesData,
+    setStepStatus3,
+    setDataReady,
+    history,
+  ]);
 
   return (
     <div className='onboarding-outerbox pref'>
