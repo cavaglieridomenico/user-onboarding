@@ -48,7 +48,7 @@ Variables
   /*Mockup values end*/
 
   /*Responsive main dimensions*/
-  --outerWith: 100vw;
+  --outerWith: 100%;
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
   --outerHeight: calc(
@@ -71,8 +71,9 @@ Variables
 }
 
 /*XS - Smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   :root {
+    --outerWith: 100vw;
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;

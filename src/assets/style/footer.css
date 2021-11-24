@@ -11,6 +11,7 @@ footer {
   width: auto;
   font-weight: 600;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .link-to-page .arrow-container {
@@ -93,7 +94,7 @@ footer a {
 }
 
 /*XS - Smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   footer {
     display: flex;
     justify-content: space-between;
