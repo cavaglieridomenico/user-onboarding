@@ -1,6 +1,6 @@
 import {
   containEmptyString,
-  isAnEmptyArray,
+  containEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
   onlyInTheRange,
@@ -31,15 +31,15 @@ test('It should return false if an array is not empty', () => {
 
 /*Empty array*/
 test('It should return true if an array is empty', () => {
-  expect(isAnEmptyArray([])).toEqual(true);
+  expect(containEmptyArray([])).toEqual(true);
 });
 
 test('It should return false if an array is not empty', () => {
-  expect(isAnEmptyArray(['word'])).toEqual(false);
+  expect(containEmptyArray(['word'])).toEqual(false);
 });
 
 test('It should return false if an array is not empty', () => {
-  expect(isAnEmptyArray(['item', 'item'])).toEqual(false);
+  expect(containEmptyArray(['item', 'item'])).toEqual(false);
 });
 
 /*Name too short*/

@@ -12,9 +12,7 @@ const containEmptyString = (...rest) => {
  * @param {array}
  * @returns {boolean}
  */
-const isAnEmptyArray = array => {
-  return array.length === 0;
-};
+const containEmptyArray = array => array.length === 0;
 
 /**
  *Check minimum length full name
@@ -63,7 +61,7 @@ const onlyInTheRange = (position, start, stop) => {
 
 export {
   containEmptyString,
-  isAnEmptyArray,
+  containEmptyArray,
   isTheNameTooShort,
   isItAnInvalidEmail,
   onlyInTheRange,

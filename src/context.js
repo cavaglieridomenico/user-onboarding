@@ -4,7 +4,7 @@ import {
   containEmptyString,
   isItAnInvalidEmail,
   isTheNameTooShort,
-  isAnEmptyArray,
+  containEmptyArray,
   isItAnInvalidRange,
 } from './assets/scripts/form_utility';
 
@@ -235,7 +235,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const arePreferencesDataValidated = checkedPref => {
-    if (isAnEmptyArray(checkedPref)) {
+    if (containEmptyArray(checkedPref)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, at least one option must be selected.'
