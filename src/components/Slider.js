@@ -51,7 +51,7 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
 
   /**
    *
-   * @param {*} userFromValue
+   * @param {string} userFromValue
    */
   const handleFromValueChange = userFromValue => {
     switch (userFromValue) {
@@ -80,7 +80,7 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
 
   /**
    *
-   * @param {*} userToValue
+   * @param {string} userToValue
    */
   const handleToValueChange = userToValue => {
     switch (userToValue) {
