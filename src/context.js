@@ -48,7 +48,7 @@ const defaultState = {
     accredited: '',
     preferences: [],
   },
-  fromLocalUser: getLocalStorage(),
+  localUser: getLocalStorage(),
   showModal: false,
   modalTitle: '',
   modalText: '',
@@ -68,13 +68,10 @@ export const AppProvider = ({ children }) => {
   /**The localStorage data is updated with the value of
    *the fromLocalStorage property*/
   useEffect(() => {
-    window.localStorage.setItem(
-      'localUser',
-      JSON.stringify(state.fromLocalUser)
-    );
-  }, [state.fromLocalUser]);
+    window.localStorage.setItem('localUser', JSON.stringify(state.localUser));
+  }, [state.localUser]);
 
-  /**Set the fromLocalUser property*/
+  /**Set the localUser property*/
   const setLocalUser = (property, value) => {
     dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
   };

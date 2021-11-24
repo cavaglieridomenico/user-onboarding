@@ -16,7 +16,7 @@ const Contact = () => {
     setNarrowModalOpen,
     setStepStatus1,
     setErrorPage,
-    fromLocalUser,
+    localUser,
     setLocalUser,
   } = useGlobalContext();
 
@@ -96,7 +96,7 @@ const Contact = () => {
                     type='text'
                     id='full-name'
                     ref={fullName}
-                    value={fromLocalUser.fullName}
+                    value={localUser.fullName}
                     onChange={event =>
                       setLocalUser('fullName', event.target.value)
                     }
@@ -108,7 +108,7 @@ const Contact = () => {
                     name='country-flag'
                     id='country-flag'
                     ref={phoneCode}
-                    value={fromLocalUser.phoneCode}
+                    value={localUser.phoneCode}
                     onChange={event => {
                       setLocalUser('phoneCode', event.target.value);
                     }}
@@ -130,7 +130,7 @@ const Contact = () => {
                     type='number'
                     id='phone'
                     ref={phoneNumber}
-                    value={fromLocalUser.phoneNumber}
+                    value={localUser.phoneNumber}
                     onChange={event =>
                       setLocalUser('phoneNumber', event.target.value)
                     }
@@ -142,7 +142,7 @@ const Contact = () => {
                     type='text'
                     id='email'
                     ref={email}
-                    value={fromLocalUser.email}
+                    value={localUser.email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
                     }}
@@ -154,7 +154,7 @@ const Contact = () => {
                     type='text'
                     id='country'
                     ref={country}
-                    value={fromLocalUser.country}
+                    value={localUser.country}
                     onChange={event => {
                       setLocalUser('country', event.target.value);
                     }}

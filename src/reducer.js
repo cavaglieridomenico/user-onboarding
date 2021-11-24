@@ -5,8 +5,8 @@ const reducer = (state, action) => {
     const { property, value } = action.payload;
     return {
       ...state,
-      fromLocalUser: {
-        ...state.fromLocalUser,
+      localUser: {
+        ...state.localUser,
         [property]: value,
       },
     };

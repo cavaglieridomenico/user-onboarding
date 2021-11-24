@@ -17,7 +17,7 @@ const Preferences = () => {
     stepStatus1,
     stepStatus2,
     setErrorPage,
-    fromLocalUser,
+    localUser,
     setLocalUser,
   } = useGlobalContext();
 
@@ -133,7 +133,7 @@ const Preferences = () => {
             <form
               id='form-pref'
               ref={preferences}
-              value={fromLocalUser.preferences}
+              value={localUser.preferences}
               onClick={handleClickPreferencesForm}
               onChange={event => {
                 handleCheckboxSelection(event.target);

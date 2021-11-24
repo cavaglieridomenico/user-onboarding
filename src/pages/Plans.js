@@ -21,7 +21,7 @@ const Plans = () => {
     setStepStatus2,
     stepStatus1,
     setErrorPage,
-    fromLocalUser,
+    localUser,
     setLocalUser,
   } = useGlobalContext();
 
@@ -214,7 +214,7 @@ const Plans = () => {
               id='form-investor'
               ref={accredited}
               onClick={handleClickPlansForms}
-              value={fromLocalUser.accredited}
+              value={localUser.accredited}
               onChange={event => {
                 setLocalUser('accredited', event.target.value);
               }}
