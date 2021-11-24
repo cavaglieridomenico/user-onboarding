@@ -173,6 +173,7 @@ const reducer = (state, action) => {
       errorPage: action.payload,
     };
   }
+  throw new Error('Attention, no action with that name.');
 };
 
 export default reducer;
