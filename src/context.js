@@ -5,7 +5,7 @@ import {
   containInvalidEmail,
   containNameTooShort,
   containEmptyArray,
-  isItAnInvalidRange,
+  containInvalidRange,
 } from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
@@ -227,7 +227,7 @@ export const AppProvider = ({ children }) => {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
-    if (isItAnInvalidRange(parseInt(planFrom), parseInt(planTo))) {
+    if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
       setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
       return false;
     }

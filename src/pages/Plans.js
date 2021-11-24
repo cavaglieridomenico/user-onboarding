@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { isItAnInvalidRange } from '../assets/scripts/form_utility';
+import { containInvalidRange } from '../assets/scripts/form_utility';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
@@ -40,7 +40,7 @@ const Plans = () => {
    * Validation in the input of the range in real time
    */
   useEffect(() => {
-    if (isItAnInvalidRange(parseInt(fromValue), parseInt(toValue))) {
+    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
       planFrom.current.classList.add('form-plans-error');
       planTo.current.classList.add('form-plans-error');
     } else {

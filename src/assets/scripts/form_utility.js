@@ -41,15 +41,18 @@ const containInvalidEmail = inputValue => {
  * @param {number} endRange
  * @returns {boolean}
  */
-const isItAnInvalidRange = (startRange, endRange) => {
+const containInvalidRange = (startRange, endRange) => {
   return startRange >= endRange;
 };
 
 /**
- * A value cannot be less than or greater than the range
- * @param {number} left
+ *A value cannot be less than or greater than the range
+ * @param {number} position
+ * @param {number} start
+ * @param {number} stop
+ * @returns {number}
  */
-const onlyInTheRange = (position, start, stop) => {
+const onlyInRange = (position, start, stop) => {
   if (position <= start) {
     return (position = start);
   }
@@ -64,6 +67,6 @@ export {
   containEmptyArray,
   containNameTooShort,
   containInvalidEmail,
-  onlyInTheRange,
-  isItAnInvalidRange,
+  onlyInRange,
+  containInvalidRange,
 };

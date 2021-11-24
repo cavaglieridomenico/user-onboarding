@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {
-  isItAnInvalidRange,
-  onlyInTheRange,
+  containInvalidRange,
+  onlyInRange,
 } from '../assets/scripts/form_utility';
 
 const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
@@ -22,7 +22,7 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
     handleToValueChange(toValue);
     setToActive(toValue);
     setFromActive(fromValue);
-    if (isItAnInvalidRange(parseInt(fromValue), parseInt(toValue))) {
+    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
       slider.current.classList.add('slider-error');
       notchContainer.current.childNodes.forEach(element =>
         element.classList.add('slider-notch-error')
@@ -154,7 +154,7 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
       let cursor1Position = event.clientX - shiftX1 - sliderStart;
 
       cursor1.current.style.left =
-        onlyInTheRange(cursor1Position, 0, sliderEnd - cursor1Width) + 'px';
+        onlyInRange(cursor1Position, 0, sliderEnd - cursor1Width) + 'px';
 
       if (cursor1Position < 60) {
         cursor1.current.style.left = 0 + 'px';
@@ -202,7 +202,7 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
       let cursor2Position = event.clientX - shiftX2 - sliderStart;
 
       cursor2.current.style.left =
-        onlyInTheRange(
+        onlyInRange(
           cursor2Position,
           0,
           sliderEnd - cursor2Width - cursor1Width
