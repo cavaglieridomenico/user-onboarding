@@ -22,6 +22,7 @@
 
 #form-contact .phone-box input {
   width: calc(100% - 45px);
+  padding-left: 6px;
 }
 
 .country-box select {
@@ -42,9 +43,9 @@
 }
 
 /*XS - smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   section.contact {
-    margin: 3rem 0 2rem;
+    margin: 1rem 0 0;
   }
   .contact .welcome,
   .contact .privacy {

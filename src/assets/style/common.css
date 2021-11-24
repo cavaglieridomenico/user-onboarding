@@ -110,14 +110,14 @@ h2 {
 }
 
 /*XS - smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   .onboarding-innerbox h1 {
     text-align: left;
-    margin: 0 0 1rem;
+    margin: 0 0 0.5rem;
   }
   .onboarding-innerbox h2 {
     text-align: left;
-    margin: 2.5rem 0 1.7rem;
+    margin: 1rem 0 0.5rem;
   }
 }
 /*LG - large tablet landscape*/

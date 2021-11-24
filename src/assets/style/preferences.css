@@ -56,9 +56,9 @@
 /*Form end*/
 
 /*XS - smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   section.pref {
-    margin: 3rem 0 5rem;
+    margin: 3rem 0 1.4rem;
   }
   .pref-text {
     display: block;

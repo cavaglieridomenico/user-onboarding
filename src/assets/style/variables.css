@@ -77,7 +77,7 @@ Variables
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-    --innerPadding: 1.5% 8% 7%;
+    --innerPadding: 1.5% 8% 0;
   }
 }
 

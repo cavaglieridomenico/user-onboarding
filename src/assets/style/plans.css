@@ -88,9 +88,9 @@
 /*Form-investor end*/
 
 /*XS - smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   section.plans {
-    margin: 3rem 0 11.2rem;
+    margin: 3rem 0 8.6rem;
   }
   .planning-text {
     display: block;
