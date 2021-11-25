@@ -48,11 +48,14 @@ Variables
   /*Mockup values end*/
 
   /*Responsive main dimensions*/
-  --outerWith: 100%;
   --outerMaxWidth: 1440px;
-  --outerHeight: 100%;
-  --innerHeight: 100%;
+  --outerMargin: 0 auto;
+  --innerHeight: unset;
+  --sidebarHeight: unset;
   --innerMinHeight: unset;
+  --sidebarMinHeight: unset;
+  --innerMaxHeight: 900px;
+  --sideBarMaxHeight: 1400px;
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
   --innerPadding: 1% 1% 0;
@@ -64,9 +67,6 @@ Variables
 /*XS – smartphone portrait*/
 @media all and (min-width: 360px) {
   :root {
-    --outerHeight: calc(
-      100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
-    );
     --innerHeight: calc(
       100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
     );
@@ -79,10 +79,9 @@ Variables
 /*XS - Smartphones landscape*/
 @media all and (min-width: 640px) {
   :root {
-    --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-    --innerPadding: 1.5% 5% 0 3%;
+    --innerPadding: 1.5% 6.5% 0 3%;
   }
 }
 
@@ -90,9 +89,9 @@ Variables
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   :root {
     --outerColLeft: 42%;
-    --outerHeight: 100vh;
     --innerHeight: 100vh;
     --sidebarHeight: 100vh;
+    --innerMaxHeight: 1400px;
     --innerPadding: 5% 4% 10%;
     --sidebarPadding: 8% 0 14% 7%;
   }
@@ -101,34 +100,36 @@ Variables
 /*LG*/
 @media all and (min-width: 1200px) {
   :root {
-    --outerHeight: 100%;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
-    --outerMinHeight: 100vh;
-    --innerMinHeight: 100vh;
-    --sidebarMinHeight: 100vh;
-    --outerColLeft: 516px;
-    --innerPadding: 3% 3% 2% 7%;
-    --sidebarPadding: 6% 0 6% 7%;
-    --sectionHeight: 520px;
+    --outerColLeft: 480px;
+    --innerHeight: 100vh;
+    --sidebarHeight: 100vh;
+    --innerMaxHeight: 1400px;
+    --innerMinHeight: 650px;
+    --sidebarMinHeight: 650px;
+    --innerPadding: 3% 3% 1% 7%;
+    --sidebarPadding: 6% 0 5% 7%;
+    --sectionHeight: 510px;
   }
 }
 
 /*XL*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   :root {
-    --outerHeight: 900px;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
-    --outerMinHeight: 100%;
-    --innerMinHeight: 100%;
-    --sidebarMinHeight: 100%;
     --outerColLeft: 516px;
+    --innerHeight: 900px;
+    --sidebarHeight: 900px;
     --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
     --sectionHeight: 570px;
     --sectionMargin: 0;
     --progressMargin: 100px 0 0;
+  }
+}
+
+/*XL*/
+@media all and (min-width: 1920px) {
+  :root {
+    --outerMargin: 1% auto 0;
   }
 }
 /*Responsive main dimensions end*/

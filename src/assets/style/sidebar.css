@@ -6,6 +6,7 @@ aside {
   padding: var(--sidebarPadding);
   height: var(--sidebarHeight);
   min-height: var(--sidebarMinHeight);
+  max-height: var(--sideBarMaxHeight);
 }
 
 .quote-container {
