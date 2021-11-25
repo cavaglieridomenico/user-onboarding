@@ -44,9 +44,6 @@
 
 /*XS - smartphones landscape*/
 @media all and (min-width: 640px) {
-  section.contact {
-    margin: 1rem 0 0;
-  }
   .contact .welcome,
   .contact .privacy {
     display: block;
@@ -102,9 +99,6 @@
 
 /*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
-  section.contact {
-    margin: 1rem 0 0;
-  }
   #form-contact {
     margin: 1rem 0 0;
   }
@@ -112,9 +106,6 @@
 
 /*XL larger screens*/
 @media all and (min-width: 1440px) {
-  section.contact {
-    margin: 0;
-  }
   #form-contact {
     margin: 2rem 0 0;
   }

@@ -57,6 +57,9 @@ Variables
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
   --innerPadding: 1% 1% 0;
+  --sectionHeight: 350px;
+  --sectionMargin: 0.5rem 0 0;
+  --sectionMinHeight: 330px;
 }
 
 /*XS – smartphone portrait*/
@@ -70,17 +73,18 @@ Variables
     );
     --outerMinWith: initial;
     --innerPadding: 3% 7%;
+    --sectionHeight: 510px;
+    --sectionMargin: 1rem 0 0;
   }
 }
 
 /*XS - Smartphones landscape*/
 @media all and (min-width: 640px) {
   :root {
-    --outerWith: 100vw;
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-    --innerPadding: 1.5% 3% 0;
+    --innerPadding: 1.5% 5% 0 3%;
   }
 }
 
@@ -107,8 +111,9 @@ Variables
     --innerMinHeight: 100vh;
     --sidebarMinHeight: 100vh;
     --outerColLeft: 516px;
-    --innerPadding: 3% 3% 3% 7%;
-    --sidebarPadding: 6% 0 7% 7%;
+    --innerPadding: 3% 3% 2% 7%;
+    --sidebarPadding: 6% 0 6% 7%;
+    --sectionHeight: 520px;
   }
 }
 
@@ -124,6 +129,8 @@ Variables
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
+    --sectionHeight: 570px;
+    --sectionMargin: 0;
     --progressMargin: 100px 0 0;
   }
 }

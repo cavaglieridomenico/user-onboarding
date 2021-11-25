@@ -65,7 +65,9 @@ body {
 }
 
 .onboarding-innerbox section {
-  min-height: 330px;
+  height: var(--sectionHeight);
+  min-height: var(--sectionMinHeight);
+  margin: var(--sectionMargin);
 }
 
 /*MD - Main containers*/
