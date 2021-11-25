@@ -49,7 +49,6 @@ Variables
 
   /*Responsive main dimensions*/
   --outerWith: 100%;
-  --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
   --outerHeight: 100%;
   --innerHeight: 100%;
@@ -71,7 +70,6 @@ Variables
     --innerHeight: calc(
       100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
     );
-    --outerMinWith: initial;
     --innerPadding: 3% 7%;
     --sectionHeight: 510px;
     --sectionMargin: 1rem 0 0;
@@ -91,7 +89,6 @@ Variables
 /*MD - large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   :root {
-    --outerMinWith: initial;
     --outerColLeft: 42%;
     --outerHeight: 100vh;
     --innerHeight: 100vh;

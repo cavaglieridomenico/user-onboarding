@@ -41,7 +41,6 @@ body {
   width: var(--outerWith);
   height: var(--outerHeight);
   max-width: var(--outerMaxWidth);
-  min-width: var(--outerMinWith);
   margin: 0 auto;
   font-family: var(--monserrat);
   -webkit-font-smoothing: antialiased;

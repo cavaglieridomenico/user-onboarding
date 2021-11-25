@@ -3,7 +3,6 @@ footer {
   grid-template-rows: auto auto;
   grid-template-columns: auto;
   margin-bottom: 1%;
-  min-width: max-content;
 }
 
 .link-to-page {
