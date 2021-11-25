@@ -51,22 +51,25 @@ Variables
   --outerWith: 100%;
   --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
-  --outerHeight: calc(
-    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
-  );
-  --innerHeight: calc(
-    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
-  );
+  --outerHeight: 100%;
+  --innerHeight: 100%;
+  --innerMinHeight: unset;
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
-  --innerPadding: 2% 1%;
+  --innerPadding: 1% 1% 0;
 }
 
-/*XS*/
+/*XS – smartphone portrait*/
 @media all and (min-width: 360px) {
   :root {
+    --outerHeight: calc(
+      100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
+    );
+    --innerHeight: calc(
+      100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
+    );
     --outerMinWith: initial;
-    --innerPadding: 3% 7% 5%;
+    --innerPadding: 3% 7%;
   }
 }
 
@@ -77,7 +80,7 @@ Variables
     --outerHeight: 100%;
     --innerHeight: 100%;
     --sidebarHeight: 100%;
-    --innerPadding: 1.5% 8% 0;
+    --innerPadding: 1.5% 3% 0;
   }
 }
 
