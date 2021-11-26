@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { useGlobalContext } from '../context';
 
@@ -13,6 +13,9 @@ const Modal = () => {
   } = useGlobalContext();
 
   const [positionY, setPositionY] = useState(0);
+
+  const modalTextContainer = useRef(null);
+  const modalTextContent = useRef(null);
 
   /**
    * Prevent body scrolling under the modal
@@ -32,6 +35,17 @@ const Modal = () => {
     }
   }, [showModal, positionY]);
 
+  /**
+   * The Modal gains the overflow scroll property only if the text to be displayed is higher than its container
+   */
+  useEffect(() => {
+    const offset = 30;
+    modalTextContent.current.getBoundingClientRect().height >
+    modalTextContainer.current.getBoundingClientRect().height - offset
+      ? (modalTextContainer.current.style.overflow = 'scroll')
+      : (modalTextContainer.current.style.overflow = 'unset');
+  }, [showModal, modalTextContainer]);
+
   return (
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>
       <div className='modal-container '>
@@ -40,8 +54,8 @@ const Modal = () => {
         </button>
 
         <h1 className='modal-title'>{modalTitle}</h1>
-        <div className='modal_text-container'>
-          {modalText}
+        <div className='modal_text-container' ref={modalTextContainer}>
+          <p ref={modalTextContent}>{modalText}</p>
           {modalResponse ? (
             <div className='response-container'>
               <ul>
