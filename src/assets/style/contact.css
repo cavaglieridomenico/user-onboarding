@@ -83,6 +83,7 @@
   }
   .contact-link-container {
     justify-content: flex-start;
+    margin: 2% 0 0;
   }
 }
 
@@ -101,8 +102,8 @@
 }
 
 /*XL larger screens*/
-@media all and (min-width: 1440px) {
+@media all and (min-width: 1440px) and (min-height: 900px) {
   #form-contact {
-    margin: 2rem 0 0;
+    margin: 45px 0 60px;
   }
 }
