@@ -92,9 +92,10 @@
     margin-bottom: 2.7rem;
   }
   #form-plans .form-container {
-    grid-template-columns: 260px 260px;
+    grid-template-columns: 271px 271px;
     grid-row-gap: 20px;
-    grid-column-gap: 30px;
+    grid-column-gap: 45px;
+    max-width: unset;
     margin: 0;
   }
   #form-plans .from-box {

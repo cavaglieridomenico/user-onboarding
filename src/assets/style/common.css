@@ -85,6 +85,7 @@ h2 {
   font-family: var(--monserratAlt);
   color: var(--mainBlack);
   text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .onboarding-outerbox h1 {
@@ -146,6 +147,7 @@ h2 {
     margin: 0 0 0.6rem;
   }
   .onboarding-innerbox h2 {
+    width: auto;
     margin: 1rem 0 0.8rem;
   }
 }
