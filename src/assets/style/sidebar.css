@@ -4,9 +4,6 @@ aside {
   justify-content: space-between;
   background: var(--primaryColor);
   padding: var(--sidebarPadding);
-  height: var(--sidebarHeight);
-  min-height: var(--sidebarMinHeight);
-  max-height: var(--sideBarMaxHeight);
 }
 
 .quote-container {
