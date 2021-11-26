@@ -98,7 +98,7 @@ footer a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0;
+    margin-bottom: 1%;
   }
 }
 
@@ -132,12 +132,5 @@ footer a {
   footer > a {
     order: 0;
     margin: 0;
-  }
-}
-
-/*XL*/
-@media all and (min-width: 1440px) {
-  footer {
-    height: var(--footerHeight);
   }
 }
