@@ -48,10 +48,6 @@
   .contact .privacy {
     display: block;
   }
-  .contact p.welcome,
-  .contact p.privacy {
-    letter-spacing: 0.1px;
-  }
   #form-contact {
     margin: 2rem 0 0;
   }
