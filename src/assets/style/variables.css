@@ -82,7 +82,7 @@ Variables
 /*MD - large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   :root {
-    --outerColLeft: 460px;
+    --outerColLeft: 450px;
     --innerPadding: 5% 4% 10%;
     --sidebarPadding: 8% 0 14% 7%;
     --innerHeight: 100vh;

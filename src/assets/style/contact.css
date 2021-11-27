@@ -102,8 +102,12 @@
 
 /*MD – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
+  #form-contact .form-container {
+    grid-column-gap: 20px;
+    width: 500px;
+  }
   #form-contact .form-container div {
-    width: 240px;
+    width: 230px;
   }
 }
 

@@ -111,6 +111,15 @@
   }
 }
 
+/*MD – large tablet port. and medium tablet land.*/
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
+  #form-plans .form-container {
+    grid-template-columns: 230px 230px;
+    grid-column-gap: 20px;
+    width: 500px;
+  }
+}
+
 /*XL larger screens*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   #form-plans .form-container {
