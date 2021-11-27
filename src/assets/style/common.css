@@ -60,7 +60,7 @@ body {
   margin: var(--sectionMargin);
 }
 
-/*MD - Main containers*/
+/*MD - large tablet portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .onboarding-outerbox {
     display: grid;
@@ -69,7 +69,7 @@ body {
   }
 }
 
-/*LG - Main containers*/
+/*LG - large tablet landscape*/
 @media all and (min-width: 1200px) {
   .onboarding-outerbox {
     display: grid;
