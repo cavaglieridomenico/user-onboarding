@@ -243,6 +243,18 @@ export const AppProvider = ({ children }) => {
     return true;
   };
 
+  /*Handle input focus and blur*/
+  const handleFocusInput = form => {
+    for (let element of form.current.elements) {
+      element.addEventListener('focus', () =>
+        element.parentNode.classList.add('onfocus')
+      );
+      element.addEventListener('blur', () =>
+        element.parentNode.classList.remove('onfocus')
+      );
+    }
+  };
+
   /*Set Error Page*/
   const setErrorPage = useCallback(value => {
     dispatch({ type: 'SET_ERROR_PAGE', payload: value });
@@ -268,6 +280,7 @@ export const AppProvider = ({ children }) => {
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
+        handleFocusInput,
         setErrorPage,
         setLocalUser,
       }}

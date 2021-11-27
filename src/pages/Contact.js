@@ -13,6 +13,7 @@ const Contact = () => {
     setModalOpen,
     areContactDataValidated,
     getContactData,
+    handleFocusInput,
     setNarrowModalOpen,
     setStepStatus1,
     setErrorPage,
@@ -25,6 +26,7 @@ const Contact = () => {
   const phoneCode = useRef('');
   const email = useRef('');
   const country = useRef('');
+  const formContact = useRef(null);
 
   /**
    * The current page is not an error page
@@ -32,6 +34,13 @@ const Contact = () => {
   useEffect(() => {
     setErrorPage(false);
   }, [setErrorPage]);
+
+  /**
+   * Handle input focus and blur
+   */
+  useEffect(() => {
+    handleFocusInput(formContact);
+  }, [handleFocusInput]);
 
   /**
    * Update the properties of the newUser object, if the form data is validated.
@@ -88,7 +97,7 @@ const Contact = () => {
               Welcome to United Properties, we are glad to see you! Let’s get
               started by letting us know a little bit about you
             </p>
-            <form id='form-contact'>
+            <form id='form-contact' ref={formContact}>
               <div className='form-container'>
                 <div className='name-box'>
                   <label htmlFor='full-name'>Full name</label>
