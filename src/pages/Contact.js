@@ -201,7 +201,8 @@ const Contact = () => {
           </div>
         </section>
         <Footer
-          homePage={'/'}
+          toPage={'/'}
+          toPageText={'Back to the homepage'}
           skipStep={'/plans'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitContact}

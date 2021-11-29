@@ -19,7 +19,8 @@ const Error = () => {
       <div className='onboarding-innerbox error'>
         <h1>Page not found.</h1>
         <Footer
-          homePage={'/'}
+          toPage={'/'}
+          toPageText={'Back to the homepage'}
           skipStep={'/'}
           textRightButton={'Next Step'}
           buttonContainerDisplay={'btn-container-none'}

@@ -218,7 +218,8 @@ const Preferences = () => {
           </article>
         </section>
         <Footer
-          homePage={'/'}
+          toPage={'plans'}
+          toPageText={'Back to the previous step'}
           skipStep={'/'}
           textRightButton={'Finish'}
           handleSubmit={handleSubmitPreferencesForm}
