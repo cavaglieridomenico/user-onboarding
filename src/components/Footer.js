@@ -4,7 +4,8 @@ import arrow_left from '../assets/images/arrow_left.svg';
 import { useGlobalContext } from '../context';
 
 const Footer = ({
-  homePage,
+  toPage,
+  toPageText,
   skipStep,
   textRightButton,
   handleSubmit,
@@ -14,11 +15,11 @@ const Footer = ({
 
   return (
     <footer>
-      <Link className='link-to-page' to={homePage}>
+      <Link className='link-to-page' to={toPage}>
         <div className='arrow-container'>
           <img src={arrow_left} alt='arrow-icon' />
         </div>
-        <p>Back to the homepage</p>
+        <p>{toPageText}</p>
       </Link>
       <div className={`btn-container ${buttonContainerDisplay}`}>
         <Link to={skipStep}>

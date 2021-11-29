@@ -269,7 +269,8 @@ const Plans = () => {
           </article>
         </section>
         <Footer
-          homePage={'/'}
+          toPage={'/'}
+          toPageText={'Back to the previous step'}
           skipStep={'/preferences'}
           textRightButton={'Next step'}
           handleSubmit={handleSubmitPlansForms}
