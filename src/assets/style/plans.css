@@ -55,6 +55,12 @@
   border: 2px solid var(--lightGrey);
   border-radius: var(--mainBorderRadius);
   padding-left: 1.2rem;
+  transition: var(--mainTransition);
+}
+
+#form-investor .radio-investor-box:hover {
+  border: solid 1px var(--primaryColor);
+  transform: scale(1.05);
 }
 
 #form-investor .radio-investor-box input {

@@ -37,7 +37,7 @@ const Plans = () => {
   }, [setErrorPage]);
 
   /**
-   * Validation in the input of the range in real time
+   * Validation in the input of the range, in real time
    */
   useEffect(() => {
     if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
@@ -224,6 +224,15 @@ const Plans = () => {
                   className={`radio-investor-box  ${
                     accreditedYes && 'selected'
                   }`}
+                  onClick={event => {
+                    setAccreditedYes(true);
+                    setAccreditedNo(false);
+                    if (event.target.type !== 'checkbox') {
+                      if (!event.target.checked) {
+                        event.target.firstChild.checked = true;
+                      }
+                    }
+                  }}
                 >
                   <input
                     type='radio'
@@ -246,6 +255,15 @@ const Plans = () => {
                   className={`radio-investor-box  ${
                     accreditedNo && 'selected'
                   }`}
+                  onClick={event => {
+                    setAccreditedYes(false);
+                    setAccreditedNo(true);
+                    if (event.target.type !== 'checkbox') {
+                      if (!event.target.checked) {
+                        event.target.firstChild.checked = true;
+                      }
+                    }
+                  }}
                 >
                   <input
                     type='radio'
