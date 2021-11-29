@@ -12,7 +12,7 @@ import NarrowModal from './components/NarrowModal';
 import Progress from './components/Progress';
 import { useGlobalContext } from './context';
 
-function App() {
+const App = () => {
   const { errorPage } = useGlobalContext();
   return (
     <Router>
@@ -38,6 +38,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
