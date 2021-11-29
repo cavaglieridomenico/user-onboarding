@@ -48,79 +48,80 @@ Variables
   /*Mockup values end*/
 
   /*Responsive main dimensions*/
-  --outerWith: 100vw;
-  --outerMinWith: max-content;
   --outerMaxWidth: 1440px;
-  --outerHeight: calc(
-    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
-  );
-  --innerHeight: calc(
-    100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
-  );
+  --outerMargin: 0 auto;
   --logoMobileHeight: 80px;
   --progressMobileHeight: 40px;
-  --innerPadding: 2% 1%;
+  --progressMargin: 50px 0;
+  --innerHeight: 100vh;
+  --innerMinHeight: 520px;
+  --innerMaxHeight: 800px;
+  --innerPadding: 1% 1% 0;
+  --sectionHeight: auto;
+  --sectionMargin: 0.5rem 0 0;
 }
 
-/*XS*/
+/*XS – smartphone portrait*/
 @media all and (min-width: 360px) {
   :root {
-    --outerMinWith: initial;
-    --innerPadding: 3% 7% 5%;
+    --innerHeight: calc(
+      100vh - var(--logoMobileHeight) - var(--progressMobileHeight)
+    );
+    --innerPadding: 3% 7% 0;
   }
 }
 
 /*XS - Smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   :root {
-    --outerHeight: 100%;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
-    --innerPadding: 1.5% 8% 7%;
+    --innerPadding: 1.5% 5% 0 3%;
+    --innerMinHeight: 640px;
+    --sectionHeight: 520px;
   }
 }
 
-/*MD - large tablet port. and medium tablet land.*/
+/*MD - large tablet portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   :root {
-    --outerMinWith: initial;
-    --outerColLeft: 42%;
-    --outerHeight: 100vh;
-    --innerHeight: 100vh;
-    --sidebarHeight: 100vh;
+    --outerColLeft: 450px;
     --innerPadding: 5% 4% 10%;
     --sidebarPadding: 8% 0 14% 7%;
+    --innerHeight: 100vh;
+    --innerMaxHeight: 1400px;
+    --sectionHeight: 750px;
   }
 }
 
 /*LG*/
 @media all and (min-width: 1200px) {
   :root {
-    --outerHeight: 100%;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
-    --outerMinHeight: 100vh;
-    --innerMinHeight: 100vh;
-    --sidebarMinHeight: 100vh;
-    --outerColLeft: 516px;
-    --innerPadding: 3% 3% 3% 7%;
-    --sidebarPadding: 6% 0 7% 7%;
+    --outerColLeft: 460px;
+    --innerPadding: 3% 3% 1% 7%;
+    --sidebarPadding: 6% 0 5% 7%;
+    --innerHeight: 100vh;
+    --innerMinHeight: 650px;
+    --innerMaxHeight: 1200px;
+    --sectionMargin: 0;
   }
 }
 
 /*XL*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   :root {
-    --outerHeight: 900px;
-    --innerHeight: 100%;
-    --sidebarHeight: 100%;
-    --outerMinHeight: 100%;
-    --innerMinHeight: 100%;
-    --sidebarMinHeight: 100%;
     --outerColLeft: 516px;
     --innerPadding: 40px 150px 43px 116px;
     --sidebarPadding: 40px 0 50px 73px;
+    --innerMaxHeight: 900px;
+    --sectionHeight: 600px;
+    --sectionMargin: 30px 0 0;
     --progressMargin: 100px 0 0;
+  }
+}
+
+/*XXL*/
+@media all and (min-width: 1920px) {
+  :root {
+    --outerMargin: 1% auto 0;
   }
 }
 /*Responsive main dimensions end*/

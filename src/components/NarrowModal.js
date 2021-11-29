@@ -22,10 +22,12 @@ const NarrowModal = () => {
     }
     if (showNarrowModal) {
       document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     }
     if (!showNarrowModal) {
       document.body.style.position = '';
       window.scrollTo(0, positionY);
+      document.body.style.width = 'auto';
     }
   }, [showNarrowModal, positionY]);
 

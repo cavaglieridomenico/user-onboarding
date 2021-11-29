@@ -3,7 +3,7 @@
  * @param {string}
  * @returns {boolean}
  */
-const areThereAnyEmptyString = (...rest) => {
+const containEmptyString = (...rest) => {
   return rest.some(item => item === '');
 };
 
@@ -12,16 +12,14 @@ const areThereAnyEmptyString = (...rest) => {
  * @param {array}
  * @returns {boolean}
  */
-const isAnEmptyArray = array => {
-  return array.length === 0;
-};
+const containEmptyArray = array => array.length === 0;
 
 /**
  *Check minimum length full name
  * @param {string}
  * @returns {boolean}
  */
-const isTheNameTooShort = inputValue => {
+const containNameTooShort = inputValue => {
   let usernameFormat = /^.{3,}$/;
   return inputValue.match(usernameFormat) === null;
 };
@@ -31,7 +29,7 @@ const isTheNameTooShort = inputValue => {
  * @param {string}
  * @returns {boolean} true if match is correct
  */
-const isItAnInvalidEmail = inputValue => {
+const containInvalidEmail = inputValue => {
   let emailFormat =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   return inputValue.match(emailFormat) === null;
@@ -43,15 +41,18 @@ const isItAnInvalidEmail = inputValue => {
  * @param {number} endRange
  * @returns {boolean}
  */
-const isItAnInvalidRange = (startRange, endRange) => {
+const containInvalidRange = (startRange, endRange) => {
   return startRange >= endRange;
 };
 
 /**
- * A value cannot be less than or greater than the range
- * @param {number} left
+ *A value cannot be less than or greater than the range
+ * @param {number} position
+ * @param {number} start
+ * @param {number} stop
+ * @returns {number}
  */
-const onlyInTheRange = (position, start, stop) => {
+const onlyInRange = (position, start, stop) => {
   if (position <= start) {
     return (position = start);
   }
@@ -62,10 +63,10 @@ const onlyInTheRange = (position, start, stop) => {
 };
 
 export {
-  areThereAnyEmptyString,
-  isAnEmptyArray,
-  isTheNameTooShort,
-  isItAnInvalidEmail,
-  onlyInTheRange,
-  isItAnInvalidRange,
+  containEmptyString,
+  containEmptyArray,
+  containNameTooShort,
+  containInvalidEmail,
+  onlyInRange,
+  containInvalidRange,
 };

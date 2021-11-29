@@ -1,11 +1,11 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 import {
-  areThereAnyEmptyString,
-  isItAnInvalidEmail,
-  isTheNameTooShort,
-  isAnEmptyArray,
-  isItAnInvalidRange,
+  containEmptyString,
+  containInvalidEmail,
+  containNameTooShort,
+  containEmptyArray,
+  containInvalidRange,
 } from './assets/scripts/form_utility';
 
 const AppContext = React.createContext();
@@ -48,7 +48,7 @@ const defaultState = {
     accredited: '',
     preferences: [],
   },
-  fromLocalUser: getLocalStorage(),
+  localUser: getLocalStorage(),
   showModal: false,
   modalTitle: '',
   modalText: '',
@@ -68,13 +68,10 @@ export const AppProvider = ({ children }) => {
   /**The localStorage data is updated with the value of
    *the fromLocalStorage property*/
   useEffect(() => {
-    window.localStorage.setItem(
-      'localUser',
-      JSON.stringify(state.fromLocalUser)
-    );
-  }, [state.fromLocalUser]);
+    window.localStorage.setItem('localUser', JSON.stringify(state.localUser));
+  }, [state.localUser]);
 
-  /**Set the fromLocalUser property*/
+  /**Set the localUser property*/
   const setLocalUser = (property, value) => {
     dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
   };
@@ -201,18 +198,18 @@ export const AppProvider = ({ children }) => {
 
   /*Check form validation*/
   const areContactDataValidated = (fullName, phoneNumber, email) => {
-    if (areThereAnyEmptyString(fullName, phoneNumber, email)) {
+    if (containEmptyString(fullName, phoneNumber, email)) {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
-    if (isTheNameTooShort(fullName)) {
+    if (containNameTooShort(fullName)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, the name requires at least 3 characters.'
       );
       return false;
     }
-    if (isItAnInvalidEmail(email)) {
+    if (containInvalidEmail(email)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, the format of the email is not valid.'
@@ -223,11 +220,11 @@ export const AppProvider = ({ children }) => {
   };
 
   const arePlansDataValidated = (planFrom, planTo, accredited) => {
-    if (areThereAnyEmptyString(planFrom, planTo, accredited)) {
+    if (containEmptyString(planFrom, planTo, accredited)) {
       setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
       return false;
     }
-    if (isItAnInvalidRange(parseInt(planFrom), parseInt(planTo))) {
+    if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
       setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
       return false;
     }
@@ -235,7 +232,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const arePreferencesDataValidated = checkedPref => {
-    if (isAnEmptyArray(checkedPref)) {
+    if (containEmptyArray(checkedPref)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, at least one option must be selected.'
@@ -244,6 +241,18 @@ export const AppProvider = ({ children }) => {
       return false;
     }
     return true;
+  };
+
+  /*Handle input focus and blur*/
+  const handleFocusInput = form => {
+    for (let element of form.current.elements) {
+      element.addEventListener('focus', () =>
+        element.parentNode.classList.add('onfocus')
+      );
+      element.addEventListener('blur', () =>
+        element.parentNode.classList.remove('onfocus')
+      );
+    }
   };
 
   /*Set Error Page*/
@@ -271,6 +280,7 @@ export const AppProvider = ({ children }) => {
         areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
+        handleFocusInput,
         setErrorPage,
         setLocalUser,
       }}

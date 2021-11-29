@@ -7,8 +7,6 @@
   background: var(--primaryColor);
   font-family: var(--monserratAlt);
   color: var(--mainWhite50);
-  font-size: 12px;
-  font-weight: 300;
 }
 
 .outer-square {
@@ -66,6 +64,8 @@
 /*Mobile*/
 .progress-mobile {
   display: flex;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .progress-mobile .square-text-container {
@@ -93,6 +93,7 @@
   display: none;
   flex-direction: column;
   align-items: flex-start;
+  height: 180px;
   font-size: 18px;
   font-weight: 700;
   margin: var(--progressMargin);

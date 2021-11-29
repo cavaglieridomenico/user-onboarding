@@ -2,14 +2,6 @@
   display: none;
 }
 
-.plans article > p {
-  letter-spacing: 1.5px;
-}
-
-.plans h2 {
-  font-size: 18px;
-}
-
 /*Form-plans*/
 #form-plans .form-container {
   display: grid;
@@ -88,16 +80,9 @@
 /*Form-investor end*/
 
 /*XS - smartphones landscape*/
-@media all and (min-width: 480px) {
-  section.plans {
-    margin: 3rem 0 11.2rem;
-  }
+@media all and (min-width: 640px) {
   .planning-text {
     display: block;
-  }
-  .plans article > p {
-    letter-spacing: var(--mainSpacing);
-    width: 550px;
   }
   .plans h2 {
     font-size: var(--title2Size);
@@ -107,9 +92,10 @@
     margin-bottom: 2.7rem;
   }
   #form-plans .form-container {
-    grid-template-columns: 260px 260px;
+    grid-template-columns: 271px 271px;
     grid-row-gap: 20px;
-    grid-column-gap: 30px;
+    grid-column-gap: 45px;
+    max-width: unset;
     margin: 0;
   }
   #form-plans .from-box {
@@ -125,16 +111,21 @@
   }
 }
 
-/*LG - large tablet landscape*/
-@media all and (min-width: 1200px) {
-  section.plans {
-    margin: 2.5rem 0 2rem;
+/*MD – large tablet port. and medium tablet land.*/
+@media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
+  #form-plans .form-container {
+    grid-template-columns: 230px 230px;
+    grid-column-gap: 20px;
+    width: 500px;
   }
 }
 
 /*XL larger screens*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
-  section.plans {
-    margin: 3rem 0 11.2rem;
+  #form-plans .form-container {
+    margin: 40px 0 0;
+  }
+  #form-investor .form-container {
+    margin: 30px 0 0;
   }
 }

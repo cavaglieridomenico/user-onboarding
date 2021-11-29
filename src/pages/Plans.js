@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { isItAnInvalidRange } from '../assets/scripts/form_utility';
+import { containInvalidRange } from '../assets/scripts/form_utility';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {
@@ -21,7 +21,7 @@ const Plans = () => {
     setStepStatus2,
     stepStatus1,
     setErrorPage,
-    fromLocalUser,
+    localUser,
     setLocalUser,
   } = useGlobalContext();
 
@@ -40,7 +40,7 @@ const Plans = () => {
    * Validation in the input of the range in real time
    */
   useEffect(() => {
-    if (isItAnInvalidRange(parseInt(fromValue), parseInt(toValue))) {
+    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
       planFrom.current.classList.add('form-plans-error');
       planTo.current.classList.add('form-plans-error');
     } else {
@@ -214,7 +214,7 @@ const Plans = () => {
               id='form-investor'
               ref={accredited}
               onClick={handleClickPlansForms}
-              value={fromLocalUser.accredited}
+              value={localUser.accredited}
               onChange={event => {
                 setLocalUser('accredited', event.target.value);
               }}

@@ -71,16 +71,16 @@ $ git clone https://github.com/cavaglieridomenico/user-onboarding
 # Install dependencies
 $ npm install
 
-# Runs the app in the development mode.\
+# Runs the app in the development mode.
 $ npm start
 
-# Launches the test runner in the interactive watch mode.\
+# Launches the test runner in the interactive watch mode.
 $ npm test
 
 
-# Builds the app for production to the `build` folder.\
+# Builds the app for production to the `build` folder.
 # It correctly bundles React in production mode and optimizes the build for the best performance.
-# The build is minified and the filenames include the hashes.\
+# The build is minified and the filenames include the hashes.
 $ npm run build
 ```
 

@@ -3,7 +3,6 @@ footer {
   grid-template-rows: auto auto;
   grid-template-columns: auto;
   margin-bottom: 1%;
-  min-width: max-content;
 }
 
 .link-to-page {
@@ -11,6 +10,7 @@ footer {
   width: auto;
   font-weight: 600;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .link-to-page .arrow-container {
@@ -93,11 +93,12 @@ footer a {
 }
 
 /*XS - Smartphones landscape*/
-@media all and (min-width: 480px) {
+@media all and (min-width: 640px) {
   footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1%;
   }
 }
 
@@ -131,12 +132,5 @@ footer a {
   footer > a {
     order: 0;
     margin: 0;
-  }
-}
-
-/*XL*/
-@media all and (min-width: 1440px) {
-  footer {
-    height: var(--footerHeight);
   }
 }

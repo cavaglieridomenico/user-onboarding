@@ -5,8 +5,8 @@ const reducer = (state, action) => {
     const { property, value } = action.payload;
     return {
       ...state,
-      fromLocalUser: {
-        ...state.fromLocalUser,
+      localUser: {
+        ...state.localUser,
         [property]: value,
       },
     };
@@ -173,6 +173,7 @@ const reducer = (state, action) => {
       errorPage: action.payload,
     };
   }
+  throw new Error('Attention, no action with that name.');
 };
 
 export default reducer;
