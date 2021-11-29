@@ -31,6 +31,37 @@ const Preferences = () => {
   }, [setErrorPage]);
 
   /**
+   *By pressing the box, assign and remove a specific class to the checkbox
+   *and select and deselect the same checkbox
+   */
+  useEffect(() => {
+    const formContainer = preferences.current.firstChild;
+    for (let element of formContainer.children) {
+      element.addEventListener('click', event => {
+        if (event.target.type !== 'checkbox') {
+          if (!event.target.firstChild.checked) {
+            event.target.firstChild.checked = true;
+            event.target.classList.add('selected');
+          } else {
+            event.target.firstChild.checked = false;
+            event.target.classList.remove('selected');
+          }
+        }
+      });
+    }
+  }, []);
+
+  /**
+   * By pressing the square, assign and remove a specific class to the checkbox
+   * that is checked or unchecked
+   * @param {html element}
+   */
+  const handleCheckboxSelection = element => {
+    element.checked && element.parentNode.classList.add('selected');
+    !element.checked && element.parentNode.classList.remove('selected');
+  };
+
+  /**
    * Returns an array with the value of the selected checkboxes
    * @returns array
    */
@@ -43,16 +74,6 @@ const Preferences = () => {
       }
     });
     return checkedPrefs;
-  };
-
-  /**
-   * Assign and remove a specific class to the check box
-   * that is checked or unchecked
-   * @param {html element} element
-   */
-  const handleCheckboxSelection = element => {
-    element.checked && element.parentNode.classList.add('selected');
-    !element.checked && element.parentNode.classList.remove('selected');
   };
 
   /**
