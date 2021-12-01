@@ -36,6 +36,21 @@ const Plans = () => {
     setErrorPage(false);
   }, [setErrorPage]);
 
+  const handleRadioChecked = useCallback(() => {
+    if (localUser.accredited === 'yes') {
+      setAccreditedYes(true);
+      setAccreditedNo(false);
+    }
+    if (localUser.accredited === 'no') {
+      setAccreditedYes(false);
+      setAccreditedNo(true);
+    }
+  }, [localUser.accredited]);
+
+  useEffect(() => {
+    handleRadioChecked();
+  }, [localUser.accredited, handleRadioChecked]);
+
   /**
    * Validation in the input of the range, in real time
    */
@@ -224,25 +239,17 @@ const Plans = () => {
                   className={`radio-investor-box  ${
                     accreditedYes && 'selected'
                   }`}
-                  onClick={event => {
-                    setAccreditedYes(true);
-                    setAccreditedNo(false);
-                    if (event.target.type !== 'checkbox') {
-                      if (!event.target.checked) {
-                        event.target.firstChild.checked = true;
-                      }
-                    }
-                  }}
+                  onClick={() => setLocalUser('accredited', 'yes')}
                 >
                   <input
                     type='radio'
                     id='accedited-yes'
                     name='accredited'
                     value='yes'
-                    onChange={() => {
-                      setAccreditedYes(true);
-                      setAccreditedNo(false);
-                    }}
+                    checked={localUser.accredited === 'yes'}
+                    onChange={event =>
+                      setLocalUser('accredited', event.target.value)
+                    }
                   />
                   <label
                     htmlFor='accedited-yes'
@@ -255,25 +262,17 @@ const Plans = () => {
                   className={`radio-investor-box  ${
                     accreditedNo && 'selected'
                   }`}
-                  onClick={event => {
-                    setAccreditedYes(false);
-                    setAccreditedNo(true);
-                    if (event.target.type !== 'checkbox') {
-                      if (!event.target.checked) {
-                        event.target.firstChild.checked = true;
-                      }
-                    }
-                  }}
+                  onClick={() => setLocalUser('accredited', 'no')}
                 >
                   <input
                     type='radio'
                     id='accedited-no'
                     name='accredited'
                     value='no'
-                    onChange={() => {
-                      setAccreditedYes(false);
-                      setAccreditedNo(true);
-                    }}
+                    checked={localUser.accredited === 'no'}
+                    onChange={event =>
+                      setLocalUser('accredited', event.target.value)
+                    }
                   />
                   <label
                     htmlFor='accedited-no'
