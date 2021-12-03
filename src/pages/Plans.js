@@ -229,10 +229,6 @@ const Plans = () => {
               id='form-investor'
               ref={accredited}
               onClick={handleClickPlansForms}
-              value={localUser.accredited}
-              onChange={event => {
-                setLocalUser('accredited', event.target.value);
-              }}
             >
               <div className='form-container'>
                 <div
