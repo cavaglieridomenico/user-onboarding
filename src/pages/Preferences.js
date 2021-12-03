@@ -1,9 +1,11 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
+import { preferencesList } from '../assets/scripts/preferencesList';
+import { getCheckedList } from '../assets/scripts/form_utility';
 
 const Preferences = () => {
   const history = useHistory();
@@ -21,60 +23,12 @@ const Preferences = () => {
     setLocalUser,
   } = useGlobalContext();
 
-  const preferences = useRef('');
-
   /**
    * The current page is not an error page
    */
   useEffect(() => {
     setErrorPage(false);
   }, [setErrorPage]);
-
-  /**
-   *By pressing the box, assign and remove a specific class to the checkbox
-   *and select and deselect the same checkbox
-   */
-  useEffect(() => {
-    const formContainer = preferences.current.firstChild;
-    for (let element of formContainer.children) {
-      element.addEventListener('click', event => {
-        if (event.target.type !== 'checkbox') {
-          if (!event.target.firstChild.checked) {
-            event.target.firstChild.checked = true;
-            event.target.classList.add('selected');
-          } else {
-            event.target.firstChild.checked = false;
-            event.target.classList.remove('selected');
-          }
-        }
-      });
-    }
-  }, []);
-
-  /**
-   * By pressing the square, assign and remove a specific class to the checkbox
-   * that is checked or unchecked
-   * @param {html element}
-   */
-  const handleCheckboxSelection = element => {
-    element.checked && element.parentNode.classList.add('selected');
-    !element.checked && element.parentNode.classList.remove('selected');
-  };
-
-  /**
-   * Returns an array with the value of the selected checkboxes
-   * @returns array
-   */
-  const getPreferences = () => {
-    const allPrefs = preferences.current.elements.preferences;
-    const checkedPrefs = [];
-    allPrefs.forEach(pref => {
-      if (pref.checked) {
-        checkedPrefs.push(pref.value);
-      }
-    });
-    return checkedPrefs;
-  };
 
   /**
    * Check the status of the previous steps and, if someone has not yet been updated,
@@ -108,8 +62,8 @@ const Preferences = () => {
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      if (arePreferencesDataValidated(getPreferences())) {
-        getPreferencesData(getPreferences());
+      if (arePreferencesDataValidated(localUser.preferences)) {
+        getPreferencesData(localUser.preferences);
         setStepStatus3(true);
         setDataReady(true);
         history.push('./');
@@ -124,6 +78,7 @@ const Preferences = () => {
     setStepStatus3,
     setDataReady,
     history,
+    localUser.preferences,
   ]);
 
   return (
@@ -153,87 +108,47 @@ const Preferences = () => {
             </h2>
             <form
               id='form-pref'
-              ref={preferences}
               value={localUser.preferences}
               onClick={handleClickPreferencesForm}
-              onChange={event => {
-                handleCheckboxSelection(event.target);
-                setLocalUser('preferences', getPreferences());
-              }}
             >
               <div className='form-container'>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='single-family'
-                    value='single-family'
-                    name='preferences'
-                  />
-                  <label htmlFor='single-family'>Single family</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='residential'
-                    value='residential-multifamily'
-                    name='preferences'
-                  />
-                  <label htmlFor='residential'>Residential multifamily</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='retail'
-                    value='commercial-retail'
-                    name='preferences'
-                  />
-                  <label htmlFor='retail'>Commercial retail</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='industrial'
-                    value='commercial-industrial'
-                    name='preferences'
-                  />
-                  <label htmlFor='industrial'>Commercial industrial</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='hospitality'
-                    value='commercial-hospitality'
-                    name='preferences'
-                  />
-                  <label htmlFor='hospitality'>Commercial hospitality</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='warehousing'
-                    value='commercial-warehousing'
-                    name='preferences'
-                  />
-                  <label htmlFor='warehousing'>Commercial warehousing</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='office'
-                    value='commercial-office'
-                    name='preferences'
-                  />
-                  <label htmlFor='office'>Commercial office</label>
-                </div>
-                <div className='check-box'>
-                  <input
-                    type='checkbox'
-                    id='other'
-                    value='other'
-                    name='preferences'
-                  />
-                  <label htmlFor='other'>Other</label>
-                </div>
+                {preferencesList.map((prefItem, index) => {
+                  const isChecked = () => {
+                    return localUser.preferences.includes(prefItem);
+                  };
+                  return (
+                    <div
+                      className={`check-box ${isChecked() && 'selected'}`}
+                      key={index}
+                      onClick={() =>
+                        setLocalUser(
+                          'preferences',
+                          getCheckedList(localUser.preferences, prefItem)
+                        )
+                      }
+                    >
+                      <input
+                        type='checkbox'
+                        id={`preferences-${index + 1}`}
+                        name={prefItem}
+                        value={prefItem}
+                        checked={isChecked()}
+                        onChange={event =>
+                          setLocalUser(
+                            'preferences',
+                            getCheckedList(
+                              localUser.preferences,
+                              event.target.value
+                            )
+                          )
+                        }
+                      />
+                      <label htmlFor={`preferences-${index + 1}`}>
+                        {prefItem}
+                      </label>
+                    </div>
+                  );
+                })}
               </div>
             </form>
           </article>
