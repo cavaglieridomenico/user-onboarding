@@ -5,6 +5,7 @@ import {
   containInvalidEmail,
   onlyInRange,
   containInvalidRange,
+  getCheckedList,
 } from './form_utility';
 //Test of filling in the form fields
 
@@ -119,4 +120,34 @@ test('It should return 0 if the first parameter is equal to 600', () => {
 
 test('It should return the first parameter if the first parameter is in the range', () => {
   expect(onlyInRange(300, 0, 600)).toEqual(300);
+});
+
+/*An element in a list*/
+test('It should return an array containing only the second argument', () => {
+  expect(getCheckedList([], 'cat')).toEqual(['cat']);
+});
+
+test('It should return an array containing its own elements and the new element', () => {
+  expect(getCheckedList(['cat', 'dog', 'fish'], 'bird')).toEqual([
+    'cat',
+    'dog',
+    'fish',
+    'bird',
+  ]);
+});
+
+test('It should return an array containing its own elements without the element equal to the second argument', () => {
+  expect(getCheckedList(['cat', 'dog', 'fish'], 'cat')).toEqual([
+    'dog',
+    'fish',
+  ]);
+});
+
+test('It should return an array containing its own elements and the new element', () => {
+  expect(getCheckedList(['cat', 'dog', 'fish'], 12)).toEqual([
+    'cat',
+    'dog',
+    'fish',
+    12,
+  ]);
 });

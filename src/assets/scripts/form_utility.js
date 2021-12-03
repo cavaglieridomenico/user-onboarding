@@ -1,5 +1,5 @@
 /**
- *Check for empty fields
+ * Check for empty fields
  * @param {string}
  * @returns {boolean}
  */
@@ -8,14 +8,14 @@ const containEmptyString = (...rest) => {
 };
 
 /**
- * *Check for empty array (useful for checkbox)
+ * Check for empty array (useful for checkbox)
  * @param {array}
  * @returns {boolean}
  */
 const containEmptyArray = array => array.length === 0;
 
 /**
- *Check minimum length full name
+ * Check minimum length full name
  * @param {string}
  * @returns {boolean}
  */
@@ -25,7 +25,7 @@ const containNameTooShort = inputValue => {
 };
 
 /**
- *Check invalid email format
+ * Check invalid email format
  * @param {string}
  * @returns {boolean} true if match is correct
  */
@@ -36,7 +36,7 @@ const containInvalidEmail = inputValue => {
 };
 
 /**
- *Check invalid range format
+ * Check invalid range format
  * @param {number} startRange
  * @param {number} endRange
  * @returns {boolean}
@@ -46,7 +46,7 @@ const containInvalidRange = (startRange, endRange) => {
 };
 
 /**
- *A value cannot be less than or greater than the range
+ * A value cannot be less than or greater than the range
  * @param {number} position
  * @param {number} start
  * @param {number} stop
@@ -61,6 +61,18 @@ const onlyInRange = (position, start, stop) => {
   }
   return position;
 };
+/**
+ * Given a list and an element, if the element is not already contained in it, add it,
+ * and if it is already contained, remove it and the new list is returned
+ * @param {array} list
+ * @param {string} newItem
+ * @returns {array}
+ */
+const getCheckedList = (list, newItem) => {
+  return list.includes(newItem)
+    ? list.filter(itemOldList => itemOldList !== newItem)
+    : [...list, newItem];
+};
 
 export {
   containEmptyString,
@@ -69,4 +81,5 @@ export {
   containInvalidEmail,
   onlyInRange,
   containInvalidRange,
+  getCheckedList,
 };
