@@ -1,3 +1,10 @@
+section.plans article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .planning-text {
   display: none;
 }
@@ -9,6 +16,7 @@
   grid-template-columns: 100%;
   max-width: 340px;
   margin: 0 auto;
+  min-width: 300px;
 }
 
 #form-plans .from-box select,
@@ -87,6 +95,9 @@
 
 /*XS - smartphones landscape*/
 @media all and (min-width: 640px) {
+  section.plans article {
+    display: block;
+  }
   .planning-text {
     display: block;
   }

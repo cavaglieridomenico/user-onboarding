@@ -60,6 +60,18 @@ body {
   margin: var(--sectionMargin);
 }
 
+.onboarding-innerbox article {
+  display: flex;
+  justify-content: center;
+}
+
+/*XS - smartphones landscape*/
+@media all and (min-width: 640px) {
+  .onboarding-innerbox article {
+    display: block;
+  }
+}
+
 /*MD - large tablet portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .onboarding-outerbox {
@@ -182,6 +194,10 @@ a:visited {
 /*Tag default style end*/
 
 /*Form - default style*/
+.onboarding-outerbox form {
+  width: fit-content;
+}
+
 .onboarding-outerbox input[type='text'],
 .onboarding-outerbox input[type='number'] {
   border: none;
