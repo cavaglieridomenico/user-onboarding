@@ -1,11 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useGlobalContext } from '../context';
 import {
   onlyInRange,
   containInvalidRange,
   getRightClass,
 } from '../assets/scripts/plans_utility';
+import { plansList } from '../assets/scripts/lists';
 
-const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
+const Slider = () => {
+  const { localUser, setLocalUser } = useGlobalContext();
+
   const slider = useRef(null);
   const cursor1 = useRef(null);
   const cursor2 = useRef(null);
@@ -16,31 +20,13 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
   const [sliderEnd, setSliderEnd] = useState(0);
   const [cursor1Width, setCursor1Width] = useState(0);
   const [cursor2Width, setCursor2Width] = useState(0);
-  /*Positioning of the Slider cursors based on the inputs selected by the user
+
+  /*When the page loads positioning of the Slider cursors based on the inputs selected by the user
   and setting of its active classes*/
   useEffect(() => {
-    handleFromValueChange(fromValue);
-    handleToValueChange(toValue);
-    setToActive(toValue);
-    setFromActive(fromValue);
-    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
-      slider.current.classList.add('slider-error');
-      notchContainer.current.childNodes.forEach(element =>
-        element.classList.add('slider-notch-error')
-      );
-      sliderNumberContainer.current.childNodes.forEach(element =>
-        element.classList.add('slider-amount-error')
-      );
-    } else {
-      slider.current.classList.remove('slider-error');
-      notchContainer.current.childNodes.forEach(element =>
-        element.classList.remove('slider-notch-error')
-      );
-      sliderNumberContainer.current.childNodes.forEach(element =>
-        element.classList.remove('slider-amount-error')
-      );
-    }
-  }, [fromValue, toValue]);
+    handleFromValueChange(localUser.planFrom);
+    handleToValueChange(localUser.planTo);
+  }, [localUser.planFrom, localUser.planTo]);
 
   /*Calculation of the dimensions of the Slider container*/
   useEffect(() => {
@@ -108,42 +94,6 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
     }
   };
 
-  /*Insertion and deactivation of active classes based on the variation of the input To*/
-  const setToActive = toValue => {
-    sliderNumberContainer.current.childNodes.forEach(element => {
-      element.classList.remove('slider-number-active');
-      if (parseInt(element.getAttribute('number')) <= parseInt(toValue)) {
-        element.classList.add('slider-number-active');
-      }
-    });
-    notchContainer.current.childNodes.forEach(element => {
-      element.classList.remove('notch-active');
-      if (parseInt(element.getAttribute('number')) <= parseInt(toValue)) {
-        element.classList.add('notch-active');
-      }
-    });
-  };
-  /*Insertion and deactivation of active classes based on the variation of the input From*/
-  const setFromActive = fromValue => {
-    sliderNumberContainer.current.childNodes.forEach(element => {
-      if (parseInt(element.getAttribute('number')) < parseInt(fromValue)) {
-        element.classList.remove('slider-number-active');
-      }
-      if (parseInt(element.getAttribute('number')) === parseInt(fromValue)) {
-        element.classList.add('slider-number-active');
-      }
-    });
-
-    notchContainer.current.childNodes.forEach(element => {
-      if (parseInt(element.getAttribute('number')) < parseInt(fromValue)) {
-        element.classList.remove('notch-active');
-      }
-      if (parseInt(element.getAttribute('number')) === parseInt(fromValue)) {
-        element.classList.add('notch-active');
-      }
-    });
-  };
-
   /*Cursor 1 logic when operated by the user*/
   const handleMousedownFrom = event => {
     event.preventDefault();
@@ -159,27 +109,27 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
 
       if (cursor1Position < 60) {
         cursor1.current.style.left = 0 + 'px';
-        handleFromValue('10000');
+        setLocalUser('planFrom', '10000');
       }
       if (cursor1Position > 60 && cursor1Position < 180) {
         cursor1.current.style.left = 108 + 'px';
-        handleFromValue('50000');
+        setLocalUser('planFrom', '50000');
       }
       if (cursor1Position > 180 && cursor1Position < 300) {
         cursor1.current.style.left = 228 + 'px';
-        handleFromValue('100000');
+        setLocalUser('planFrom', '100000');
       }
       if (cursor1Position > 300 && cursor1Position < 420) {
         cursor1.current.style.left = 350 + 'px';
-        handleFromValue('200000');
+        setLocalUser('planFrom', '200000');
       }
       if (cursor1Position > 420 && cursor1Position < 540) {
         cursor1.current.style.left = 472 + 'px';
-        handleFromValue('500000');
+        setLocalUser('planFrom', '500000');
       }
       if (cursor1Position > 540) {
         cursor1.current.style.left = 593 + 'px';
-        handleFromValue('1000000');
+        setLocalUser('planFrom', '1000000');
       }
     };
 
@@ -212,31 +162,31 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
       if (cursor2Position < 60) {
         cursor2.current.style.left = 0 + 'px';
 
-        handleToValue('10000');
+        setLocalUser('planTo', '10000');
       }
       if (cursor2Position > 60 && cursor2Position < 180) {
         cursor2.current.style.left = 108 + 'px';
 
-        handleToValue('50000');
+        setLocalUser('planTo', '50000');
       }
       if (cursor2Position > 180 && cursor2Position < 300) {
         cursor2.current.style.left = 229 + 'px';
 
-        handleToValue('100000');
+        setLocalUser('planTo', '100000');
       }
       if (cursor2Position > 300 && cursor2Position < 420) {
         cursor2.current.style.left = 350 + 'px';
 
-        handleToValue('200000');
+        setLocalUser('planTo', '200000');
       }
       if (cursor2Position > 420 && cursor2Position < 540) {
         cursor2.current.style.left = 471 + 'px';
 
-        handleToValue('500000');
+        setLocalUser('planTo', '500000');
       }
       if (cursor2Position > 540) {
         cursor2.current.style.left = 593 + 'px';
-        handleToValue('1000000');
+        setLocalUser('planTo', '1000000');
       }
     };
 
@@ -252,14 +202,30 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
   return (
     <div className='slider-container'>
       <div className='notch-container' ref={notchContainer}>
-        <div className='notch' number={'10000'}></div>
-        <div className='notch' number={'50000'}></div>
-        <div className='notch' number={'100000'}></div>
-        <div className='notch' number={'200000'}></div>
-        <div className='notch' number={'500000'}></div>
-        <div className='notch' number={'1000000'}></div>
+        {plansList.map((amountValue, index) => {
+          return (
+            <div
+              key={index}
+              className={`notch ${getRightClass(
+                amountValue.value,
+                parseInt(localUser.planFrom),
+                parseInt(localUser.planTo),
+                'notch-active',
+                'notch-error'
+              )}`}
+            ></div>
+          );
+        })}
       </div>
-      <div className='slider' ref={slider}>
+      <div
+        className={`slider ${
+          containInvalidRange(
+            parseInt(localUser.planFrom),
+            parseInt(localUser.planTo)
+          ) && 'slider-error'
+        }`}
+        ref={slider}
+      >
         <div
           className='cursor'
           id='cursor-1'
@@ -272,27 +238,27 @@ const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
           id='cursor-2'
           ref={cursor2}
           onMouseDown={handleMousedownTo}
+          onDragStart={() => false}
         ></div>
       </div>
       <div className='slider-amount-container' ref={sliderNumberContainer}>
-        <p className='slider-amount' number={'10000'}>
-          $10,000
-        </p>
-        <p className='slider-amount' number={'50000'}>
-          $50,000
-        </p>
-        <p className='slider-amount' number={'100000'}>
-          $100,000
-        </p>
-        <p className='slider-amount' number={'200000'}>
-          $200,000
-        </p>
-        <p className='slider-amount' number={'500000'}>
-          $500,000
-        </p>
-        <p className='slider-amount' number={'1000000'}>
-          $1,000,000 +
-        </p>
+        {plansList.map((amountValue, index) => {
+          const { label, value } = amountValue;
+          return (
+            <p
+              key={index}
+              className={`slider-amount ${getRightClass(
+                value,
+                parseInt(localUser.planFrom),
+                parseInt(localUser.planTo),
+                'slider-number-active',
+                'slider-amount-error'
+              )}`}
+            >
+              {label}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
