@@ -9,8 +9,6 @@ import { useGlobalContext } from '../context';
 
 const Plans = () => {
   const history = useHistory();
-  const [fromValue, setFromValue] = useState('10000');
-  const [toValue, setToValue] = useState('200000');
   const [accreditedYes, setAccreditedYes] = useState(false);
   const [accreditedNo, setAccreditedNo] = useState(false);
 
@@ -50,19 +48,6 @@ const Plans = () => {
   useEffect(() => {
     handleRadioChecked();
   }, [localUser.accredited, handleRadioChecked]);
-
-  /**
-   * Validation in the input of the range, in real time
-   */
-  useEffect(() => {
-    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
-      planFrom.current.classList.add('form-plans-error');
-      planTo.current.classList.add('form-plans-error');
-    } else {
-      planFrom.current.classList.remove('form-plans-error');
-      planTo.current.classList.remove('form-plans-error');
-    }
-  }, [fromValue, toValue]);
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -156,9 +141,8 @@ const Plans = () => {
                     type='text'
                     id='plans-from'
                     ref={planFrom}
-                    value={fromValue}
+                    value={localUser.planFrom}
                     onChange={event => {
-                      setFromValue(event.target.value);
                       setLocalUser('planFrom', event.target.value);
                     }}
                   >
@@ -188,9 +172,8 @@ const Plans = () => {
                     type='text'
                     id='plans-to'
                     ref={planTo}
-                    value={toValue}
+                    value={localUser.planTo}
                     onChange={event => {
-                      setToValue(event.target.value);
                       setLocalUser('planTo', event.target.value);
                     }}
                   >
@@ -215,12 +198,7 @@ const Plans = () => {
                   </select>
                 </div>
               </div>
-              <Slider
-                handleFromValue={setFromValue}
-                handleToValue={setToValue}
-                fromValue={fromValue}
-                toValue={toValue}
-              />
+              <Slider />
             </form>
           </article>
           <article>
