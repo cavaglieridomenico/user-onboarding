@@ -5,8 +5,8 @@ import {
   containInvalidEmail,
   containNameTooShort,
   containEmptyArray,
-  containInvalidRange,
-} from './assets/scripts/form_utility';
+} from './assets/scripts/contact_utility';
+import { containInvalidRange } from './assets/scripts/plans_utility';
 
 const AppContext = React.createContext();
 

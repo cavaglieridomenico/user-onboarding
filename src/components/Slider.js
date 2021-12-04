@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import {
-  containInvalidRange,
   onlyInRange,
-} from '../assets/scripts/form_utility';
+  containInvalidRange,
+  getRightClass,
+} from '../assets/scripts/plans_utility';
 
 const Slider = ({ handleFromValue, handleToValue, fromValue, toValue }) => {
   const slider = useRef(null);

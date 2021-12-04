@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { containInvalidRange } from '../assets/scripts/form_utility';
+import { containInvalidRange } from '../assets/scripts/plans_utility';
 import { useGlobalContext } from '../context';
 
 const Plans = () => {

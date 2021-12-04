@@ -4,8 +4,8 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
-import { preferencesList } from '../assets/scripts/preferencesList';
-import { getCheckedList } from '../assets/scripts/form_utility';
+import { preferencesList } from '../assets/scripts/lists';
+import { getCheckedList } from '../assets/scripts/preferences_utility';
 
 const Preferences = () => {
   const history = useHistory();
