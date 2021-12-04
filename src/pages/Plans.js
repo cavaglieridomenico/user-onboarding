@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Slider from '../components/Slider';
 import { containInvalidRange } from '../assets/scripts/plans_utility';
 import { useGlobalContext } from '../context';
+import { plansList } from '../assets/scripts/lists';
 
 const Plans = () => {
   const history = useHistory();
@@ -141,29 +142,25 @@ const Plans = () => {
                     type='text'
                     id='plans-from'
                     ref={planFrom}
+                    className={`select-amount ${
+                      containInvalidRange(
+                        parseInt(localUser.planFrom),
+                        parseInt(localUser.planTo)
+                      ) && 'form-plans-error'
+                    }`}
                     value={localUser.planFrom}
                     onChange={event => {
                       setLocalUser('planFrom', event.target.value);
                     }}
                   >
-                    <option id='10000' value='10000'>
-                      $10,000
-                    </option>
-                    <option id='50000' value='50000'>
-                      $50,000
-                    </option>
-                    <option id='100000' value='100000'>
-                      $100,000
-                    </option>
-                    <option id='200000' value='200000'>
-                      $200,000
-                    </option>
-                    <option id='500000' value='500000'>
-                      $500,000
-                    </option>
-                    <option id='1000000' value='1000000'>
-                      $1,000,000 +
-                    </option>
+                    {plansList.map((amountValue, index) => {
+                      const { label, value } = amountValue;
+                      return (
+                        <option key={index} value={value}>
+                          {label}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
                 <div className='to-box'>
@@ -172,29 +169,25 @@ const Plans = () => {
                     type='text'
                     id='plans-to'
                     ref={planTo}
+                    className={`select-amount ${
+                      containInvalidRange(
+                        parseInt(localUser.planFrom),
+                        parseInt(localUser.planTo)
+                      ) && 'form-plans-error'
+                    }`}
                     value={localUser.planTo}
                     onChange={event => {
                       setLocalUser('planTo', event.target.value);
                     }}
                   >
-                    <option id='10000' value='10000'>
-                      $10,000
-                    </option>
-                    <option id='50000' value='50000'>
-                      $50,000
-                    </option>
-                    <option id='100000' value='100000'>
-                      $100,000
-                    </option>
-                    <option id='200000' value='200000'>
-                      $200,000
-                    </option>
-                    <option id='500000' value='500000'>
-                      $500,000
-                    </option>
-                    <option id='1000000' value='1000000'>
-                      $1,000,000 +
-                    </option>
+                    {plansList.map((amountValue, index) => {
+                      const { label, value } = amountValue;
+                      return (
+                        <option key={index} value={value}>
+                          {label}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
