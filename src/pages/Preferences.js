@@ -120,12 +120,6 @@ const Preferences = () => {
                     <div
                       className={`check-box ${isChecked() && 'selected'}`}
                       key={index}
-                      onClick={() =>
-                        setLocalUser(
-                          'preferences',
-                          getCheckedList(localUser.preferences, prefItem)
-                        )
-                      }
                     >
                       <input
                         type='checkbox'
@@ -133,19 +127,28 @@ const Preferences = () => {
                         name={prefItem}
                         value={prefItem}
                         checked={isChecked()}
-                        onChange={event =>
+                        onChange={event => {
                           setLocalUser(
                             'preferences',
                             getCheckedList(
                               localUser.preferences,
                               event.target.value
                             )
-                          )
-                        }
+                          );
+                        }}
                       />
                       <label htmlFor={`preferences-${index + 1}`}>
                         {prefItem}
                       </label>
+                      <div
+                        className='placeholder'
+                        onClick={() => {
+                          setLocalUser(
+                            'preferences',
+                            getCheckedList(localUser.preferences, prefItem)
+                          );
+                        }}
+                      ></div>
                     </div>
                   );
                 })}

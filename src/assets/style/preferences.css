@@ -54,6 +54,12 @@
   font-size: 14px;
   color: var(--primaryColor);
 }
+
+.placeholder {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 /*Form end*/
 
 /*XS - smartphones landscape*/
