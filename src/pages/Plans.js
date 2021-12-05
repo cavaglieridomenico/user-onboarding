@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -10,8 +10,6 @@ import { plansList } from '../assets/scripts/lists';
 
 const Plans = () => {
   const history = useHistory();
-  const [accreditedYes, setAccreditedYes] = useState(false);
-  const [accreditedNo, setAccreditedNo] = useState(false);
 
   const {
     arePlansDataValidated,
@@ -34,21 +32,6 @@ const Plans = () => {
   useEffect(() => {
     setErrorPage(false);
   }, [setErrorPage]);
-
-  const handleRadioChecked = useCallback(() => {
-    if (localUser.accredited === 'yes') {
-      setAccreditedYes(true);
-      setAccreditedNo(false);
-    }
-    if (localUser.accredited === 'no') {
-      setAccreditedYes(false);
-      setAccreditedNo(true);
-    }
-  }, [localUser.accredited]);
-
-  useEffect(() => {
-    handleRadioChecked();
-  }, [localUser.accredited, handleRadioChecked]);
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -204,7 +187,7 @@ const Plans = () => {
               <div className='form-container'>
                 <div
                   className={`radio-investor-box  ${
-                    accreditedYes && 'selected'
+                    localUser.accredited === 'yes' && 'selected'
                   }`}
                   onClick={() => setLocalUser('accredited', 'yes')}
                 >
@@ -220,14 +203,16 @@ const Plans = () => {
                   />
                   <label
                     htmlFor='accedited-yes'
-                    className={`${accreditedYes ? 'selected' : undefined}`}
+                    className={`${
+                      localUser.accredited === 'yes' ? 'selected' : undefined
+                    }`}
                   >
                     Yes
                   </label>
                 </div>
                 <div
                   className={`radio-investor-box  ${
-                    accreditedNo && 'selected'
+                    localUser.accredited === 'no' && 'selected'
                   }`}
                   onClick={() => setLocalUser('accredited', 'no')}
                 >
@@ -243,7 +228,9 @@ const Plans = () => {
                   />
                   <label
                     htmlFor='accedited-no'
-                    className={`${accreditedNo ? 'selected' : undefined}`}
+                    className={`${
+                      localUser.accredited === 'no' ? 'selected' : undefined
+                    }`}
                   >
                     No
                   </label>
