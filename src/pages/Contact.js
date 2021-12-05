@@ -22,11 +22,6 @@ const Contact = () => {
     setLocalUser,
   } = useGlobalContext();
 
-  const fullName = useRef('');
-  const phoneNumber = useRef('');
-  const phoneCode = useRef('');
-  const email = useRef('');
-  const country = useRef('');
   const formContact = useRef(null);
 
   /**
@@ -52,17 +47,17 @@ const Contact = () => {
   const handleSubmitContact = useCallback(() => {
     if (
       areContactDataValidated(
-        fullName.current.value,
-        phoneNumber.current.value,
-        email.current.value
+        localUser.fullName,
+        localUser.phoneNumber,
+        localUser.email
       )
     ) {
       getContactData(
-        fullName.current.value,
-        phoneNumber.current.value,
-        phoneCode.current.value,
-        email.current.value,
-        country.current.value
+        localUser.fullName,
+        localUser.phoneNumber,
+        localUser.phoneCode,
+        localUser.email,
+        localUser.country
       );
       setStepStatus1(true);
       setNarrowModalOpen(
@@ -73,6 +68,11 @@ const Contact = () => {
       history.push('./plans');
     }
   }, [
+    localUser.fullName,
+    localUser.phoneNumber,
+    localUser.phoneCode,
+    localUser.email,
+    localUser.country,
     areContactDataValidated,
     getContactData,
     setStepStatus1,
@@ -105,7 +105,6 @@ const Contact = () => {
                   <input
                     type='text'
                     id='full-name'
-                    ref={fullName}
                     value={localUser.fullName}
                     onChange={event =>
                       setLocalUser('fullName', event.target.value)
@@ -117,7 +116,6 @@ const Contact = () => {
                   <select
                     name='country-flag'
                     id='country-flag'
-                    ref={phoneCode}
                     value={localUser.phoneCode}
                     onChange={event => {
                       setLocalUser('phoneCode', event.target.value);
@@ -139,7 +137,6 @@ const Contact = () => {
                   <input
                     type='number'
                     id='phone'
-                    ref={phoneNumber}
                     value={localUser.phoneNumber}
                     onChange={event =>
                       setLocalUser('phoneNumber', event.target.value)
@@ -151,7 +148,6 @@ const Contact = () => {
                   <input
                     type='text'
                     id='email'
-                    ref={email}
                     value={localUser.email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
@@ -163,7 +159,6 @@ const Contact = () => {
                   <select
                     type='text'
                     id='country'
-                    ref={country}
                     value={localUser.country}
                     onChange={event => {
                       setLocalUser('country', event.target.value);
