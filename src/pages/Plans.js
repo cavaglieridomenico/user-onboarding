@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -21,10 +21,6 @@ const Plans = () => {
     localUser,
     setLocalUser,
   } = useGlobalContext();
-
-  const planFrom = useRef('');
-  const planTo = useRef('');
-  const accredited = useRef('');
 
   /**
    * The current page is not an error page
@@ -63,15 +59,15 @@ const Plans = () => {
     if (stepStatus1) {
       if (
         arePlansDataValidated(
-          planFrom.current.value,
-          planTo.current.value,
-          accredited.current.elements.accredited.value
+          localUser.planFrom,
+          localUser.planTo,
+          localUser.accredited
         )
       ) {
         getPlansData(
-          planFrom.current.value,
-          planTo.current.value,
-          accredited.current.elements.accredited.value
+          localUser.planFrom,
+          localUser.planTo,
+          localUser.accredited
         );
         setStepStatus2(true);
         setNarrowModalOpen(
@@ -83,6 +79,9 @@ const Plans = () => {
       }
     }
   }, [
+    localUser.planFrom,
+    localUser.planTo,
+    localUser.accredited,
     goToTheRightPageFromPlans,
     stepStatus1,
     arePlansDataValidated,
@@ -124,7 +123,6 @@ const Plans = () => {
                   <select
                     type='text'
                     id='plans-from'
-                    ref={planFrom}
                     className={`select-amount ${
                       containInvalidRange(
                         parseInt(localUser.planFrom),
@@ -151,7 +149,6 @@ const Plans = () => {
                   <select
                     type='text'
                     id='plans-to'
-                    ref={planTo}
                     className={`select-amount ${
                       containInvalidRange(
                         parseInt(localUser.planFrom),
@@ -179,11 +176,7 @@ const Plans = () => {
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>
-            <form
-              id='form-investor'
-              ref={accredited}
-              onClick={handleClickPlansForms}
-            >
+            <form id='form-investor' onClick={handleClickPlansForms}>
               <div className='form-container'>
                 <div
                   className={`radio-investor-box  ${
