@@ -1,18 +1,15 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { containInvalidRange } from '../assets/scripts/form_utility';
+import { containInvalidRange } from '../assets/scripts/plans_utility';
 import { useGlobalContext } from '../context';
+import { plansList } from '../assets/scripts/lists';
 
 const Plans = () => {
   const history = useHistory();
-  const [fromValue, setFromValue] = useState('10000');
-  const [toValue, setToValue] = useState('200000');
-  const [accreditedYes, setAccreditedYes] = useState(false);
-  const [accreditedNo, setAccreditedNo] = useState(false);
 
   const {
     arePlansDataValidated,
@@ -35,19 +32,6 @@ const Plans = () => {
   useEffect(() => {
     setErrorPage(false);
   }, [setErrorPage]);
-
-  /**
-   * Validation in the input of the range, in real time
-   */
-  useEffect(() => {
-    if (containInvalidRange(parseInt(fromValue), parseInt(toValue))) {
-      planFrom.current.classList.add('form-plans-error');
-      planTo.current.classList.add('form-plans-error');
-    } else {
-      planFrom.current.classList.remove('form-plans-error');
-      planTo.current.classList.remove('form-plans-error');
-    }
-  }, [fromValue, toValue]);
 
   /**
    * Check the status of the previous step and, if it has not yet been updated,
@@ -141,30 +125,25 @@ const Plans = () => {
                     type='text'
                     id='plans-from'
                     ref={planFrom}
-                    value={fromValue}
+                    className={`select-amount ${
+                      containInvalidRange(
+                        parseInt(localUser.planFrom),
+                        parseInt(localUser.planTo)
+                      ) && 'form-plans-error'
+                    }`}
+                    value={localUser.planFrom}
                     onChange={event => {
-                      setFromValue(event.target.value);
                       setLocalUser('planFrom', event.target.value);
                     }}
                   >
-                    <option id='10000' value='10000'>
-                      $10,000
-                    </option>
-                    <option id='50000' value='50000'>
-                      $50,000
-                    </option>
-                    <option id='100000' value='100000'>
-                      $100,000
-                    </option>
-                    <option id='200000' value='200000'>
-                      $200,000
-                    </option>
-                    <option id='500000' value='500000'>
-                      $500,000
-                    </option>
-                    <option id='1000000' value='1000000'>
-                      $1,000,000 +
-                    </option>
+                    {plansList.map((amountValue, index) => {
+                      const { label, value } = amountValue;
+                      return (
+                        <option key={index} value={value}>
+                          {label}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
                 <div className='to-box'>
@@ -173,39 +152,29 @@ const Plans = () => {
                     type='text'
                     id='plans-to'
                     ref={planTo}
-                    value={toValue}
+                    className={`select-amount ${
+                      containInvalidRange(
+                        parseInt(localUser.planFrom),
+                        parseInt(localUser.planTo)
+                      ) && 'form-plans-error'
+                    }`}
+                    value={localUser.planTo}
                     onChange={event => {
-                      setToValue(event.target.value);
                       setLocalUser('planTo', event.target.value);
                     }}
                   >
-                    <option id='10000' value='10000'>
-                      $10,000
-                    </option>
-                    <option id='50000' value='50000'>
-                      $50,000
-                    </option>
-                    <option id='100000' value='100000'>
-                      $100,000
-                    </option>
-                    <option id='200000' value='200000'>
-                      $200,000
-                    </option>
-                    <option id='500000' value='500000'>
-                      $500,000
-                    </option>
-                    <option id='1000000' value='1000000'>
-                      $1,000,000 +
-                    </option>
+                    {plansList.map((amountValue, index) => {
+                      const { label, value } = amountValue;
+                      return (
+                        <option key={index} value={value}>
+                          {label}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
-              <Slider
-                handleFromValue={setFromValue}
-                handleToValue={setToValue}
-                fromValue={fromValue}
-                toValue={toValue}
-              />
+              <Slider />
             </form>
           </article>
           <article>
@@ -214,70 +183,54 @@ const Plans = () => {
               id='form-investor'
               ref={accredited}
               onClick={handleClickPlansForms}
-              value={localUser.accredited}
-              onChange={event => {
-                setLocalUser('accredited', event.target.value);
-              }}
             >
               <div className='form-container'>
                 <div
                   className={`radio-investor-box  ${
-                    accreditedYes && 'selected'
+                    localUser.accredited === 'yes' && 'selected'
                   }`}
-                  onClick={event => {
-                    setAccreditedYes(true);
-                    setAccreditedNo(false);
-                    if (event.target.type !== 'checkbox') {
-                      if (!event.target.checked) {
-                        event.target.firstChild.checked = true;
-                      }
-                    }
-                  }}
+                  onClick={() => setLocalUser('accredited', 'yes')}
                 >
                   <input
                     type='radio'
                     id='accedited-yes'
                     name='accredited'
                     value='yes'
-                    onChange={() => {
-                      setAccreditedYes(true);
-                      setAccreditedNo(false);
-                    }}
+                    checked={localUser.accredited === 'yes'}
+                    onChange={event =>
+                      setLocalUser('accredited', event.target.value)
+                    }
                   />
                   <label
                     htmlFor='accedited-yes'
-                    className={`${accreditedYes ? 'selected' : undefined}`}
+                    className={`${
+                      localUser.accredited === 'yes' ? 'selected' : undefined
+                    }`}
                   >
                     Yes
                   </label>
                 </div>
                 <div
                   className={`radio-investor-box  ${
-                    accreditedNo && 'selected'
+                    localUser.accredited === 'no' && 'selected'
                   }`}
-                  onClick={event => {
-                    setAccreditedYes(false);
-                    setAccreditedNo(true);
-                    if (event.target.type !== 'checkbox') {
-                      if (!event.target.checked) {
-                        event.target.firstChild.checked = true;
-                      }
-                    }
-                  }}
+                  onClick={() => setLocalUser('accredited', 'no')}
                 >
                   <input
                     type='radio'
                     id='accedited-no'
                     name='accredited'
                     value='no'
-                    onChange={() => {
-                      setAccreditedYes(false);
-                      setAccreditedNo(true);
-                    }}
+                    checked={localUser.accredited === 'no'}
+                    onChange={event =>
+                      setLocalUser('accredited', event.target.value)
+                    }
                   />
                   <label
                     htmlFor='accedited-no'
-                    className={`${accreditedNo ? 'selected' : undefined}`}
+                    className={`${
+                      localUser.accredited === 'no' ? 'selected' : undefined
+                    }`}
                   >
                     No
                   </label>

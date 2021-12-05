@@ -95,8 +95,8 @@
   color: red;
 }
 
-/*LG - large tablet landscape*/
-@media all and (min-width: 1200px) {
+/*SM*/
+@media all and (min-width: 768px) {
   .slider-container {
     display: flex;
   }

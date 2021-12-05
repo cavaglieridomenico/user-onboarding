@@ -54,6 +54,12 @@
   font-size: 14px;
   color: var(--primaryColor);
 }
+
+.placeholder {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 /*Form end*/
 
 /*XS - smartphones landscape*/
@@ -69,6 +75,7 @@
     grid-template-columns: repeat(4, auto);
     grid-gap: 20px 20px;
     margin: initial;
+    max-width: none;
   }
   #form-pref .check-box {
     justify-self: start;

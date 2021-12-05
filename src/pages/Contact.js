@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
+import { contactList } from '../assets/scripts/lists';
 
 const Contact = () => {
   const history = useHistory();
@@ -122,18 +123,18 @@ const Contact = () => {
                       setLocalUser('phoneCode', event.target.value);
                     }}
                   >
-                    <option id='italy-flag' value='+39'>
-                      🇮🇹
-                    </option>
-                    <option id='spain-flag' value='+34'>
-                      🇪🇸
-                    </option>
-                    <option id='france-flag' value='+33'>
-                      🇫🇷
-                    </option>
-                    <option id='germany-flag' value='+49'>
-                      🇩🇪
-                    </option>
+                    {contactList.map((countryItem, index) => {
+                      const { label, value, country } = countryItem;
+                      return (
+                        <option
+                          key={index}
+                          id={`${country}-flag`}
+                          value={value}
+                        >
+                          {label}
+                        </option>
+                      );
+                    })}
                   </select>
                   <input
                     type='number'
@@ -168,18 +169,14 @@ const Contact = () => {
                       setLocalUser('country', event.target.value);
                     }}
                   >
-                    <option id='italy' value='italy'>
-                      italy
-                    </option>
-                    <option id='spain' value='spain'>
-                      spain
-                    </option>
-                    <option id='france' value='france'>
-                      france
-                    </option>
-                    <option id='germany' value='germany'>
-                      germany
-                    </option>
+                    {contactList.map((countryItem, index) => {
+                      const { country } = countryItem;
+                      return (
+                        <option key={index} id={country} value={country}>
+                          {country}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
