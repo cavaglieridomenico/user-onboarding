@@ -1,3 +1,11 @@
+/*List of phone code and country on the Contact.js page*/
+export const contactList = [
+  { label: 'IT', value: '+39', country: 'italy' },
+  { label: 'ES', value: '+34', country: 'spain' },
+  { label: 'FR', value: '+33', country: 'france' },
+  { label: 'DE', value: '+49', country: 'germany' },
+];
+
 /*List of amount values on the Plans.js page*/
 export const plansList = [
   { label: '$10,000', value: 10000 },
