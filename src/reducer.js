@@ -48,46 +48,6 @@ const reducer = (state, action) => {
     };
   }
 
-  /*Get data from forms on each page*/
-  if (action.type === 'GET_CONTACT_VALUES') {
-    const { fullName, phoneCode, phoneNumber, email, country } = action.payload;
-    return {
-      ...state,
-      newUser: {
-        ...state.newUser,
-        fullName: fullName,
-        phoneCode: phoneCode,
-        phoneNumber: phoneNumber,
-        email: email,
-        country: country,
-      },
-    };
-  }
-
-  if (action.type === 'GET_PLAN_VALUES') {
-    const { planFrom, planTo, accredited } = action.payload;
-    return {
-      ...state,
-      newUser: {
-        ...state.newUser,
-        planFrom: planFrom,
-        planTo: planTo,
-        accredited: accredited,
-      },
-    };
-  }
-
-  if (action.type === 'GET_PREFERENCES_VALUES') {
-    const { preferences } = action.payload;
-    return {
-      ...state,
-      newUser: {
-        ...state.newUser,
-        preferences: preferences,
-      },
-    };
-  }
-
   /*Set Loader and Debouncer*/
   if (action.type === 'SET_LOADER') {
     return {
