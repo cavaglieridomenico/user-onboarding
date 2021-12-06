@@ -12,7 +12,6 @@ const Preferences = () => {
 
   const {
     arePreferencesDataValidated,
-    getPreferencesData,
     setNarrowModalOpen,
     setDataReady,
     setStepStatus3,
@@ -63,7 +62,6 @@ const Preferences = () => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
       if (arePreferencesDataValidated(localUser.preferences)) {
-        getPreferencesData(localUser.preferences);
         setStepStatus3(true);
         setDataReady(true);
         history.push('./');
@@ -74,7 +72,6 @@ const Preferences = () => {
     stepStatus1,
     stepStatus2,
     arePreferencesDataValidated,
-    getPreferencesData,
     setStepStatus3,
     setDataReady,
     history,
