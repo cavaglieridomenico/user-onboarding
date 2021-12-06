@@ -16,6 +16,7 @@ const Modal = () => {
 
   const modalTextContainer = useRef(null);
   const modalTextContent = useRef(null);
+  const modalResponseContent = useRef(null);
 
   /**
    * Prevent body scrolling under the modal
@@ -40,11 +41,17 @@ const Modal = () => {
    */
   useEffect(() => {
     const offset = 30;
-    modalTextContent.current.getBoundingClientRect().height >
+    const textResponseHeight = () => {
+      return modalResponse
+        ? modalResponseContent.current.getBoundingClientRect().height
+        : 0;
+    };
+    (modalTextContent.current.getBoundingClientRect().height ||
+      textResponseHeight()) >
     modalTextContainer.current.getBoundingClientRect().height - offset
       ? (modalTextContainer.current.style.overflow = 'scroll')
       : (modalTextContainer.current.style.overflow = 'unset');
-  }, [showModal, modalTextContainer]);
+  }, [showModal, modalTextContainer, modalResponse]);
 
   return (
     <div className={`modal-overlay ${showModal && 'show-modal'}`}>
@@ -58,7 +65,7 @@ const Modal = () => {
           <p ref={modalTextContent}>{modalText}</p>
           {modalResponse ? (
             <div className='response-container'>
-              <ul>
+              <ul ref={modalResponseContent}>
                 <li>user number: </li>
                 <li>{response.id}</li>
                 <li>Full name: </li>
