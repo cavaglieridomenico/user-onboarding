@@ -13,7 +13,6 @@ const Plans = () => {
 
   const {
     arePlansDataValidated,
-    getPlansData,
     setNarrowModalOpen,
     setStepStatus2,
     stepStatus1,
@@ -64,11 +63,6 @@ const Plans = () => {
           localUser.accredited
         )
       ) {
-        getPlansData(
-          localUser.planFrom,
-          localUser.planTo,
-          localUser.accredited
-        );
         setStepStatus2(true);
         setNarrowModalOpen(
           'success',
@@ -85,7 +79,6 @@ const Plans = () => {
     goToTheRightPageFromPlans,
     stepStatus1,
     arePlansDataValidated,
-    getPlansData,
     setStepStatus2,
     setNarrowModalOpen,
     history,

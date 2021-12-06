@@ -13,7 +13,6 @@ const Contact = () => {
   const {
     setModalOpen,
     areContactDataValidated,
-    getContactData,
     handleFocusInput,
     setNarrowModalOpen,
     setStepStatus1,
@@ -52,13 +51,6 @@ const Contact = () => {
         localUser.email
       )
     ) {
-      getContactData(
-        localUser.fullName,
-        localUser.phoneNumber,
-        localUser.phoneCode,
-        localUser.email,
-        localUser.country
-      );
       setStepStatus1(true);
       setNarrowModalOpen(
         'success',
@@ -70,11 +62,8 @@ const Contact = () => {
   }, [
     localUser.fullName,
     localUser.phoneNumber,
-    localUser.phoneCode,
     localUser.email,
-    localUser.country,
     areContactDataValidated,
-    getContactData,
     setStepStatus1,
     setNarrowModalOpen,
     history,
