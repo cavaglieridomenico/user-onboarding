@@ -37,17 +37,6 @@ const defaultState = {
   stepStatus3: false,
   dataReady: false,
   response: {},
-  newUser: {
-    fullName: '',
-    phoneCode: '',
-    phoneNumber: '',
-    email: '',
-    country: '',
-    planFrom: '',
-    planTo: '',
-    accredited: '',
-    preferences: [],
-  },
   localUser: getLocalStorage(),
   showModal: false,
   modalTitle: '',
@@ -66,7 +55,7 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   /**The localStorage data is updated with the value of
-   *the fromLocalStorage property*/
+   *the localUser property*/
   useEffect(() => {
     window.localStorage.setItem('localUser', JSON.stringify(state.localUser));
   }, [state.localUser]);
@@ -86,7 +75,7 @@ export const AppProvider = ({ children }) => {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify(state.newUser),
+        body: JSON.stringify(state.localUser),
       });
       if (fetchResponse.ok) {
         const data = await fetchResponse.json();
@@ -100,7 +89,7 @@ export const AppProvider = ({ children }) => {
       setLoader(false);
       setNarrowModalOpen('danger', error.message);
     }
-  }, [state.fetchPostUrl, state.newUser]);
+  }, [state.fetchPostUrl, state.localUser]);
 
   useEffect(() => {
     if (state.dataReady) {
@@ -132,38 +121,6 @@ export const AppProvider = ({ children }) => {
 
   const setDataReady = value => {
     dispatch({ type: 'SET_DATA_READY', payload: value });
-  };
-
-  /*Get data from forms on each page*/
-  const getContactData = (fullName, phoneNumber, phoneCode, email, country) => {
-    dispatch({
-      type: 'GET_CONTACT_VALUES',
-      payload: {
-        fullName: fullName,
-        phoneNumber: phoneNumber,
-        phoneCode: phoneCode,
-        email: email,
-        country: country,
-      },
-    });
-  };
-
-  const getPlansData = (planFrom, planTo, accredited) => {
-    dispatch({
-      type: 'GET_PLAN_VALUES',
-      payload: {
-        planFrom: planFrom,
-        planTo: planTo,
-        accredited: accredited,
-      },
-    });
-  };
-
-  const getPreferencesData = preferences => {
-    dispatch({
-      type: 'GET_PREFERENCES_VALUES',
-      payload: { preferences },
-    });
   };
 
   /*Set Loader and Debouncer*/
@@ -264,9 +221,6 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        getContactData,
-        getPlansData,
-        getPreferencesData,
         setStepStatus1,
         setStepStatus2,
         setStepStatus3,
