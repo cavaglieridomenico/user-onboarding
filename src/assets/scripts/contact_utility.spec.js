@@ -69,20 +69,40 @@ with two or more blank space`, () => {
 });
 
 /*Invalid email format*/
-test(`It should return true if the format of the mail is invalid`, () => {
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
   expect(containInvalidEmail('domenico.cavaglieri')).toEqual(true);
 });
 
-test(`It should return false if the format of the mail is valid`, () => {
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
+  expect(containInvalidEmail('domenico@cavaglieri')).toEqual(true);
+});
+
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
+  expect(
+    containInvalidEmail('domenicomassimo.cavaglieri@gmail.commercial')
+  ).toEqual(true);
+});
+
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
+  expect(containInvalidEmail('domenicomassimo.cavaglieri@gmail.c')).toEqual(
+    true
+  );
+});
+
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid `, () => {
   expect(containInvalidEmail('cavaglieridomenico@gmail.com')).toEqual(false);
 });
 
-test(`It should return false if the format of the mail is valid`, () => {
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
   expect(containInvalidEmail('domenicomassimo.cavaglieri@gmail.com')).toEqual(
     false
   );
 });
 
-test(`It should return false if the format of the mail is valid`, () => {
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
   expect(containInvalidEmail('dom@dom.it')).toEqual(false);
+});
+
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
+  expect(containInvalidEmail('dom@dom.ital')).toEqual(false);
 });

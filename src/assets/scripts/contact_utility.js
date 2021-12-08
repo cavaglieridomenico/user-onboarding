@@ -30,8 +30,7 @@ const containNameTooShort = inputValue => {
  * @returns {boolean} true if match is correct
  */
 const containInvalidEmail = inputValue => {
-  let emailFormat =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  let emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return inputValue.match(emailFormat) === null;
 };
 
