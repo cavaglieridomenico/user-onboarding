@@ -41,8 +41,14 @@
   caret-color: var(--primaryColor);
 }
 
-.contact-error {
-  color: red;
+#form-contact .form-container .box-error {
+  border-bottom: solid 2px var(--error);
+  color: var(--error);
+  caret-color: var(--primaryColor);
+}
+
+#form-contact .form-container .input-error {
+  color: var(--error);
 }
 /*Form end*/
 
