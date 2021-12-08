@@ -94,7 +94,7 @@ h1.modal-title {
   }
 }
 
-/*SM - smartphones landscape*/
+/*MD*/
 @media all and (min-width: 768px) {
   .modal-container {
     padding: 2% 3%;
@@ -105,7 +105,7 @@ h1.modal-title {
   }
 }
 
-/*MD - common properties for larger screens*/
+/*LG - common properties for larger screens*/
 @media all and (min-width: 992px) {
   .modal-container {
     width: 70vw;
@@ -118,7 +118,7 @@ h1.modal-title {
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .modal-container {
     transform: translateY(15%);
@@ -126,7 +126,7 @@ h1.modal-title {
   }
 }
 
-/*XL larger screens*/
+/*XXL larger screens*/
 @media all and (min-width: 1440px) {
   .modal-container {
     transform: translateY(5%);

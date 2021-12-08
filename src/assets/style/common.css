@@ -21,7 +21,7 @@ body {
   }
 }
 
-/*XL larger screens*/
+/*XXL larger screens*/
 @media all and (min-width: 1440px) {
   body {
     background-color: var(--mainBackground);
@@ -65,14 +65,14 @@ body {
   justify-content: center;
 }
 
-/*XS - smartphones landscape*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 640px) {
   .onboarding-innerbox article {
     display: block;
   }
 }
 
-/*MD - large tablet portrait*/
+/*LG - large tablet portrait*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .onboarding-outerbox {
     display: grid;
@@ -81,7 +81,7 @@ body {
   }
 }
 
-/*LG - large tablet landscape*/
+/*XL - large tablet landscape*/
 @media all and (min-width: 1200px) {
   .onboarding-outerbox {
     display: grid;
@@ -120,7 +120,7 @@ h2 {
   letter-spacing: 0.1px;
 }
 
-/*XS - smartphones landscape*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 640px) {
   .onboarding-innerbox h1 {
     width: auto;
@@ -138,7 +138,7 @@ h2 {
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   .onboarding-innerbox h1 {
     margin: 0 0 1rem;
@@ -153,7 +153,7 @@ h2 {
   }
 }
 
-/*LG - large tablet landscape*/
+/*XL - large tablet landscape*/
 @media all and (min-width: 1200px) {
   .onboarding-innerbox h1 {
     margin: 0 0 0.6rem;
@@ -164,7 +164,7 @@ h2 {
   }
 }
 
-/*XL larger screens*/
+/*XXL larger screens*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   .onboarding-innerbox h1 {
     margin: 0 0 21px;

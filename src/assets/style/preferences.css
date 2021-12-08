@@ -62,7 +62,7 @@
 }
 /*Form end*/
 
-/*XS - smartphones landscape*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 640px) {
   .pref-text {
     display: block;
@@ -92,7 +92,7 @@
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) and (orientation: portrait) {
   #form-pref .form-container {
     grid-template-rows: auto auto auto;
@@ -101,7 +101,7 @@
   }
 }
 
-/*LG*/
+/*XL - large tablet landscape*/
 @media all and (min-width: 1200px) {
   #form-pref .form-container {
     grid-template-rows: auto auto;

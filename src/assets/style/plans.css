@@ -93,7 +93,7 @@ section.plans article {
 }
 /*Form-investor end*/
 
-/*XS - smartphones landscape*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 640px) {
   section.plans article {
     display: block;
@@ -128,7 +128,7 @@ section.plans article {
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   #form-plans .form-container {
     grid-template-columns: 230px 230px;
@@ -137,7 +137,7 @@ section.plans article {
   }
 }
 
-/*XL larger screens*/
+/*XXL larger screens*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   #form-plans .form-container {
     margin: 40px 0 0;
