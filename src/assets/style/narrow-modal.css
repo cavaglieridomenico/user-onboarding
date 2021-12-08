@@ -42,7 +42,7 @@
 }
 
 .narrow-modal-danger {
-  color: red;
+  color: var(--error);
 }
 
 .narrow-modal-success {

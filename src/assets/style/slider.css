@@ -30,7 +30,7 @@
 }
 
 .notch-error {
-  background-color: red;
+  background-color: var(--error);
 }
 
 .slider {
@@ -44,7 +44,7 @@
 }
 
 .slider-error {
-  border: solid 1px red;
+  border: solid 1px var(--error);
 }
 
 .cursor {
@@ -92,7 +92,7 @@
 }
 
 .slider-amount-error {
-  color: red;
+  color: var(--error);
 }
 
 /*MD*/
