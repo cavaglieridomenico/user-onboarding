@@ -54,7 +54,7 @@ const defaultState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  /**The localStorage data is updated with the value of
+  /**The Local Storage is updated with the value of
    *the localUser property*/
   useEffect(() => {
     window.localStorage.setItem('localUser', JSON.stringify(state.localUser));
@@ -64,6 +64,127 @@ export const AppProvider = ({ children }) => {
   const setLocalUser = (property, value) => {
     dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
   };
+
+  /*Check form validation*/
+  const areContactDataValidated = useCallback(
+    (fullName, phoneNumber, email, alert) => {
+      if (containEmptyString(fullName, phoneNumber, email)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
+        }
+        return false;
+      }
+      if (containNameTooShort(fullName)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen(
+            'danger',
+            'Sorry, the name requires at least 3 characters.'
+          );
+        }
+        return false;
+      }
+      if (containInvalidEmail(email)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen(
+            'danger',
+            'Sorry, the format of the email is not valid.'
+          );
+        }
+        return false;
+      }
+      return true;
+    },
+    []
+  );
+
+  const arePlansDataValidated = useCallback(
+    (planFrom, planTo, accredited, alert) => {
+      if (containEmptyString(planFrom, planTo, accredited)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
+        }
+        return false;
+      }
+      if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
+        if (alert === 'alert') {
+          setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
+        }
+        return false;
+      }
+      return true;
+    },
+    []
+  );
+
+  const arePreferencesDataValidated = useCallback((checkedPref, alert) => {
+    if (containEmptyArray(checkedPref)) {
+      if (alert === 'alert') {
+        setNarrowModalOpen(
+          'danger',
+          'Sorry, at least one option must be selected.'
+        );
+      }
+      return false;
+    }
+    return true;
+  }, []);
+
+  /*Set the validation progress*/
+  const setStepStatus1 = useCallback(value => {
+    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
+  }, []);
+
+  const setStepStatus2 = useCallback(value => {
+    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
+  }, []);
+
+  const setStepStatus3 = useCallback(value => {
+    dispatch({ type: 'SET_STEP_STATUS_3', payload: value });
+  }, []);
+
+  useEffect(() => {
+    if (
+      areContactDataValidated(
+        state.localUser.fullName,
+        state.localUser.phoneNumber,
+        state.localUser.email
+      )
+    ) {
+      setStepStatus1(true);
+    } else {
+      setStepStatus1(false);
+    }
+    if (
+      arePlansDataValidated(
+        state.localUser.planFrom,
+        state.localUser.planTo,
+        state.localUser.accredited
+      )
+    ) {
+      setStepStatus2(true);
+    } else {
+      setStepStatus2(false);
+    }
+    if (arePreferencesDataValidated(state.localUser.preferences)) {
+      setStepStatus3(true);
+    } else {
+      setStepStatus3(false);
+    }
+  }, [
+    areContactDataValidated,
+    state.localUser.fullName,
+    state.localUser.phoneNumber,
+    state.localUser.email,
+    setStepStatus1,
+    arePlansDataValidated,
+    state.localUser.planFrom,
+    state.localUser.planTo,
+    state.localUser.accredited,
+    setStepStatus2,
+    arePreferencesDataValidated,
+    state.localUser.preferences,
+    setStepStatus3,
+  ]);
 
   /**Fetch*/
   const fetchPost = useCallback(async () => {
@@ -98,27 +219,6 @@ export const AppProvider = ({ children }) => {
     }
   }, [state.dataReady, fetchPost]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setStepStatus1(false);
-      setStepStatus2(false);
-      setStepStatus3(false);
-    }, 5000);
-  }, [state.dataReady]);
-
-  /*Set the validation progress*/
-  const setStepStatus1 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
-  };
-
-  const setStepStatus2 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
-  };
-
-  const setStepStatus3 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_3', payload: value });
-  };
-
   const setDataReady = value => {
     dispatch({ type: 'SET_DATA_READY', payload: value });
   };
@@ -151,53 +251,6 @@ export const AppProvider = ({ children }) => {
 
   const setNarrowModalClosed = () => {
     dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
-  };
-
-  /*Check form validation*/
-  const areContactDataValidated = (fullName, phoneNumber, email) => {
-    if (containEmptyString(fullName, phoneNumber, email)) {
-      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-      return false;
-    }
-    if (containNameTooShort(fullName)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, the name requires at least 3 characters.'
-      );
-      return false;
-    }
-    if (containInvalidEmail(email)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, the format of the email is not valid.'
-      );
-      return false;
-    }
-    return true;
-  };
-
-  const arePlansDataValidated = (planFrom, planTo, accredited) => {
-    if (containEmptyString(planFrom, planTo, accredited)) {
-      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-      return false;
-    }
-    if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
-      setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
-      return false;
-    }
-    return true;
-  };
-
-  const arePreferencesDataValidated = checkedPref => {
-    if (containEmptyArray(checkedPref)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, at least one option must be selected.'
-      );
-
-      return false;
-    }
-    return true;
   };
 
   /*Handle input focus and blur*/

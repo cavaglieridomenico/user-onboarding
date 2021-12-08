@@ -38,25 +38,17 @@ const Contact = () => {
   }, [handleFocusInput]);
 
   /**
-   * Update the properties of the newUser object, if the form data is validated.
-   * Update the progress of data acquisition across the entire application.
-   * Notify the user of the correct data acquisition.
-   * Directly opens the next page.
+   * Directly opens the next page if validation is true.
    */
   const handleSubmitContact = useCallback(() => {
     if (
       areContactDataValidated(
         localUser.fullName,
         localUser.phoneNumber,
-        localUser.email
+        localUser.email,
+        'alert'
       )
     ) {
-      setStepStatus1(true);
-      setNarrowModalOpen(
-        'success',
-        'Personal data acquired.',
-        'Please enter an investment plan.'
-      );
       history.push('./plans');
     }
   }, [
@@ -64,8 +56,6 @@ const Contact = () => {
     localUser.phoneNumber,
     localUser.email,
     areContactDataValidated,
-    setStepStatus1,
-    setNarrowModalOpen,
     history,
   ]);
 
