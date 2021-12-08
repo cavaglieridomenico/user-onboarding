@@ -95,7 +95,7 @@
   color: red;
 }
 
-/*SM*/
+/*MD*/
 @media all and (min-width: 768px) {
   .slider-container {
     display: flex;

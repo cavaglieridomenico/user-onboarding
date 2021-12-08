@@ -20,7 +20,7 @@ header {
   margin-right: 8px;
 }
 
-/*XS - smartphones landscape (height:100%)*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 480px) {
   header {
     flex-direction: row;

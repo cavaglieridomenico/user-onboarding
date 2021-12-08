@@ -98,7 +98,7 @@ footer a {
   justify-self: center;
 }
 
-/*XS - Smartphones landscape*/
+/*SM - Smartphones landscape*/
 @media all and (min-width: 640px) {
   footer {
     display: flex;
@@ -108,7 +108,7 @@ footer a {
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   footer {
     display: grid;
@@ -127,7 +127,7 @@ footer a {
   }
 }
 
-/*LG*/
+/*XL - large tablet landscape*/
 @media all and (min-width: 1200px) {
   footer {
     display: flex;

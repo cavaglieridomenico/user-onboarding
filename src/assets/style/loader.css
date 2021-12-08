@@ -24,7 +24,6 @@
   position: relative;
   width: 2rem;
   height: 2rem;
-  /* border: 5px solid #f3f3f3; */
   border-top: 6px solid blue;
   border-right: 6px solid blue;
   border-bottom: 5px solid #f3f3f3;
@@ -41,5 +40,13 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/*XXL larger screens*/
+@media all and (min-width: 1440px) and (min-height: 900px) {
+  .loader-overlay {
+    display: block;
+    padding-top: 430px;
   }
 }

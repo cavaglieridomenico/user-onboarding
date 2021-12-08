@@ -40,6 +40,10 @@
   color: var(--primaryColor);
   caret-color: var(--primaryColor);
 }
+
+.contact-error {
+  color: red;
+}
 /*Form end*/
 
 .contact-link-container {
@@ -48,7 +52,7 @@
   margin: 3% 0 0;
 }
 
-/*XS - smartphones landscape*/
+/*SM - smartphones landscape*/
 @media all and (min-width: 640px) {
   .contact .welcome,
   .contact .privacy {
@@ -100,7 +104,7 @@
   }
 }
 
-/*MD – large tablet port. and medium tablet land.*/
+/*LG – large tablet port. and medium tablet land.*/
 @media all and (min-width: 992px) and (min-height: 800px) and (orientation: portrait) {
   #form-contact .form-container {
     grid-column-gap: 20px;
@@ -111,14 +115,14 @@
   }
 }
 
-/*LG - large tablet landscape*/
+/*XL - large tablet landscape*/
 @media all and (min-width: 1200px) {
   #form-contact {
     margin: 1rem 0 0;
   }
 }
 
-/*XL larger screens*/
+/*XXL larger screens*/
 @media all and (min-width: 1440px) and (min-height: 900px) {
   #form-contact {
     margin: 45px 0 60px;
