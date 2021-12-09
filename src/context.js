@@ -1,10 +1,9 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
 import {
-  containEmptyString,
-  containInvalidEmail,
-  containNameTooShort,
-  containEmptyArray,
+  isEmpty,
+  isInvalidEmail,
+  isInvalidLength,
 } from './assets/scripts/contact_utility';
 import { containInvalidRange } from './assets/scripts/plans_utility';
 
@@ -68,13 +67,13 @@ export const AppProvider = ({ children }) => {
   /*Check form validation*/
   const areContactDataValidated = useCallback(
     (fullName, phoneNumber, email, alert) => {
-      if (containEmptyString(fullName, phoneNumber, email)) {
+      if (isEmpty(fullName)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
         return false;
       }
-      if (containNameTooShort(fullName)) {
+      if (isInvalidLength(fullName)) {
         if (alert === 'alert') {
           setNarrowModalOpen(
             'danger',
@@ -83,12 +82,24 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (containInvalidEmail(email)) {
+      if (isEmpty(email)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
+        }
+        return false;
+      }
+      if (isInvalidEmail(email)) {
         if (alert === 'alert') {
           setNarrowModalOpen(
             'danger',
             'Sorry, the format of the email is not valid.'
           );
+        }
+        return false;
+      }
+      if (isEmpty(fullName, phoneNumber, email)) {
+        if (alert === 'alert') {
+          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
         return false;
       }
@@ -99,7 +110,7 @@ export const AppProvider = ({ children }) => {
 
   const arePlansDataValidated = useCallback(
     (planFrom, planTo, accredited, alert) => {
-      if (containEmptyString(planFrom, planTo, accredited)) {
+      if (isEmpty(planFrom, planTo, accredited)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
@@ -117,7 +128,7 @@ export const AppProvider = ({ children }) => {
   );
 
   const arePreferencesDataValidated = useCallback((checkedPref, alert) => {
-    if (containEmptyArray(checkedPref)) {
+    if (isEmpty(checkedPref)) {
       if (alert === 'alert') {
         setNarrowModalOpen(
           'danger',
