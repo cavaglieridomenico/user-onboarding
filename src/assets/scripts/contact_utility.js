@@ -1,27 +1,19 @@
 /**
- * Check for empty fields
- * @param {string}
+ * Check for empty string or empty array
+ * @param {string, array}
  * @returns {boolean}
  */
-const containEmptyString = (...rest) => {
-  return rest.some(item => item === '');
+const isEmpty = (...value) => {
+  return value.some(value => value.length === 0);
 };
 
 /**
- * Check for empty array (useful for checkbox)
- * @param {array}
+ * Check for empty string or empty array
+ * @param {string, array}
  * @returns {boolean}
  */
-const containEmptyArray = array => array.length === 0;
-
-/**
- * Check minimum length full name
- * @param {string}
- * @returns {boolean}
- */
-const containNameTooShort = inputValue => {
-  let usernameFormat = /^.{3,}$/;
-  return inputValue.match(usernameFormat) === null;
+const isInvalidLength = (...value) => {
+  return value.some(value => value.length < 3);
 };
 
 /**
@@ -29,14 +21,9 @@ const containNameTooShort = inputValue => {
  * @param {string}
  * @returns {boolean} true if match is correct
  */
-const containInvalidEmail = inputValue => {
+const isInvalidEmail = inputValue => {
   let emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   return inputValue.match(emailFormat) === null;
 };
 
-export {
-  containEmptyString,
-  containEmptyArray,
-  containNameTooShort,
-  containInvalidEmail,
-};
+export { isEmpty, isInvalidLength, isInvalidEmail };

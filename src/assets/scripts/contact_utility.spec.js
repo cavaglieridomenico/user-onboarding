@@ -1,108 +1,123 @@
-import {
-  containEmptyString,
-  containEmptyArray,
-  containNameTooShort,
-  containInvalidEmail,
-  onlyInRange,
-  getCheckedList,
-} from './contact_utility';
-//Test of filling in the form fields
+import { isEmpty, isInvalidLength, isInvalidEmail } from './contact_utility';
 
 /*Empty fields*/
-test('It should return true if a single input is an empty string', () => {
-  expect(containEmptyString('')).toEqual(true);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('')).toEqual(true);
 });
 
-test('It should return true if multiple inputs are an empty string', () => {
-  expect(containEmptyString('', '', '')).toEqual(true);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('', '', '')).toEqual(true);
 });
 
-test('It should return true if even one of the inputs is an empty string', () => {
-  expect(containEmptyString('', 'word', '')).toEqual(true);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('', 'word', '')).toEqual(true);
 });
 
-test('It should return false if a single input is an string', () => {
-  expect(containEmptyString('word')).toEqual(false);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('', 1, '')).toEqual(true);
 });
 
-test('It should return false if an array is not empty', () => {
-  expect(containEmptyString('word', 'word', 'word')).toEqual(false);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('word')).toEqual(false);
+});
+
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('word', 'word', 'word')).toEqual(false);
 });
 
 /*Empty array*/
-test('It should return true if an array is empty', () => {
-  expect(containEmptyArray([])).toEqual(true);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty([])).toEqual(true);
 });
 
-test('It should return false if an array is not empty', () => {
-  expect(containEmptyArray(['word'])).toEqual(false);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty('word', [])).toEqual(true);
 });
 
-test('It should return false if an array is not empty', () => {
-  expect(containEmptyArray(['item', 'item'])).toEqual(false);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty(['word'])).toEqual(false);
 });
 
-/*Name too short*/
-test(`It should return true if the input is a string 
-withless than of 3 characters`, () => {
-  expect(containNameTooShort('Hu')).toEqual(true);
+test('It should return true if even one value is an empty string or an empty array, false otherwise', () => {
+  expect(isEmpty(['item', 'item'])).toEqual(false);
 });
 
-test(`It should return false if the input is a string
-with 3 characters`, () => {
-  expect(containNameTooShort('Hua')).toEqual(false);
+/*Value too short*/
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Hu')).toEqual(true);
 });
 
-test(`It should return false if the input is a string 
-with a minimum of 3 characters`, () => {
-  expect(containNameTooShort('Domenico')).toEqual(false);
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Hu', 'Domenico')).toEqual(true);
 });
 
-test(`It should return false if the input is a string 
-with blank space`, () => {
-  expect(containNameTooShort('Domenico Cavaglieri')).toEqual(false);
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('H ', 'Domenico')).toEqual(true);
 });
 
-test(`It should return false if the input is a string 
-with two or more blank space`, () => {
-  expect(containNameTooShort('Domenico Massimo Cavaglieri')).toEqual(false);
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength(['cat', 'dog'])).toEqual(true);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength(['cat', 'dog'], 'Domenico')).toEqual(true);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Hua')).toEqual(false);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Hu ')).toEqual(false);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Domenico')).toEqual(false);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Domenico Cavaglieri')).toEqual(false);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength('Domenico Massimo Cavaglieri')).toEqual(false);
+});
+
+test(`It should return true if even a single value has a length less than 3, false otherwise`, () => {
+  expect(isInvalidLength(['gatto', 1, 'cat'])).toEqual(false);
 });
 
 /*Invalid email format*/
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('domenico.cavaglieri')).toEqual(true);
+  expect(isInvalidEmail('domenico.cavaglieri')).toEqual(true);
 });
 
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('domenico@cavaglieri')).toEqual(true);
+  expect(isInvalidEmail('domenico@cavaglieri')).toEqual(true);
 });
 
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(
-    containInvalidEmail('domenicomassimo.cavaglieri@gmail.commercial')
-  ).toEqual(true);
-});
-
-test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('domenicomassimo.cavaglieri@gmail.c')).toEqual(
+  expect(isInvalidEmail('domenicomassimo.cavaglieri@gmail.commercial')).toEqual(
     true
   );
 });
 
+test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
+  expect(isInvalidEmail('domenicomassimo.cavaglieri@gmail.c')).toEqual(true);
+});
+
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid `, () => {
-  expect(containInvalidEmail('cavaglieridomenico@gmail.com')).toEqual(false);
+  expect(isInvalidEmail('cavaglieridomenico@gmail.com')).toEqual(false);
 });
 
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('domenicomassimo.cavaglieri@gmail.com')).toEqual(
-    false
-  );
+  expect(isInvalidEmail('domenicomassimo.cavaglieri@gmail.com')).toEqual(false);
 });
 
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('dom@dom.it')).toEqual(false);
+  expect(isInvalidEmail('dom@dom.it')).toEqual(false);
 });
 
 test(`It should return true if the format of the email is invalid and false if the format of the mail is valid`, () => {
-  expect(containInvalidEmail('dom@dom.ital')).toEqual(false);
+  expect(isInvalidEmail('dom@dom.ital')).toEqual(false);
 });
