@@ -141,61 +141,31 @@ export const AppProvider = ({ children }) => {
   }, []);
 
   /*Set the validation progress*/
-  const setStepStatus1 = useCallback(value => {
-    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
-  }, []);
-
-  const setStepStatus2 = useCallback(value => {
-    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
-  }, []);
-
-  const setStepStatus3 = useCallback(value => {
-    dispatch({ type: 'SET_STEP_STATUS_3', payload: value });
-  }, []);
-
   useEffect(() => {
-    if (
-      areContactDataValidated(
-        state.localUser.fullName,
-        state.localUser.phoneNumber,
-        state.localUser.email
-      )
-    ) {
-      setStepStatus1(true);
-    } else {
-      setStepStatus1(false);
-    }
-    if (
-      arePlansDataValidated(
-        state.localUser.planFrom,
-        state.localUser.planTo,
-        state.localUser.accredited
-      )
-    ) {
-      setStepStatus2(true);
-    } else {
-      setStepStatus2(false);
-    }
-    if (arePreferencesDataValidated(state.localUser.preferences)) {
-      setStepStatus3(true);
-    } else {
-      setStepStatus3(false);
-    }
-  }, [
-    areContactDataValidated,
-    state.localUser.fullName,
-    state.localUser.phoneNumber,
-    state.localUser.email,
-    setStepStatus1,
-    arePlansDataValidated,
-    state.localUser.planFrom,
-    state.localUser.planTo,
-    state.localUser.accredited,
-    setStepStatus2,
-    arePreferencesDataValidated,
-    state.localUser.preferences,
-    setStepStatus3,
-  ]);
+    const {
+      fullName,
+      phoneNumber,
+      email,
+      planFrom,
+      planTo,
+      accredited,
+      preferences,
+    } = state.localUser;
+    isEmpty(fullName, phoneNumber, email) ||
+    isInvalidLength(fullName, phoneNumber) ||
+    isInvalidEmail(email)
+      ? dispatch({ type: 'SET_STEP_STATUS_1', payload: false })
+      : dispatch({ type: 'SET_STEP_STATUS_1', payload: true });
+
+    isEmpty(planFrom, planTo, accredited) ||
+    containInvalidRange(parseInt(planFrom), parseInt(planTo))
+      ? dispatch({ type: 'SET_STEP_STATUS_2', payload: false })
+      : dispatch({ type: 'SET_STEP_STATUS_2', payload: true });
+
+    isEmpty(preferences)
+      ? dispatch({ type: 'SET_STEP_STATUS_3', payload: false })
+      : dispatch({ type: 'SET_STEP_STATUS_3', payload: true });
+  }, [state.localUser]);
 
   /**Fetch*/
   const fetchPost = useCallback(async () => {
@@ -285,9 +255,6 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        setStepStatus1,
-        setStepStatus2,
-        setStepStatus3,
         setDataReady,
         setModalOpen,
         setModalClose,
