@@ -5,13 +5,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 import { preferencesList } from '../assets/scripts/lists';
-import { getCheckedList } from '../assets/scripts/utils/list/list_utility';
+import {
+  getCheckedList,
+  isNoEmpty,
+} from '../assets/scripts/utils/list/list_utility';
 
 const Preferences = () => {
   const history = useHistory();
 
   const {
-    arePreferencesDataValidated,
     setNarrowModalOpen,
     setDataReady,
     stepStatus1,
@@ -52,7 +54,13 @@ const Preferences = () => {
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      if (arePreferencesDataValidated(localUser.preferences, 'alert')) {
+      if (!isNoEmpty(localUser.preferences)) {
+        setNarrowModalOpen(
+          'danger',
+          'Sorry, at least one option',
+          'must be selected.'
+        );
+      } else {
         setDataReady(true);
       }
     }
@@ -60,7 +68,7 @@ const Preferences = () => {
     goToTheRightPageFromPreferences,
     stepStatus1,
     stepStatus2,
-    arePreferencesDataValidated,
+    setNarrowModalOpen,
     setDataReady,
     localUser.preferences,
   ]);

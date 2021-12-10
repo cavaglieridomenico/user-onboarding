@@ -65,20 +65,6 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
   };
 
-  /*Check form validation*/
-  const arePreferencesDataValidated = useCallback((checkedPref, alert) => {
-    if (!isNoEmpty(checkedPref)) {
-      if (alert === 'alert') {
-        setNarrowModalOpen(
-          'danger',
-          'Sorry, at least one option must be selected.'
-        );
-      }
-      return false;
-    }
-    return true;
-  }, []);
-
   /*Set the validation progress*/
   useEffect(() => {
     const {
@@ -201,7 +187,6 @@ export const AppProvider = ({ children }) => {
         setNarrowModalClosed,
         setLoader,
         setDebouncer,
-        arePreferencesDataValidated,
         handleFocusInput,
         setErrorPage,
         setLocalUser,
