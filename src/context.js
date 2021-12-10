@@ -10,7 +10,7 @@ import {
   isValidFullName,
   isValidPhoneNumber,
   isValidEmail,
-} from './assets/scripts/utils/form_utility/form_utility';
+} from './assets/scripts/utils/form/form_utility';
 
 const AppContext = React.createContext();
 
