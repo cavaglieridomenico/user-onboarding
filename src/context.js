@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
-import { isEmpty, isInvalidLength } from './assets/scripts/contact_utility';
+import { isEmpty } from './assets/scripts/contact_utility';
 import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
   isValidFullName,
@@ -74,7 +74,7 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (isInvalidLength(fullName)) {
+      if (!isValidFullName(fullName)) {
         if (alert === 'alert') {
           setNarrowModalOpen(
             'danger',
