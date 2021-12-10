@@ -5,9 +5,9 @@
  * @returns {boolean} true if match is correct
  */
 const isValidFullName = inputValue => {
-  let nameFormat =
+  const pattern =
     /^\b(?!.*\s\s)(?!.*--)[a-zA-Zàèéìòù\s-]{3,30}\b[\s]\b[a-zA-Zàèéìòù\s-]{3,30}\b$/;
-  return nameFormat.test(inputValue);
+  return pattern.test(inputValue);
 };
 
 export { isValidFullName };
