@@ -66,49 +66,6 @@ export const AppProvider = ({ children }) => {
   };
 
   /*Check form validation*/
-  const areContactDataValidated = useCallback(
-    (fullName, phoneNumber, email, alert) => {
-      if (!isNoEmpty(fullName)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-        }
-        return false;
-      }
-      if (!isValidFullName(fullName)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen(
-            'danger',
-            'Sorry, the name requires at least 3 characters.'
-          );
-        }
-        return false;
-      }
-      if (!isNoEmpty(email)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-        }
-        return false;
-      }
-      if (!isValidEmail(email)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen(
-            'danger',
-            'Sorry, the format of the email is not valid.'
-          );
-        }
-        return false;
-      }
-      if (!isNoEmpty(fullName, phoneNumber, email)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-        }
-        return false;
-      }
-      return true;
-    },
-    []
-  );
-
   const arePlansDataValidated = useCallback(
     (planFrom, planTo, accredited, alert) => {
       if (!isNoEmpty(planFrom, planTo, accredited)) {
@@ -263,7 +220,6 @@ export const AppProvider = ({ children }) => {
         setNarrowModalClosed,
         setLoader,
         setDebouncer,
-        areContactDataValidated,
         arePlansDataValidated,
         arePreferencesDataValidated,
         handleFocusInput,
