@@ -1,4 +1,4 @@
-import { getCheckedList } from './preferences_utility';
+import { getCheckedList } from './list_utility';
 
 /*An element in a list*/
 test('It should return an array containing only the second argument', () => {

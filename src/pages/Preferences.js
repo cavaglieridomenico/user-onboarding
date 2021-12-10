@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 import { preferencesList } from '../assets/scripts/lists';
-import { getCheckedList } from '../assets/scripts/preferences_utility';
+import { getCheckedList } from '../assets/scripts/utils/list/list_utility';
 
 const Preferences = () => {
   const history = useHistory();
