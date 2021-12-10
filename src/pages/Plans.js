@@ -5,13 +5,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
 import { isValidRange } from '../assets/scripts/utils/range/range_utility';
+import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
 import { useGlobalContext } from '../context';
 import { plansList } from '../assets/scripts/lists';
 
 const Plans = () => {
   const history = useHistory();
 
-  const { arePlansDataValidated, setErrorPage, localUser, setLocalUser } =
+  const { setNarrowModalOpen, setErrorPage, localUser, setLocalUser } =
     useGlobalContext();
 
   /**
@@ -25,23 +26,19 @@ const Plans = () => {
    * Directly opens the next page if validation is true.
    */
   const handleSubmitPlansForms = useCallback(() => {
-    if (
-      arePlansDataValidated(
-        localUser.planFrom,
-        localUser.planTo,
-        localUser.accredited,
-        'alert'
-      )
-    ) {
+    const { planFrom, planTo, accredited } = localUser;
+    if (!isValidRange(parseInt(planFrom), parseInt(planTo))) {
+      setNarrowModalOpen('danger', 'Please enter a valid range.');
+    } else if (!isNoEmpty(planFrom, planTo, accredited)) {
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, specify if you are',
+        'an accredited investor.'
+      );
+    } else {
       history.push('./preferences');
     }
-  }, [
-    localUser.planFrom,
-    localUser.planTo,
-    localUser.accredited,
-    arePlansDataValidated,
-    history,
-  ]);
+  }, [localUser, setNarrowModalOpen, history]);
 
   return (
     <div className='onboarding-outerbox'>

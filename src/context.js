@@ -66,25 +66,6 @@ export const AppProvider = ({ children }) => {
   };
 
   /*Check form validation*/
-  const arePlansDataValidated = useCallback(
-    (planFrom, planTo, accredited, alert) => {
-      if (!isNoEmpty(planFrom, planTo, accredited)) {
-        if (alert === 'alert') {
-          setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-        }
-        return false;
-      }
-      if (!isValidRange(parseInt(planFrom), parseInt(planTo))) {
-        if (alert === 'alert') {
-          setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
-        }
-        return false;
-      }
-      return true;
-    },
-    []
-  );
-
   const arePreferencesDataValidated = useCallback((checkedPref, alert) => {
     if (!isNoEmpty(checkedPref)) {
       if (alert === 'alert') {
@@ -220,7 +201,6 @@ export const AppProvider = ({ children }) => {
         setNarrowModalClosed,
         setLoader,
         setDebouncer,
-        arePlansDataValidated,
         arePreferencesDataValidated,
         handleFocusInput,
         setErrorPage,
