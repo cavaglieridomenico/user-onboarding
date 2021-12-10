@@ -5,7 +5,7 @@ import {
   isInvalidEmail,
   isInvalidLength,
 } from './assets/scripts/contact_utility';
-import { containInvalidRange } from './assets/scripts/plans_utility';
+import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
   isValidFullName,
   isValidPhoneNumber,
@@ -121,7 +121,7 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
+      if (!isValidRange(parseInt(planFrom), parseInt(planTo))) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
         }
@@ -162,10 +162,10 @@ export const AppProvider = ({ children }) => {
       ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
 
-    isEmpty(planFrom, planTo, accredited) ||
-    containInvalidRange(parseInt(planFrom), parseInt(planTo))
-      ? dispatch({ type: 'SET_STEP_STATUS_2', payload: false })
-      : dispatch({ type: 'SET_STEP_STATUS_2', payload: true });
+    !isEmpty(planFrom, planTo, accredited) &&
+    isValidRange(parseInt(planFrom), parseInt(planTo))
+      ? dispatch({ type: 'SET_STEP_STATUS_2', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_2', payload: false });
 
     isEmpty(preferences)
       ? dispatch({ type: 'SET_STEP_STATUS_3', payload: false })

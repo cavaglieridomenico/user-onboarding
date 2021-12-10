@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { containInvalidRange } from '../assets/scripts/plans_utility';
+import { isValidRange } from '../assets/scripts/utils/range/range_utility';
 import { useGlobalContext } from '../context';
 import { plansList } from '../assets/scripts/lists';
 
@@ -76,7 +76,7 @@ const Plans = () => {
                     type='text'
                     id='plans-from'
                     className={`select-amount ${
-                      containInvalidRange(
+                      !isValidRange(
                         parseInt(localUser.planFrom),
                         parseInt(localUser.planTo)
                       ) && 'form-plans-error'
@@ -102,7 +102,7 @@ const Plans = () => {
                     type='text'
                     id='plans-to'
                     className={`select-amount ${
-                      containInvalidRange(
+                      !isValidRange(
                         parseInt(localUser.planFrom),
                         parseInt(localUser.planTo)
                       ) && 'form-plans-error'

@@ -1,9 +1,9 @@
 import {
   onlyInRange,
   isInRange,
-  containInvalidRange,
+  isValidRange,
   getRightClass,
-} from './plans_utility';
+} from './range_utility';
 
 /*A value only in a range*/
 test('It should return 0 if the first parameter is less than 0', () => {
@@ -48,16 +48,16 @@ test('It should return false if the first value is outside the range of the seco
 });
 
 /*Invalid range*/
-test('It should return true if the first parameter is grater than or equal to the second', () => {
-  expect(containInvalidRange(5, 3)).toEqual(true);
+test('It should return true if the first value is less than the second, false otherwise', () => {
+  expect(isValidRange(3, 5)).toEqual(true);
 });
 
-test('It should return true if the first parameter is equal to the second', () => {
-  expect(containInvalidRange(5, 5)).toEqual(true);
+test('It should return true if the first value is less than the second, false otherwise', () => {
+  expect(isValidRange(5, 5)).toEqual(false);
 });
 
-test('It should return false if the first parameter is less than the second', () => {
-  expect(containInvalidRange(3, 5)).toEqual(false);
+test('It should return true if the first value is less than the second, false otherwise', () => {
+  expect(isValidRange(5, 3)).toEqual(false);
 });
 
 /*Right class*/
