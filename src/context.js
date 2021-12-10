@@ -1,10 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
-import {
-  isEmpty,
-  isInvalidEmail,
-  isInvalidLength,
-} from './assets/scripts/contact_utility';
+import { isEmpty, isInvalidLength } from './assets/scripts/contact_utility';
 import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
   isValidFullName,
@@ -93,7 +89,7 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (isInvalidEmail(email)) {
+      if (!isValidEmail(email)) {
         if (alert === 'alert') {
           setNarrowModalOpen(
             'danger',
