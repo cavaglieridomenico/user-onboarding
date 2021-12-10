@@ -12,3 +12,23 @@ const getCheckedList = (list, newItem) => {
 };
 
 export { getCheckedList };
+
+/**
+ * Check if one or more strings or arrays are not empty
+ * @param {string, array}
+ * @returns {boolean}
+ */
+const isNoEmpty = (...value) => {
+  return value.every(value => value.length !== 0);
+};
+
+/**
+ * Check if one or more strings or arrays are empty
+ * @param {string, array}
+ * @returns {boolean}
+ */
+const isEmpty = (...value) => {
+  return value.some(value => value.length === 0);
+};
+
+export { isNoEmpty, isEmpty };

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
-import { isEmpty } from './assets/scripts/contact_utility';
+import { isNoEmpty } from './assets/scripts/utils/list/list_utility';
 import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
   isValidFullName,
@@ -68,7 +68,7 @@ export const AppProvider = ({ children }) => {
   /*Check form validation*/
   const areContactDataValidated = useCallback(
     (fullName, phoneNumber, email, alert) => {
-      if (isEmpty(fullName)) {
+      if (!isNoEmpty(fullName)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
@@ -83,7 +83,7 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (isEmpty(email)) {
+      if (!isNoEmpty(email)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
@@ -98,7 +98,7 @@ export const AppProvider = ({ children }) => {
         }
         return false;
       }
-      if (isEmpty(fullName, phoneNumber, email)) {
+      if (!isNoEmpty(fullName, phoneNumber, email)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
@@ -111,7 +111,7 @@ export const AppProvider = ({ children }) => {
 
   const arePlansDataValidated = useCallback(
     (planFrom, planTo, accredited, alert) => {
-      if (isEmpty(planFrom, planTo, accredited)) {
+      if (!isNoEmpty(planFrom, planTo, accredited)) {
         if (alert === 'alert') {
           setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
         }
@@ -129,7 +129,7 @@ export const AppProvider = ({ children }) => {
   );
 
   const arePreferencesDataValidated = useCallback((checkedPref, alert) => {
-    if (isEmpty(checkedPref)) {
+    if (!isNoEmpty(checkedPref)) {
       if (alert === 'alert') {
         setNarrowModalOpen(
           'danger',
@@ -158,14 +158,14 @@ export const AppProvider = ({ children }) => {
       ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
 
-    !isEmpty(planFrom, planTo, accredited) &&
+    isNoEmpty(planFrom, planTo, accredited) &&
     isValidRange(parseInt(planFrom), parseInt(planTo))
       ? dispatch({ type: 'SET_STEP_STATUS_2', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_2', payload: false });
 
-    isEmpty(preferences)
-      ? dispatch({ type: 'SET_STEP_STATUS_3', payload: false })
-      : dispatch({ type: 'SET_STEP_STATUS_3', payload: true });
+    isNoEmpty(preferences)
+      ? dispatch({ type: 'SET_STEP_STATUS_3', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_3', payload: false });
   }, [state.localUser]);
 
   /**Fetch*/
