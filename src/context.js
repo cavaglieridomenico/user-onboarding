@@ -6,6 +6,11 @@ import {
   isInvalidLength,
 } from './assets/scripts/contact_utility';
 import { containInvalidRange } from './assets/scripts/plans_utility';
+import {
+  isValidFullName,
+  isValidPhoneNumber,
+  isValidEmail,
+} from './assets/scripts/utils/form_utility/form_utility';
 
 const AppContext = React.createContext();
 
@@ -151,11 +156,11 @@ export const AppProvider = ({ children }) => {
       accredited,
       preferences,
     } = state.localUser;
-    isEmpty(fullName, phoneNumber, email) ||
-    isInvalidLength(fullName, phoneNumber) ||
-    isInvalidEmail(email)
-      ? dispatch({ type: 'SET_STEP_STATUS_1', payload: false })
-      : dispatch({ type: 'SET_STEP_STATUS_1', payload: true });
+    isValidFullName(fullName) &&
+    isValidPhoneNumber(phoneNumber) &&
+    isValidEmail(email)
+      ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
 
     isEmpty(planFrom, planTo, accredited) ||
     containInvalidRange(parseInt(planFrom), parseInt(planTo))
