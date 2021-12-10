@@ -5,16 +5,17 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useGlobalContext } from '../context';
 import { preferencesList } from '../assets/scripts/lists';
-import { getCheckedList } from '../assets/scripts/preferences_utility';
+import {
+  getCheckedList,
+  isNoEmpty,
+} from '../assets/scripts/utils/list/list_utility';
 
 const Preferences = () => {
   const history = useHistory();
 
   const {
-    arePreferencesDataValidated,
     setNarrowModalOpen,
     setDataReady,
-    setStepStatus3,
     stepStatus1,
     stepStatus2,
     setErrorPage,
@@ -46,35 +47,29 @@ const Preferences = () => {
   }, [history, stepStatus1, stepStatus2, setNarrowModalOpen]);
 
   /**
-   * Handle click on form
-   */
-  const handleClickPreferencesForm = () => {
-    goToTheRightPageFromPreferences();
-  };
-
-  /**
-   * Update the properties of the newUser object, if the form data is validated.
-   * Updates the progress of data acquisition across the entire application.
-   * Declares that the newUser object is ready for submission.
-   * directly opens the Contact page
+   * If all validations are true:
+   * Declares that the localUser object is ready for submission.
+   * Directly opens the Contact page
    */
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      if (arePreferencesDataValidated(localUser.preferences)) {
-        setStepStatus3(true);
+      if (!isNoEmpty(localUser.preferences)) {
+        setNarrowModalOpen(
+          'danger',
+          'Sorry, at least one option',
+          'must be selected.'
+        );
+      } else {
         setDataReady(true);
-        history.push('./');
       }
     }
   }, [
     goToTheRightPageFromPreferences,
     stepStatus1,
     stepStatus2,
-    arePreferencesDataValidated,
-    setStepStatus3,
+    setNarrowModalOpen,
     setDataReady,
-    history,
     localUser.preferences,
   ]);
 
@@ -103,11 +98,7 @@ const Preferences = () => {
             <h2 className='pref-title2'>
               What kind of real estate are you interested in?
             </h2>
-            <form
-              id='form-pref'
-              value={localUser.preferences}
-              onClick={handleClickPreferencesForm}
-            >
+            <form id='form-pref' value={localUser.preferences}>
               <div className='form-container'>
                 {preferencesList.map((prefItem, index) => {
                   const isChecked = () => {

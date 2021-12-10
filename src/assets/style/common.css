@@ -198,13 +198,20 @@ a:visited {
   width: fit-content;
 }
 
-.onboarding-outerbox input[type='text'],
-.onboarding-outerbox input[type='number'] {
+.onboarding-outerbox .input,
+.onboarding-outerbox .input {
   border: none;
   width: 100%;
   font-family: var(--monserrat);
   font-size: var(--mainTextInputSize);
   font-weight: var(--mainTextInputWeight);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Chrome, Safari, Edge, Opera */

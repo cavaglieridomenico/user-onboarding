@@ -1,12 +1,12 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
+import { isNoEmpty } from './assets/scripts/utils/list/list_utility';
+import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
-  containEmptyString,
-  containInvalidEmail,
-  containNameTooShort,
-  containEmptyArray,
-} from './assets/scripts/contact_utility';
-import { containInvalidRange } from './assets/scripts/plans_utility';
+  isValidFullName,
+  isValidPhoneNumber,
+  isValidEmail,
+} from './assets/scripts/utils/form/form_utility';
 
 const AppContext = React.createContext();
 
@@ -54,7 +54,7 @@ const defaultState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  /**The localStorage data is updated with the value of
+  /**The Local Storage is updated with the value of
    *the localUser property*/
   useEffect(() => {
     window.localStorage.setItem('localUser', JSON.stringify(state.localUser));
@@ -64,6 +64,33 @@ export const AppProvider = ({ children }) => {
   const setLocalUser = (property, value) => {
     dispatch({ type: 'SET_LOCAL_USER', payload: { property, value } });
   };
+
+  /*Set the validation progress*/
+  useEffect(() => {
+    const {
+      fullName,
+      phoneNumber,
+      email,
+      planFrom,
+      planTo,
+      accredited,
+      preferences,
+    } = state.localUser;
+    isValidFullName(fullName) &&
+    isValidPhoneNumber(phoneNumber) &&
+    isValidEmail(email)
+      ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
+
+    isNoEmpty(planFrom, planTo, accredited) &&
+    isValidRange(parseInt(planFrom), parseInt(planTo))
+      ? dispatch({ type: 'SET_STEP_STATUS_2', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_2', payload: false });
+
+    isNoEmpty(preferences)
+      ? dispatch({ type: 'SET_STEP_STATUS_3', payload: true })
+      : dispatch({ type: 'SET_STEP_STATUS_3', payload: false });
+  }, [state.localUser]);
 
   /**Fetch*/
   const fetchPost = useCallback(async () => {
@@ -97,27 +124,6 @@ export const AppProvider = ({ children }) => {
       setDataReady(false);
     }
   }, [state.dataReady, fetchPost]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setStepStatus1(false);
-      setStepStatus2(false);
-      setStepStatus3(false);
-    }, 5000);
-  }, [state.dataReady]);
-
-  /*Set the validation progress*/
-  const setStepStatus1 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_1', payload: value });
-  };
-
-  const setStepStatus2 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_2', payload: value });
-  };
-
-  const setStepStatus3 = value => {
-    dispatch({ type: 'SET_STEP_STATUS_3', payload: value });
-  };
 
   const setDataReady = value => {
     dispatch({ type: 'SET_DATA_READY', payload: value });
@@ -153,53 +159,6 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_NARROW_MODAL_CLOSED' });
   };
 
-  /*Check form validation*/
-  const areContactDataValidated = (fullName, phoneNumber, email) => {
-    if (containEmptyString(fullName, phoneNumber, email)) {
-      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-      return false;
-    }
-    if (containNameTooShort(fullName)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, the name requires at least 3 characters.'
-      );
-      return false;
-    }
-    if (containInvalidEmail(email)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, the format of the email is not valid.'
-      );
-      return false;
-    }
-    return true;
-  };
-
-  const arePlansDataValidated = (planFrom, planTo, accredited) => {
-    if (containEmptyString(planFrom, planTo, accredited)) {
-      setNarrowModalOpen('danger', 'Sorry, all fields must be filled in.');
-      return false;
-    }
-    if (containInvalidRange(parseInt(planFrom), parseInt(planTo))) {
-      setNarrowModalOpen('danger', 'Sorry, the selected range is invalid.');
-      return false;
-    }
-    return true;
-  };
-
-  const arePreferencesDataValidated = checkedPref => {
-    if (containEmptyArray(checkedPref)) {
-      setNarrowModalOpen(
-        'danger',
-        'Sorry, at least one option must be selected.'
-      );
-
-      return false;
-    }
-    return true;
-  };
-
   /*Handle input focus and blur*/
   const handleFocusInput = form => {
     for (let element of form.current.elements) {
@@ -221,9 +180,6 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
-        setStepStatus1,
-        setStepStatus2,
-        setStepStatus3,
         setDataReady,
         setModalOpen,
         setModalClose,
@@ -231,9 +187,6 @@ export const AppProvider = ({ children }) => {
         setNarrowModalClosed,
         setLoader,
         setDebouncer,
-        areContactDataValidated,
-        arePlansDataValidated,
-        arePreferencesDataValidated,
         handleFocusInput,
         setErrorPage,
         setLocalUser,

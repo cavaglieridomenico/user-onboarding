@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -6,22 +6,33 @@ import Footer from '../components/Footer';
 import LinkToModal from '../components/LinkToModal';
 import { useGlobalContext } from '../context';
 import { contactList } from '../assets/scripts/lists';
+import {
+  isValidFullName,
+  isValidPhoneNumber,
+  isValidEmail,
+} from '../assets/scripts/utils/form/form_utility';
+import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
 
 const Contact = () => {
   const history = useHistory();
 
   const {
     setModalOpen,
-    areContactDataValidated,
-    handleFocusInput,
     setNarrowModalOpen,
-    setStepStatus1,
+    handleFocusInput,
     setErrorPage,
     localUser,
     setLocalUser,
   } = useGlobalContext();
 
   const formContact = useRef(null);
+
+  const [invalidName, setInvalidName] = useState(false);
+  const [onChangeFullName, setOnChangeFullName] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [onChangeEmail, setOnChangeEmail] = useState(false);
+  const [invalidNumber, setInvalidNumber] = useState(false);
+  const [onChangeNumber, setOnChangeNumber] = useState(false);
 
   /**
    * The current page is not an error page
@@ -38,36 +49,43 @@ const Contact = () => {
   }, [handleFocusInput]);
 
   /**
-   * Update the properties of the newUser object, if the form data is validated.
-   * Update the progress of data acquisition across the entire application.
-   * Notify the user of the correct data acquisition.
-   * Directly opens the next page.
+   * Directly opens the next page if validation is true.
    */
   const handleSubmitContact = useCallback(() => {
-    if (
-      areContactDataValidated(
-        localUser.fullName,
-        localUser.phoneNumber,
-        localUser.email
-      )
-    ) {
-      setStepStatus1(true);
+    const { fullName, phoneNumber, email } = localUser;
+    if (!isNoEmpty(fullName)) {
+      setInvalidName(true);
+      setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
+    } else if (!isValidFullName(fullName)) {
+      setInvalidName(true);
       setNarrowModalOpen(
-        'success',
-        'Personal data acquired.',
-        'Please enter an investment plan.'
+        'danger',
+        'Please enter your first',
+        'and last name correctly.'
       );
+    } else if (!isNoEmpty(phoneNumber)) {
+      setInvalidNumber(true);
+      setNarrowModalOpen('danger', 'Sorry, phone number is required.');
+    } else if (!isValidPhoneNumber(phoneNumber)) {
+      setInvalidNumber(true);
+      setNarrowModalOpen(
+        'danger',
+        'Please enter your phone number',
+        'correctly.'
+      );
+    } else if (!isNoEmpty(email)) {
+      setInvalidEmail(true);
+      setNarrowModalOpen('danger', 'Sorry, email address is required.');
+    } else if (!isValidEmail(email)) {
+      setInvalidEmail(true);
+      setNarrowModalOpen(
+        'danger',
+        'Please enter your email address correctly.'
+      );
+    } else {
       history.push('./plans');
     }
-  }, [
-    localUser.fullName,
-    localUser.phoneNumber,
-    localUser.email,
-    areContactDataValidated,
-    setStepStatus1,
-    setNarrowModalOpen,
-    history,
-  ]);
+  }, [localUser, setNarrowModalOpen, history]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -89,18 +107,40 @@ const Contact = () => {
             </p>
             <form id='form-contact' ref={formContact}>
               <div className='form-container'>
-                <div className='name-box'>
+                <div
+                  className={`name-box ${
+                    invalidName ? 'box-error' : undefined
+                  }`}
+                >
                   <label htmlFor='full-name'>Full name</label>
                   <input
                     type='text'
                     id='full-name'
+                    className={`input ${
+                      invalidName ? 'input-error' : undefined
+                    }`}
                     value={localUser.fullName}
-                    onChange={event =>
-                      setLocalUser('fullName', event.target.value)
-                    }
+                    onChange={event => {
+                      setLocalUser('fullName', event.target.value);
+                      isValidFullName(event.target.value) &&
+                        setOnChangeFullName(true);
+                      onChangeFullName && !isValidFullName(event.target.value)
+                        ? setInvalidName(true)
+                        : setInvalidName(false);
+                    }}
+                    onFocus={() => setInvalidName(false)}
+                    onBlur={() => {
+                      isValidFullName(localUser.fullName)
+                        ? setInvalidName(false)
+                        : setInvalidName(true);
+                    }}
                   />
                 </div>
-                <div className='phone-box'>
+                <div
+                  className={`phone-box ${
+                    invalidNumber ? 'box-error' : undefined
+                  }`}
+                >
                   <label htmlFor='phone'>Phone</label>
                   <select
                     name='country-flag'
@@ -124,22 +164,54 @@ const Contact = () => {
                     })}
                   </select>
                   <input
-                    type='number'
+                    type='text'
                     id='phone'
+                    className={`input ${
+                      invalidNumber ? 'input-error' : undefined
+                    }`}
                     value={localUser.phoneNumber}
-                    onChange={event =>
-                      setLocalUser('phoneNumber', event.target.value)
-                    }
+                    onChange={event => {
+                      setLocalUser('phoneNumber', event.target.value);
+                      isValidPhoneNumber(event.target.value) &&
+                        setOnChangeNumber(true);
+                      onChangeNumber && !isValidPhoneNumber(event.target.value)
+                        ? setInvalidNumber(true)
+                        : setInvalidNumber(false);
+                    }}
+                    onFocus={() => setInvalidNumber(false)}
+                    onBlur={() => {
+                      !isValidPhoneNumber(localUser.phoneNumber)
+                        ? setInvalidNumber(true)
+                        : setInvalidNumber(false);
+                    }}
                   />
                 </div>
-                <div className='email-box'>
+                <div
+                  className={`email-box ${
+                    invalidEmail ? 'box-error' : undefined
+                  }`}
+                >
                   <label htmlFor='email'>E-mail address</label>
                   <input
                     type='text'
                     id='email'
+                    className={`input ${
+                      invalidEmail ? 'input-error' : undefined
+                    }`}
                     value={localUser.email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
+                      isValidEmail(event.target.value) &&
+                        setOnChangeEmail(true);
+                      onChangeEmail && !isValidEmail(event.target.value)
+                        ? setInvalidEmail(true)
+                        : setInvalidEmail(false);
+                    }}
+                    onFocus={() => setInvalidEmail(false)}
+                    onBlur={() => {
+                      !isValidEmail(localUser.email)
+                        ? setInvalidEmail(true)
+                        : setInvalidEmail(false);
                     }}
                   />
                 </div>

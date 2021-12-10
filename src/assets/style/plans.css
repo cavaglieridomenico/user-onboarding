@@ -42,7 +42,7 @@ section.plans article {
 }
 
 .form-plans-error {
-  color: red;
+  color: var(--error);
 }
 /*Form-plans end*/
 

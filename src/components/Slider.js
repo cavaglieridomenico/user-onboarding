@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 import {
   onlyInRange,
-  containInvalidRange,
+  isValidRange,
   getRightClass,
-} from '../assets/scripts/plans_utility';
+} from '../assets/scripts/utils/range/range_utility';
 import { plansList } from '../assets/scripts/lists';
 
 const Slider = () => {
@@ -219,7 +219,7 @@ const Slider = () => {
       </div>
       <div
         className={`slider ${
-          containInvalidRange(
+          !isValidRange(
             parseInt(localUser.planFrom),
             parseInt(localUser.planTo)
           ) && 'slider-error'

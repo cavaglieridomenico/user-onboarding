@@ -8,11 +8,11 @@
 const onlyInRange = (position, start, stop) => {
   if (position <= start) {
     return (position = start);
-  }
-  if (position >= stop) {
+  } else if (position >= stop) {
     return (position = stop);
+  } else {
+    return position;
   }
-  return position;
 };
 
 /**
@@ -32,12 +32,12 @@ const isInRange = (value, fromValue, toValue) => {
  * @param {number} endRange
  * @returns {boolean}
  */
-const containInvalidRange = (startRange, endRange) => {
-  return startRange >= endRange;
+const isValidRange = (startRange, endRange) => {
+  return startRange < endRange;
 };
 
 const getRightClass = (value, fromValue, toValue, selected, error) => {
-  if (containInvalidRange(fromValue, toValue)) {
+  if (!isValidRange(fromValue, toValue)) {
     return error;
   } else if (isInRange(value, fromValue, toValue)) {
     return selected;
@@ -46,4 +46,4 @@ const getRightClass = (value, fromValue, toValue, selected, error) => {
   }
 };
 
-export { onlyInRange, isInRange, containInvalidRange, getRightClass };
+export { onlyInRange, isInRange, isValidRange, getRightClass };

@@ -4,22 +4,16 @@ import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
-import { containInvalidRange } from '../assets/scripts/plans_utility';
+import { isValidRange } from '../assets/scripts/utils/range/range_utility';
+import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
 import { useGlobalContext } from '../context';
 import { plansList } from '../assets/scripts/lists';
 
 const Plans = () => {
   const history = useHistory();
 
-  const {
-    arePlansDataValidated,
-    setNarrowModalOpen,
-    setStepStatus2,
-    stepStatus1,
-    setErrorPage,
-    localUser,
-    setLocalUser,
-  } = useGlobalContext();
+  const { setNarrowModalOpen, setErrorPage, localUser, setLocalUser } =
+    useGlobalContext();
 
   /**
    * The current page is not an error page
@@ -29,60 +23,22 @@ const Plans = () => {
   }, [setErrorPage]);
 
   /**
-   * Check the status of the previous step and, if it has not yet been updated,
-   * directly open the corresponding page,
-   * with an alert for the user.
-   */
-  const goToTheRightPageFromPlans = useCallback(() => {
-    if (!stepStatus1) {
-      history.push('./');
-      setNarrowModalOpen('danger', 'Please enter personal data first.');
-    }
-  }, [history, stepStatus1, setNarrowModalOpen]);
-
-  /**
-   * Handle click on form
-   */
-  const handleClickPlansForms = () => {
-    goToTheRightPageFromPlans();
-  };
-
-  /**
-   * Update the properties of the newUser object, if the form data is validated.
-   * Update the progress of data acquisition across the entire application.
-   * Notify the user of the correct data acquisition.
-   * Directly opens the next page.
+   * Directly opens the next page if validation is true.
    */
   const handleSubmitPlansForms = useCallback(() => {
-    goToTheRightPageFromPlans();
-    if (stepStatus1) {
-      if (
-        arePlansDataValidated(
-          localUser.planFrom,
-          localUser.planTo,
-          localUser.accredited
-        )
-      ) {
-        setStepStatus2(true);
-        setNarrowModalOpen(
-          'success',
-          'Investment plan data acquired.',
-          'Please enter your preferences.'
-        );
-        history.push('./preferences');
-      }
+    const { planFrom, planTo, accredited } = localUser;
+    if (!isValidRange(parseInt(planFrom), parseInt(planTo))) {
+      setNarrowModalOpen('danger', 'Please enter a valid range.');
+    } else if (!isNoEmpty(planFrom, planTo, accredited)) {
+      setNarrowModalOpen(
+        'danger',
+        'Sorry, specify if you are',
+        'an accredited investor.'
+      );
+    } else {
+      history.push('./preferences');
     }
-  }, [
-    localUser.planFrom,
-    localUser.planTo,
-    localUser.accredited,
-    goToTheRightPageFromPlans,
-    stepStatus1,
-    arePlansDataValidated,
-    setStepStatus2,
-    setNarrowModalOpen,
-    history,
-  ]);
+  }, [localUser, setNarrowModalOpen, history]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -109,7 +65,7 @@ const Plans = () => {
             <h2 className='planning-text'>
               How much are you planning to invest in this year?
             </h2>
-            <form id='form-plans' onClickCapture={handleClickPlansForms}>
+            <form id='form-plans'>
               <div className='form-container'>
                 <div className='from-box'>
                   <label htmlFor='plans-from'>From</label>
@@ -117,7 +73,7 @@ const Plans = () => {
                     type='text'
                     id='plans-from'
                     className={`select-amount ${
-                      containInvalidRange(
+                      !isValidRange(
                         parseInt(localUser.planFrom),
                         parseInt(localUser.planTo)
                       ) && 'form-plans-error'
@@ -143,7 +99,7 @@ const Plans = () => {
                     type='text'
                     id='plans-to'
                     className={`select-amount ${
-                      containInvalidRange(
+                      !isValidRange(
                         parseInt(localUser.planFrom),
                         parseInt(localUser.planTo)
                       ) && 'form-plans-error'
@@ -169,7 +125,7 @@ const Plans = () => {
           </article>
           <article>
             <h2>Are you an accredited investor?</h2>
-            <form id='form-investor' onClick={handleClickPlansForms}>
+            <form id='form-investor'>
               <div className='form-container'>
                 <div
                   className={`radio-investor-box  ${
