@@ -23,6 +23,10 @@ test(`It should return true if the format of the full name is valid and false ot
 });
 
 test(`It should return true if the format of the full name is valid and false otherwise`, () => {
+  expect(isValidFullName('Hu Ji')).toEqual(true);
+});
+
+test(`It should return true if the format of the full name is valid and false otherwise`, () => {
   expect(isValidFullName('do')).toEqual(false);
 });
 

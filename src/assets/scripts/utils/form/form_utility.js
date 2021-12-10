@@ -6,7 +6,7 @@
  */
 const isValidFullName = inputValue => {
   const pattern =
-    /^\b(?!.*\s\s)(?!.*--)[a-zA-Zàèéìòù\s-]{3,30}\b[\s]\b[a-zA-Zàèéìòù\s-]{3,30}\b$/;
+    /^\b(?!.*\s\s)(?!.*--)[a-zA-Zàèéìòù\s-]{2,30}\b[\s]\b[a-zA-Zàèéìòù\s-]{2,30}\b$/;
   return pattern.test(inputValue);
 };
 
