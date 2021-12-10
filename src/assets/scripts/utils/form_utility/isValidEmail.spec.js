@@ -1,4 +1,4 @@
-import { isValidEmail } from './isValidEmail';
+import { isValidEmail } from './form_utility';
 
 test(`It should return true if the format of the email is valid and false otherwise`, () => {
   expect(isValidEmail('cavaglieridomenico@gmail.com')).toEqual(true);

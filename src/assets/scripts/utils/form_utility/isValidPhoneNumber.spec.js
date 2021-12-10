@@ -1,4 +1,4 @@
-import { isValidPhoneNumber } from './isValidPhoneNumber';
+import { isValidPhoneNumber } from './form_utility';
 
 test('It should return true if the format of the phone number is valid and false otherwise', () => {
   expect(isValidPhoneNumber('34917')).toEqual(true);

@@ -1,4 +1,4 @@
-import { isValidFullName } from './isValidFullName';
+import { isValidFullName } from './form_utility';
 
 test(`It should return true if the format of the full name is valid and false otherwise`, () => {
   expect(isValidFullName('Domenico Cavaglieri')).toEqual(true);
