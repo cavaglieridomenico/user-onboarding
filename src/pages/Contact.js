@@ -11,7 +11,7 @@ import {
   isValidPhoneNumber,
   isValidEmail,
 } from '../assets/scripts/utils/form/form_utility';
-import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
+import { isFull } from '../assets/scripts/utils/list/list_utility';
 
 const Contact = () => {
   const history = useHistory();
@@ -52,7 +52,7 @@ const Contact = () => {
    * Directly opens the next page if validation is true.
    */
   const handleSubmitContact = useCallback(() => {
-    if (!isNoEmpty(fullName)) {
+    if (!isFull(fullName)) {
       setInvalidName(true);
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
     } else if (!isValidFullName(fullName)) {
@@ -62,7 +62,7 @@ const Contact = () => {
         'Please enter your first',
         'and last name correctly.'
       );
-    } else if (!isNoEmpty(phoneNumber)) {
+    } else if (!isFull(phoneNumber)) {
       setInvalidNumber(true);
       setNarrowModalOpen('danger', 'Sorry, phone number is required.');
     } else if (!isValidPhoneNumber(phoneNumber)) {
@@ -72,7 +72,7 @@ const Contact = () => {
         'Please enter your phone number',
         'correctly.'
       );
-    } else if (!isNoEmpty(email)) {
+    } else if (!isFull(email)) {
       setInvalidEmail(true);
       setNarrowModalOpen('danger', 'Sorry, email address is required.');
     } else if (!isValidEmail(email)) {

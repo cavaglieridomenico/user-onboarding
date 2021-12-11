@@ -7,7 +7,7 @@ import { useGlobalContext } from '../context';
 import { preferencesList } from '../assets/scripts/lists';
 import {
   getCheckedList,
-  isNoEmpty,
+  isFull,
 } from '../assets/scripts/utils/list/list_utility';
 
 const Preferences = () => {
@@ -54,7 +54,7 @@ const Preferences = () => {
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      if (!isNoEmpty(localUser.preferences)) {
+      if (!isFull(localUser.preferences)) {
         setNarrowModalOpen(
           'danger',
           'Sorry, at least one option',

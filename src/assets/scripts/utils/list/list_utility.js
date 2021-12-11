@@ -18,7 +18,7 @@ export { getCheckedList };
  * @param {string, array}
  * @returns {boolean}
  */
-const isNoEmpty = (...value) => {
+const isFull = (...value) => {
   return value.every(value => value.length !== 0);
 };
 
@@ -31,4 +31,4 @@ const isEmpty = (...value) => {
   return value.some(value => value.length === 0);
 };
 
-export { isNoEmpty, isEmpty };
+export { isFull, isEmpty };

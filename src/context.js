@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useReducer, useCallback } from 'react';
 import reducer from './reducer';
-import { isNoEmpty } from './assets/scripts/utils/list/list_utility';
+import { isFull } from './assets/scripts/utils/list/list_utility';
 import { isValidRange } from './assets/scripts/utils/range/range_utility';
 import {
   isValidFullName,
@@ -82,12 +82,12 @@ export const AppProvider = ({ children }) => {
       ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
 
-    isNoEmpty(planFrom, planTo, accredited) &&
+    isFull(planFrom, planTo, accredited) &&
     isValidRange(parseInt(planFrom), parseInt(planTo))
       ? dispatch({ type: 'SET_STEP_STATUS_2', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_2', payload: false });
 
-    isNoEmpty(preferences)
+    isFull(preferences)
       ? dispatch({ type: 'SET_STEP_STATUS_3', payload: true })
       : dispatch({ type: 'SET_STEP_STATUS_3', payload: false });
   }, [state.localUser]);
