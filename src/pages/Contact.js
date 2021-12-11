@@ -26,7 +26,7 @@ const Contact = () => {
   } = useGlobalContext();
 
   const formContact = useRef(null);
-
+  const { fullName, phoneCode, phoneNumber, email, country } = localUser;
   const [invalidName, setInvalidName] = useState(false);
   const [onChangeFullName, setOnChangeFullName] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
@@ -52,7 +52,6 @@ const Contact = () => {
    * Directly opens the next page if validation is true.
    */
   const handleSubmitContact = useCallback(() => {
-    const { fullName, phoneNumber, email } = localUser;
     if (!isNoEmpty(fullName)) {
       setInvalidName(true);
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
@@ -85,7 +84,7 @@ const Contact = () => {
     } else {
       history.push('./plans');
     }
-  }, [localUser, setNarrowModalOpen, history]);
+  }, [fullName, phoneNumber, email, setNarrowModalOpen, history]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -119,7 +118,7 @@ const Contact = () => {
                     className={`input ${
                       invalidName ? 'input-error' : undefined
                     }`}
-                    value={localUser.fullName}
+                    value={fullName}
                     onChange={event => {
                       setLocalUser('fullName', event.target.value);
                       isValidFullName(event.target.value) &&
@@ -130,7 +129,7 @@ const Contact = () => {
                     }}
                     onFocus={() => setInvalidName(false)}
                     onBlur={() => {
-                      isValidFullName(localUser.fullName)
+                      isValidFullName(fullName)
                         ? setInvalidName(false)
                         : setInvalidName(true);
                     }}
@@ -145,7 +144,7 @@ const Contact = () => {
                   <select
                     name='country-flag'
                     id='country-flag'
-                    value={localUser.phoneCode}
+                    value={phoneCode}
                     onChange={event => {
                       setLocalUser('phoneCode', event.target.value);
                     }}
@@ -169,7 +168,7 @@ const Contact = () => {
                     className={`input ${
                       invalidNumber ? 'input-error' : undefined
                     }`}
-                    value={localUser.phoneNumber}
+                    value={phoneNumber}
                     onChange={event => {
                       setLocalUser('phoneNumber', event.target.value);
                       isValidPhoneNumber(event.target.value) &&
@@ -180,7 +179,7 @@ const Contact = () => {
                     }}
                     onFocus={() => setInvalidNumber(false)}
                     onBlur={() => {
-                      !isValidPhoneNumber(localUser.phoneNumber)
+                      !isValidPhoneNumber(phoneNumber)
                         ? setInvalidNumber(true)
                         : setInvalidNumber(false);
                     }}
@@ -198,7 +197,7 @@ const Contact = () => {
                     className={`input ${
                       invalidEmail ? 'input-error' : undefined
                     }`}
-                    value={localUser.email}
+                    value={email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
                       isValidEmail(event.target.value) &&
@@ -209,7 +208,7 @@ const Contact = () => {
                     }}
                     onFocus={() => setInvalidEmail(false)}
                     onBlur={() => {
-                      !isValidEmail(localUser.email)
+                      !isValidEmail(email)
                         ? setInvalidEmail(true)
                         : setInvalidEmail(false);
                     }}
@@ -220,7 +219,7 @@ const Contact = () => {
                   <select
                     type='text'
                     id='country'
-                    value={localUser.country}
+                    value={country}
                     onChange={event => {
                       setLocalUser('country', event.target.value);
                     }}
