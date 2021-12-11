@@ -27,12 +27,12 @@ const Contact = () => {
 
   const formContact = useRef(null);
   const { fullName, phoneCode, phoneNumber, email, country } = localUser;
-  const [invalidName, setInvalidName] = useState(false);
+  const [errorFullName, setErrorFullName] = useState(false);
   const [onChangeFullName, setOnChangeFullName] = useState(false);
-  const [invalidEmail, setInvalidEmail] = useState(false);
-  const [onChangeEmail, setOnChangeEmail] = useState(false);
-  const [invalidNumber, setInvalidNumber] = useState(false);
+  const [errorPhoneNumber, setErrorPhoneNumber] = useState(false);
   const [onChangeNumber, setOnChangeNumber] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [onChangeEmail, setOnChangeEmail] = useState(false);
 
   /**
    * The current page is not an error page
@@ -53,30 +53,30 @@ const Contact = () => {
    */
   const handleSubmitContact = useCallback(() => {
     if (!isFull(fullName)) {
-      setInvalidName(true);
+      setErrorFullName(true);
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
     } else if (!isValidFullName(fullName)) {
-      setInvalidName(true);
+      setErrorFullName(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your first',
         'and last name correctly.'
       );
     } else if (!isFull(phoneNumber)) {
-      setInvalidNumber(true);
+      setErrorPhoneNumber(true);
       setNarrowModalOpen('danger', 'Sorry, phone number is required.');
     } else if (!isValidPhoneNumber(phoneNumber)) {
-      setInvalidNumber(true);
+      setErrorPhoneNumber(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your phone number',
         'correctly.'
       );
     } else if (!isFull(email)) {
-      setInvalidEmail(true);
+      setErrorEmail(true);
       setNarrowModalOpen('danger', 'Sorry, email address is required.');
     } else if (!isValidEmail(email)) {
-      setInvalidEmail(true);
+      setErrorEmail(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your email address correctly.'
@@ -108,7 +108,7 @@ const Contact = () => {
               <div className='form-container'>
                 <div
                   className={`name-box ${
-                    invalidName ? 'box-error' : undefined
+                    errorFullName ? 'box-error' : undefined
                   }`}
                 >
                   <label htmlFor='full-name'>Full name</label>
@@ -116,7 +116,7 @@ const Contact = () => {
                     type='text'
                     id='full-name'
                     className={`input ${
-                      invalidName ? 'input-error' : undefined
+                      errorFullName ? 'input-error' : undefined
                     }`}
                     value={fullName}
                     onChange={event => {
@@ -124,20 +124,20 @@ const Contact = () => {
                       isValidFullName(event.target.value) &&
                         setOnChangeFullName(true);
                       onChangeFullName && !isValidFullName(event.target.value)
-                        ? setInvalidName(true)
-                        : setInvalidName(false);
+                        ? setErrorFullName(true)
+                        : setErrorFullName(false);
                     }}
-                    onFocus={() => setInvalidName(false)}
+                    onFocus={() => setErrorFullName(false)}
                     onBlur={() => {
                       isValidFullName(fullName)
-                        ? setInvalidName(false)
-                        : setInvalidName(true);
+                        ? setErrorFullName(false)
+                        : setErrorFullName(true);
                     }}
                   />
                 </div>
                 <div
                   className={`phone-box ${
-                    invalidNumber ? 'box-error' : undefined
+                    errorPhoneNumber ? 'box-error' : undefined
                   }`}
                 >
                   <label htmlFor='phone'>Phone</label>
@@ -166,7 +166,7 @@ const Contact = () => {
                     type='text'
                     id='phone'
                     className={`input ${
-                      invalidNumber ? 'input-error' : undefined
+                      errorPhoneNumber ? 'input-error' : undefined
                     }`}
                     value={phoneNumber}
                     onChange={event => {
@@ -174,20 +174,20 @@ const Contact = () => {
                       isValidPhoneNumber(event.target.value) &&
                         setOnChangeNumber(true);
                       onChangeNumber && !isValidPhoneNumber(event.target.value)
-                        ? setInvalidNumber(true)
-                        : setInvalidNumber(false);
+                        ? setErrorPhoneNumber(true)
+                        : setErrorPhoneNumber(false);
                     }}
-                    onFocus={() => setInvalidNumber(false)}
+                    onFocus={() => setErrorPhoneNumber(false)}
                     onBlur={() => {
                       !isValidPhoneNumber(phoneNumber)
-                        ? setInvalidNumber(true)
-                        : setInvalidNumber(false);
+                        ? setErrorPhoneNumber(true)
+                        : setErrorPhoneNumber(false);
                     }}
                   />
                 </div>
                 <div
                   className={`email-box ${
-                    invalidEmail ? 'box-error' : undefined
+                    errorEmail ? 'box-error' : undefined
                   }`}
                 >
                   <label htmlFor='email'>E-mail address</label>
@@ -195,7 +195,7 @@ const Contact = () => {
                     type='text'
                     id='email'
                     className={`input ${
-                      invalidEmail ? 'input-error' : undefined
+                      errorEmail ? 'input-error' : undefined
                     }`}
                     value={email}
                     onChange={event => {
@@ -203,14 +203,14 @@ const Contact = () => {
                       isValidEmail(event.target.value) &&
                         setOnChangeEmail(true);
                       onChangeEmail && !isValidEmail(event.target.value)
-                        ? setInvalidEmail(true)
-                        : setInvalidEmail(false);
+                        ? setErrorEmail(true)
+                        : setErrorEmail(false);
                     }}
-                    onFocus={() => setInvalidEmail(false)}
+                    onFocus={() => setErrorEmail(false)}
                     onBlur={() => {
                       !isValidEmail(email)
-                        ? setInvalidEmail(true)
-                        : setInvalidEmail(false);
+                        ? setErrorEmail(true)
+                        : setErrorEmail(false);
                     }}
                   />
                 </div>
