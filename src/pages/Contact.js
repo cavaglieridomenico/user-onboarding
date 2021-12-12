@@ -26,15 +26,13 @@ const Contact = () => {
 
   const formContact = useRef(null);
   const { fullName, phoneCode, phoneNumber, email, country } = localUser;
-  const [errorValidation, setErrorValidation] = useState({
-    errorFullName: false,
-    changingFullName: false,
-    errorPhoneNumber: false,
-    changingPhoneNumber: false,
-    errorEmail: false,
-    changingEmail: false,
+  const [inputValidation, setInputValidation] = useState({
+    validatedFullName: false,
+    validatedPhoneNumber: false,
+    validatedEmail: false,
   });
-  const { errorFullName, errorPhoneNumber, errorEmail } = errorValidation;
+  const { validatedFullName, validatedPhoneNumber, validatedEmail } =
+    inputValidation;
 
   /**
    * The current page is not an error page
@@ -48,14 +46,14 @@ const Contact = () => {
    */
   useEffect(() => {
     isValidFullName(fullName)
-      ? setErrorValidation(prev => ({ ...prev, errorFullName: true }))
-      : setErrorValidation(prev => ({ ...prev, errorFullName: false }));
+      ? setInputValidation(prev => ({ ...prev, validatedFullName: true }))
+      : setInputValidation(prev => ({ ...prev, validatedFullName: false }));
     isValidPhoneNumber(phoneNumber)
-      ? setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }))
-      : setErrorValidation(prev => ({ ...prev, errorPhoneNumber: false }));
+      ? setInputValidation(prev => ({ ...prev, validatedPhoneNumber: true }))
+      : setInputValidation(prev => ({ ...prev, validatedPhoneNumber: false }));
     isValidEmail(email)
-      ? setErrorValidation(prev => ({ ...prev, errorEmail: true }))
-      : setErrorValidation(prev => ({ ...prev, errorEmail: false }));
+      ? setInputValidation(prev => ({ ...prev, validatedEmail: true }))
+      : setInputValidation(prev => ({ ...prev, validatedEmail: false }));
   }, [fullName, phoneNumber, email]);
 
   /**
@@ -63,40 +61,24 @@ const Contact = () => {
    */
   const handleSubmitContact = useCallback(() => {
     if (!isFull(fullName)) {
-      //setChangingFullName(true);
-      setErrorValidation(prev => ({ ...prev, changingFullName: true }));
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
     } else if (!isValidFullName(fullName)) {
-      //setErrorFullName(true);
-      setErrorValidation(prev => ({ ...prev, errorFullName: true }));
       setNarrowModalOpen(
         'danger',
         'Please enter your first',
         'and last name correctly.'
       );
     } else if (!isFull(phoneNumber)) {
-      //setErrorPhoneNumber(true);
-      setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }));
-
       setNarrowModalOpen('danger', 'Sorry, phone number is required.');
     } else if (!isValidPhoneNumber(phoneNumber)) {
-      // setErrorPhoneNumber(true);
-      setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }));
-
       setNarrowModalOpen(
         'danger',
         'Please enter your phone number',
         'correctly.'
       );
     } else if (!isFull(email)) {
-      //setErrorEmail(true);
-      setErrorValidation(prev => ({ ...prev, errorEmail: true }));
-
       setNarrowModalOpen('danger', 'Sorry, email address is required.');
     } else if (!isValidEmail(email)) {
-      //setErrorEmail(true);
-      setErrorValidation(prev => ({ ...prev, errorEmail: true }));
-
       setNarrowModalOpen(
         'danger',
         'Please enter your email address correctly.'
@@ -128,7 +110,7 @@ const Contact = () => {
               <div className='form-container'>
                 <div
                   className={`name-box ${
-                    errorFullName ? 'box-error' : undefined
+                    validatedFullName ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='full-name'>Full name</label>
@@ -136,7 +118,7 @@ const Contact = () => {
                     type='text'
                     id='full-name'
                     className={`input ${
-                      errorFullName ? 'input-error' : undefined
+                      validatedFullName ? 'input-validated' : undefined
                     }`}
                     value={fullName}
                     onChange={event => {
@@ -146,7 +128,7 @@ const Contact = () => {
                 </div>
                 <div
                   className={`phone-box ${
-                    errorPhoneNumber ? 'box-error' : undefined
+                    validatedPhoneNumber ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='phone'>Phone</label>
@@ -175,21 +157,17 @@ const Contact = () => {
                     type='text'
                     id='phone'
                     className={`input ${
-                      errorPhoneNumber ? 'input-error' : undefined
+                      validatedPhoneNumber ? 'input-validated' : undefined
                     }`}
                     value={phoneNumber}
                     onChange={event => {
                       setLocalUser('phoneNumber', event.target.value);
-                      setErrorValidation(prev => ({
-                        ...prev,
-                        changingPhoneNumber: true,
-                      }));
                     }}
                   />
                 </div>
                 <div
                   className={`email-box ${
-                    errorEmail ? 'box-error' : undefined
+                    validatedEmail ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='email'>E-mail address</label>
@@ -197,15 +175,11 @@ const Contact = () => {
                     type='text'
                     id='email'
                     className={`input ${
-                      errorEmail ? 'input-error' : undefined
+                      validatedEmail ? 'input-validated' : undefined
                     }`}
                     value={email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
-                      setErrorValidation(prev => ({
-                        ...prev,
-                        changingEmail: true,
-                      }));
                     }}
                   />
                 </div>
