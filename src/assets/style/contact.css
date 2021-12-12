@@ -14,6 +14,11 @@
   padding: 3px 0 0 0;
   max-width: 340px;
   margin: 0 auto;
+  transition: var(--mainTransition);
+}
+
+#form-contact .form-container .input {
+  color: var(--mainGrey);
 }
 
 #form-contact .phone-box select {
@@ -44,12 +49,23 @@
 #form-contact .form-container .box-error {
   border-bottom: solid 2px var(--error);
   color: var(--error);
-  caret-color: var(--primaryColor);
+  caret-color: var(--error);
 }
 
 #form-contact .form-container .input-error {
   color: var(--error);
 }
+
+#form-contact .form-container .box-validated {
+  border-bottom: solid 2px var(--primaryColor);
+  color: var(--primaryColor);
+  caret-color: var(--primaryColor);
+}
+
+#form-contact .form-container .input-validated {
+  color: var(--mainBlack);
+}
+
 /*Form end*/
 
 .contact-link-container {

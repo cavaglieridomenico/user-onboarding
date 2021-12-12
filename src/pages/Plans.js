@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Slider from '../components/Slider';
 import { isValidRange } from '../assets/scripts/utils/range/range_utility';
-import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
+import { isFull } from '../assets/scripts/utils/list/list_utility';
 import { useGlobalContext } from '../context';
 import { plansList } from '../assets/scripts/lists';
 
@@ -29,7 +29,7 @@ const Plans = () => {
     const { planFrom, planTo, accredited } = localUser;
     if (!isValidRange(parseInt(planFrom), parseInt(planTo))) {
       setNarrowModalOpen('danger', 'Please enter a valid range.');
-    } else if (!isNoEmpty(planFrom, planTo, accredited)) {
+    } else if (!isFull(planFrom, planTo, accredited)) {
       setNarrowModalOpen(
         'danger',
         'Sorry, specify if you are',

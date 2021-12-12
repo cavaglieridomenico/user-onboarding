@@ -7,7 +7,7 @@ import { useGlobalContext } from '../context';
 import { preferencesList } from '../assets/scripts/lists';
 import {
   getCheckedList,
-  isNoEmpty,
+  isFull,
 } from '../assets/scripts/utils/list/list_utility';
 
 const Preferences = () => {
@@ -38,11 +38,17 @@ const Preferences = () => {
   const goToTheRightPageFromPreferences = useCallback(() => {
     if (!stepStatus1) {
       history.push('./');
-      setNarrowModalOpen('danger', 'Please enter personal data first.');
+      setNarrowModalOpen(
+        'danger',
+        'Please enter your personal data correctly first.'
+      );
     }
     if (stepStatus1 && !stepStatus2) {
       history.push('./plans');
-      setNarrowModalOpen('danger', 'Please enter an investment plan first.');
+      setNarrowModalOpen(
+        'danger',
+        'Please enter an investment plan correctly first.'
+      );
     }
   }, [history, stepStatus1, stepStatus2, setNarrowModalOpen]);
 
@@ -54,7 +60,7 @@ const Preferences = () => {
   const handleSubmitPreferencesForm = useCallback(() => {
     goToTheRightPageFromPreferences();
     if (stepStatus1 && stepStatus2) {
-      if (!isNoEmpty(localUser.preferences)) {
+      if (!isFull(localUser.preferences)) {
         setNarrowModalOpen(
           'danger',
           'Sorry, at least one option',

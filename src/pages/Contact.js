@@ -11,7 +11,7 @@ import {
   isValidPhoneNumber,
   isValidEmail,
 } from '../assets/scripts/utils/form/form_utility';
-import { isNoEmpty } from '../assets/scripts/utils/list/list_utility';
+import { isFull } from '../assets/scripts/utils/list/list_utility';
 
 const Contact = () => {
   const history = useHistory();
@@ -19,20 +19,20 @@ const Contact = () => {
   const {
     setModalOpen,
     setNarrowModalOpen,
-    handleFocusInput,
     setErrorPage,
     localUser,
     setLocalUser,
   } = useGlobalContext();
 
   const formContact = useRef(null);
-
-  const [invalidName, setInvalidName] = useState(false);
-  const [onChangeFullName, setOnChangeFullName] = useState(false);
-  const [invalidEmail, setInvalidEmail] = useState(false);
-  const [onChangeEmail, setOnChangeEmail] = useState(false);
-  const [invalidNumber, setInvalidNumber] = useState(false);
-  const [onChangeNumber, setOnChangeNumber] = useState(false);
+  const { fullName, phoneCode, phoneNumber, email, country } = localUser;
+  const [inputValidation, setInputValidation] = useState({
+    validatedFullName: false,
+    validatedPhoneNumber: false,
+    validatedEmail: false,
+  });
+  const { validatedFullName, validatedPhoneNumber, validatedEmail } =
+    inputValidation;
 
   /**
    * The current page is not an error page
@@ -42,42 +42,43 @@ const Contact = () => {
   }, [setErrorPage]);
 
   /**
-   * Handle input focus and blur
+   * Input validation
    */
   useEffect(() => {
-    handleFocusInput(formContact);
-  }, [handleFocusInput]);
+    isValidFullName(fullName)
+      ? setInputValidation(prev => ({ ...prev, validatedFullName: true }))
+      : setInputValidation(prev => ({ ...prev, validatedFullName: false }));
+    isValidPhoneNumber(phoneNumber)
+      ? setInputValidation(prev => ({ ...prev, validatedPhoneNumber: true }))
+      : setInputValidation(prev => ({ ...prev, validatedPhoneNumber: false }));
+    isValidEmail(email)
+      ? setInputValidation(prev => ({ ...prev, validatedEmail: true }))
+      : setInputValidation(prev => ({ ...prev, validatedEmail: false }));
+  }, [fullName, phoneNumber, email]);
 
   /**
-   * Directly opens the next page if validation is true.
+   * Submit validation
    */
   const handleSubmitContact = useCallback(() => {
-    const { fullName, phoneNumber, email } = localUser;
-    if (!isNoEmpty(fullName)) {
-      setInvalidName(true);
+    if (!isFull(fullName)) {
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
     } else if (!isValidFullName(fullName)) {
-      setInvalidName(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your first',
         'and last name correctly.'
       );
-    } else if (!isNoEmpty(phoneNumber)) {
-      setInvalidNumber(true);
+    } else if (!isFull(phoneNumber)) {
       setNarrowModalOpen('danger', 'Sorry, phone number is required.');
     } else if (!isValidPhoneNumber(phoneNumber)) {
-      setInvalidNumber(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your phone number',
         'correctly.'
       );
-    } else if (!isNoEmpty(email)) {
-      setInvalidEmail(true);
+    } else if (!isFull(email)) {
       setNarrowModalOpen('danger', 'Sorry, email address is required.');
     } else if (!isValidEmail(email)) {
-      setInvalidEmail(true);
       setNarrowModalOpen(
         'danger',
         'Please enter your email address correctly.'
@@ -85,7 +86,7 @@ const Contact = () => {
     } else {
       history.push('./plans');
     }
-  }, [localUser, setNarrowModalOpen, history]);
+  }, [fullName, phoneNumber, email, setNarrowModalOpen, history]);
 
   return (
     <div className='onboarding-outerbox'>
@@ -109,7 +110,7 @@ const Contact = () => {
               <div className='form-container'>
                 <div
                   className={`name-box ${
-                    invalidName ? 'box-error' : undefined
+                    validatedFullName ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='full-name'>Full name</label>
@@ -117,35 +118,24 @@ const Contact = () => {
                     type='text'
                     id='full-name'
                     className={`input ${
-                      invalidName ? 'input-error' : undefined
+                      validatedFullName ? 'input-validated' : undefined
                     }`}
-                    value={localUser.fullName}
+                    value={fullName}
                     onChange={event => {
                       setLocalUser('fullName', event.target.value);
-                      isValidFullName(event.target.value) &&
-                        setOnChangeFullName(true);
-                      onChangeFullName && !isValidFullName(event.target.value)
-                        ? setInvalidName(true)
-                        : setInvalidName(false);
-                    }}
-                    onFocus={() => setInvalidName(false)}
-                    onBlur={() => {
-                      isValidFullName(localUser.fullName)
-                        ? setInvalidName(false)
-                        : setInvalidName(true);
                     }}
                   />
                 </div>
                 <div
                   className={`phone-box ${
-                    invalidNumber ? 'box-error' : undefined
+                    validatedPhoneNumber ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='phone'>Phone</label>
                   <select
                     name='country-flag'
                     id='country-flag'
-                    value={localUser.phoneCode}
+                    value={phoneCode}
                     onChange={event => {
                       setLocalUser('phoneCode', event.target.value);
                     }}
@@ -167,28 +157,17 @@ const Contact = () => {
                     type='text'
                     id='phone'
                     className={`input ${
-                      invalidNumber ? 'input-error' : undefined
+                      validatedPhoneNumber ? 'input-validated' : undefined
                     }`}
-                    value={localUser.phoneNumber}
+                    value={phoneNumber}
                     onChange={event => {
                       setLocalUser('phoneNumber', event.target.value);
-                      isValidPhoneNumber(event.target.value) &&
-                        setOnChangeNumber(true);
-                      onChangeNumber && !isValidPhoneNumber(event.target.value)
-                        ? setInvalidNumber(true)
-                        : setInvalidNumber(false);
-                    }}
-                    onFocus={() => setInvalidNumber(false)}
-                    onBlur={() => {
-                      !isValidPhoneNumber(localUser.phoneNumber)
-                        ? setInvalidNumber(true)
-                        : setInvalidNumber(false);
                     }}
                   />
                 </div>
                 <div
                   className={`email-box ${
-                    invalidEmail ? 'box-error' : undefined
+                    validatedEmail ? 'box-validated' : undefined
                   }`}
                 >
                   <label htmlFor='email'>E-mail address</label>
@@ -196,22 +175,11 @@ const Contact = () => {
                     type='text'
                     id='email'
                     className={`input ${
-                      invalidEmail ? 'input-error' : undefined
+                      validatedEmail ? 'input-validated' : undefined
                     }`}
-                    value={localUser.email}
+                    value={email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
-                      isValidEmail(event.target.value) &&
-                        setOnChangeEmail(true);
-                      onChangeEmail && !isValidEmail(event.target.value)
-                        ? setInvalidEmail(true)
-                        : setInvalidEmail(false);
-                    }}
-                    onFocus={() => setInvalidEmail(false)}
-                    onBlur={() => {
-                      !isValidEmail(localUser.email)
-                        ? setInvalidEmail(true)
-                        : setInvalidEmail(false);
                     }}
                   />
                 </div>
@@ -220,7 +188,7 @@ const Contact = () => {
                   <select
                     type='text'
                     id='country'
-                    value={localUser.country}
+                    value={country}
                     onChange={event => {
                       setLocalUser('country', event.target.value);
                     }}

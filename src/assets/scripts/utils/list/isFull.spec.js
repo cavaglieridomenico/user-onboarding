@@ -1,45 +1,45 @@
-import { isNoEmpty } from './list_utility';
+import { isFull } from './list_utility';
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('word')).toEqual(true);
+  expect(isFull('word')).toEqual(true);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('word', 'word', 'word')).toEqual(true);
+  expect(isFull('word', 'word', 'word')).toEqual(true);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('word', 123, 'word')).toEqual(true);
+  expect(isFull('word', 123, 'word')).toEqual(true);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('word', 0, 'word')).toEqual(true);
+  expect(isFull('word', 0, 'word')).toEqual(true);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty(['item'], 'word')).toEqual(true);
+  expect(isFull(['item'], 'word')).toEqual(true);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty([])).toEqual(false);
+  expect(isFull([])).toEqual(false);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('word', [])).toEqual(false);
+  expect(isFull('word', [])).toEqual(false);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('')).toEqual(false);
+  expect(isFull('')).toEqual(false);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('', '', '')).toEqual(false);
+  expect(isFull('', '', '')).toEqual(false);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('', 'word', '')).toEqual(false);
+  expect(isFull('', 'word', '')).toEqual(false);
 });
 
 test('It should return true if even one value is not an empty string or an empty array, false otherwise', () => {
-  expect(isNoEmpty('', 1, '')).toEqual(false);
+  expect(isFull('', 1, '')).toEqual(false);
 });
