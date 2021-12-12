@@ -19,7 +19,6 @@ const Contact = () => {
   const {
     setModalOpen,
     setNarrowModalOpen,
-    handleFocusInput,
     setErrorPage,
     localUser,
     setLocalUser,
@@ -27,12 +26,15 @@ const Contact = () => {
 
   const formContact = useRef(null);
   const { fullName, phoneCode, phoneNumber, email, country } = localUser;
-  const [errorFullName, setErrorFullName] = useState(false);
-  const [onChangeFullName, setOnChangeFullName] = useState(false);
-  const [errorPhoneNumber, setErrorPhoneNumber] = useState(false);
-  const [onChangeNumber, setOnChangeNumber] = useState(false);
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [onChangeEmail, setOnChangeEmail] = useState(false);
+  const [errorValidation, setErrorValidation] = useState({
+    errorFullName: false,
+    changingFullName: false,
+    errorPhoneNumber: false,
+    changingPhoneNumber: false,
+    errorEmail: false,
+    changingEmail: false,
+  });
+  const { errorFullName, errorPhoneNumber, errorEmail } = errorValidation;
 
   /**
    * The current page is not an error page
@@ -42,41 +44,59 @@ const Contact = () => {
   }, [setErrorPage]);
 
   /**
-   * Handle input focus and blur
+   * Input validation
    */
   useEffect(() => {
-    handleFocusInput(formContact);
-  }, [handleFocusInput]);
+    isValidFullName(fullName)
+      ? setErrorValidation(prev => ({ ...prev, errorFullName: true }))
+      : setErrorValidation(prev => ({ ...prev, errorFullName: false }));
+    isValidPhoneNumber(phoneNumber)
+      ? setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }))
+      : setErrorValidation(prev => ({ ...prev, errorPhoneNumber: false }));
+    isValidEmail(email)
+      ? setErrorValidation(prev => ({ ...prev, errorEmail: true }))
+      : setErrorValidation(prev => ({ ...prev, errorEmail: false }));
+  }, [fullName, phoneNumber, email]);
 
   /**
-   * Directly opens the next page if validation is true.
+   * Submit validation
    */
   const handleSubmitContact = useCallback(() => {
     if (!isFull(fullName)) {
-      setErrorFullName(true);
+      //setChangingFullName(true);
+      setErrorValidation(prev => ({ ...prev, changingFullName: true }));
       setNarrowModalOpen('danger', 'Sorry, name and surname', 'are required.');
     } else if (!isValidFullName(fullName)) {
-      setErrorFullName(true);
+      //setErrorFullName(true);
+      setErrorValidation(prev => ({ ...prev, errorFullName: true }));
       setNarrowModalOpen(
         'danger',
         'Please enter your first',
         'and last name correctly.'
       );
     } else if (!isFull(phoneNumber)) {
-      setErrorPhoneNumber(true);
+      //setErrorPhoneNumber(true);
+      setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }));
+
       setNarrowModalOpen('danger', 'Sorry, phone number is required.');
     } else if (!isValidPhoneNumber(phoneNumber)) {
-      setErrorPhoneNumber(true);
+      // setErrorPhoneNumber(true);
+      setErrorValidation(prev => ({ ...prev, errorPhoneNumber: true }));
+
       setNarrowModalOpen(
         'danger',
         'Please enter your phone number',
         'correctly.'
       );
     } else if (!isFull(email)) {
-      setErrorEmail(true);
+      //setErrorEmail(true);
+      setErrorValidation(prev => ({ ...prev, errorEmail: true }));
+
       setNarrowModalOpen('danger', 'Sorry, email address is required.');
     } else if (!isValidEmail(email)) {
-      setErrorEmail(true);
+      //setErrorEmail(true);
+      setErrorValidation(prev => ({ ...prev, errorEmail: true }));
+
       setNarrowModalOpen(
         'danger',
         'Please enter your email address correctly.'
@@ -121,17 +141,6 @@ const Contact = () => {
                     value={fullName}
                     onChange={event => {
                       setLocalUser('fullName', event.target.value);
-                      isValidFullName(event.target.value) &&
-                        setOnChangeFullName(true);
-                      onChangeFullName && !isValidFullName(event.target.value)
-                        ? setErrorFullName(true)
-                        : setErrorFullName(false);
-                    }}
-                    onFocus={() => setErrorFullName(false)}
-                    onBlur={() => {
-                      isValidFullName(fullName)
-                        ? setErrorFullName(false)
-                        : setErrorFullName(true);
                     }}
                   />
                 </div>
@@ -171,17 +180,10 @@ const Contact = () => {
                     value={phoneNumber}
                     onChange={event => {
                       setLocalUser('phoneNumber', event.target.value);
-                      isValidPhoneNumber(event.target.value) &&
-                        setOnChangeNumber(true);
-                      onChangeNumber && !isValidPhoneNumber(event.target.value)
-                        ? setErrorPhoneNumber(true)
-                        : setErrorPhoneNumber(false);
-                    }}
-                    onFocus={() => setErrorPhoneNumber(false)}
-                    onBlur={() => {
-                      !isValidPhoneNumber(phoneNumber)
-                        ? setErrorPhoneNumber(true)
-                        : setErrorPhoneNumber(false);
+                      setErrorValidation(prev => ({
+                        ...prev,
+                        changingPhoneNumber: true,
+                      }));
                     }}
                   />
                 </div>
@@ -200,17 +202,10 @@ const Contact = () => {
                     value={email}
                     onChange={event => {
                       setLocalUser('email', event.target.value);
-                      isValidEmail(event.target.value) &&
-                        setOnChangeEmail(true);
-                      onChangeEmail && !isValidEmail(event.target.value)
-                        ? setErrorEmail(true)
-                        : setErrorEmail(false);
-                    }}
-                    onFocus={() => setErrorEmail(false)}
-                    onBlur={() => {
-                      !isValidEmail(email)
-                        ? setErrorEmail(true)
-                        : setErrorEmail(false);
+                      setErrorValidation(prev => ({
+                        ...prev,
+                        changingEmail: true,
+                      }));
                     }}
                   />
                 </div>
