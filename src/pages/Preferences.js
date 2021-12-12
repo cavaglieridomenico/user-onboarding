@@ -38,11 +38,17 @@ const Preferences = () => {
   const goToTheRightPageFromPreferences = useCallback(() => {
     if (!stepStatus1) {
       history.push('./');
-      setNarrowModalOpen('danger', 'Please enter personal data first.');
+      setNarrowModalOpen(
+        'danger',
+        'Please enter your personal data correctly first.'
+      );
     }
     if (stepStatus1 && !stepStatus2) {
       history.push('./plans');
-      setNarrowModalOpen('danger', 'Please enter an investment plan first.');
+      setNarrowModalOpen(
+        'danger',
+        'Please enter an investment plan correctly first.'
+      );
     }
   }, [history, stepStatus1, stepStatus2, setNarrowModalOpen]);
 
