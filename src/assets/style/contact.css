@@ -56,13 +56,13 @@
   color: var(--error);
 }
 
-#form-contact .form-container .box-validated {
+#form-contact .form-container .box-valid {
   border-bottom: solid 2px var(--primaryColor);
   color: var(--primaryColor);
   caret-color: var(--primaryColor);
 }
 
-#form-contact .form-container .input-validated {
+#form-contact .form-container .input-valid {
   color: var(--mainBlack);
 }
 

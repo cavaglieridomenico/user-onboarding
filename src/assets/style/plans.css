@@ -19,10 +19,16 @@ section.plans article {
   min-width: 300px;
 }
 
+#form-plans .from-box,
+#form-plans .to-box {
+  border-bottom: solid 2px var(--lightGrey);
+  transition: var(--mainTransition);
+}
+
 #form-plans .from-box select,
 #form-plans .to-box select {
   appearance: none;
-  border-bottom: solid 2px var(--lightGrey);
+  /* border-bottom: solid 2px var(--lightGrey); */
   margin: 0 auto 1%;
   width: 100%;
   font-family: var(--monserrat);
@@ -39,6 +45,12 @@ section.plans article {
 
 #form-plans .to-box {
   grid-row: 2 / 3;
+}
+
+#form-plans .box-valid,
+#form-plans .box-valid {
+  border-bottom: solid 2px var(--primaryColor);
+  color: var(--primaryColor);
 }
 
 .form-plans-error {

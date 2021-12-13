@@ -163,7 +163,7 @@ const Contact = () => {
                     }}
                   />
                 </div>
-                <div className='country-box'>
+                <div className='country-box box-valid'>
                   <label htmlFor='country'>Country</label>
                   <select
                     type='text'
