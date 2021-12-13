@@ -76,20 +76,21 @@ export const AppProvider = ({ children }) => {
       accredited,
       preferences,
     } = state.localUser;
-    isValidFullName(fullName) &&
-    isValidPhoneNumber(phoneNumber) &&
-    isValidEmail(email)
-      ? dispatch({ type: 'SET_STEP_STATUS_1', payload: true })
-      : dispatch({ type: 'SET_STEP_STATUS_1', payload: false });
 
-    isFull(planFrom, planTo, accredited) &&
-    isValidRange(parseInt(planFrom), parseInt(planTo))
-      ? dispatch({ type: 'SET_STEP_STATUS_2', payload: true })
-      : dispatch({ type: 'SET_STEP_STATUS_2', payload: false });
-
-    isFull(preferences)
-      ? dispatch({ type: 'SET_STEP_STATUS_3', payload: true })
-      : dispatch({ type: 'SET_STEP_STATUS_3', payload: false });
+    dispatch({
+      type: 'SET_STEP_STATUS_1',
+      payload:
+        isValidFullName(fullName) &&
+        isValidPhoneNumber(phoneNumber) &&
+        isValidEmail(email),
+    });
+    dispatch({
+      type: 'SET_STEP_STATUS_2',
+      payload:
+        isFull(planFrom, planTo, accredited) &&
+        isValidRange(parseInt(planFrom), parseInt(planTo)),
+    });
+    dispatch({ type: 'SET_STEP_STATUS_3', payload: isFull(preferences) });
   }, [state.localUser]);
 
   /**Fetch*/

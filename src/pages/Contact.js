@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
@@ -26,13 +26,6 @@ const Contact = () => {
 
   const formContact = useRef(null);
   const { fullName, phoneCode, phoneNumber, email, country } = localUser;
-  const [inputValidation, setInputValidation] = useState({
-    validatedFullName: false,
-    validatedPhoneNumber: false,
-    validatedEmail: false,
-  });
-  const { validatedFullName, validatedPhoneNumber, validatedEmail } =
-    inputValidation;
 
   /**
    * The current page is not an error page
@@ -40,21 +33,6 @@ const Contact = () => {
   useEffect(() => {
     setErrorPage(false);
   }, [setErrorPage]);
-
-  /**
-   * Input validation
-   */
-  useEffect(() => {
-    isValidFullName(fullName)
-      ? setInputValidation(prev => ({ ...prev, validatedFullName: true }))
-      : setInputValidation(prev => ({ ...prev, validatedFullName: false }));
-    isValidPhoneNumber(phoneNumber)
-      ? setInputValidation(prev => ({ ...prev, validatedPhoneNumber: true }))
-      : setInputValidation(prev => ({ ...prev, validatedPhoneNumber: false }));
-    isValidEmail(email)
-      ? setInputValidation(prev => ({ ...prev, validatedEmail: true }))
-      : setInputValidation(prev => ({ ...prev, validatedEmail: false }));
-  }, [fullName, phoneNumber, email]);
 
   /**
    * Submit validation
@@ -110,7 +88,7 @@ const Contact = () => {
               <div className='form-container'>
                 <div
                   className={`name-box ${
-                    validatedFullName ? 'box-validated' : undefined
+                    isValidFullName(fullName) ? 'box-valid' : undefined
                   }`}
                 >
                   <label htmlFor='full-name'>Full name</label>
@@ -118,7 +96,7 @@ const Contact = () => {
                     type='text'
                     id='full-name'
                     className={`input ${
-                      validatedFullName ? 'input-validated' : undefined
+                      isValidFullName(fullName) ? 'input-valid' : undefined
                     }`}
                     value={fullName}
                     onChange={event => {
@@ -128,7 +106,7 @@ const Contact = () => {
                 </div>
                 <div
                   className={`phone-box ${
-                    validatedPhoneNumber ? 'box-validated' : undefined
+                    isValidPhoneNumber(phoneNumber) ? 'box-valid' : undefined
                   }`}
                 >
                   <label htmlFor='phone'>Phone</label>
@@ -157,7 +135,9 @@ const Contact = () => {
                     type='text'
                     id='phone'
                     className={`input ${
-                      validatedPhoneNumber ? 'input-validated' : undefined
+                      isValidPhoneNumber(phoneNumber)
+                        ? 'input-valid'
+                        : undefined
                     }`}
                     value={phoneNumber}
                     onChange={event => {
@@ -167,7 +147,7 @@ const Contact = () => {
                 </div>
                 <div
                   className={`email-box ${
-                    validatedEmail ? 'box-validated' : undefined
+                    isValidEmail(email) ? 'box-valid' : undefined
                   }`}
                 >
                   <label htmlFor='email'>E-mail address</label>
@@ -175,7 +155,7 @@ const Contact = () => {
                     type='text'
                     id='email'
                     className={`input ${
-                      validatedEmail ? 'input-validated' : undefined
+                      isValidEmail(email) ? 'input-valid' : undefined
                     }`}
                     value={email}
                     onChange={event => {
@@ -183,7 +163,7 @@ const Contact = () => {
                     }}
                   />
                 </div>
-                <div className='country-box'>
+                <div className='country-box box-valid'>
                   <label htmlFor='country'>Country</label>
                   <select
                     type='text'

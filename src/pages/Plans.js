@@ -67,7 +67,14 @@ const Plans = () => {
             </h2>
             <form id='form-plans'>
               <div className='form-container'>
-                <div className='from-box'>
+                <div
+                  className={`from-box ${
+                    isValidRange(
+                      parseInt(localUser.planFrom),
+                      parseInt(localUser.planTo)
+                    ) && 'box-valid'
+                  }`}
+                >
                   <label htmlFor='plans-from'>From</label>
                   <select
                     type='text'
@@ -93,7 +100,14 @@ const Plans = () => {
                     })}
                   </select>
                 </div>
-                <div className='to-box'>
+                <div
+                  className={`to-box ${
+                    isValidRange(
+                      parseInt(localUser.planFrom),
+                      parseInt(localUser.planTo)
+                    ) && 'box-valid'
+                  }`}
+                >
                   <label htmlFor='plans-to'>To</label>
                   <select
                     type='text'
