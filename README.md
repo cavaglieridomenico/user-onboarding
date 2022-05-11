@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="https://github.com/cavaglieridomenico/user-onboarding/blob/dev/src/assets/images/repo.jpg" alt="United Properties - User Onboarding" />
+  <img src="https://github.com/cavaglieridomenico/user-onboarding/blob/main/src/assets/images/repo.jpg?raw=true" alt="United Properties - User Onboarding" />
   <h1 align="center">UNITED PROPERTIES</h1>
   <h2 align="center">User Onboarding</h2>
 
